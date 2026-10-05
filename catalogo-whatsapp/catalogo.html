@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Catálogo Iván</title>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 800;src:url(fonts/Inter-var.woff2) format('woff2')}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;src:url(fonts/PlayfairDisplay-700.woff2) format('woff2')}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:700;src:url(fonts/PlayfairDisplay-700i.woff2) format('woff2')}
+:root{
+  --bg:#09090A; --ink:#F5F2EA; --mute:#9C978C; --dim:#5E5A53;
+  --gold:#D4AF5A; --gold-hi:#F3D995; --gold-lo:#8C6A26;
+  --g: linear-gradient(135deg,#F6DE9E 0%,#D4AF5A 45%,#9A7530 100%);
+  --line: rgba(255,255,255,.08); --gline: rgba(212,175,90,.38);
+}
+*{box-sizing:border-box;margin:0;padding:0;font-variant-numeric:lining-nums}
+body{background:#000;font-family:Inter,system-ui,sans-serif;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:40px;padding:40px 0}
+.slide{width:1080px;height:1080px;position:relative;overflow:hidden;background:var(--bg);flex:none}
+.slide::before{content:"";position:absolute;inset:0;
+  background:
+   radial-gradient(900px 600px at 85% 85%, rgba(212,175,90,.16), transparent 60%),
+   radial-gradient(700px 500px at 0% 0%, rgba(255,255,255,.045), transparent 60%);}
+.grid{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:54px 54px;
+  -webkit-mask-image:radial-gradient(circle at 60% 70%, #000 0%, transparent 75%);}
+.frame{position:absolute;inset:26px;border:1px solid rgba(212,175,90,.18);border-radius:6px;pointer-events:none;z-index:20}
+.frame i{position:absolute;width:26px;height:26px;border-color:var(--gold);border-style:solid;border-width:0}
+.frame i:nth-child(1){top:-1px;left:-1px;border-top-width:2px;border-left-width:2px}
+.frame i:nth-child(2){top:-1px;right:-1px;border-top-width:2px;border-right-width:2px}
+.frame i:nth-child(3){bottom:-1px;left:-1px;border-bottom-width:2px;border-left-width:2px}
+.frame i:nth-child(4){bottom:-1px;right:-1px;border-bottom-width:2px;border-right-width:2px}
+
+/* header */
+.hd{position:absolute;top:58px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:center;z-index:5}
+.brand{display:flex;align-items:center;gap:16px}
+.mono{width:54px;height:54px;border:1.5px solid var(--gold);display:grid;place-items:center;font-family:"Playfair Display";font-weight:700;font-size:30px;color:var(--gold-hi);position:relative}
+.mono::after{content:"";position:absolute;inset:5px;border:1px solid rgba(212,175,90,.3)}
+.bn{font-weight:800;font-size:21px;letter-spacing:.32em}
+.bt{font-size:12px;font-weight:600;letter-spacing:.3em;color:var(--gold);margin-top:5px}
+.idx{display:flex;align-items:baseline;gap:12px;font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.idx b{font-family:"Playfair Display";font-size:30px;color:var(--gold-hi);letter-spacing:0;font-weight:700}
+.idx i{font-style:normal;color:var(--dim);letter-spacing:.05em}
+
+/* title block */
+.tb{position:absolute;top:168px;left:64px;right:64px;z-index:5}
+.eb{display:flex;align-items:center;gap:14px;font-size:15px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.eb::before{content:"";width:44px;height:1.5px;background:var(--g)}
+h1{font-family:"Playfair Display";font-weight:700;font-size:76px;line-height:1.02;letter-spacing:-.01em;margin-top:22px}
+h1 em{font-style:italic;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:6px}
+.sub{font-size:27px;color:#CFCABE;margin-top:20px;font-weight:400;letter-spacing:.005em}
+
+/* stage */
+.stage{position:absolute;left:0;right:0;top:450px;height:480px;z-index:4}
+
+/* footer */
+.ft{position:absolute;left:64px;right:64px;bottom:58px;display:flex;justify-content:space-between;align-items:center;z-index:6}
+.cta{height:64px;padding:0 30px 0 22px;border-radius:40px;background:var(--g);color:#0B0B0B;display:flex;align-items:center;gap:14px;font-weight:800;font-size:21px;letter-spacing:.01em;box-shadow:0 12px 40px rgba(212,175,90,.28)}
+.cta svg{width:30px;height:30px}
+.ft-r{font-size:15px;color:var(--mute);letter-spacing:.18em;text-transform:uppercase;font-weight:600;text-align:right}
+.ft-r b{color:var(--ink);font-weight:700}
+
+/* primitives */
+.card{position:absolute;background:linear-gradient(180deg,#18181B 0%,#0F0F11 100%);border:1px solid var(--line);border-radius:22px;box-shadow:0 34px 70px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.06)}
+.card.gb{border-color:var(--gline)}
+.lbl{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.serif{font-family:"Playfair Display";font-weight:700}
+.gold{color:var(--gold-hi)}
+.gt{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stars{color:var(--gold);letter-spacing:2px}
+.bar{height:8px;border-radius:6px;background:rgba(255,255,255,.09)}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:30px;font-size:13px;font-weight:700}
+.pill.g{background:var(--g);color:#0b0b0b}
+.pill.o{border:1px solid var(--gline);color:var(--gold-hi)}
+.dot{width:8px;height:8px;border-radius:50%;background:#5BD38A;box-shadow:0 0 10px #5BD38A}
+
+.phone{position:absolute;border-radius:40px;background:#050506;border:9px solid #1C1C1F;box-shadow:0 40px 80px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,255,255,.04);overflow:hidden}
+.phone .notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:76px;height:20px;border-radius:12px;background:#000;z-index:3}
+.scr{position:absolute;inset:0;padding:40px 14px 14px;display:flex;flex-direction:column;gap:10px}
+
+/* chat */
+.wa-h{display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.av{width:34px;height:34px;border-radius:50%;background:var(--g);display:grid;place-items:center;color:#111;font-weight:800;font-size:14px;flex:none}
+.msg{max-width:84%;padding:9px 12px;border-radius:14px;font-size:13px;line-height:1.35}
+.msg.in{background:#1E1E22;align-self:flex-start;border-top-left-radius:4px}
+.msg.out{background:linear-gradient(135deg,#3A2F17,#2A220F);border:1px solid rgba(212,175,90,.35);align-self:flex-end;border-top-right-radius:4px;color:#F7E7BC}
+.msg small{display:block;font-size:10px;color:var(--mute);margin-top:4px;text-align:right}
+.msg.out small{color:#C6A962}
+</style>
+</head>
+<body>
+
+<!-- ============ shared snippets are repeated inline per slide ============ -->
+
+<!-- 01 PORTADA -->
+<section class="slide" id="s1">
+  <div class="grid"></div><div class="frame"><i></i><i></i><i></i><i></i></div>
+  <header class="hd">
+    <div class="brand"><div class="mono">I</div><div><div class="bn">IVÁN</div><div class="bt">GESTOR DE PRESENCIA ONLINE</div></div></div>
+    <div class="idx"><span>Presencia digital</span><b>01</b><i>/ 06</i></div>
+  </header>
+  <div class="tb">
+    <div class="eb">Soluciones digitales para negocios</div>
+    <h1 style="font-size:96px">Tu negocio puede<br><em>vender más</em></h1>
+    <p class="sub" style="font-size:24px;letter-spacing:.06em;color:#E6E0D2">Google Maps <span class="gold">&nbsp;•&nbsp;</span> Página Web <span class="gold">&nbsp;•&nbsp;</span> WhatsApp <span class="gold">&nbsp;•&nbsp;</span> Automatización</p>
+  </div>
+  <div class="stage" style="top:520px;height:410px">
+    <!-- browser -->
+    <div class="card" style="left:290px;top:10px;width:510px;height:330px;overflow:hidden">
+      <div style="height:34px;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid var(--line)">
+        <span style="width:9px;height:9px;border-radius:50%;background:#3a3a3e"></span><span style="width:9px;height:9px;border-radius:50%;background:#3a3a3e"></span><span style="width:9px;height:9px;border-radius:50%;background:#3a3a3e"></span>
+        <div style="margin-left:14px;flex:1;height:18px;border-radius:9px;background:#141416;font-size:10px;color:var(--mute);display:flex;align-items:center;padding-left:10px">tunegocio.com</div>
+      </div>
+      <div style="display:flex;padding:24px 24px 0 60px;gap:20px">
+        <div style="flex:1">
+          <div class="lbl" style="font-size:9px;color:var(--gold)">Bienvenidos</div>
+          <div class="serif" style="font-size:30px;line-height:1.05;margin-top:8px">Calidad que<br>se nota</div>
+          <div class="bar" style="width:88%;margin-top:14px;height:6px"></div>
+          <div class="bar" style="width:70%;margin-top:7px;height:6px"></div>
+          <div class="pill g" style="margin-top:16px;font-size:11px;padding:7px 14px">Reservar ahora</div>
+        </div>
+        <div style="width:190px;height:180px;border-radius:14px;background:radial-gradient(circle at 70% 30%,rgba(243,217,149,.55),transparent 55%),linear-gradient(160deg,#2B2415,#0F0E0B);border:1px solid var(--gline)"></div>
+      </div>
+      <div style="display:flex;gap:12px;padding:20px 24px">
+        <div style="flex:1;height:52px;border-radius:10px;background:#141416;border:1px solid var(--line)"></div>
+        <div style="flex:1;height:52px;border-radius:10px;background:#141416;border:1px solid var(--line)"></div>
+        <div style="flex:1;height:52px;border-radius:10px;background:#141416;border:1px solid var(--line)"></div>
+      </div>
+    </div>
+    <!-- maps card -->
+    <div class="card gb" style="left:64px;top:30px;width:250px;padding:20px;z-index:2">
+      <div style="display:flex;align-items:center;gap:12px">
+        <svg width="34" height="34" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7z" fill="url(#gg)"/><circle cx="12" cy="9" r="2.6" fill="#0b0b0b"/><defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6DE9E"/><stop offset="1" stop-color="#9A7530"/></linearGradient></defs></svg>
+        <div><div class="lbl" style="font-size:10px">Google Maps</div><div style="font-weight:700;font-size:16px;margin-top:2px">Tu Negocio</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:14px"><span class="serif gold" style="font-size:26px">4.9</span><span class="stars" style="font-size:16px">★★★★★</span></div>
+      <div style="font-size:12px;color:var(--mute);margin-top:4px">1° en búsquedas de tu zona</div>
+    </div>
+    <!-- growth card -->
+    <div class="card" style="left:100px;top:262px;width:340px;padding:18px 22px;z-index:3">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end">
+        <div><div class="lbl" style="font-size:10px">Consultas del mes</div><div class="serif gt" style="font-size:40px;line-height:1;margin-top:6px">+38%</div></div>
+        <svg width="120" height="54" viewBox="0 0 120 54"><defs><linearGradient id="ga1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D4AF5A" stop-opacity=".45"/><stop offset="1" stop-color="#D4AF5A" stop-opacity="0"/></linearGradient></defs><path d="M0 48 L20 42 L40 44 L60 30 L80 26 L100 14 L120 6 L120 54 L0 54Z" fill="url(#ga1)"/><path d="M0 48 L20 42 L40 44 L60 30 L80 26 L100 14 L120 6" fill="none" stroke="#F3D995" stroke-width="2.5"/><circle cx="120" cy="6" r="3.5" fill="#F3D995"/></svg>
+      </div>
+    </div>
+    <!-- dashboard kpi -->
+    <div class="card" style="left:520px;top:268px;width:270px;padding:18px 20px;z-index:3">
+      <div class="lbl" style="font-size:10px">Ventas · Dashboard</div>
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:8px">
+        <div class="serif" style="font-size:30px">$ 2.4M</div>
+        <div style="display:flex;align-items:flex-end;gap:5px;height:44px">
+          <i style="width:10px;height:16px;background:#2a2a2e;border-radius:3px"></i><i style="width:10px;height:22px;background:#2a2a2e;border-radius:3px"></i><i style="width:10px;height:20px;background:#2a2a2e;border-radius:3px"></i><i style="width:10px;height:30px;background:#6b5526;border-radius:3px"></i><i style="width:10px;height:44px;background:var(--g);border-radius:3px"></i>
+        </div>
+      </div>
+    </div>
+    <!-- phone whatsapp -->
+    <div class="phone" style="left:812px;top:-10px;width:210px;height:420px;z-index:4">
+      <div class="notch"></div>
+      <div class="scr">
+        <div class="wa-h"><div class="av">TN</div><div><div style="font-size:13px;font-weight:700">Tu Negocio</div><div style="font-size:10px;color:#5BD38A">en línea</div></div></div>
+        <div class="msg in" style="font-size:12px">Hola! ¿Tienen turno hoy?<small>17:02</small></div>
+        <div class="msg out" style="font-size:12px">¡Hola! Sí, 17:30 está disponible. ¿Te lo reservo?<small>17:02 ✓✓</small></div>
+        <div class="msg in" style="font-size:12px">Sí, perfecto<small>17:03</small></div>
+        <div class="msg out" style="font-size:12px">Listo ✓ Turno confirmado<small>17:03 ✓✓</small></div>
+      </div>
+    </div>
+  </div>
+  <footer class="ft">
+    <div class="cta"><svg viewBox="0 0 24 24"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="#0b0b0b" stroke-width="1.9"/><path d="M8.6 7.3c.3-.5.8-.5 1-.1l.9 2c.1.3 0 .6-.2.8l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.2-.2.5-.3.8-.2l2 .9c.4.2.4.7-.1 1-.9.7-2 .9-3 .5-2.5-1-4.5-3-5.5-5.5-.4-1-.2-2.1.5-3z" fill="#0b0b0b"/></svg>Solicitá un análisis gratuito</div>
+    <div class="ft-r">Más visibilidad · <b>Más ventas</b></div>
+  </footer>
+</section>
+
+<!-- 02 GOOGLE MAPS -->
+<section class="slide" id="s2">
+  <div class="grid"></div><div class="frame"><i></i><i></i><i></i><i></i></div>
+  <header class="hd">
+    <div class="brand"><div class="mono">I</div><div><div class="bn">IVÁN</div><div class="bt">GESTOR DE PRESENCIA ONLINE</div></div></div>
+    <div class="idx"><span>Google Maps</span><b>02</b><i>/ 06</i></div>
+  </header>
+  <div class="tb">
+    <div class="eb">Visibilidad local</div>
+    <h1>Más clientes desde<br><em>Google Maps</em></h1>
+    <p class="sub">Aparecé donde tus clientes te buscan</p>
+  </div>
+  <div class="stage">
+    <!-- map -->
+    <div class="card" style="left:64px;top:0;width:560px;height:470px;overflow:hidden">
+      <svg width="560" height="470" viewBox="0 0 560 470" style="position:absolute;inset:0">
+        <rect width="560" height="470" fill="#0E0E10"/>
+        <path d="M380 0 L560 0 L560 160 L430 120Z" fill="#141814"/>
+        <path d="M0 330 Q120 300 200 360 T420 470 L0 470Z" fill="#101318"/>
+        <g stroke="#1F1F23" stroke-width="22" fill="none" stroke-linecap="round">
+          <path d="M-20 120 L580 70"/><path d="M-20 260 L580 230"/><path d="M90 -20 L140 500"/><path d="M330 -20 L300 500"/>
+        </g>
+        <g stroke="#18181B" stroke-width="10" fill="none">
+          <path d="M-20 190 L580 150"/><path d="M220 -20 L210 500"/><path d="M450 -20 L470 500"/><path d="M-20 400 L580 380"/>
+        </g>
+        <path d="M120 470 L135 330 L210 300 L250 245 L300 230" fill="none" stroke="#D4AF5A" stroke-width="5" stroke-dasharray="2 10" stroke-linecap="round"/>
+        <g fill="#3A3A40"><circle cx="110" cy="70" r="7"/><circle cx="420" cy="320" r="7"/><circle cx="480" cy="100" r="7"/><circle cx="60" cy="300" r="7"/><circle cx="380" cy="420" r="7"/></g>
+        <circle cx="300" cy="215" r="90" fill="#D4AF5A" opacity=".06"/>
+        <circle cx="300" cy="215" r="58" fill="none" stroke="#D4AF5A" stroke-opacity=".35" stroke-width="1.5"/>
+        <circle cx="300" cy="215" r="30" fill="#D4AF5A" opacity=".14"/>
+        <defs><linearGradient id="pg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6DE9E"/><stop offset="1" stop-color="#9A7530"/></linearGradient></defs>
+        <path d="M300 145 a32 32 0 0 0-32 32 c0 24 32 58 32 58 s32-34 32-58 a32 32 0 0 0-32-32z" fill="url(#pg)"/>
+        <circle cx="300" cy="177" r="11" fill="#0b0b0b"/>
+      </svg>
+      <div class="pill g" style="position:absolute;left:236px;top:282px;box-shadow:0 10px 30px rgba(0,0,0,.6)">Tu Negocio ★ 4.9</div>
+      <div style="position:absolute;left:22px;top:22px;right:22px;height:46px;border-radius:24px;background:#1A1A1D;border:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 18px;font-size:15px;color:#CFCABE">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9C978C" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        barbería cerca de mí
+      </div>
+    </div>
+    <!-- listing -->
+    <div class="card gb" style="left:540px;top:40px;width:476px;padding:24px 26px;z-index:2">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div><div class="serif" style="font-size:30px">Tu Negocio</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:6px"><b style="font-size:17px">4.9</b><span class="stars" style="font-size:17px">★★★★★</span><span style="font-size:14px;color:var(--mute)">(128 reseñas)</span></div>
+        <div style="font-size:14px;color:var(--mute);margin-top:6px"><span style="color:#5BD38A;font-weight:600">Abierto</span> · Cierra 21:00</div></div>
+        <div class="pill o" style="font-size:11px">1° en tu zona</div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:18px">
+        <div class="pill o" style="flex:1;justify-content:center;font-size:13px">Cómo llegar</div>
+        <div class="pill o" style="flex:1;justify-content:center;font-size:13px">Llamar</div>
+        <div class="pill g" style="flex:1.2;justify-content:center;font-size:13px"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="#0b0b0b" stroke-width="2.2"/><path d="M8.6 7.3c.3-.5.8-.5 1-.1l.9 2c.1.3 0 .6-.2.8l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.2-.2.5-.3.8-.2l2 .9c.4.2.4.7-.1 1-.9.7-2 .9-3 .5-2.5-1-4.5-3-5.5-5.5-.4-1-.2-2.1.5-3z" fill="#0b0b0b"/></svg>WhatsApp</div>
+      </div>
+      <div style="height:1px;background:var(--line);margin:20px 0 16px"></div>
+      <div style="display:flex;gap:12px">
+        <div class="av" style="width:38px;height:38px">M</div>
+        <div><div style="display:flex;gap:10px;align-items:center"><b style="font-size:14px">Martina G.</b><span class="stars" style="font-size:13px">★★★★★</span></div>
+        <div style="font-size:14px;color:#CFCABE;margin-top:4px;line-height:1.4">“Excelente atención, súper recomendable. Volvemos seguro.”</div></div>
+      </div>
+    </div>
+    <!-- stat -->
+    <div class="card" style="left:660px;top:330px;width:356px;padding:20px 24px;z-index:3">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end">
+        <div><div class="lbl" style="font-size:10px">Consultas desde Maps</div><div class="serif gt" style="font-size:44px;line-height:1;margin-top:8px">+64%</div></div>
+        <div style="display:flex;align-items:flex-end;gap:7px;height:70px">
+          <i style="width:14px;height:20px;background:#2a2a2e;border-radius:4px"></i><i style="width:14px;height:28px;background:#2a2a2e;border-radius:4px"></i><i style="width:14px;height:34px;background:#3d3524;border-radius:4px"></i><i style="width:14px;height:46px;background:#6b5526;border-radius:4px"></i><i style="width:14px;height:56px;background:#a3843f;border-radius:4px"></i><i style="width:14px;height:70px;background:var(--g);border-radius:4px"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="ft">
+    <div class="cta"><svg viewBox="0 0 24 24"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="#0b0b0b" stroke-width="1.9"/><path d="M8.6 7.3c.3-.5.8-.5 1-.1l.9 2c.1.3 0 .6-.2.8l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.2-.2.5-.3.8-.2l2 .9c.4.2.4.7-.1 1-.9.7-2 .9-3 .5-2.5-1-4.5-3-5.5-5.5-.4-1-.2-2.1.5-3z" fill="#0b0b0b"/></svg>Solicitá un análisis gratuito</div>
+    <div class="ft-r">Más visibilidad · <b>Más consultas</b></div>
+  </footer>
+</section>
+
+<!-- 03 PÁGINA WEB -->
+<section class="slide" id="s3">
+  <div class="grid"></div><div class="frame"><i></i><i></i><i></i><i></i></div>
+  <header class="hd">
+    <div class="brand"><div class="mono">I</div><div><div class="bn">IVÁN</div><div class="bt">GESTOR DE PRESENCIA ONLINE</div></div></div>
+    <div class="idx"><span>Página web</span><b>03</b><i>/ 06</i></div>
+  </header>
+  <div class="tb">
+    <div class="eb">Imagen profesional</div>
+    <h1>Página Web<br><em>Profesional</em></h1>
+    <p class="sub">Tu negocio abierto las 24 horas</p>
+  </div>
+  <div class="stage">
+    <!-- tablet -->
+    <div class="phone" style="left:64px;top:70px;width:270px;height:360px;border-radius:26px;border-width:10px">
+      <div class="scr" style="padding:18px 16px;gap:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span class="serif gold" style="font-size:12px;letter-spacing:.15em">TU MARCA</span><span style="width:20px;height:2px;background:#555;box-shadow:0 5px 0 #555,0 -5px 0 #555"></span></div>
+        <div style="height:120px;border-radius:12px;background:radial-gradient(circle at 30% 30%,rgba(243,217,149,.5),transparent 60%),linear-gradient(160deg,#2B2415,#0F0E0B);border:1px solid var(--gline)"></div>
+        <div class="serif" style="font-size:18px">Nuestros servicios</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="height:58px;border-radius:10px;background:#141416;border:1px solid var(--line)"></div><div style="height:58px;border-radius:10px;background:#141416;border:1px solid var(--line)"></div>
+          <div style="height:58px;border-radius:10px;background:#141416;border:1px solid var(--line)"></div><div style="height:58px;border-radius:10px;background:#141416;border:1px solid var(--line)"></div>
+        </div>
+      </div>
+    </div>
+    <!-- laptop -->
+    <div style="position:absolute;left:220px;top:0;width:640px;height:400px;border-radius:18px 18px 0 0;background:#050506;border:10px solid #1C1C1F;border-bottom-width:14px;box-shadow:0 40px 90px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.08);overflow:hidden;z-index:2">
+      <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--line)">
+        <span class="serif gold" style="font-size:15px;letter-spacing:.2em">TU MARCA</span>
+        <div style="display:flex;gap:18px;font-size:11px;color:var(--mute)"><span>Inicio</span><span>Servicios</span><span>Galería</span><span>Contacto</span></div>
+        <span class="pill g" style="font-size:10px;padding:6px 12px">Reservar</span>
+      </div>
+      <div style="display:flex;gap:22px;padding:30px 28px 0">
+        <div style="flex:1">
+          <div class="lbl" style="font-size:9px;color:var(--gold)">Desde 2015</div>
+          <div class="serif" style="font-size:36px;line-height:1.04;margin-top:10px">Calidad que<br>se nota</div>
+          <div style="font-size:11px;color:var(--mute);margin-top:12px;line-height:1.5">Atención personalizada, reservas online y respuesta inmediata por WhatsApp.</div>
+          <div style="display:flex;gap:8px;margin-top:16px"><span class="pill g" style="font-size:11px;padding:8px 14px">Reservá online</span><span class="pill o" style="font-size:11px;padding:8px 14px">Ver servicios</span></div>
+        </div>
+        <div style="width:230px;height:200px;border-radius:14px;background:radial-gradient(circle at 70% 25%,rgba(243,217,149,.6),transparent 55%),radial-gradient(circle at 20% 90%,rgba(212,175,90,.25),transparent 50%),linear-gradient(160deg,#2B2415,#0F0E0B);border:1px solid var(--gline);position:relative">
+          <div style="position:absolute;left:14px;bottom:14px;background:rgba(10,10,10,.8);border:1px solid var(--line);border-radius:10px;padding:8px 10px"><span class="stars" style="font-size:11px">★★★★★</span><div style="font-size:10px;color:#ddd;margin-top:2px">+500 clientes felices</div></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;padding:22px 28px">
+        <div style="flex:1;height:60px;border-radius:10px;background:#141416;border:1px solid var(--line)"></div>
+        <div style="flex:1;height:60px;border-radius:10px;background:#141416;border:1px solid var(--line)"></div>
+        <div style="flex:1;height:60px;border-radius:10px;background:#141416;border:1px solid var(--line)"></div>
+      </div>
+      <div style="position:absolute;right:76px;bottom:70px;width:52px;height:52px;border-radius:50%;background:var(--g);display:grid;place-items:center;box-shadow:0 10px 30px rgba(212,175,90,.45)"><svg width="28" height="28" viewBox="0 0 24 24"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="#0b0b0b" stroke-width="1.9"/><path d="M8.6 7.3c.3-.5.8-.5 1-.1l.9 2c.1.3 0 .6-.2.8l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.2-.2.5-.3.8-.2l2 .9c.4.2.4.7-.1 1-.9.7-2 .9-3 .5-2.5-1-4.5-3-5.5-5.5-.4-1-.2-2.1.5-3z" fill="#0b0b0b"/></svg></div>
+    </div>
+    <div style="position:absolute;left:170px;top:398px;width:740px;height:18px;border-radius:0 0 22px 22px;background:linear-gradient(180deg,#2A2A2E,#141416);box-shadow:0 20px 40px rgba(0,0,0,.6);z-index:2"></div>
+    <!-- phone -->
+    <div class="phone" style="left:806px;top:90px;width:200px;height:380px;z-index:3">
+      <div class="notch"></div>
+      <div class="scr" style="gap:9px">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span class="serif gold" style="font-size:11px;letter-spacing:.15em">TU MARCA</span><span style="width:16px;height:2px;background:#555;box-shadow:0 4px 0 #555,0 -4px 0 #555"></span></div>
+        <div style="height:100px;border-radius:12px;background:radial-gradient(circle at 70% 30%,rgba(243,217,149,.55),transparent 60%),linear-gradient(160deg,#2B2415,#0F0E0B);border:1px solid var(--gline)"></div>
+        <div class="serif" style="font-size:17px;line-height:1.1">Calidad que se nota</div>
+        <div class="bar" style="height:5px;width:90%"></div><div class="bar" style="height:5px;width:70%"></div>
+        <div class="pill g" style="justify-content:center;font-size:11px;margin-top:4px">Reservá online</div>
+        <div class="pill o" style="justify-content:center;font-size:11px">Chat por WhatsApp</div>
+      </div>
+    </div>
+    <!-- badge -->
+    <div class="card gb" style="left:64px;top:-6px;padding:14px 18px;display:flex;align-items:center;gap:12px;z-index:4;border-radius:16px">
+      <span class="dot"></span><div><div style="font-weight:800;font-size:16px">Online 24/7</div><div style="font-size:11px;color:var(--mute)">Tu negocio nunca cierra</div></div>
+    </div>
+  </div>
+  <footer class="ft">
+    <div class="cta"><svg viewBox="0 0 24 24"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="#0b0b0b" stroke-width="1.9"/><path d="M8.6 7.3c.3-.5.8-.5 1-.1l.9 2c.1.3 0 .6-.2.8l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.2-.2.5-.3.8-.2l2 .9c.4.2.4.7-.1 1-.9.7-2 .9-3 .5-2.5-1-4.5-3-5.5-5.5-.4-1-.2-2.1.5-3z" fill="#0b0b0b"/></svg>Solicitá un análisis gratuito</div>
+    <div class="ft-r">Más confianza · <b>Imagen profesional</b></div>
+  </footer>
+</section>
+
+<!-- 04 RESERVAS -->
+<section class="slide" id="s4">
+  <div class="grid"></div><div class="frame"><i></i><i></i><i></i><i></i></div>
+  <header class="hd">
+    <div class="brand"><div class="mono">I</div><div><div class="bn">IVÁN</div><div class="bt">GESTOR DE PRESENCIA ONLINE</div></div></div>
+    <div class="idx"><span>Reservas</span><b>04</b><i>/ 06</i></div>
+  </header>
+  <div class="tb">
+    <div class="eb">Organización</div>
+    <h1>Reservas <em>Online</em></h1>
+    <p class="sub">Menos tiempo respondiendo,<br>más tiempo trabajando</p>
+  </div>
+  <div class="stage">
+    <!-- calendar -->
+    <div class="card" style="left:330px;top:0;width:686px;height:330px;padding:22px 24px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div><div class="lbl" style="font-size:10px">Agenda digital</div><div class="serif" style="font-size:24px;margin-top:4px">Octubre · Semana 42</div></div>
+        <div class="pill o" style="font-size:12px"><span class="dot"></span>18 turnos esta semana</div>
+      </div>
+      <div style="display:grid;grid-template-columns:44px repeat(6,1fr);gap:6px;margin-top:16px;font-size:11px;color:var(--mute)">
+        <span></span><span style="text-align:center">LUN 12</span><span style="text-align:center;color:var(--gold-hi);font-weight:700">MAR 13</span><span style="text-align:center">MIÉ 14</span><span style="text-align:center">JUE 15</span><span style="text-align:center">VIE 16</span><span style="text-align:center">SÁB 17</span>
+      </div>
+      <div style="position:relative;margin-top:8px;height:200px;display:grid;grid-template-columns:44px repeat(6,1fr);gap:6px">
+        <div style="display:flex;flex-direction:column;justify-content:space-between;font-size:10px;color:var(--dim)"><span>09:00</span><span>11:00</span><span>13:00</span><span>15:00</span><span>17:00</span></div>
+        <!-- columns -->
+        <div style="position:relative;border-radius:8px;background:rgba(255,255,255,.025)"><i class="ev" style="top:6px;height:34px"></i><i class="ev" style="top:96px;height:44px"></i><i class="ev" style="top:160px;height:30px"></i></div>
+        <div style="position:relative;border-radius:8px;background:rgba(212,175,90,.06);outline:1px solid rgba(212,175,90,.25)"><i class="ev" style="top:6px;height:30px"></i><i class="ev g" style="top:44px;height:40px"></i><i class="ev" style="top:120px;height:34px"></i><i class="ev" style="top:162px;height:30px"></i></div>
+        <div style="position:relative;border-radius:8px;background:rgba(255,255,255,.025)"><i class="ev" style="top:30px;height:44px"></i><i class="ev" style="top:130px;height:40px"></i></div>
+        <div style="position:relative;border-radius:8px;background:rgba(255,255,255,.025)"><i class="ev" style="top:6px;height:40px"></i><i class="ev" style="top:70px;height:30px"></i><i class="ev" style="top:150px;height:40px"></i></div>
+        <div style="position:relative;border-radius:8px;background:rgba(255,255,255,.025)"><i class="ev" style="top:20px;height:34px"></i><i class="ev" style="top:84px;height:44px"></i><i class="ev" style="top:150px;height:40px"></i></div>
+        <div style="position:relative;border-radius:8px;background:rgba(255,255,255,.025)"><i class="ev" style="top:6px;height:44px"></i><i class="ev" style="top:60px;height:44px"></i><i class="ev" style="top:114px;height:40px"></i></div>
+      </div>
+      <style>.ev{position:absolute;left:5px;right:5px;border-radius:6px;background:#2A2A2F;border-left:3px solid #6b5526}.ev.g{background:var(--g);border-left:0;box-shadow:0 6px 18px rgba(212,175,90,.4)}</style>
+    </div>
+    <!-- phone booking -->
+    <div class="phone" style="left:64px;top:-20px;width:240px;height:480px;z-index:3">
+      <div class="notch"></div>
+      <div class="scr" style="gap:11px">
+        <div class="lbl" style="font-size:9px;color:var(--gold)">Reservá tu turno</div>
+        <div style="background:#141416;border:1px solid var(--line);border-radius:12px;padding:10px 12px"><div style="font-weight:700;font-size:13px">Corte + Barba</div><div style="font-size:11px;color:var(--mute);margin-top:2px">45 min · con Lucas</div></div>
+        <div style="display:flex;gap:6px">
+          <div class="dch">LUN<b>12</b></div><div class="dch on">MAR<b>13</b></div><div class="dch">MIÉ<b>14</b></div><div class="dch">JUE<b>15</b></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+          <div class="tch">09:00</div><div class="tch on">10:30</div><div class="tch">12:00</div>
+          <div class="tch">15:30</div><div class="tch">17:00</div><div class="tch off">18:30</div>
+        </div>
+        <div class="pill g" style="justify-content:center;font-size:13px;padding:12px;margin-top:4px">Confirmar turno</div>
+        <div style="font-size:10px;color:var(--mute);text-align:center">Recibirás un recordatorio por WhatsApp</div>
+      </div>
+      <style>.dch{flex:1;text-align:center;font-size:9px;color:var(--mute);background:#141416;border:1px solid var(--line);border-radius:10px;padding:7px 0}.dch b{display:block;font-size:15px;color:var(--ink);margin-top:2px}.dch.on{background:var(--g);color:#3a2c10;border:0}.dch.on b{color:#0b0b0b}.tch{text-align:center;font-size:12px;font-weight:600;padding:9px 0;border-radius:9px;border:1px solid var(--line);background:#141416}.tch.on{border-color:var(--gold);color:var(--gold-hi);background:rgba(212,175,90,.12)}.tch.off{color:#444;text-decoration:line-through}</style>
+    </div>
+    <!-- toasts -->
+    <div class="card gb" style="left:330px;top:352px;width:330px;padding:16px 18px;display:flex;gap:14px;align-items:center;border-radius:18px">
+      <div style="width:42px;height:42px;border-radius:50%;background:var(--g);display:grid;place-items:center;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
+      <div><div style="font-weight:700;font-size:15px">Turno confirmado</div><div style="font-size:12px;color:var(--mute);margin-top:2px">Mar 13 · 10:30 · Corte + Barba</div></div>
+    </div>
+    <div class="card" style="left:680px;top:352px;width:336px;padding:16px 18px;display:flex;gap:14px;align-items:center;border-radius:18px">
+      <div style="width:42px;height:42px;border-radius:50%;border:1.5px solid var(--gold);display:grid;place-items:center;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F3D995" stroke-width="2.2" stroke-linecap="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></div>
+      <div><div style="font-weight:700;font-size:15px">Recordatorio automático</div><div style="font-size:12px;color:var(--mute);margin-top:2px">Enviado por WhatsApp · 24 h antes</div></div>
+    </div>
+  </div>
+  <footer class="ft">
+    <div class="cta"><svg viewBox="0 0 24 24"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="#0b0b0b" stroke-width="1.9"/><path d="M8.6 7.3c.3-.5.8-.5 1-.1l.9 2c.1.3 0 .6-.2.8l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.2-.2.5-.3.8-.2l2 .9c.4.2.4.7-.1 1-.9.7-2 .9-3 .5-2.5-1-4.5-3-5.5-5.5-.4-1-.2-2.1.5-3z" fill="#0b0b0b"/></svg>Solicitá un análisis gratuito</div>
+    <div class="ft-r">Ahorro de tiempo · <b>Agenda ordenada</b></div>
+  </footer>
+</section>
+
+<!-- 05 DASHBOARD -->
+<section class="slide" id="s5">
+  <div class="grid"></div><div class="frame"><i></i><i></i><i></i><i></i></div>
+  <header class="hd">
+    <div class="brand"><div class="mono">I</div><div><div class="bn">IVÁN</div><div class="bt">GESTOR DE PRESENCIA ONLINE</div></div></div>
+    <div class="idx"><span>Gestión</span><b>05</b><i>/ 06</i></div>
+  </header>
+  <div class="tb">
+    <div class="eb">Gestión inteligente</div>
+    <h1>Controlá tu <em>negocio</em></h1>
+    <p class="sub">Todo en un solo lugar</p>
+  </div>
+  <div class="stage" style="top:392px;height:540px">
+    <div class="card" style="left:64px;top:0;width:952px;height:500px;display:flex;overflow:hidden">
+      <!-- sidebar -->
+      <div style="width:176px;border-right:1px solid var(--line);padding:22px 16px;display:flex;flex-direction:column;gap:6px;background:rgba(0,0,0,.25)">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px"><div class="mono" style="width:30px;height:30px;font-size:16px">I</div><b style="font-size:13px;letter-spacing:.15em">PANEL</b></div>
+        <div class="nav on">Resumen</div><div class="nav">Ventas</div><div class="nav">Clientes</div><div class="nav">Finanzas</div><div class="nav">Estadísticas</div><div class="nav">Reservas</div>
+        <style>.nav{font-size:13px;color:var(--mute);padding:9px 12px;border-radius:9px;display:flex;align-items:center;gap:10px}.nav::before{content:"";width:6px;height:6px;border-radius:2px;background:#3a3a3e}.nav.on{background:rgba(212,175,90,.12);color:var(--gold-hi);font-weight:700}.nav.on::before{background:var(--gold)}</style>
+      </div>
+      <!-- main -->
+      <div style="flex:1;padding:22px 24px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+          <div class="kpi"><span>Ventas del mes</span><b>$ 4.8M</b><em>▲ 24%</em></div>
+          <div class="kpi"><span>Clientes activos</span><b>1.284</b><em>▲ 12%</em></div>
+          <div class="kpi"><span>Ticket promedio</span><b>$ 18.500</b><em>▲ 8%</em></div>
+          <div class="kpi"><span>Rentabilidad</span><b>32%</b><em>▲ 5 pts</em></div>
+        </div>
+        <style>.kpi{background:#141416;border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}.kpi span{font-size:11px;color:var(--mute);letter-spacing:.04em}.kpi b{font-family:"Playfair Display";font-size:25px}.kpi em{font-style:normal;font-size:11px;font-weight:700;color:var(--gold-hi)}</style>
+        <div style="display:flex;gap:12px;flex:1">
+          <div style="flex:1.7;background:#141416;border:1px solid var(--line);border-radius:14px;padding:16px 18px;position:relative">
+            <div style="display:flex;justify-content:space-between"><b style="font-size:14px">Ventas · últimos 6 meses</b><span class="pill o" style="font-size:10px;padding:4px 10px">Estadísticas</span></div>
+            <svg width="100%" height="220" viewBox="0 0 440 220" preserveAspectRatio="none" style="margin-top:8px">
+              <defs><linearGradient id="ga5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D4AF5A" stop-opacity=".4"/><stop offset="1" stop-color="#D4AF5A" stop-opacity="0"/></linearGradient></defs>
+              <g stroke="rgba(255,255,255,.06)"><path d="M0 40H440M0 95H440M0 150H440M0 205H440"/></g>
+              <path d="M0 180 C40 170 60 150 90 155 S150 120 180 125 S240 90 270 95 S330 55 360 50 S420 25 440 18 L440 220 L0 220Z" fill="url(#ga5)"/>
+              <path d="M0 180 C40 170 60 150 90 155 S150 120 180 125 S240 90 270 95 S330 55 360 50 S420 25 440 18" fill="none" stroke="#F3D995" stroke-width="3"/>
+              <path d="M0 195 C60 190 100 180 160 178 S260 160 320 150 S400 140 440 132" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="2" stroke-dasharray="5 6"/>
+              <circle cx="360" cy="50" r="6" fill="#0b0b0b" stroke="#F3D995" stroke-width="3"/>
+            </svg>
+            <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--dim);margin-top:2px"><span>MAY</span><span>JUN</span><span>JUL</span><span>AGO</span><span>SEP</span><span>OCT</span></div>
+          </div>
+          <div style="flex:1;background:#141416;border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column">
+            <b style="font-size:14px">Finanzas</b>
+            <div style="display:flex;justify-content:center;margin-top:12px;position:relative">
+              <svg width="150" height="150" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="#2A2A2F" stroke-width="5"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="#D4AF5A" stroke-width="5" stroke-dasharray="68 32" stroke-dashoffset="25" stroke-linecap="round"/></svg>
+              <div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center"><div><div class="serif gold" style="font-size:28px;line-height:1">68%</div><div style="font-size:10px;color:var(--mute)">margen</div></div></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:14px;font-size:12px">
+              <div style="display:flex;justify-content:space-between"><span style="color:var(--mute)"><i style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--gold);margin-right:6px"></i>Ingresos</span><b>$ 4.8M</b></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:var(--mute)"><i style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#3a3a3e;margin-right:6px"></i>Gastos</span><b>$ 1.5M</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="ft">
+    <div class="cta"><svg viewBox="0 0 24 24"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="#0b0b0b" stroke-width="1.9"/><path d="M8.6 7.3c.3-.5.8-.5 1-.1l.9 2c.1.3 0 .6-.2.8l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.2-.2.5-.3.8-.2l2 .9c.4.2.4.7-.1 1-.9.7-2 .9-3 .5-2.5-1-4.5-3-5.5-5.5-.4-1-.2-2.1.5-3z" fill="#0b0b0b"/></svg>Solicitá un análisis gratuito</div>
+    <div class="ft-r">Control total · <b>Decisiones con datos</b></div>
+  </footer>
+</section>
+
+<!-- 06 AUTOMATIZACIÓN -->
+<section class="slide" id="s6">
+  <div class="grid"></div><div class="frame"><i></i><i></i><i></i><i></i></div>
+  <header class="hd">
+    <div class="brand"><div class="mono">I</div><div><div class="bn">IVÁN</div><div class="bt">GESTOR DE PRESENCIA ONLINE</div></div></div>
+    <div class="idx"><span>Automatización</span><b>06</b><i>/ 06</i></div>
+  </header>
+  <div class="tb">
+    <div class="eb">Automatización + IA</div>
+    <h1>Automatizá tareas<br><em>repetitivas</em></h1>
+    <p class="sub">Atendé más clientes sin aumentar trabajo</p>
+  </div>
+  <div class="stage">
+    <!-- chat -->
+    <div class="phone" style="left:64px;top:-10px;width:300px;height:480px;border-radius:34px">
+      <div class="notch"></div>
+      <div class="scr" style="gap:9px">
+        <div class="wa-h"><div class="av">TN</div><div><div style="font-size:13px;font-weight:700">Tu Negocio</div><div style="font-size:10px;color:#5BD38A">en línea · responde al instante</div></div></div>
+        <div class="msg in">¿Cuánto sale el corte? ¿Tienen lugar mañana?<small>23:41</small></div>
+        <div class="msg out"><span style="font-size:9px;letter-spacing:.15em;font-weight:700;color:var(--gold)">✦ RESPUESTA AUTOMÁTICA</span><br>Corte $12.000. Mañana tengo 10:30 o 18:00. ¿Cuál te reservo?<small>23:41 ✓✓</small></div>
+        <div class="msg in">18:00 porfa<small>23:42</small></div>
+        <div class="msg out">Listo ✓ Turno confirmado para mañana 18:00. Te aviso antes.<small>23:42 ✓✓</small></div>
+      </div>
+    </div>
+    <!-- flow -->
+    <svg style="position:absolute;left:0;top:0;width:1080px;height:480px;z-index:1" viewBox="0 0 1080 480">
+      <defs><linearGradient id="fl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D4AF5A" stop-opacity=".9"/><stop offset="1" stop-color="#D4AF5A" stop-opacity=".35"/></linearGradient></defs>
+      <g fill="none" stroke="url(#fl)" stroke-width="2">
+        <path d="M720 82 V150"/>
+        <path d="M720 262 V292 Q720 302 710 302 H542 Q532 302 532 312 V340"/>
+        <path d="M720 262 V340"/>
+        <path d="M720 262 V292 Q720 302 730 302 H898 Q908 302 908 312 V340"/>
+        <path d="M364 150 C400 150 400 50 576 42" stroke-dasharray="4 6"/>
+      </g>
+      <g fill="#F3D995"><circle cx="720" cy="150" r="4"/><circle cx="532" cy="340" r="4"/><circle cx="720" cy="340" r="4"/><circle cx="908" cy="340" r="4"/></g>
+    </svg>
+    <div class="card" style="left:576px;top:0;width:288px;height:82px;padding:0 20px;display:flex;align-items:center;gap:14px;border-radius:18px;z-index:2">
+      <div style="width:44px;height:44px;border-radius:12px;border:1.5px solid var(--gold);display:grid;place-items:center;flex:none"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="#F3D995" stroke-width="1.9"/><path d="M8.6 7.3c.3-.5.8-.5 1-.1l.9 2c.1.3 0 .6-.2.8l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.2-.2.5-.3.8-.2l2 .9c.4.2.4.7-.1 1-.9.7-2 .9-3 .5-2.5-1-4.5-3-5.5-5.5-.4-1-.2-2.1.5-3z" fill="#F3D995"/></svg></div>
+      <div><div class="lbl" style="font-size:10px">Disparador</div><div style="font-weight:700;font-size:16px;margin-top:2px">Mensaje entrante</div></div>
+    </div>
+    <div style="position:absolute;left:556px;top:150px;width:328px;height:112px;border-radius:22px;background:var(--g);padding:0 24px;display:flex;align-items:center;gap:16px;color:#0b0b0b;z-index:2;box-shadow:0 20px 60px rgba(212,175,90,.35)">
+      <div style="width:58px;height:58px;border-radius:16px;background:#0b0b0b;display:grid;place-items:center;flex:none">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="#F3D995"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9z"/><path d="M19 14l.9 2.6 2.6.9-2.6.9L19 21l-.9-2.6-2.6-.9 2.6-.9z" opacity=".7"/></svg>
+      </div>
+      <div><div style="font-size:11px;letter-spacing:.2em;font-weight:800;opacity:.7">INTELIGENCIA ARTIFICIAL</div><div class="serif" style="font-size:26px;line-height:1.1;margin-top:2px">Asistente IA</div><div style="font-size:12px;font-weight:600;opacity:.75">Entiende y responde 24/7</div></div>
+    </div>
+    <div class="card node" style="left:442px;top:340px"><b>Consultas</b><span>Precios, horarios y ubicación</span></div>
+    <div class="card node" style="left:630px;top:340px"><b>Turnos</b><span>Agenda y confirma solo</span></div>
+    <div class="card node" style="left:818px;top:340px"><b>Seguimiento</b><span>Recordatorios y ventas</span></div>
+    <style>.node{width:180px;height:112px;padding:16px 16px;border-radius:16px;display:flex;flex-direction:column;gap:6px;z-index:2;border-color:rgba(212,175,90,.28)}.node b{font-size:16px}.node b::before{content:"✓";color:var(--gold-hi);margin-right:8px}.node span{font-size:12px;color:var(--mute);line-height:1.4}</style>
+  </div>
+  <footer class="ft">
+    <div class="cta"><svg viewBox="0 0 24 24"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="#0b0b0b" stroke-width="1.9"/><path d="M8.6 7.3c.3-.5.8-.5 1-.1l.9 2c.1.3 0 .6-.2.8l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.2-.2.5-.3.8-.2l2 .9c.4.2.4.7-.1 1-.9.7-2 .9-3 .5-2.5-1-4.5-3-5.5-5.5-.4-1-.2-2.1.5-3z" fill="#0b0b0b"/></svg>Solicitá un análisis gratuito</div>
+    <div class="ft-r">Escalá tu atención · <b>Ahorrá horas</b></div>
+  </footer>
+</section>
+
+</body>
+</html>
