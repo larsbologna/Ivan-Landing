@@ -33,8 +33,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .serif{font-family:var(--serif);font-weight:700}
 .gold{color:var(--gold-hi)}
 
-/* placeholder de datos pendientes (se completa desde CONFIG) */
-.ph{font-family:var(--sans);font-style:normal;font-weight:700;font-size:.82em;letter-spacing:.02em;color:var(--gold-hi);background:rgba(212,175,90,.1);border:1px dashed rgba(212,175,90,.65);border-radius:6px;padding:1px 7px;white-space:nowrap;-webkit-text-fill-color:var(--gold-hi)}
 
 /* atmosphere */
 .atmo{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(1100px 700px at 90% 10%,rgba(212,175,90,.10),transparent 60%),radial-gradient(900px 700px at 0% 100%,rgba(212,175,90,.07),transparent 60%)}
@@ -89,6 +87,9 @@ main,header,footer{position:relative;z-index:1}
 .msg.out{background:linear-gradient(135deg,#3A2F17,#2A220F);border:1px solid rgba(212,175,90,.35);align-self:flex-end;border-top-right-radius:4px;color:#F7E7BC}
 .msg small{display:block;font-size:9.5px;color:var(--mute);margin-top:3px;text-align:right}
 .msg.out small{color:#C6A962}
+.ph-img{border-radius:12px;background:radial-gradient(circle at 70% 30%,rgba(243,217,149,.55),transparent 58%),linear-gradient(160deg,#2B2415,#0F0E0B);border:1px solid var(--gline)}
+.photos .ph-img:nth-child(2n){background:radial-gradient(circle at 30% 60%,rgba(243,217,149,.4),transparent 60%),linear-gradient(160deg,#241F14,#0F0E0B)}
+.photos .ph-img:nth-child(3n){background:radial-gradient(circle at 60% 75%,rgba(243,217,149,.35),transparent 60%),linear-gradient(160deg,#1F1B12,#0F0E0B)}
 .step-t{font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:var(--gold)}
 
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
@@ -136,6 +137,7 @@ main,header,footer{position:relative;z-index:1}
 .h1{font-family:var(--serif);font-weight:700;font-size:clamp(38px,4.6vw,62px);line-height:1.05;letter-spacing:-.015em;margin-top:22px}
 .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px;margin-top:32px}
 .hero-note{margin-top:22px;font-size:14.5px;color:var(--mute);display:flex;gap:10px;align-items:flex-start;max-width:500px}
+.hero-vis .fit{transform:perspective(1300px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .hero-note svg{width:18px;height:18px;color:var(--gold);flex:none;margin-top:2px}
 
 /* rubros: una sola línea para identificarse, no secciones */
@@ -154,27 +156,143 @@ main,header,footer{position:relative;z-index:1}
 .pain p{font-size:17px;line-height:1.45;font-weight:500}
 
 /* =========================================================
-   RESULTADOS
+   RESULTADOS — escenario 3D que cambia con el scroll
    ========================================================= */
-.results{margin-top:50px;border-top:1px solid var(--line)}
-.res{display:grid;grid-template-columns:64px 1.05fr 1fr 1.15fr;gap:24px;align-items:center;padding:30px 8px;border-bottom:1px solid var(--line);transition:background .3s}
-.res:hover{background:linear-gradient(90deg,rgba(212,175,90,.06),transparent 70%)}
-.res-top{display:contents}
-.res-ic{width:56px;height:56px;border-radius:16px;border:1px solid var(--gline);display:grid;place-items:center;color:var(--gold-hi);background:rgba(212,175,90,.05);flex:none}
-.res-ic svg{width:26px;height:26px}
-.res h3{font-family:var(--serif);font-size:clamp(26px,2.6vw,34px);line-height:1.1}
-.res h3 small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.24em;color:var(--mute);font-weight:700;margin-bottom:6px}
+.xr{position:relative;padding:clamp(80px,10vw,140px) 0 clamp(40px,6vw,80px);overflow:clip}
+.floor{position:absolute;left:-30%;right:-30%;bottom:-10%;height:70%;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(212,175,90,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,90,.22) 1px,transparent 1px);
+  background-size:70px 70px;transform:perspective(700px) rotateX(72deg);transform-origin:50% 100%;
+  -webkit-mask-image:linear-gradient(to top,#000 0%,transparent 75%);mask-image:linear-gradient(to top,#000 0%,transparent 75%);animation:floor 6s linear infinite;opacity:.55}
+@keyframes floor{to{background-position:0 70px}}
+.xr .wrap{position:relative;z-index:1}
+.xr-title{font-size:clamp(46px,7.4vw,104px);line-height:.98;letter-spacing:-.02em}
+.xr-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(30px,5vw,70px);margin-top:clamp(30px,5vw,60px)}
+.xr-stage{position:sticky;top:96px;height:calc(100vh - 120px);max-height:760px;align-self:start;display:flex;flex-direction:column;gap:18px}
+.xr-frame{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.xr-frame .fit{perspective:1500px}
+.dev{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(calc(6deg + var(--rx,0deg))) rotateY(calc(-10deg + var(--ry,0deg)));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.dev::before{content:"";position:absolute;inset:0;border-radius:32px;background:#070708;border:1px solid rgba(212,175,90,.25);transform:translateZ(-36px);box-shadow:0 60px 120px rgba(0,0,0,.8),0 0 120px rgba(212,175,90,.12)}
+.dev-face{position:absolute;inset:0;border-radius:32px;border:1px solid var(--gline);background:radial-gradient(500px 300px at 80% 0%,rgba(212,175,90,.14),transparent 70%),linear-gradient(180deg,#16161A,#0B0B0D);transform-style:preserve-3d;overflow:visible}
+.dev-face::after{content:"";position:absolute;inset:0;border-radius:32px;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.07) 0%,transparent 35%)}
+.scene{position:absolute;inset:0;padding:26px;transform-style:preserve-3d;opacity:0;visibility:hidden;transform:translateZ(-80px) rotateY(22deg) scale(.92);transition:opacity .6s ease,transform .8s cubic-bezier(.2,.7,.2,1),visibility 0s .8s}
+.scene.prev{transform:translateZ(-80px) rotateY(-22deg) scale(.92)}
+.scene.on{opacity:1;visibility:visible;transform:none;transition:opacity .6s ease .1s,transform .8s cubic-bezier(.2,.7,.2,1),visibility 0s}
+.sc-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.sc-h,.srch,.rank,.mapz,.chatx,.rate,.photos,.flow,.kpis,.chartx{transform:translateZ(14px);transform-style:preserve-3d}
+.dev-face::after{transform:translateZ(1px)}
+.z1{transform:translateZ(40px)}.z2{transform:translateZ(80px)}
+.pop{position:absolute;padding:13px 16px;border-radius:16px;background:linear-gradient(180deg,#1C1C20,#121214);border:1px solid var(--gline);box-shadow:0 30px 60px rgba(0,0,0,.6);font-size:12.5px;display:flex;gap:10px;align-items:center}
+.pop svg{width:22px;height:22px;flex:none}
+@keyframes inUp{from{opacity:0;transform:translateY(16px) translateZ(var(--z,0px))}}
+@keyframes inPop{from{opacity:0;transform:translateZ(0) scale(.7)}}
+@keyframes inLeft{from{opacity:0;transform:translateX(30px) translateZ(var(--z,0px))}}
+@keyframes flipIn{from{opacity:0;transform:scale(.6)}}
+/* escena 1: ranking */
+.srch{height:42px;border-radius:22px;background:#1A1A1D;border:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 16px;font-size:13.5px;color:var(--soft)}
+.srch svg{width:16px;height:16px;color:var(--mute)}
+.rank{position:relative;height:200px;margin-top:16px;transform-style:preserve-3d}
+.rk{position:absolute;left:0;right:0;height:58px;top:calc(var(--p)*68px);border-radius:14px;background:#141416;border:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 16px;font-size:14px}
+.rk b{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#222226;font-size:12px;color:var(--mute)}
+.rk span{flex:1;color:var(--mute)}.rk i{font-style:normal;font-size:12px;color:var(--dim)}
+.rk.me{background:linear-gradient(135deg,rgba(212,175,90,.22),rgba(212,175,90,.06));border-color:var(--gold);transform:translateZ(46px);box-shadow:0 20px 50px rgba(212,175,90,.25)}
+.rk.me b{background:var(--g);color:#0b0b0b}.rk.me span{color:var(--ink);font-weight:700}.rk.me i{color:var(--gold-hi)}
+.scene.on .rk.me{animation:rkMe 1.4s cubic-bezier(.6,0,.2,1) .4s backwards}
+.scene.on .rk.a{animation:rkA 1.4s cubic-bezier(.6,0,.2,1) .4s backwards}
+.scene.on .rk.b{animation:rkB 1.4s cubic-bezier(.6,0,.2,1) .4s backwards}
+@keyframes rkMe{from{top:136px;transform:translateZ(0);box-shadow:none}}
+@keyframes rkA{from{top:0}}
+@keyframes rkB{from{top:68px}}
+.mapz{position:relative;height:150px;margin-top:14px;border-radius:18px;border:1px solid var(--line);overflow:hidden;background:#0E0E10}
+.mapz::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.05) 2px,transparent 2px);background-size:46px 46px;transform:rotate(-12deg) scale(1.3)}
+.mpin{position:absolute;width:12px;height:12px;border-radius:50%;background:#3A3A40}
+.mpin.me{width:34px;height:34px;background:none;left:52%;top:30%}
+.mpin.me svg{width:34px;height:34px}
+.mpin.me::before,.mpin.me::after{content:"";position:absolute;left:50%;top:80%;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;border:1.5px solid var(--gold);animation:pulse 2.4s ease-out infinite}
+.mpin.me::after{animation-delay:1.2s}
+/* escena 2: consultas */
+.chatx{display:flex;flex-direction:column;gap:10px;width:62%}
+.chatx .msg{font-size:13px;max-width:100%}
+.scene.on .chatx .msg{animation:inUp .5s ease backwards}
+.scene.on .chatx .msg:nth-child(1){animation-delay:.3s}.scene.on .chatx .msg:nth-child(2){animation-delay:.9s}.scene.on .chatx .msg:nth-child(3){animation-delay:1.5s}.scene.on .chatx .msg:nth-child(4){animation-delay:2.1s}
+.notes{position:absolute;right:-26px;top:96px;display:grid;gap:12px;width:210px;transform-style:preserve-3d}
+.notes .pop{position:relative;--z:70px;transform:translateZ(70px)}
+.scene.on .notes .pop{animation:inLeft .6s cubic-bezier(.2,.7,.2,1) backwards}
+.scene.on .notes .pop:nth-child(1){animation-delay:.6s}.scene.on .notes .pop:nth-child(2){animation-delay:1.2s}.scene.on .notes .pop:nth-child(3){animation-delay:1.8s}
+.pop b{display:block;font-size:12.5px}.pop small{font-size:11px;color:var(--mute)}
+/* escena 3: confianza */
+.rate{display:flex;align-items:center;gap:16px}
+.rate .serif{font-size:54px;line-height:1}
+.starbar{position:relative;font-size:26px;letter-spacing:4px;color:#2A2A2E}
+.starbar span{position:absolute;inset:0;overflow:hidden;color:var(--gold);white-space:nowrap}
+.scene.on .starbar span{animation:fillW 1.6s ease .3s backwards}
+@keyframes fillW{from{width:0}}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
+.photos .ph-img{height:84px;border-radius:12px}
+.scene.on .photos .ph-img{animation:flipIn .6s ease backwards}
+.scene.on .photos .ph-img:nth-child(2){animation-delay:.15s}.scene.on .photos .ph-img:nth-child(3){animation-delay:.3s}.scene.on .photos .ph-img:nth-child(4){animation-delay:.45s}.scene.on .photos .ph-img:nth-child(5){animation-delay:.6s}.scene.on .photos .ph-img:nth-child(6){animation-delay:.75s}
+.revs{position:absolute;left:30px;right:-30px;bottom:34px;display:grid;gap:10px;transform-style:preserve-3d}
+.revs .pop{position:relative;--z:60px;transform:translateZ(60px)}
+.scene.on .revs .pop{animation:inUp .6s ease backwards}
+.scene.on .revs .pop:nth-child(1){animation-delay:1s}.scene.on .revs .pop:nth-child(2){animation-delay:1.5s}
+/* escena 4: tiempo */
+.flow{display:grid;gap:12px;position:relative;padding-left:22px}
+.flow::before{content:"";position:absolute;left:6px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--gold),rgba(212,175,90,.1))}
+.fl{position:relative;padding:13px 16px;border-radius:14px;background:#141416;border:1px solid var(--line);font-size:13px}
+.fl::before{content:"";position:absolute;left:-22px;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:var(--bg);border:2px solid var(--gold)}
+.fl.ok{border-color:rgba(212,175,90,.4)}
+.fl.ok::before{background:var(--gold)}
+.fl small{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:3px}
+.scene.on .fl{animation:inUp .5s ease backwards}
+.scene.on .fl:nth-child(2){animation-delay:.6s}.scene.on .fl:nth-child(3){animation-delay:1.2s}.scene.on .fl:nth-child(4){animation-delay:1.8s}
+.clockc{position:absolute;right:-28px;top:70px;width:150px;height:150px;border-radius:50%;border:1px solid var(--gline);background:radial-gradient(circle,#1A1A1E,#0E0E10);transform:translateZ(90px);box-shadow:0 30px 70px rgba(0,0,0,.6);display:grid;place-items:center}
+.clockc i{position:absolute;left:50%;top:50%;width:3px;height:48px;margin-left:-1.5px;background:var(--gold-hi);border-radius:3px;transform-origin:50% 0;transform:rotate(180deg)}
+.clockc i + i{height:34px;background:var(--gold);animation:spin 3s linear infinite}
+.clockc i:first-child{animation:spin 18s linear infinite}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.clockc span{position:absolute;bottom:-34px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;color:var(--mute)}
+.okchip{position:absolute;left:26px;bottom:26px;transform:translateZ(60px)}
+/* escena 5: control */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kpi{padding:12px 13px;border-radius:13px;background:#141416;border:1px solid var(--line)}
+.kpi span{display:block;font-size:11px;color:var(--mute)}
+.kpi b{display:flex;align-items:center;gap:6px;margin-top:4px;font-size:15px;color:var(--gold-hi)}
+.chartx{position:relative;height:200px;margin-top:14px;border-radius:16px;background:#0E0E10;border:1px solid var(--line);padding:16px 16px 12px;display:flex;align-items:flex-end;gap:10px}
+.chartx i{flex:1;border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,#E9C87A,#7A5E25);height:var(--h);transform-origin:bottom}
+.scene.on .chartx i{animation:grow .9s cubic-bezier(.2,.7,.2,1) backwards}
+@keyframes grow{from{transform:scaleY(0)}}
+.chartx svg{position:absolute;inset:16px 16px 12px;width:calc(100% - 32px);height:calc(100% - 28px);overflow:visible}
+.chartx path{stroke-dasharray:600;stroke-dashoffset:0}
+.scene.on .chartx path{animation:dash 1.8s ease .6s backwards}
+@keyframes dash{from{stroke-dashoffset:600}}
+.insight{position:absolute;right:-30px;bottom:44px;width:230px;display:grid;gap:10px;transform-style:preserve-3d}
+.insight .pop{position:relative;--z:80px;transform:translateZ(80px)}
+.scene.on .insight .pop{animation:inLeft .6s ease backwards}
+.scene.on .insight .pop:nth-child(1){animation-delay:1.2s}.scene.on .insight .pop:nth-child(2){animation-delay:1.7s}
+/* riel de progreso */
+.xr-rail{display:flex;justify-content:center;gap:8px}
+.xr-rail button{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:30px;font-size:12px;font-weight:700;color:var(--dim);border:1px solid transparent;transition:all .3s}
+.xr-rail button::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.xr-rail button[aria-current="step"]{color:var(--gold-hi);border-color:var(--gline);background:rgba(212,175,90,.08)}
+.xr-rail button span{display:none}
+.xr-rail button[aria-current="step"] span{display:inline}
+/* pasos de texto */
+.xs{min-height:78vh;display:flex;flex-direction:column;justify-content:center;opacity:.22;transition:opacity .5s ease;padding:30px 0}
+.xs.on{opacity:1}
+.xs-n{font-family:var(--serif);font-size:clamp(70px,8vw,120px);line-height:.9;color:transparent;-webkit-text-stroke:1px var(--gold);opacity:.7}
+.xs-t{font-family:var(--serif);font-weight:700;font-size:clamp(40px,4.8vw,68px);line-height:1.02;letter-spacing:-.015em;margin-top:12px}
+.xs-p{font-size:clamp(17px,1.5vw,20px);color:var(--soft);margin-top:18px;max-width:480px}
+.xs .tools{margin-top:22px}
+.xs-r{display:flex;align-items:center;gap:14px;margin-top:28px;padding-top:22px;border-top:1px solid var(--gline);max-width:480px}
+.xs-r svg{width:26px;height:26px;color:var(--gold);flex:none}
+.xs-r b{font-family:var(--serif);font-style:italic;font-weight:700;font-size:clamp(22px,2.2vw,30px);line-height:1.2;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.xs-end{min-height:20vh}
 .tools{display:flex;flex-wrap:wrap;gap:8px}
 .tools span{font-size:13px;font-weight:600;padding:7px 13px;border-radius:30px;border:1px solid var(--line);color:var(--soft);white-space:nowrap}
-.res-out{display:flex;align-items:flex-start;gap:14px}
-.res-out svg{width:22px;height:22px;color:var(--gold);flex:none;margin-top:4px}
-.res-out b{font-family:var(--serif);font-style:italic;font-weight:700;font-size:clamp(20px,1.9vw,24px);line-height:1.25;color:var(--gold-hi)}
-.res-out em{display:block;font-style:normal;font-family:var(--sans);font-size:13px;color:var(--mute);font-weight:500;margin-top:4px}
 
 /* =========================================================
    CÓMO EMPEZAR
    ========================================================= */
-.how{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.how{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}
 .how li{list-style:none;padding:30px 28px;border-radius:22px;border:1px solid var(--line);background:#0F0F11}
 .how li b{display:block;font-family:var(--serif);font-size:58px;line-height:1;color:transparent;-webkit-text-stroke:1px var(--gold);margin-bottom:18px}
 .how li h3{font-size:19px;font-weight:700}
@@ -182,25 +300,6 @@ main,header,footer{position:relative;z-index:1}
 .how li.on{border-color:var(--gline);background:linear-gradient(180deg,rgba(212,175,90,.08),#0F0F11)}
 .how-cta{margin-top:34px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
 .how-cta span{color:var(--mute);font-size:15px}
-
-/* =========================================================
-   PRECIOS
-   ========================================================= */
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;align-items:stretch}
-.plan{padding:32px 28px 28px;display:flex;flex-direction:column;position:relative}
-.plan .rtags{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--gold)}
-.plan h3{font-family:var(--serif);font-size:32px;line-height:1.05;margin-top:8px}
-.price{margin:20px 0;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.price .v{font-family:var(--serif);font-size:24px;line-height:1.25}
-.feat{list-style:none;display:grid;gap:11px;margin-bottom:26px}
-.feat li{display:flex;gap:12px;font-size:15px;line-height:1.45}
-.feat li svg{width:19px;height:19px;flex:none;color:var(--gold)}
-.feat li.plus{color:var(--gold-hi);font-weight:600}
-.plan .btn{margin-top:auto;width:100%}
-.plan.star{border:1px solid var(--gold);background:radial-gradient(500px 300px at 50% 0%,rgba(212,175,90,.16),transparent 70%),linear-gradient(180deg,#1C1912 0%,#0F0F11 100%);box-shadow:0 40px 100px rgba(212,175,90,.13),0 30px 70px rgba(0,0,0,.6)}
-.badge{position:absolute;top:-13px;left:28px;background:var(--g);color:#0b0b0b;font-size:11px;font-weight:800;letter-spacing:.2em;padding:6px 13px;border-radius:30px}
-.price-note{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;font-size:14.5px;color:var(--mute)}
-.price-note b{display:block;color:var(--ink);font-size:14px;margin-bottom:2px}
 
 /* =========================================================
    FAQ
@@ -271,17 +370,23 @@ main,header,footer{position:relative;z-index:1}
   .pains{grid-template-columns:1fr 1fr}
   .pain:nth-child(3){border-left:0}
   .pain:nth-child(n+3){border-top:1px solid var(--line)}
-  .res{grid-template-columns:56px 1fr;gap:14px 18px;padding:26px 4px}
-  .res .tools,.res .res-out{grid-column:2}
-  .plans{grid-template-columns:1fr;max-width:540px;margin-left:auto;margin-right:auto;gap:30px}
-  .price-note{grid-template-columns:1fr;max-width:540px;margin-left:auto;margin-right:auto}
   .faq-grid{grid-template-columns:1fr}
   .faq-grid .head{position:static}
   .final-box{grid-template-columns:1fr}
 }
-@media (max-width:860px){
-  .how{grid-template-columns:1fr}
+@media (max-width:1060px){.how{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){
+  .xr-grid{grid-template-columns:1fr;gap:0}
+  .xr-stage{top:72px;height:48vh;max-height:none;z-index:3;gap:8px;padding:8px 0 10px;background:linear-gradient(var(--bg) 88%,rgba(9,9,10,0))}
+  .xs{min-height:72vh;justify-content:flex-start;padding:4vh 0 8vh}
+  .xs-n{font-size:56px}
+  .xs-t{font-size:clamp(34px,9vw,46px)}
+  .xs-r{margin-top:20px;padding-top:16px}
+  .xr-rail button{padding:6px 9px;font-size:11px}
+  .floor{height:40%}
+  .xs-end{min-height:6vh}
 }
+@media (max-width:680px){.how{grid-template-columns:1fr}}
 @media (max-width:680px){
   body{font-size:16px}
   .nav .wrap{height:72px}
@@ -296,10 +401,6 @@ main,header,footer{position:relative;z-index:1}
   .pains{grid-template-columns:1fr}
   .pain + .pain{border-left:0;border-top:1px solid var(--line)}
   .pain{padding:22px}
-  .res{grid-template-columns:1fr;gap:14px}
-  .res .tools,.res .res-out{grid-column:1}
-  .res-top{display:flex;align-items:center;gap:16px}
-  .res-ic{width:48px;height:48px;border-radius:14px}
   .how li{padding:24px 22px}
   .how li b{font-size:46px;margin-bottom:12px}
   .how-cta .btn{width:100%}
@@ -351,7 +452,6 @@ main,header,footer{position:relative;z-index:1}
       <nav class="links" aria-label="Principal">
         <a href="#resultados">Resultados</a>
         <a href="#empezar">Cómo empezar</a>
-        <a href="#precios">Precios</a>
         <a href="#preguntas">Preguntas</a>
       </nav>
       <span class="ba"><svg><use href="#i-pin-o"/></svg>Buenos Aires</span>
@@ -362,7 +462,6 @@ main,header,footer{position:relative;z-index:1}
   <div class="mmenu" id="mmenu">
     <a href="#resultados">Resultados</a>
     <a href="#empezar">Cómo empezar</a>
-    <a href="#precios">Precios</a>
     <a href="#preguntas">Preguntas</a>
     <a class="btn btn-g" href="#contacto"><svg><use href="#i-wa"/></svg>Pedir análisis gratuito</a>
   </div>
@@ -450,38 +549,148 @@ main,header,footer{position:relative;z-index:1}
 <div class="sep"></div>
 
 <!-- 3. RESULTADOS -->
-<section class="sec" id="resultados">
+<section class="xr" id="resultados">
+  <div class="floor" aria-hidden="true"></div>
   <div class="wrap">
     <div class="rv">
       <div class="eb">Lo que cambia</div>
-      <h2 class="h2">Resultados, <em>no herramientas</em></h2>
-      <p class="lead">Las herramientas son el medio. Esto es lo que gana tu negocio.</p>
+      <h2 class="h2 xr-title">No es tecnología.<br><em>Son clientes.</em></h2>
+      <p class="lead">Cinco cambios concretos en tu negocio. Bajá y miralos pasar.</p>
     </div>
-    <div class="results">
-      <div class="res rv">
-        <div class="res-top"><span class="res-ic"><svg><use href="#r-find"/></svg></span><h3><small>01</small>Te encuentran</h3></div>
-        <div class="tools"><span>Google Maps</span><span>Página web</span><span>Presencia online</span></div>
-        <div class="res-out"><svg><use href="#i-arrow"/></svg><b>Más personas descubren tu negocio.</b></div>
+
+    <div class="xr-grid">
+      <div class="xr-stage" id="xr-stage">
+        <div class="xr-frame">
+          <div class="fit" data-fit-h style="--w:460px;--h:540px" role="img" aria-label="Demostración animada de cada resultado">
+            <div class="fit-in">
+              <div class="dev" id="dev">
+                <div class="dev-face">
+
+                  <!-- 01 Te encuentran -->
+                  <div class="scene on" data-i="0">
+                    <div class="sc-h"><span class="step-t">01 · Te encuentran</span><span class="demo-tag">DEMO</span></div>
+                    <div class="srch"><svg><use href="#r-find"/></svg>cerca de mí · abierto ahora · Buenos Aires</div>
+                    <div class="rank">
+                      <div class="rk a" style="--p:1"><b>2</b><span>Otro negocio</span><i>Sin fotos</i></div>
+                      <div class="rk b" style="--p:2"><b>3</b><span>Otro negocio</span><i>Sin horarios</i></div>
+                      <div class="rk me" style="--p:0"><b>1</b><span>Tu negocio</span><i>Ficha completa</i></div>
+                    </div>
+                    <div class="mapz">
+                      <span class="mpin" style="left:18%;top:30%"></span><span class="mpin" style="left:80%;top:60%"></span><span class="mpin" style="left:30%;top:70%"></span>
+                      <span class="mpin me"><svg><use href="#i-pin"/></svg></span>
+                    </div>
+                    <div class="pop z2" style="left:-34px;top:478px"><svg><use href="#i-checkc"/></svg><div><b>Te encuentran primero</b><small>Fotos, horarios y botón de WhatsApp</small></div></div>
+                  </div>
+
+                  <!-- 02 Te contactan -->
+                  <div class="scene" data-i="1">
+                    <div class="sc-h"><span class="step-t">02 · Te contactan</span><span class="demo-tag">DEMO</span></div>
+                    <div class="chatx">
+                      <div class="msg in">Hola! ¿Tienen disponibilidad hoy?<small>10:12</small></div>
+                      <div class="msg out">¡Hola! Sí, ¿a qué hora te queda bien?<small>10:12 ✓✓</small></div>
+                      <div class="msg in">A las 18 estaría perfecto.<small>10:13</small></div>
+                      <div class="msg out">Listo, te esperamos.<small>10:13 ✓✓</small></div>
+                    </div>
+                    <div class="notes">
+                      <div class="pop"><svg style="color:var(--gold-hi)"><use href="#i-wa"/></svg><div><b>Nueva consulta</b><small>WhatsApp · desde Google</small></div></div>
+                      <div class="pop"><svg><use href="#i-checkc"/></svg><div><b>Nueva reserva</b><small>Web · mañana 10:00</small></div></div>
+                      <div class="pop"><svg style="color:var(--gold-hi)"><use href="#r-chat"/></svg><div><b>Pedido de presupuesto</b><small>Formulario</small></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 03 Generás confianza -->
+                  <div class="scene" data-i="2">
+                    <div class="sc-h"><span class="step-t">03 · Generás confianza</span><span class="demo-tag">DEMO</span></div>
+                    <div class="rate"><span class="serif gold">4.9</span><div><div class="starbar">★★★★★<span>★★★★★</span></div><div style="font-size:12px;color:var(--mute);margin-top:4px">Opiniones recientes y respondidas</div></div></div>
+                    <div class="photos"><div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div></div>
+                    <div class="revs">
+                      <div class="pop"><div class="av" style="width:30px;height:30px;font-size:12px">M</div><div><span class="stars" style="font-size:11px">★★★★★</span><small style="display:block;color:var(--soft);font-size:12px">“Muy buena atención, lo recomiendo.”</small></div></div>
+                      <div class="pop"><div class="av" style="width:30px;height:30px;font-size:12px">L</div><div><span class="stars" style="font-size:11px">★★★★★</span><small style="display:block;color:var(--soft);font-size:12px">“Todo claro desde el primer mensaje.”</small></div></div>
+                    </div>
+                  </div>
+
+                  <!-- 04 Ahorrás tiempo -->
+                  <div class="scene" data-i="3">
+                    <div class="sc-h"><span class="step-t">04 · Ahorrás tiempo</span><span class="demo-tag">DEMO</span></div>
+                    <div class="flow" style="width:66%">
+                      <div class="fl"><small>Cliente</small>¿Hasta qué hora abren hoy?</div>
+                      <div class="fl ok"><small>Respuesta automática</small>Hoy hasta las 19. ¿Querés reservar?</div>
+                      <div class="fl ok"><small>Recordatorio</small>Enviado: mañana 10:00</div>
+                      <div class="fl ok"><small>Seguimiento</small>“¿Pudiste ver la propuesta?”</div>
+                    </div>
+                    <div class="clockc"><i></i><i></i><span>Tiempo que recuperás</span></div>
+                    <span class="pill o okchip"><svg width="14" height="14"><use href="#i-check"/></svg>Respuestas aprobadas por vos</span>
+                  </div>
+
+                  <!-- 05 Tenés más control -->
+                  <div class="scene" data-i="4">
+                    <div class="sc-h"><span class="step-t">05 · Tenés más control</span><span class="demo-tag">DEMO</span></div>
+                    <div class="kpis">
+                      <div class="kpi"><span>Consultas</span><b>▲ subiendo</b></div>
+                      <div class="kpi"><span>Clientes</span><b>▲ subiendo</b></div>
+                      <div class="kpi"><span>Ventas</span><b>▲ subiendo</b></div>
+                    </div>
+                    <div class="chartx">
+                      <i style="--h:30%"></i><i style="--h:42%;animation-delay:.1s"></i><i style="--h:38%;animation-delay:.2s"></i><i style="--h:55%;animation-delay:.3s"></i><i style="--h:62%;animation-delay:.4s"></i><i style="--h:74%;animation-delay:.5s"></i><i style="--h:90%;animation-delay:.6s"></i>
+                      <svg viewBox="0 0 300 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 130 C40 120 60 112 90 114 S150 84 180 80 S240 40 300 18" fill="none" stroke="#F3D995" stroke-width="3"/></svg>
+                    </div>
+                    <div class="insight">
+                      <div class="pop"><svg style="color:var(--gold-hi)"><use href="#r-chart"/></svg><div><b>Mejor día: sábado</b><small>Reforzá ese turno</small></div></div>
+                      <div class="pop"><svg style="color:var(--gold-hi)"><use href="#r-find"/></svg><div><b>Canal principal: Google</b><small>De ahí llegan más consultas</small></div></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="xr-rail" role="group" aria-label="Resultados">
+          <button type="button" aria-current="step"><span>Te encuentran</span></button>
+          <button type="button"><span>Te contactan</span></button>
+          <button type="button"><span>Confianza</span></button>
+          <button type="button"><span>Tiempo</span></button>
+          <button type="button"><span>Control</span></button>
+        </div>
       </div>
-      <div class="res rv">
-        <div class="res-top"><span class="res-ic"><svg><use href="#r-chat"/></svg></span><h3><small>02</small>Te contactan</h3></div>
-        <div class="tools"><span>WhatsApp</span><span>Formularios</span><span>Reservas</span></div>
-        <div class="res-out"><svg><use href="#i-arrow"/></svg><b>Más consultas y oportunidades.</b></div>
-      </div>
-      <div class="res rv">
-        <div class="res-top"><span class="res-ic"><svg><use href="#r-star"/></svg></span><h3><small>03</small>Generás confianza</h3></div>
-        <div class="tools"><span>Fotos</span><span>Opiniones</span><span>Información clara</span></div>
-        <div class="res-out"><svg><use href="#i-arrow"/></svg><b>Más personas te eligen.</b></div>
-      </div>
-      <div class="res rv">
-        <div class="res-top"><span class="res-ic"><svg><use href="#r-time"/></svg></span><h3><small>04</small>Ahorrás tiempo</h3></div>
-        <div class="tools"><span>Automatizaciones</span><span>Recordatorios</span><span>Seguimiento</span></div>
-        <div class="res-out"><svg><use href="#i-arrow"/></svg><b>Menos tareas repetitivas.<em>Vos aprobás cada respuesta automática.</em></b></div>
-      </div>
-      <div class="res rv">
-        <div class="res-top"><span class="res-ic"><svg><use href="#r-chart"/></svg></span><h3><small>05</small>Tenés más control</h3></div>
-        <div class="tools"><span>Paneles</span><span>Reportes</span><span>Organización</span></div>
-        <div class="res-out"><svg><use href="#i-arrow"/></svg><b>Tomás mejores decisiones.</b></div>
+
+      <div class="xr-steps">
+        <article class="xs on" data-i="0">
+          <span class="xs-n" aria-hidden="true">01</span>
+          <h3 class="xs-t">Te encuentran.</h3>
+          <p class="xs-p">Alguien en Buenos Aires busca lo que vendés. Hoy aparece otro negocio. Con tu presencia bien armada, aparecés vos.</p>
+          <div class="tools"><span>Google Maps</span><span>Página web</span><span>Presencia online</span></div>
+          <p class="xs-r"><svg><use href="#i-arrow"/></svg><b>Más personas descubren tu negocio.</b></p>
+        </article>
+        <article class="xs" data-i="1">
+          <span class="xs-n" aria-hidden="true">02</span>
+          <h3 class="xs-t">Te contactan.</h3>
+          <p class="xs-p">Un botón, un mensaje, una consulta. Sin buscar tu número, sin vueltas y a cualquier hora.</p>
+          <div class="tools"><span>WhatsApp</span><span>Formularios</span><span>Reservas</span></div>
+          <p class="xs-r"><svg><use href="#i-arrow"/></svg><b>Más consultas y oportunidades.</b></p>
+        </article>
+        <article class="xs" data-i="2">
+          <span class="xs-n" aria-hidden="true">03</span>
+          <h3 class="xs-t">Generás confianza.</h3>
+          <p class="xs-p">Fotos reales, opiniones visibles e información clara. Lo que hace que te elijan antes de conocerte.</p>
+          <div class="tools"><span>Fotos</span><span>Opiniones</span><span>Información clara</span></div>
+          <p class="xs-r"><svg><use href="#i-arrow"/></svg><b>Más personas te eligen.</b></p>
+        </article>
+        <article class="xs" data-i="3">
+          <span class="xs-n" aria-hidden="true">04</span>
+          <h3 class="xs-t">Ahorrás tiempo.</h3>
+          <p class="xs-p">Las preguntas de siempre se responden solas, los recordatorios salen solos y nadie queda sin seguimiento. Vos aprobás cada respuesta.</p>
+          <div class="tools"><span>Automatizaciones</span><span>Recordatorios</span><span>Seguimiento</span></div>
+          <p class="xs-r"><svg><use href="#i-arrow"/></svg><b>Menos tareas repetitivas.</b></p>
+        </article>
+        <article class="xs" data-i="4">
+          <span class="xs-n" aria-hidden="true">05</span>
+          <h3 class="xs-t">Tenés más control.</h3>
+          <p class="xs-p">Consultas, clientes y ventas en una sola pantalla. Decidís con datos, no a ojo.</p>
+          <div class="tools"><span>Paneles</span><span>Reportes</span><span>Organización</span></div>
+          <p class="xs-r"><svg><use href="#i-arrow"/></svg><b>Tomás mejores decisiones.</b></p>
+        </article>
+        <div class="xs-end" aria-hidden="true"></div>
       </div>
     </div>
   </div>
@@ -494,15 +703,16 @@ main,header,footer{position:relative;z-index:1}
   <div class="wrap">
     <div class="rv">
       <div class="eb">Cómo empezar</div>
-      <h2 class="h2">Tres pasos. <em>El primero es gratis.</em></h2>
+      <h2 class="h2">Cuatro pasos. <em>Empezar es gratis.</em></h2>
     </div>
     <ol class="how">
-      <li class="on rv"><b>1</b><h3>Mandás el link</h3><p>De tu negocio en Google Maps, o el nombre y la zona.</p></li>
-      <li class="rv d1"><b>2</b><h3>Recibís 3 mejoras</h3><p>Concretas, por WhatsApp y sin costo. Plazo: <span data-cfg="plazoAnalisis"></span></p></li>
-      <li class="rv d2"><b>3</b><h3>Decidís</h3><p>Si querés implementarlas, recibís un presupuesto por escrito. Si no, las aplicás vos.</p></li>
+      <li class="on rv"><b>1</b><h3>Mandás el link de tu negocio</h3><p>Me enviás por WhatsApp el link de tu negocio en Google Maps o en Instagram. Si no tenés ninguno, alcanza con el nombre y la zona.</p></li>
+      <li class="rv d1"><b>2</b><h3>Analizo tu negocio</h3><p>Lo miro como lo ve un cliente: cómo aparecés en Google, tus fotos y reseñas, tu web o Instagram y qué tan fácil es escribirte.</p></li>
+      <li class="rv d2"><b>3</b><h3>Te mando 3 mejoras</h3><p>Recibís por WhatsApp tres mejoras concretas, explicadas simple y ordenadas por impacto.</p></li>
+      <li class="rv d3"><b>4</b><h3>Decidís vos</h3><p>Si querés, las implemento yo. Si no, las aplicás por tu cuenta. El análisis no te compromete a nada.</p></li>
     </ol>
     <div class="how-cta rv">
-      <a class="btn btn-g" data-wa="Hola, quiero el análisis gratuito de mi negocio. Te paso el link de Google:" href="#contacto"><svg><use href="#i-wa"/></svg>Empezar ahora</a>
+      <a class="btn btn-g" data-wa="Hola, quiero el análisis gratuito de mi negocio. Te paso el link:" href="#contacto"><svg><use href="#i-wa"/></svg>Mandar mi link</a>
       <span>Para negocios de Buenos Aires.</span>
     </div>
   </div>
@@ -510,62 +720,7 @@ main,header,footer{position:relative;z-index:1}
 
 <div class="sep"></div>
 
-<!-- 5. PRECIOS -->
-<section class="sec" id="precios">
-  <div class="wrap">
-    <div class="rv">
-      <div class="eb">Inversión</div>
-      <h2 class="h2">¿Cuánto <em>cuesta?</em></h2>
-      <p class="lead">Depende de lo que necesite tu negocio. Antes de avanzar recibís por escrito qué incluye y cuánto sale.</p>
-    </div>
-    <div class="plans">
-      <article class="card plan rv">
-        <div class="rtags">Te encuentran · Te contactan</div>
-        <h3>Inicio</h3>
-        <div class="price"><div class="v">Desde <span data-cfg="precioPlanInicio"></span></div></div>
-        <ul class="feat">
-          <li><svg><use href="#i-check"/></svg>Google Maps completo</li>
-          <li><svg><use href="#i-check"/></svg>WhatsApp Business profesional</li>
-          <li><svg><use href="#i-check"/></svg>Estrategia para conseguir reseñas</li>
-        </ul>
-        <a class="btn btn-o" data-wa="Hola, me interesa el Plan Inicio." href="#contacto">Consultar</a>
-      </article>
-      <article class="card plan star rv d1">
-        <span class="badge">RECOMENDADO</span>
-        <div class="rtags">+ Generás confianza</div>
-        <h3>Crecimiento</h3>
-        <div class="price"><div class="v">Según tu negocio</div></div>
-        <ul class="feat">
-          <li class="plus"><svg><use href="#i-check"/></svg>Todo lo de Inicio</li>
-          <li><svg><use href="#i-check"/></svg>Página web con dominio propio</li>
-          <li><svg><use href="#i-check"/></svg>Reservas o formulario de consultas</li>
-        </ul>
-        <a class="btn btn-g" data-wa="Hola, me interesa el Plan Crecimiento." href="#contacto"><svg><use href="#i-wa"/></svg>Consultar</a>
-      </article>
-      <article class="card plan rv d2">
-        <div class="rtags">+ Ahorrás tiempo · Más control</div>
-        <h3>Completo</h3>
-        <div class="price"><div class="v">Según tu negocio</div></div>
-        <ul class="feat">
-          <li class="plus"><svg><use href="#i-check"/></svg>Todo lo de Crecimiento</li>
-          <li><svg><use href="#i-check"/></svg>Automatizaciones y recordatorios</li>
-          <li><svg><use href="#i-check"/></svg>Panel con reportes</li>
-          <li><svg><use href="#i-check"/></svg>Soporte continuo</li>
-        </ul>
-        <a class="btn btn-o" data-wa="Hola, me interesa el Plan Completo." href="#contacto">Consultar</a>
-      </article>
-    </div>
-    <div class="price-note rv">
-      <div><b>Implementación</b>Pago único.</div>
-      <div><b>Mantenimiento</b>Solo si hay web o automatizaciones: <span data-cfg="mantenimiento"></span></div>
-      <div><b>Costos de terceros</b>Dominio u otros sistemas, si se usan. Se detallan antes.</div>
-    </div>
-  </div>
-</section>
-
-<div class="sep"></div>
-
-<!-- 6. PREGUNTAS -->
+<!-- 5. PREGUNTAS -->
 <section class="sec" id="preguntas">
   <div class="wrap faq-grid">
     <div class="head rv">
@@ -574,13 +729,16 @@ main,header,footer{position:relative;z-index:1}
     </div>
     <div class="faq rv d1">
       <details open><summary>¿Sirve para mi rubro?<i></i></summary><div class="ans">Sí, si atendés clientes en Buenos Aires: en un local, consultorio, oficina o a domicilio. Lo que cambia es qué conviene hacer primero, y eso sale del análisis.</div></details>
-      <details><summary>¿Cuánto tarda en estar funcionando?<i></i></summary><div class="ans"><span data-cfg="plazosImplementacion"></span> El plazo se confirma por escrito antes de empezar.</div></details>
+      <details><summary>¿El análisis tiene costo?<i></i></summary><div class="ans">No. Es gratis y no te obliga a contratar nada. Las mejoras que recibís son tuyas aunque no sigamos.</div></details>
+      <details><summary>¿Qué necesito para empezar?<i></i></summary><div class="ans">Solo el link de tu negocio en Google Maps o en Instagram. Si todavía no tenés ficha en Google, con el nombre y la zona alcanza.</div></details>
+      <details><summary>¿Tengo que saber de tecnología?<i></i></summary><div class="ans">No. Todo se explica simple y queda listo para usar desde el celular.</div></details>
       <details><summary>¿Cuánto tiempo me lleva a mí?<i></i></summary><div class="ans">Poco: una charla inicial, fotos e información de tu negocio, y una revisión antes de publicar.</div></details>
+      <details><summary>¿Puedo empezar por una sola cosa?<i></i></summary><div class="ans">Sí. Se arranca por lo que más impacto tiene en tu caso, muchas veces Google Maps, y después se suma lo demás si hace falta.</div></details>
+      <details><summary>¿Cuánto tarda en estar funcionando?<i></i></summary><div class="ans">Depende de lo que necesite tu negocio. El plazo se confirma por escrito antes de empezar.</div></details>
+      <details><summary>¿Cuándo se notan los resultados?<i></i></summary><div class="ans">Tu negocio se ve mejor apenas se completa todo. Subir posiciones en Google y juntar reseñas lleva semanas o meses de constancia, según tu zona y tu competencia. Nadie puede garantizar el primer lugar en una semana.</div></details>
       <details><summary>¿Puedo seguir usando mi WhatsApp?<i></i></summary><div class="ans">Sí, con WhatsApp Business lo usás igual. Si se suman automatizaciones, antes se define si conviene tu número actual o uno aparte.</div></details>
-      <details><summary>¿Hay costos extra?<i></i></summary><div class="ans">Solo de terceros, si se usan (por ejemplo, el dominio de la web). Se detallan con el monto antes de decidir.</div></details>
-      <details><summary>¿Hay permanencia? ¿Puedo cancelar?<i></i></summary><div class="ans"><span data-cfg="permanencia"></span> <span data-cfg="cancelacion"></span></div></details>
+      <details><summary>¿Hay costos extra?<i></i></summary><div class="ans">Solo de terceros, si se usan (por ejemplo, el dominio de una web). Se detallan con el monto antes de decidir.</div></details>
       <details><summary>¿Las cuentas quedan a mi nombre?<i></i></summary><div class="ans">Sí. Ficha de Google, dominio y WhatsApp son tuyos.</div></details>
-      <details><summary>¿Facturás?<i></i></summary><div class="ans"><span data-cfg="facturacion"></span></div></details>
     </div>
   </div>
 </section>
@@ -617,7 +775,7 @@ main,header,footer{position:relative;z-index:1}
 <footer class="foot">
   <div class="wrap">
     <a href="#inicio" class="brand" aria-label="Presencia Online — inicio"><div class="mono" style="width:40px;height:40px"><svg width="20" height="20"><use href="#i-pin-o"/></svg></div><div><div class="bn" style="font-size:14px">PRESENCIA ONLINE</div><div class="bt">NEGOCIOS LOCALES · BUENOS AIRES</div></div></a>
-    <nav aria-label="Pie"><a href="#resultados">Resultados</a><a href="#empezar">Cómo empezar</a><a href="#precios">Precios</a><a href="#preguntas">Preguntas</a></nav>
+    <nav aria-label="Pie"><a href="#resultados">Resultados</a><a href="#empezar">Cómo empezar</a><a href="#preguntas">Preguntas</a></nav>
     <p>© <span id="yr">2026</span> Presencia Online · Buenos Aires, Argentina</p>
   </div>
 </footer>
@@ -627,42 +785,17 @@ main,header,footer{position:relative;z-index:1}
 
 <script>
 /* =========================================================
-   CONFIGURACIÓN — completá estos datos.
-   Mientras un dato esté vacío, la página muestra su placeholder
-   entre corchetes (ej. [PRECIO_PLAN_INICIO]) para que se note que falta.
+   CONFIGURACIÓN
    ========================================================= */
 const CONFIG = {
-  whatsapp: "",             // [WHATSAPP] Número al que llegan los mensajes. No se muestra en la página. Ej.: "5491122334455"
-  precioPlanInicio: "",     // [PRECIO_PLAN_INICIO] Ej.: "$ 00.000"
-  mantenimiento: "",        // [PRECIO_MANTENIMIENTO] Ej.: "desde $ 00.000 por mes."
-  plazoAnalisis: "",        // [PLAZO_ANALISIS] Solo lo que puedas cumplir. Ej.: "3 días hábiles."
-  plazosImplementacion: "", // [PLAZOS_IMPLEMENTACION] Ej.: "Google Maps: X días. Web: X semanas."
-  permanencia: "",          // [PERMANENCIA] Ej.: "No hay permanencia mínima."
-  cancelacion: "",          // [CONDICIONES_CANCELACION]
-  facturacion: "",          // [FACTURACIÓN] Ej.: "Sí, factura C."
+  whatsapp: "",  // Número al que llegan los mensajes (no se muestra en la página). Ej.: "5491122334455"
 };
 
 /* =========================================================
    LÓGICA
    ========================================================= */
 document.documentElement.classList.add("js");
-
-const PLACEHOLDERS = {
-  whatsapp: "[WHATSAPP]",
-  precioPlanInicio: "[PRECIO_PLAN_INICIO]", mantenimiento: "[PRECIO_MANTENIMIENTO]",
-  plazoAnalisis: "[PLAZO_ANALISIS]", plazosImplementacion: "[PLAZOS_IMPLEMENTACION]",
-  permanencia: "[PERMANENCIA]", cancelacion: "[CONDICIONES_CANCELACION]", facturacion: "[FACTURACIÓN]",
-};
 const val = (k) => String(CONFIG[k] || "").trim();
-
-// Datos de CONFIG o placeholder visible
-document.querySelectorAll("[data-cfg]").forEach((el) => {
-  const k = el.dataset.cfg;
-  if (val(k)) { el.textContent = val(k); el.classList.remove("ph"); }
-  else { el.textContent = PLACEHOLDERS[k] || `[${k.toUpperCase()}]`; el.classList.add("ph"); }
-});
-const missing = Object.keys(PLACEHOLDERS).filter((k) => !val(k));
-if (missing.length) console.info("Datos pendientes en CONFIG:", [...new Set(missing.map((k) => PLACEHOLDERS[k]))].join(", "));
 
 // Links de WhatsApp
 const waLink = (text) => {
@@ -682,13 +815,14 @@ document.querySelectorAll("[data-wa]").forEach((a) => {
   const apply = (el) => {
     const cs = getComputedStyle(el);
     const w = parseFloat(cs.getPropertyValue("--w")), h = parseFloat(cs.getPropertyValue("--h"));
-    const s = Math.min(1, el.clientWidth / w);
+    let s = Math.min(1, el.clientWidth / w);
+    if (el.hasAttribute("data-fit-h")) s = Math.min(s, el.parentElement.clientHeight / h);
     el.style.height = h * s + "px";
     el.firstElementChild.style.transform = `scale(${s})`;
   };
   if ("ResizeObserver" in window) {
-    const ro = new ResizeObserver((es) => es.forEach((e) => apply(e.target)));
-    fits.forEach((f) => ro.observe(f));
+    const ro = new ResizeObserver(() => fits.forEach(apply));
+    fits.forEach((f) => { ro.observe(f); if (f.hasAttribute("data-fit-h")) ro.observe(f.parentElement); });
   } else {
     const all = () => fits.forEach(apply);
     addEventListener("resize", all); all();
@@ -712,11 +846,14 @@ document.querySelectorAll("[data-wa]").forEach((a) => {
   const mbar = document.getElementById("mbar");
   const burger = document.getElementById("burger");
   let contactVisible = false;
+  const xr = document.querySelector(".xr-grid");
   function onScroll() {
     const past = scrollY > innerHeight * 0.75;
+    const r = xr.getBoundingClientRect();
+    const inResults = innerWidth <= 900 && r.top < innerHeight * 0.6 && r.bottom > innerHeight * 0.5;
     nav.classList.toggle("sc", scrollY > 20);
     waf.classList.toggle("on", past && !contactVisible);
-    mbar.classList.toggle("on", past && !contactVisible);
+    mbar.classList.toggle("on", past && !contactVisible && !inResults);
   }
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(([e]) => { contactVisible = e.isIntersecting; onScroll(); }, { threshold: 0.05 }).observe(document.getElementById("contacto"));
@@ -726,6 +863,45 @@ document.querySelectorAll("[data-wa]").forEach((a) => {
   burger.addEventListener("click", () => burger.setAttribute("aria-expanded", String(nav.classList.toggle("open"))));
   document.querySelectorAll("#mmenu a").forEach((a) => a.addEventListener("click", close));
   addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+})();
+
+// Resultados: escena 3D según el paso visible
+(() => {
+  const steps = [...document.querySelectorAll(".xs")];
+  const scenes = [...document.querySelectorAll(".scene")];
+  const dots = [...document.querySelectorAll(".xr-rail button")];
+  let cur = 0;
+  const set = (i) => {
+    if (i === cur) return;
+    cur = i;
+    scenes.forEach((s, k) => { s.classList.toggle("on", k === i); s.classList.toggle("prev", k < i); });
+    steps.forEach((s, k) => s.classList.toggle("on", k === i));
+    dots.forEach((d, k) => d.setAttribute("aria-current", k === i ? "step" : "false"));
+  };
+  if ("IntersectionObserver" in window) {
+    const mobile = matchMedia("(max-width:900px)").matches;
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) set(+e.target.dataset.i); }),
+      { rootMargin: mobile ? "-58% 0px -30% 0px" : "-45% 0px -45% 0px" });
+    steps.forEach((s) => io.observe(s));
+  }
+  dots.forEach((d, k) => d.addEventListener("click", () => steps[k].scrollIntoView({ behavior: "smooth", block: "center" })));
+})();
+
+// Inclinación 3D con el mouse (solo con mouse y si no se pidió reducir movimiento)
+(() => {
+  if (!matchMedia("(pointer:fine)").matches || matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  const tilt = (area, target, mx, my) => {
+    if (!area || !target) return;
+    area.addEventListener("pointermove", (e) => {
+      const r = area.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      target.style.setProperty("--ry", (x * mx).toFixed(2) + "deg");
+      target.style.setProperty("--rx", (-y * my).toFixed(2) + "deg");
+    });
+    area.addEventListener("pointerleave", () => { target.style.removeProperty("--ry"); target.style.removeProperty("--rx"); });
+  };
+  tilt(document.getElementById("xr-stage"), document.getElementById("dev"), 18, 12);
+  tilt(document.querySelector(".hero-vis"), document.querySelector(".hero-vis"), 10, 8);
 })();
 
 // FAQ: una respuesta abierta a la vez
