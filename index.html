@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>IVÁN | Gestor de Presencia Online · Buenos Aires</title>
-<meta name="description" content="Ayudo a negocios de Buenos Aires a que sea fácil encontrarlos, contactarlos y elegirlos: Google Maps, web, WhatsApp y automatizaciones. Pedí un análisis gratuito.">
+<title>Presencia Online para negocios de Buenos Aires</title>
+<meta name="description" content="Que tu negocio de Buenos Aires sea fácil de encontrar, contactar y elegir: Google Maps, web, WhatsApp y automatizaciones. Pedí un análisis gratuito.">
 <meta name="theme-color" content="#09090A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,7 +109,8 @@ main,header,footer{position:relative;z-index:1}
 .brand{display:flex;align-items:center;gap:14px}
 .mono{width:46px;height:46px;border:1.5px solid var(--gold);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:25px;color:var(--gold-hi);position:relative;flex:none}
 .mono::after{content:"";position:absolute;inset:4px;border:1px solid rgba(212,175,90,.3)}
-.bn{font-weight:800;font-size:17px;letter-spacing:.3em;line-height:1}
+.mono svg{color:var(--gold-hi)}
+.bn{font-weight:800;font-size:15px;letter-spacing:.24em;line-height:1}
 .bt{font-size:9.5px;font-weight:600;letter-spacing:.28em;color:var(--gold);margin-top:6px;line-height:1}
 .nav-r{display:flex;align-items:center;gap:24px}
 .links{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--soft)}
@@ -228,11 +229,6 @@ main,header,footer{position:relative;z-index:1}
 .offer li{display:flex;gap:12px;align-items:flex-start;font-size:16px;color:var(--soft)}
 .offer li svg{width:20px;height:20px;flex:none;margin-top:2px}
 .offer li b{color:var(--ink)}
-.me{margin-top:30px;display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:18px;border:1px solid var(--line);background:rgba(9,9,10,.5);max-width:460px}
-.me-pic{width:60px;height:60px;border-radius:50%;flex:none;border:1.5px solid var(--gold);overflow:hidden;display:grid;place-items:center;background:#141416;font-family:var(--serif);font-size:26px;color:var(--gold-hi)}
-.me-pic img{width:100%;height:100%;object-fit:cover}
-.me b{display:block;font-size:16px}
-.me > div > span{font-size:13.5px;color:var(--mute)}
 .form{padding:28px;display:grid;gap:15px}
 .form h3{font-family:var(--serif);font-size:25px}
 .field label{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:600;margin-bottom:8px}
@@ -291,7 +287,7 @@ main,header,footer{position:relative;z-index:1}
   .nav .wrap{height:72px}
   .mmenu{top:72px}
   .mono{width:40px;height:40px;font-size:22px}
-  .bn{font-size:15px}.bt{font-size:8.5px;letter-spacing:.2em}
+  .bn{font-size:13px;letter-spacing:.18em}.bt{font-size:8px;letter-spacing:.16em}
   .hero{padding:110px 0 56px}
   .ctas{justify-content:center}
   .ctas .btn{width:100%}
@@ -347,9 +343,9 @@ main,header,footer{position:relative;z-index:1}
 <!-- NAV -->
 <header class="nav" id="nav">
   <div class="wrap">
-    <a href="#inicio" class="brand" aria-label="Iván, Gestor de Presencia Online — inicio">
-      <div class="mono">I</div>
-      <div><div class="bn">IVÁN</div><div class="bt">GESTOR DE PRESENCIA ONLINE</div></div>
+    <a href="#inicio" class="brand" aria-label="Presencia Online — inicio">
+      <div class="mono"><svg width="22" height="22"><use href="#i-pin-o"/></svg></div>
+      <div><div class="bn">PRESENCIA ONLINE</div><div class="bt">NEGOCIOS LOCALES · BUENOS AIRES</div></div>
     </a>
     <div class="nav-r">
       <nav class="links" aria-label="Principal">
@@ -383,10 +379,10 @@ main,header,footer{position:relative;z-index:1}
       <h1 class="h1 rv d1">Que tu negocio sea fácil de <em>encontrar, contactar y elegir.</em></h1>
       <p class="lead rv d2">Google Maps, web y WhatsApp bien armados para que más personas de Buenos Aires te descubran y te escriban. Sirve para cualquier rubro.</p>
       <div class="ctas rv d3">
-        <a class="btn btn-g" data-wa="Hola Iván, quiero el análisis gratuito de mi negocio. Te paso el link de Google:" href="#contacto"><svg><use href="#i-wa"/></svg>Pedir análisis gratuito</a>
+        <a class="btn btn-g" data-wa="Hola, quiero el análisis gratuito de mi negocio. Te paso el link de Google:" href="#contacto"><svg><use href="#i-wa"/></svg>Pedir análisis gratuito</a>
         <a class="tlink" href="#resultados">Ver qué cambia <svg><use href="#i-down"/></svg></a>
       </div>
-      <p class="hero-note rv d3"><svg><use href="#i-gift"/></svg><span>Mandame el link de tu negocio en Google y te devuelvo 3 mejoras concretas. Gratis y sin compromiso.</span></p>
+      <p class="hero-note rv d3"><svg><use href="#i-gift"/></svg><span>Mandá el link de tu negocio en Google y recibí 3 mejoras concretas. Gratis y sin compromiso.</span></p>
     </div>
 
     <div class="hero-vis rv d2" role="img" aria-label="Demostración: una persona encuentra un negocio en Google Maps, le escribe por WhatsApp y deja una reseña">
@@ -501,13 +497,13 @@ main,header,footer{position:relative;z-index:1}
       <h2 class="h2">Tres pasos. <em>El primero es gratis.</em></h2>
     </div>
     <ol class="how">
-      <li class="on rv"><b>1</b><h3>Me mandás el link</h3><p>De tu negocio en Google Maps, o el nombre y la zona.</p></li>
+      <li class="on rv"><b>1</b><h3>Mandás el link</h3><p>De tu negocio en Google Maps, o el nombre y la zona.</p></li>
       <li class="rv d1"><b>2</b><h3>Recibís 3 mejoras</h3><p>Concretas, por WhatsApp y sin costo. Plazo: <span data-cfg="plazoAnalisis"></span></p></li>
-      <li class="rv d2"><b>3</b><h3>Decidís</h3><p>Si querés que lo haga yo, te paso el presupuesto por escrito. Si no, las aplicás vos.</p></li>
+      <li class="rv d2"><b>3</b><h3>Decidís</h3><p>Si querés implementarlas, recibís un presupuesto por escrito. Si no, las aplicás vos.</p></li>
     </ol>
     <div class="how-cta rv">
-      <a class="btn btn-g" data-wa="Hola Iván, quiero el análisis gratuito de mi negocio. Te paso el link de Google:" href="#contacto"><svg><use href="#i-wa"/></svg>Empezar ahora</a>
-      <span>Trabajo con negocios de Buenos Aires.</span>
+      <a class="btn btn-g" data-wa="Hola, quiero el análisis gratuito de mi negocio. Te paso el link de Google:" href="#contacto"><svg><use href="#i-wa"/></svg>Empezar ahora</a>
+      <span>Para negocios de Buenos Aires.</span>
     </div>
   </div>
 </section>
@@ -520,7 +516,7 @@ main,header,footer{position:relative;z-index:1}
     <div class="rv">
       <div class="eb">Inversión</div>
       <h2 class="h2">¿Cuánto <em>cuesta?</em></h2>
-      <p class="lead">Depende de lo que necesite tu negocio. Antes de avanzar te digo por escrito qué incluye y cuánto sale.</p>
+      <p class="lead">Depende de lo que necesite tu negocio. Antes de avanzar recibís por escrito qué incluye y cuánto sale.</p>
     </div>
     <div class="plans">
       <article class="card plan rv">
@@ -532,7 +528,7 @@ main,header,footer{position:relative;z-index:1}
           <li><svg><use href="#i-check"/></svg>WhatsApp Business profesional</li>
           <li><svg><use href="#i-check"/></svg>Estrategia para conseguir reseñas</li>
         </ul>
-        <a class="btn btn-o" data-wa="Hola Iván, me interesa el Plan Inicio." href="#contacto">Consultar</a>
+        <a class="btn btn-o" data-wa="Hola, me interesa el Plan Inicio." href="#contacto">Consultar</a>
       </article>
       <article class="card plan star rv d1">
         <span class="badge">RECOMENDADO</span>
@@ -544,7 +540,7 @@ main,header,footer{position:relative;z-index:1}
           <li><svg><use href="#i-check"/></svg>Página web con dominio propio</li>
           <li><svg><use href="#i-check"/></svg>Reservas o formulario de consultas</li>
         </ul>
-        <a class="btn btn-g" data-wa="Hola Iván, me interesa el Plan Crecimiento." href="#contacto"><svg><use href="#i-wa"/></svg>Consultar</a>
+        <a class="btn btn-g" data-wa="Hola, me interesa el Plan Crecimiento." href="#contacto"><svg><use href="#i-wa"/></svg>Consultar</a>
       </article>
       <article class="card plan rv d2">
         <div class="rtags">+ Ahorrás tiempo · Más control</div>
@@ -556,13 +552,13 @@ main,header,footer{position:relative;z-index:1}
           <li><svg><use href="#i-check"/></svg>Panel con reportes</li>
           <li><svg><use href="#i-check"/></svg>Soporte continuo</li>
         </ul>
-        <a class="btn btn-o" data-wa="Hola Iván, me interesa el Plan Completo." href="#contacto">Consultar</a>
+        <a class="btn btn-o" data-wa="Hola, me interesa el Plan Completo." href="#contacto">Consultar</a>
       </article>
     </div>
     <div class="price-note rv">
       <div><b>Implementación</b>Pago único.</div>
       <div><b>Mantenimiento</b>Solo si hay web o automatizaciones: <span data-cfg="mantenimiento"></span></div>
-      <div><b>Costos de terceros</b>Dominio u otros sistemas, si se usan. Te los detallo antes.</div>
+      <div><b>Costos de terceros</b>Dominio u otros sistemas, si se usan. Se detallan antes.</div>
     </div>
   </div>
 </section>
@@ -578,10 +574,10 @@ main,header,footer{position:relative;z-index:1}
     </div>
     <div class="faq rv d1">
       <details open><summary>¿Sirve para mi rubro?<i></i></summary><div class="ans">Sí, si atendés clientes en Buenos Aires: en un local, consultorio, oficina o a domicilio. Lo que cambia es qué conviene hacer primero, y eso sale del análisis.</div></details>
-      <details><summary>¿Cuánto tarda en estar funcionando?<i></i></summary><div class="ans"><span data-cfg="plazosImplementacion"></span> Te paso el plazo por escrito antes de empezar.</div></details>
-      <details><summary>¿Cuánto tiempo mío necesitás?<i></i></summary><div class="ans">Poco: una charla inicial, fotos e información de tu negocio, y una revisión antes de publicar.</div></details>
-      <details><summary>¿Puedo seguir usando mi WhatsApp?<i></i></summary><div class="ans">Sí, con WhatsApp Business lo usás igual. Si sumamos automatizaciones, vemos juntos antes si conviene tu número actual o uno aparte.</div></details>
-      <details><summary>¿Hay costos extra?<i></i></summary><div class="ans">Solo de terceros, si se usan (por ejemplo, el dominio de la web). Te los detallo con el monto antes de decidir.</div></details>
+      <details><summary>¿Cuánto tarda en estar funcionando?<i></i></summary><div class="ans"><span data-cfg="plazosImplementacion"></span> El plazo se confirma por escrito antes de empezar.</div></details>
+      <details><summary>¿Cuánto tiempo me lleva a mí?<i></i></summary><div class="ans">Poco: una charla inicial, fotos e información de tu negocio, y una revisión antes de publicar.</div></details>
+      <details><summary>¿Puedo seguir usando mi WhatsApp?<i></i></summary><div class="ans">Sí, con WhatsApp Business lo usás igual. Si se suman automatizaciones, antes se define si conviene tu número actual o uno aparte.</div></details>
+      <details><summary>¿Hay costos extra?<i></i></summary><div class="ans">Solo de terceros, si se usan (por ejemplo, el dominio de la web). Se detallan con el monto antes de decidir.</div></details>
       <details><summary>¿Hay permanencia? ¿Puedo cancelar?<i></i></summary><div class="ans"><span data-cfg="permanencia"></span> <span data-cfg="cancelacion"></span></div></details>
       <details><summary>¿Las cuentas quedan a mi nombre?<i></i></summary><div class="ans">Sí. Ficha de Google, dominio y WhatsApp son tuyos.</div></details>
       <details><summary>¿Facturás?<i></i></summary><div class="ans"><span data-cfg="facturacion"></span></div></details>
@@ -603,10 +599,6 @@ main,header,footer{position:relative;z-index:1}
           <li><svg><use href="#i-checkc"/></svg><span><b>Recibís</b> 3 mejoras concretas por WhatsApp.</span></li>
           <li><svg><use href="#i-checkc"/></svg><span><b>Sin costo</b> y sin obligación de contratar.</span></li>
         </ul>
-        <div class="me">
-          <div class="me-pic" id="me-pic" title="[FOTO_IVAN]">I</div>
-          <div><b>Te responde Iván, directo.</b><span>Buenos Aires · WhatsApp <span data-cfg="whatsappVisible"></span></span></div>
-        </div>
       </div>
       <form class="card form" id="lead" novalidate>
         <h3>Pedí tu análisis</h3>
@@ -624,25 +616,23 @@ main,header,footer{position:relative;z-index:1}
 
 <footer class="foot">
   <div class="wrap">
-    <a href="#inicio" class="brand"><div class="mono" style="width:40px;height:40px;font-size:21px">I</div><div><div class="bn" style="font-size:15px">IVÁN</div><div class="bt">GESTOR DE PRESENCIA ONLINE</div></div></a>
+    <a href="#inicio" class="brand" aria-label="Presencia Online — inicio"><div class="mono" style="width:40px;height:40px"><svg width="20" height="20"><use href="#i-pin-o"/></svg></div><div><div class="bn" style="font-size:14px">PRESENCIA ONLINE</div><div class="bt">NEGOCIOS LOCALES · BUENOS AIRES</div></div></a>
     <nav aria-label="Pie"><a href="#resultados">Resultados</a><a href="#empezar">Cómo empezar</a><a href="#precios">Precios</a><a href="#preguntas">Preguntas</a></nav>
-    <p>© <span id="yr">2026</span> Iván · Buenos Aires, Argentina</p>
+    <p>© <span id="yr">2026</span> Presencia Online · Buenos Aires, Argentina</p>
   </div>
 </footer>
 
-<a class="wa-float" id="waf" data-wa="Hola Iván, quiero el análisis gratuito de mi negocio." href="#contacto" aria-label="Escribir por WhatsApp"><svg><use href="#i-wa"/></svg></a>
-<div class="mbar" id="mbar"><a class="btn btn-g" data-wa="Hola Iván, quiero el análisis gratuito de mi negocio. Te paso el link de Google:" href="#contacto"><svg><use href="#i-wa"/></svg>Análisis gratuito por WhatsApp</a></div>
+<a class="wa-float" id="waf" data-wa="Hola, quiero el análisis gratuito de mi negocio." href="#contacto" aria-label="Escribir por WhatsApp"><svg><use href="#i-wa"/></svg></a>
+<div class="mbar" id="mbar"><a class="btn btn-g" data-wa="Hola, quiero el análisis gratuito de mi negocio. Te paso el link de Google:" href="#contacto"><svg><use href="#i-wa"/></svg>Análisis gratuito por WhatsApp</a></div>
 
 <script>
 /* =========================================================
    CONFIGURACIÓN — completá estos datos.
    Mientras un dato esté vacío, la página muestra su placeholder
-   entre corchetes (ej. [WHATSAPP]) para que se note que falta.
+   entre corchetes (ej. [PRECIO_PLAN_INICIO]) para que se note que falta.
    ========================================================= */
 const CONFIG = {
-  whatsapp: "",             // [WHATSAPP] con código de país y área, sin "+" ni espacios. Ej.: "5491122334455"
-  whatsappVisible: "",      // Cómo se muestra el número. Ej.: "11 2233-4455" (si queda vacío, usa el de arriba)
-  foto: "",                 // [FOTO_IVAN] Ruta o URL de tu foto. Ej.: "img/ivan.jpg"
+  whatsapp: "",             // [WHATSAPP] Número al que llegan los mensajes. No se muestra en la página. Ej.: "5491122334455"
   precioPlanInicio: "",     // [PRECIO_PLAN_INICIO] Ej.: "$ 00.000"
   mantenimiento: "",        // [PRECIO_MANTENIMIENTO] Ej.: "desde $ 00.000 por mes."
   plazoAnalisis: "",        // [PLAZO_ANALISIS] Solo lo que puedas cumplir. Ej.: "3 días hábiles."
@@ -658,13 +648,12 @@ const CONFIG = {
 document.documentElement.classList.add("js");
 
 const PLACEHOLDERS = {
-  whatsapp: "[WHATSAPP]", whatsappVisible: "[WHATSAPP]", foto: "[FOTO_IVAN]",
+  whatsapp: "[WHATSAPP]",
   precioPlanInicio: "[PRECIO_PLAN_INICIO]", mantenimiento: "[PRECIO_MANTENIMIENTO]",
   plazoAnalisis: "[PLAZO_ANALISIS]", plazosImplementacion: "[PLAZOS_IMPLEMENTACION]",
   permanencia: "[PERMANENCIA]", cancelacion: "[CONDICIONES_CANCELACION]", facturacion: "[FACTURACIÓN]",
 };
 const val = (k) => String(CONFIG[k] || "").trim();
-if (!val("whatsappVisible") && val("whatsapp")) CONFIG.whatsappVisible = "+" + val("whatsapp").replace(/\D/g, "");
 
 // Datos de CONFIG o placeholder visible
 document.querySelectorAll("[data-cfg]").forEach((el) => {
@@ -674,14 +663,6 @@ document.querySelectorAll("[data-cfg]").forEach((el) => {
 });
 const missing = Object.keys(PLACEHOLDERS).filter((k) => !val(k));
 if (missing.length) console.info("Datos pendientes en CONFIG:", [...new Set(missing.map((k) => PLACEHOLDERS[k]))].join(", "));
-
-// Foto
-if (val("foto")) {
-  const pic = document.getElementById("me-pic");
-  const img = new Image();
-  img.src = val("foto"); img.alt = "Iván";
-  img.onload = () => { pic.textContent = ""; pic.removeAttribute("title"); pic.appendChild(img); };
-}
 
 // Links de WhatsApp
 const waLink = (text) => {
@@ -766,7 +747,7 @@ document.querySelectorAll(".faq details").forEach((d) => {
       if (bad && !first) first = i;
     });
     if (first) { first.focus(); return; }
-    let msg = `Hola Iván, soy ${form.nombre.value.trim()}. Tengo ${form.negocio.value.trim()} y quiero el análisis gratuito.`;
+    let msg = `Hola, soy ${form.nombre.value.trim()}. Tengo ${form.negocio.value.trim()} y quiero el análisis gratuito.`;
     const link = form.link.value.trim();
     msg += link ? `\nMi negocio en Google: ${link}` : "\nTodavía no tengo el link de Google a mano.";
     window.open(waLink(msg), "_blank", "noopener");

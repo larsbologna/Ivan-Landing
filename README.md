@@ -1,6 +1,6 @@
-# Ivan-Landing
+# Presencia Online · Buenos Aires
 
-Landing page y catálogo de WhatsApp Business de **IVÁN | Gestor de Presencia Online**.
+Landing page y catálogo de WhatsApp Business para ofrecer presencia online a negocios locales de Buenos Aires.
 
 ## Contenido
 
@@ -12,8 +12,9 @@ Landing page y catálogo de WhatsApp Business de **IVÁN | Gestor de Presencia O
 ## Datos pendientes de la landing
 
 Antes de publicar, completá el bloque `CONFIG` al final de `index.html`
-(WhatsApp, ciudad, foto, precios, plazos y condiciones). Mientras un dato
-esté vacío, la página muestra un placeholder visible como `[CIUDAD]`.
+(número de WhatsApp, precios, plazos y condiciones). El número no se muestra
+en la página: solo se usa para los botones. Mientras un dato esté vacío,
+la página muestra un placeholder visible como `[PRECIO_PLAN_INICIO]`.
 
 ## Publicar
 
