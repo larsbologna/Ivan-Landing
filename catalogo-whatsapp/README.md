@@ -1,4 +1,4 @@
-# Catálogo WhatsApp Business — IVÁN | Gestor de Presencia Online
+# Catálogo WhatsApp Business — Presencia Online · Buenos Aires
 
 Seis piezas de 1080×1080 con la misma identidad visual (negro, blanco y dorado; Playfair Display + Inter).
 
