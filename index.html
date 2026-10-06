@@ -95,6 +95,7 @@ main,header,footer{position:relative;z-index:1}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @keyframes pulse{0%{transform:scale(.6);opacity:.7}100%{transform:scale(1.8);opacity:0}}
 @keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
 .fl1{animation:floaty 7s ease-in-out infinite}
 .fl2{animation:floaty 8s ease-in-out -3s infinite}
 .js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
@@ -112,9 +113,9 @@ main,header,footer{position:relative;z-index:1}
 .mono::after{content:"";position:absolute;inset:4px;border:1px solid rgba(212,175,90,.3)}
 .mono svg{color:var(--gold-hi)}
 .bn{font-weight:800;font-size:15px;letter-spacing:.24em;line-height:1}
-.bt{font-size:9.5px;font-weight:600;letter-spacing:.28em;color:var(--gold);margin-top:6px;line-height:1}
+.bt{font-size:9.5px;font-weight:600;letter-spacing:.28em;color:var(--gold);margin-top:6px;line-height:1;white-space:nowrap}
 .nav-r{display:flex;align-items:center;gap:24px}
-.links{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--soft)}
+.links{display:flex;gap:24px;font-size:14px;font-weight:500;color:var(--soft);white-space:nowrap}
 .links a{position:relative;padding:6px 0;transition:color .2s}
 .links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--gold);transition:right .3s}
 .links a:hover{color:var(--ink)}
@@ -290,6 +291,74 @@ main,header,footer{position:relative;z-index:1}
 .tools span{font-size:13px;font-weight:600;padding:7px 13px;border-radius:30px;border:1px solid var(--line);color:var(--soft);white-space:nowrap}
 
 /* =========================================================
+   AUTODIAGNÓSTICO (interactivo, pensado para el pulgar)
+   ========================================================= */
+.quiz{margin-top:40px;display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,5vw,60px);align-items:center}
+.qbox{position:relative;border-radius:28px;border:1px solid var(--gline);background:radial-gradient(500px 260px at 100% 0%,rgba(212,175,90,.14),transparent 70%),#0F0F11;padding:clamp(22px,4vw,36px);min-height:380px;display:flex;flex-direction:column;overflow:hidden}
+.qtop{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--mute);font-weight:600}
+.qbar{height:4px;border-radius:4px;background:rgba(255,255,255,.08);margin-top:12px;overflow:hidden}
+.qbar i{display:block;height:100%;width:0;background:var(--g);transition:width .4s ease}
+.qcards{position:relative;flex:1;margin-top:20px}
+.qcard{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;transform:translateX(40px);pointer-events:none;transition:opacity .35s ease,transform .45s cubic-bezier(.2,.7,.2,1)}
+.qcard.on{opacity:1;transform:none;pointer-events:auto}
+.qcard.out{transform:translateX(-40px)}
+.qcard h3{font-family:var(--serif);font-size:clamp(24px,3vw,32px);line-height:1.18}
+.qcard p{color:var(--mute);font-size:14.5px;margin-top:10px}
+.qbtns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:auto;padding-top:24px}
+.qbtns button{min-height:64px;border-radius:18px;font-size:18px;font-weight:800;border:1px solid var(--gline);color:var(--gold-hi);background:rgba(212,175,90,.05);transition:transform .15s,background .2s}
+.qbtns button:active{transform:scale(.96)}
+.qbtns button.yes{background:var(--g);color:#0b0b0b;border:0}
+.qres{display:none;flex-direction:column;gap:14px}
+.qbox.done .qcards,.qbox.done .qtop,.qbox.done .qbar,.qbox.done .qbtns{display:none}
+.qbox.done .qres{display:flex;animation:inUp .5s ease}
+.score{display:flex;align-items:center;gap:18px}
+.ring{width:86px;height:86px;flex:none;position:relative}
+.ring svg{width:86px;height:86px;transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-size:26px}
+.score h3{font-family:var(--serif);font-size:24px;line-height:1.15}
+.score p{color:var(--mute);font-size:14px;margin-top:4px}
+.fixes{list-style:none;display:grid;gap:10px}
+.fixes li{display:flex;gap:12px;font-size:14.5px;color:var(--soft);padding:12px 14px;border-radius:14px;background:#141416;border:1px solid var(--line)}
+.fixes li svg{width:20px;height:20px;flex:none;color:var(--gold)}
+.fixes li b{color:var(--ink)}
+.qres .btn{width:100%}
+.qagain{font-size:13.5px;color:var(--mute);text-decoration:underline;text-underline-offset:3px;align-self:center}
+
+/* =========================================================
+   CALCULADORA
+   ========================================================= */
+.calc{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;border-radius:28px;overflow:hidden;border:1px solid var(--gline)}
+.calc-in{padding:clamp(22px,4vw,40px);background:#0F0F11;display:grid;gap:26px;min-width:0}
+.calc-in > *,.calc-out{min-width:0}
+.rng .lb2{display:block}
+.calc-out{padding:clamp(26px,4vw,44px);background:radial-gradient(500px 300px at 50% 0%,rgba(212,175,90,.18),transparent 70%),linear-gradient(180deg,#1A1710,#0E0E10);display:flex;flex-direction:column;justify-content:center;gap:10px;border-left:1px solid var(--gline)}
+.rng label{display:flex;justify-content:space-between;align-items:baseline;gap:4px 12px;flex-wrap:wrap;font-size:15px;font-weight:600}
+.rng label output{font-family:var(--serif);font-size:24px;color:var(--gold-hi);white-space:nowrap}
+.rng small{display:block;color:var(--mute);font-size:13px;margin-top:2px}
+.rng input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:36px;background:transparent;margin-top:6px;touch-action:pan-y}
+.rng input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--gold) var(--pct,50%),rgba(255,255,255,.1) var(--pct,50%))}
+.rng input[type=range]::-moz-range-track{height:6px;border-radius:6px;background:rgba(255,255,255,.1)}
+.rng input[type=range]::-moz-range-progress{height:6px;border-radius:6px;background:var(--gold)}
+.rng input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;margin-top:-12px;border-radius:50%;background:var(--g);border:3px solid #0b0b0b;box-shadow:0 0 0 1px var(--gold),0 6px 18px rgba(212,175,90,.45)}
+.rng input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:#E9C87A;border:3px solid #0b0b0b}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.seg button{min-height:46px;border-radius:12px;border:1px solid var(--line);font-size:14px;font-weight:700;color:var(--soft)}
+.seg button[aria-pressed="true"]{background:var(--g);color:#0b0b0b;border-color:transparent}
+.calc-out .lbl{color:var(--gold)}
+.big{font-family:var(--serif);font-weight:700;font-size:clamp(46px,6.4vw,78px);line-height:1;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.calc-out .yr{font-size:17px;color:var(--soft)}
+.calc-out .yr b{color:var(--ink)}
+.calc-out .note{font-size:12.5px;color:var(--mute);margin-top:4px}
+.calc-out .btn{margin-top:16px}
+
+/* compartir */
+.share{display:inline-flex;align-items:center;gap:10px;margin-top:16px;font-size:14px;font-weight:600;color:var(--soft);padding:10px 16px;border-radius:30px;border:1px solid var(--line)}
+.share svg{width:18px;height:18px;color:var(--gold)}
+.toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);opacity:0;z-index:80;background:#1C1C20;border:1px solid var(--gline);color:var(--ink);font-size:14px;padding:10px 16px;border-radius:30px;transition:all .3s;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.swipe-hint{display:none}
+
+/* =========================================================
    CÓMO EMPEZAR
    ========================================================= */
 .how{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}
@@ -372,9 +441,10 @@ main,header,footer{position:relative;z-index:1}
   .pain:nth-child(n+3){border-top:1px solid var(--line)}
   .faq-grid{grid-template-columns:1fr}
   .faq-grid .head{position:static}
-  .final-box{grid-template-columns:1fr}
+  .final-box{grid-template-columns:minmax(0,1fr)}
+  .final-box > *{min-width:0}
 }
-@media (max-width:1060px){.how{grid-template-columns:1fr 1fr}}
+@media (max-width:1060px){.how{grid-template-columns:1fr 1fr}.quiz{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:900px){
   .xr-grid{grid-template-columns:1fr;gap:0}
   .xr-stage{top:72px;height:48vh;max-height:none;z-index:3;gap:8px;padding:8px 0 10px;background:linear-gradient(var(--bg) 88%,rgba(9,9,10,0))}
@@ -398,9 +468,17 @@ main,header,footer{position:relative;z-index:1}
   .ctas .btn{width:100%}
   .ticker span{font-size:17px;gap:34px;padding:0 17px}
   .eb{letter-spacing:.18em;font-size:12px}
-  .pains{grid-template-columns:1fr}
-  .pain + .pain{border-left:0;border-top:1px solid var(--line)}
-  .pain{padding:22px}
+  .pains{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;border:0;background:none;border-radius:0;margin-left:calc(var(--gut)*-1);margin-right:calc(var(--gut)*-1);padding:0 var(--gut) 6px;scrollbar-width:none}
+  .pains::-webkit-scrollbar{display:none}
+  .pain{flex:0 0 78%;scroll-snap-align:center;border:1px solid var(--line)!important;border-radius:20px;background:#0D0D0F;padding:24px 22px;min-height:150px}
+  .pain p{font-size:18px}
+  .swipe-hint{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mute);margin-top:12px}
+  .swipe-hint svg{width:16px;height:16px;color:var(--gold);animation:nudge 1.6s ease-in-out infinite}
+  .quiz,.calc{grid-template-columns:minmax(0,1fr)}
+  .quiz-side{display:none}
+  .qbox{min-height:400px;border-radius:24px}
+  .calc-out{border-left:0;border-top:1px solid var(--gline)}
+  .calc{border-radius:24px}
   .how li{padding:24px 22px}
   .how li b{font-size:46px;margin-bottom:12px}
   .how-cta .btn{width:100%}
@@ -432,6 +510,7 @@ main,header,footer{position:relative;z-index:1}
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-gift" viewBox="0 0 24 24"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-3-5 0M12 7c2-4 6-3 5 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="6" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="19" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.3 10.8l7.4-4.4M8.3 13.2l7.4 4.4" stroke="currentColor" stroke-width="1.8"/></symbol>
   <symbol id="r-find" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M11 8a3 3 0 0 0-3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
   <symbol id="r-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 9.5h8M8 12.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
   <symbol id="r-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 16.8l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
@@ -450,16 +529,18 @@ main,header,footer{position:relative;z-index:1}
     </a>
     <div class="nav-r">
       <nav class="links" aria-label="Principal">
+        <a href="#diagnostico">Autodiagnóstico</a>
         <a href="#resultados">Resultados</a>
         <a href="#empezar">Cómo empezar</a>
         <a href="#preguntas">Preguntas</a>
       </nav>
-      <span class="ba"><svg><use href="#i-pin-o"/></svg>Buenos Aires</span>
       <a class="btn btn-g btn-nav" href="#contacto"><svg><use href="#i-wa"/></svg>Análisis gratuito</a>
       <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mmenu"><span></span></button>
     </div>
   </div>
   <div class="mmenu" id="mmenu">
+    <a href="#diagnostico">Autodiagnóstico</a>
+    <a href="#calculadora">Calculadora</a>
     <a href="#resultados">Resultados</a>
     <a href="#empezar">Cómo empezar</a>
     <a href="#preguntas">Preguntas</a>
@@ -542,6 +623,39 @@ main,header,footer{position:relative;z-index:1}
       <div class="pain"><i>02</i><p>Te escriben, contestás tarde y la consulta se enfría.</p></div>
       <div class="pain"><i>03</i><p>Horarios, precios y fotos desactualizados o dispersos.</p></div>
       <div class="pain"><i>04</i><p>Hacés todo a mano y no sabés qué está funcionando.</p></div>
+    </div>
+    <p class="swipe-hint">Deslizá <svg><use href="#i-arrow"/></svg></p>
+  </div>
+</section>
+
+
+<div class="sep"></div>
+
+<!-- AUTODIAGNÓSTICO -->
+<section class="sec" id="diagnostico">
+  <div class="wrap">
+    <div class="quiz">
+      <div class="rv">
+        <div class="eb">Autodiagnóstico</div>
+        <h2 class="h2">¿Cuántos clientes <em>se te escapan?</em></h2>
+        <p class="lead">Seis preguntas, treinta segundos. Respondé con sinceridad y mirá qué tan preparado está tu negocio para que te encuentren y te elijan.</p>
+        <p class="lead quiz-side" style="font-size:15px;color:var(--mute)">No se guarda nada. El resultado lo ves solo vos, salvo que decidas mandarlo.</p>
+      </div>
+      <div class="qbox rv d1" id="quiz" aria-live="polite">
+        <div class="qtop"><span id="q-step">Pregunta 1 de 6</span><span>30 segundos</span></div>
+        <div class="qbar"><i id="q-bar"></i></div>
+        <div class="qcards" id="q-cards"></div>
+        <div class="qbtns" id="q-btns"><button type="button" class="yes" data-a="1">Sí</button><button type="button" data-a="0">No</button></div>
+        <div class="qres" id="q-res">
+          <div class="score">
+            <div class="ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="3.2"/><circle id="q-arc" cx="18" cy="18" r="15.9" fill="none" stroke="url(#gGold)" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0 100" style="transition:stroke-dasharray 1.2s ease"/></svg><b id="q-score">0/6</b></div>
+            <div><h3 id="q-title"></h3><p id="q-sub"></p></div>
+          </div>
+          <ul class="fixes" id="q-fixes"></ul>
+          <a class="btn btn-g" id="q-send" href="#contacto"><svg><use href="#i-wa"/></svg>Quiero que lo revisen</a>
+          <button type="button" class="qagain" id="q-again">Volver a hacerlo</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -698,6 +812,47 @@ main,header,footer{position:relative;z-index:1}
 
 <div class="sep"></div>
 
+<!-- CALCULADORA -->
+<section class="sec" id="calculadora">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eb">Hacé la cuenta</div>
+      <h2 class="h2">¿Cuánto te cuesta <em>no responder a tiempo?</em></h2>
+      <p class="lead">Poné tus números. La cuenta es tuya, no un promedio inventado.</p>
+    </div>
+    <div class="calc rv d1">
+      <div class="calc-in">
+        <div class="rng">
+          <label for="c-q">Consultas por semana que se quedan sin respuesta o se responden tarde <output id="c-q-o">5</output></label>
+          <input type="range" id="c-q" min="1" max="40" step="1" value="5">
+        </div>
+        <div class="rng">
+          <label for="c-t">Lo que deja un cliente, en promedio <output id="c-t-o">$ 15.000</output></label>
+          <input type="range" id="c-t" min="1000" max="300000" step="1000" value="15000">
+        </div>
+        <div class="rng">
+          <label class="lb2">De cada cuántas consultas, una termina comprando<small>Pensá en tus consultas de siempre.</small></label>
+          <div class="seg" id="c-r" role="group" aria-label="Una de cada">
+            <button type="button" data-v="2" aria-pressed="false">1 de 2</button>
+            <button type="button" data-v="3" aria-pressed="true">1 de 3</button>
+            <button type="button" data-v="4" aria-pressed="false">1 de 4</button>
+            <button type="button" data-v="5" aria-pressed="false">1 de 5</button>
+          </div>
+        </div>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <span class="lbl">Lo que podría estar entrando y no entra</span>
+        <div class="big" id="c-m">$ 0</div>
+        <div class="yr">por mes · <b id="c-y">$ 0</b> por año</div>
+        <p class="note" id="c-n">≈ 0 clientes por mes que eligen a otro.</p>
+        <a class="btn btn-g" id="c-send" href="#contacto"><svg><use href="#i-wa"/></svg>Quiero recuperar esas consultas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
 <!-- 4. CÓMO EMPEZAR -->
 <section class="sec" id="empezar">
   <div class="wrap">
@@ -757,6 +912,7 @@ main,header,footer{position:relative;z-index:1}
           <li><svg><use href="#i-checkc"/></svg><span><b>Recibís</b> 3 mejoras concretas por WhatsApp.</span></li>
           <li><svg><use href="#i-checkc"/></svg><span><b>Sin costo</b> y sin obligación de contratar.</span></li>
         </ul>
+        <button type="button" class="share" id="share"><svg><use href="#i-share"/></svg>Compartir con mi socio</button>
       </div>
       <form class="card form" id="lead" novalidate>
         <h3>Pedí tu análisis</h3>
@@ -781,6 +937,7 @@ main,header,footer{position:relative;z-index:1}
 </footer>
 
 <a class="wa-float" id="waf" data-wa="Hola, quiero el análisis gratuito de mi negocio." href="#contacto" aria-label="Escribir por WhatsApp"><svg><use href="#i-wa"/></svg></a>
+<div class="toast" id="toast" role="status"></div>
 <div class="mbar" id="mbar"><a class="btn btn-g" data-wa="Hola, quiero el análisis gratuito de mi negocio. Te paso el link de Google:" href="#contacto"><svg><use href="#i-wa"/></svg>Análisis gratuito por WhatsApp</a></div>
 
 <script>
@@ -807,6 +964,110 @@ document.querySelectorAll("[data-wa]").forEach((a) => {
   a.href = waLink(a.dataset.wa);
   a.target = "_blank";
   a.rel = "noopener";
+});
+
+// Vibración suave (solo donde el navegador lo permite)
+const buzz = (ms = 8) => { try { navigator.vibrate && navigator.vibrate(ms); } catch (e) {} };
+const toast = (t) => { const el = document.getElementById("toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast._t); toast._t = setTimeout(() => el.classList.remove("on"), 2200); };
+
+// Autodiagnóstico
+(() => {
+  const Q = [
+    ["¿Tu negocio aparece en Google Maps con fotos actuales?", "Del local, del equipo o de lo que hacés.", "Subí fotos actuales", "es lo primero que mira alguien antes de elegirte.", "fotos actuales"],
+    ["¿Tus horarios en Google están bien, incluso en feriados?", "Un horario mal cargado manda clientes a una persiana baja.", "Corregí tus horarios", "así nadie va y encuentra cerrado.", "horarios al día"],
+    ["¿Respondés los mensajes en menos de una hora?", "Contando noches, fines de semana y horas pico.", "Automatizá lo de siempre", "precios, horarios y dirección se pueden responder solos.", "respuesta rápida"],
+    ["¿Le pedís una reseña a tus clientes después de atenderlos?", "Con un mensaje, un QR o en persona.", "Pedí reseñas", "un mensaje simple después de cada venta hace la diferencia.", "reseñas"],
+    ["¿Te pueden escribir o reservar con un solo toque desde Google o Instagram?", "Sin copiar números ni buscar datos.", "Poné un botón directo", "menos pasos, más consultas.", "contacto en un toque"],
+    ["¿Sabés cuántas consultas recibiste el mes pasado y de dónde llegaron?", "Google, Instagram, recomendación, la vidriera…", "Medí lo que pasa", "un panel simple te muestra qué funciona y qué no.", "saber de dónde llegan los clientes"],
+  ];
+  const box = document.getElementById("quiz"), cards = document.getElementById("q-cards");
+  const stepEl = document.getElementById("q-step"), bar = document.getElementById("q-bar");
+  cards.innerHTML = Q.map((q, i) => `<div class="qcard" data-i="${i}"><h3>${q[0]}</h3><p>${q[1]}</p></div>`).join("");
+  const els = [...cards.children];
+  let i = 0, ans = [];
+  const show = () => {
+    els.forEach((c, k) => { c.classList.toggle("on", k === i); c.classList.toggle("out", k < i); });
+    stepEl.textContent = `Pregunta ${i + 1} de ${Q.length}`;
+    bar.style.width = (i / Q.length) * 100 + "%";
+  };
+  const finish = () => {
+    const yes = ans.filter(Boolean).length;
+    const [t, sub] = yes >= 5 ? ["Tu negocio está bien encaminado", "Quedan detalles que pueden sumar más clientes."]
+      : yes >= 3 ? ["Hay oportunidades claras", "Con pocos cambios se puede notar la diferencia."]
+      : ["Se te están escapando clientes", "La buena noticia: casi todo tiene arreglo rápido."];
+    document.getElementById("q-title").textContent = t;
+    document.getElementById("q-sub").textContent = sub;
+    document.getElementById("q-score").textContent = `${yes}/${Q.length}`;
+    const miss = Q.filter((_, k) => !ans[k]);
+    document.getElementById("q-fixes").innerHTML = (miss.length ? miss : [["", "", "Mantené todo al día", "revisá fotos, horarios y reseñas cada mes."]])
+      .map((q) => `<li><svg><use href="#i-check"/></svg><span><b>${q[2]}:</b> ${q[3]}</span></li>`).join("");
+    const msg = `Hola, hice el autodiagnóstico y me dio ${yes}/${Q.length}.` + (miss.length ? `\nMe falta: ${miss.map((q) => q[4]).join(", ")}.` : "") + `\nQuiero que revisen mi negocio.`;
+    const send = document.getElementById("q-send");
+    send.href = waLink(msg); send.target = "_blank"; send.rel = "noopener";
+    box.classList.add("done");
+    requestAnimationFrame(() => document.getElementById("q-arc").setAttribute("stroke-dasharray", `${(yes / Q.length) * 100} 100`));
+  };
+  document.getElementById("q-btns").addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    buzz();
+    ans[i] = b.dataset.a === "1";
+    if (++i < Q.length) show(); else finish();
+  });
+  document.getElementById("q-again").addEventListener("click", () => {
+    i = 0; ans = []; box.classList.remove("done");
+    document.getElementById("q-arc").setAttribute("stroke-dasharray", "0 100");
+    show();
+  });
+  show();
+})();
+
+// Calculadora
+(() => {
+  const q = document.getElementById("c-q"), t = document.getElementById("c-t"), seg = document.getElementById("c-r");
+  const money = (n) => "$ " + Math.round(n).toLocaleString("es-AR");
+  let ratio = 3, shown = 0, raf;
+  const fill = (el) => el.style.setProperty("--pct", ((el.value - el.min) / (el.max - el.min)) * 100 + "%");
+  const animate = (to) => {
+    cancelAnimationFrame(raf);
+    const from = shown, t0 = performance.now();
+    const step = (now) => {
+      const k = Math.min(1, (now - t0) / 450), v = from + (to - from) * (1 - Math.pow(1 - k, 3));
+      document.getElementById("c-m").textContent = money(v);
+      shown = v;
+      if (k < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+  };
+  const calc = () => {
+    const perMonth = (q.value * 4.33) / ratio, m = perMonth * t.value;
+    document.getElementById("c-q-o").textContent = q.value;
+    document.getElementById("c-t-o").textContent = money(t.value);
+    document.getElementById("c-y").textContent = money(m * 12);
+    document.getElementById("c-n").textContent = `≈ ${Math.max(1, Math.round(perMonth))} cliente${Math.round(perMonth) === 1 ? "" : "s"} por mes que eligen a otro. Es una estimación con tus propios números.`;
+    fill(q); fill(t);
+    animate(m);
+    const send = document.getElementById("c-send");
+    send.href = waLink(`Hola, hice la cuenta en la calculadora: estaría dejando de ganar cerca de ${money(m)} por mes por consultas sin responder a tiempo. Quiero ver cómo recuperarlas.`);
+    send.target = "_blank"; send.rel = "noopener";
+  };
+  [q, t].forEach((el) => el.addEventListener("input", () => { calc(); }));
+  [q, t].forEach((el) => el.addEventListener("change", () => buzz(6)));
+  seg.addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    buzz(); ratio = +b.dataset.v;
+    seg.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    calc();
+  });
+  calc();
+})();
+
+// Compartir con el socio (menú nativo del celular o copiar link)
+document.getElementById("share").addEventListener("click", async () => {
+  const data = { title: document.title, text: "Mirá esto para el negocio: te dicen gratis qué mejorar para que te encuentren y te escriban más.", url: location.href };
+  try {
+    if (navigator.share) { await navigator.share(data); return; }
+    await navigator.clipboard.writeText(location.href); toast("Link copiado");
+  } catch (e) { if (e && e.name !== "AbortError") toast("No se pudo compartir"); }
 });
 
 // Escalado de mockups
@@ -847,10 +1108,13 @@ document.querySelectorAll("[data-wa]").forEach((a) => {
   const burger = document.getElementById("burger");
   let contactVisible = false;
   const xr = document.querySelector(".xr-grid");
+  const busy = [document.getElementById("quiz"), document.querySelector(".calc")];
   function onScroll() {
     const past = scrollY > innerHeight * 0.75;
     const r = xr.getBoundingClientRect();
-    const inResults = innerWidth <= 900 && r.top < innerHeight * 0.6 && r.bottom > innerHeight * 0.5;
+    const inResults = innerWidth <= 900 && (
+      (r.top < innerHeight * 0.6 && r.bottom > innerHeight * 0.5) ||
+      busy.some((el) => { const b = el.getBoundingClientRect(); return b.top < innerHeight - 60 && b.bottom > 80; }));
     nav.classList.toggle("sc", scrollY > 20);
     waf.classList.toggle("on", past && !contactVisible);
     mbar.classList.toggle("on", past && !contactVisible && !inResults);
@@ -902,6 +1166,25 @@ document.querySelectorAll("[data-wa]").forEach((a) => {
   };
   tilt(document.getElementById("xr-stage"), document.getElementById("dev"), 18, 12);
   tilt(document.querySelector(".hero-vis"), document.querySelector(".hero-vis"), 10, 8);
+})();
+
+// En el celular: el 3D se inclina al mover el teléfono (donde no hace falta pedir permiso)
+(() => {
+  if (matchMedia("(pointer:fine)").matches || matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  if (!("DeviceOrientationEvent" in window) || typeof DeviceOrientationEvent.requestPermission === "function") return;
+  const targets = [document.getElementById("dev"), document.querySelector(".hero-vis")];
+  let base = null, ticking = false;
+  addEventListener("deviceorientation", (e) => {
+    if (e.gamma == null || ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      if (!base) base = { b: e.beta, g: e.gamma };
+      const clamp = (v, m) => Math.max(-m, Math.min(m, v));
+      const ry = clamp((e.gamma - base.g) * 0.6, 14), rx = clamp(-(e.beta - base.b) * 0.4, 10);
+      targets.forEach((t) => { if (t) { t.style.setProperty("--ry", ry.toFixed(1) + "deg"); t.style.setProperty("--rx", rx.toFixed(1) + "deg"); } });
+      ticking = false;
+    });
+  });
 })();
 
 // FAQ: una respuesta abierta a la vez
