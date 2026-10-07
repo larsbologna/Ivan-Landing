@@ -1,6 +1,6 @@
 # QA · reservas-perdidas
 
-Estado: **APROBADO** · iteraciones: 1 · duración 21.00 s · 5 escenas
+Estado: **APROBADO** · iteraciones: 1 · duración 15.30 s · 4 escenas
 
 ![Revisión](contact.jpg)
 
@@ -8,11 +8,10 @@ Con zona segura y cajas de layout: `contact-overlay.jpg` (capturas individuales 
 
 | # | Escena | Inicio | Dur. | Reposo | Errores | Advertencias |
 |---|---|---|---|---|---|---|
-| 1 | gancho | 0.00 | 2.80 | 0.90 | — | — |
-| 2 | chat | 2.80 | 4.40 | 5.97 | — | — |
-| 3 | reserva | 7.20 | 4.60 | 9.18 | — | — |
-| 4 | solucion | 11.80 | 4.80 | 14.24 | — | — |
-| 5 | cierre | 16.60 | 4.40 | 18.75 | — | — |
+| 1 | gancho | 0.00 | 2.67 | 0.90 | — | — |
+| 2 | chat | 2.67 | 3.64 | 5.25 | — | — |
+| 3 | reserva | 6.32 | 4.00 | 7.80 | — | — |
+| 4 | cierre | 10.31 | 4.99 | 12.31 | — | — |
 
 ## Correcciones automáticas aplicadas
 

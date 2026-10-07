@@ -1,6 +1,6 @@
 # QA · como-te-eligen
 
-Estado: **APROBADO** · iteraciones: 1 · duración 26.50 s · 7 escenas
+Estado: **APROBADO** · iteraciones: 1 · duración 15.30 s · 6 escenas
 
 ![Revisión](contact.jpg)
 
@@ -8,13 +8,12 @@ Con zona segura y cajas de layout: `contact-overlay.jpg` (capturas individuales 
 
 | # | Escena | Inicio | Dur. | Reposo | Errores | Advertencias |
 |---|---|---|---|---|---|---|
-| 1 | gancho | 0.00 | 2.60 | 0.90 | — | — |
-| 2 | paso1 | 2.60 | 3.60 | 4.99 | — | — |
-| 3 | paso2 | 6.20 | 3.80 | 7.58 | — | — |
-| 4 | paso3 | 10.00 | 3.80 | 11.38 | — | — |
-| 5 | paso4 | 13.80 | 4.40 | 16.65 | — | — |
-| 6 | remate | 18.20 | 3.80 | 20.43 | — | — |
-| 7 | cierre | 22.00 | 4.50 | 24.15 | — | — |
+| 1 | gancho | 0.00 | 2.00 | 0.90 | — | — |
+| 2 | busca | 2.00 | 1.67 | 3.65 | — | zona-vacia (440px)<br>poco-tiempo-de-lectura |
+| 3 | compara | 3.67 | 1.78 | 4.60 | — | — |
+| 4 | confia | 5.45 | 1.75 | 6.38 | — | — |
+| 5 | escribe | 7.21 | 3.90 | 9.61 | — | — |
+| 6 | cierre | 11.11 | 4.19 | 13.11 | — | — |
 
 ## Correcciones automáticas aplicadas
 

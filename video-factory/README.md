@@ -1,4 +1,4 @@
-# PRESENCE · Fábrica de videos
+# Iván Bologna · Fábrica de videos
 
 Sistema para generar videos verticales premium (1080×1920, 30 fps) que promocionan
 servicios de presencia online para negocios locales. **Para hacer un video nuevo sólo se
@@ -11,8 +11,8 @@ Todo se construye con tipografía cinética, formas, interfaces estilizadas y lu
 
 | Qué | Dónde |
 |---|---|
-| Video demo "Tu presencia online" (38,4 s) | `out/presencia/presencia.mp4` · póster `out/presencia/poster.jpg` |
-| Muestra en tema claro (idea 5) | `out/primera-impresion/primera-impresion.mp4` |
+| Video demo "Tu presencia online" (19,5 s, con locución) | `out/presencia/presencia.mp4` · póster `out/presencia/poster.jpg` |
+| Muestra en tema claro (idea 5, con locución) | `out/primera-impresion/primera-impresion.mp4` |
 | Capturas de control (QA) de las 11 escenas | `out/<nombre>/qa/contact.jpg`, `contact-overlay.jpg`, `qa-report.md` |
 | Autoanálisis del render (frames cada 0,5 s, loudness, cortes) | `out/presencia/analysis/` |
 | Análisis del video de referencia | `analysis/reference-report.md` |
@@ -29,6 +29,8 @@ node render.js sin-resenas --workers 4 --music pulse
 
 Requisitos: Node 22, Playwright (usa el instalado; no descarga browsers), Chromium,
 FFmpeg, Python 3 con `numpy` y `scipy` (`pip install numpy scipy`).
+Para la locución: `bash audio/get-voice.sh` (instala `sherpa-onnx` y baja el modelo Kokoro, ~350 MB,
+a `models/`; no se versiona).
 Si Chromium está en otra ruta: `CHROMIUM_PATH=/ruta/chromium node render.js …`.
 
 Ver un frame en el navegador: abrí `engine/index.html?scene=presencia&t=12.5`.
@@ -49,7 +51,10 @@ video-factory/
 │   ├── themes.js           paletas + fondo diseñado (glows, anillos, grilla, partículas, grano)
 │   ├── styles.css
 │   └── fonts/              Inter Display + Inter (incluidas: render idéntico en cualquier máquina)
-├── audio/sfx.py            audio procedural (numpy + scipy)
+├── audio/
+│   ├── sfx.py              audio procedural (numpy + scipy) + mezcla con la voz
+│   ├── voice.py            locución neuronal local (Kokoro vía sherpa-onnx) + cadena de locutor
+│   └── get-voice.sh        descarga el modelo de voz
 ├── snap.js                 control de calidad con autocorrección
 ├── render.js               render en paralelo + mux
 ├── lib.js                  utilidades compartidas
@@ -63,17 +68,19 @@ video-factory/
 ## Cómo se escribe una escena
 
 ```js
-const BRAND = "PRESENCE";
-const TAGLINE = "Gestión de presencia online · Argentina";
+const BRAND = "Iván Bologna";
+const TAGLINE = "Gestor de presencia online · Argentina";
 const CTA = "Escribime por WhatsApp";
 const COLORS = "midnight";          // o { theme: "ocean", accent: "#4DA3FF" }
-const DURATION = 24;                // las escenas con dur = null reparten lo que falta
+const DURATION = [15, 20];          // rango (o un número exacto)
+const VOICE = { voice: "em_alex", speed: 1.15 };   // null = sin locución
 
-scene("gancho", 2.4, [
+scene("gancho", null, [
   TextReveal({ text: "¿Tu negocio\ntiene *reseñas*?", size: 130, weight: 800, y: -40, role: "hero" }),
-], { camera: { from: { z: -140 }, to: { z: 60 } }, bg: { rings: 0.9 } });
+], { vo: "¿Tu negocio tiene reseñas?", voAt: 0.2, hold: 0.25, camera: { from: { z: -140 }, to: { z: 60 } } });
 
-scene("cierre", null, [OutroBrand({ at: 0.15, y: -40 })]);
+scene("cierre", null, [OutroBrand({ at: 0.0, y: -40 })],
+  { vo: "Soy Iván Bologna. Escribime por WhatsApp.", voAt: 0.2, hold: 0.9 });
 ```
 
 `scene(id, duración, [componentes], opciones)`
@@ -86,6 +93,9 @@ scene("cierre", null, [OutroBrand({ at: 0.15, y: -40 })]);
 - **`bg`:** `glow: [x, y]`, `glow2`, `tint: "warn"` (luz roja para problemas), `rings`, `ringScale`,
   `grid`, `intensity`. El fondo es continuo e interpola entre escenas.
 - **`transition`:** `{ type: "blur" | "zoom" | "push" | "fade", dur: 0.45, sound: "whoosh" }`.
+- **`vo`:** la frase que dice la voz en esa escena. Con duración `null`, la escena dura
+  `voAt + duración de la voz + hold`. Si el total queda por debajo del mínimo de `DURATION`,
+  el motor estira las pausas; si pasa el máximo, el QA lo frena.
 
 Opciones comunes a todos los componentes: `at` (inicio, en segundos de la escena), `out`
 (salida opcional), `x`, `y`, `z`, `rx`, `ry`, `scale`, `float` (flotación en px), `id`.
@@ -102,7 +112,7 @@ Opciones comunes a todos los componentes: `at` (inicio, en segundos de la escena
 | `UICard` | Interfaces estilizadas | `kind: "maps"\|"chat"\|"review"\|"web"\|"results"\|"booking"`, `data`, `glow`, `dim` (profundidad de campo) |
 | `Glyph` | Ícono grande | `icon`, `size` |
 | `Lever` | Palanca geométrica | `width` |
-| `OutroBrand` | Cierre de marca + CTA | toma `BRAND`, `TAGLINE`, `CTA`; `note` |
+| `OutroBrand` | Cierre de marca + CTA | toma `BRAND`, `TAGLINE`, `CTA`; monograma automático (IB), ajuste de ancho; `note`, `tracking` |
 | `SceneTransition` | Transiciones entre escenas | se configura con `transition` |
 
 Íconos: `web pin star chat grid layers users shield trend search check down phone calendar route spark clock qr eye x`.
@@ -125,13 +135,24 @@ Muestrea cada escena cada 0,2 s y en su momento de reposo, y detecta:
 
 - **errores** (bloquean el render): texto fuera de la zona segura, texto cortado, texto chico
   (< 34 px efectivos en titulares y cuerpo, < 26 px en UI y etiquetas), superposición entre
-  bloques de texto, `DURATION` que no coincide con las escenas;
+  bloques de texto, duración fuera de `DURATION`, voz que no entra en su escena;
 - **advertencias**: zonas vacías, composición cargada arriba, jerarquía débil, poco tiempo
   de lectura, elementos que salen antes de asentarse.
 
 Lo que puede corregir lo corrige solo (achica, reubica, separa) y lo guarda en
 `out/<nombre>/qa/fixes.json`; vuelve a generar previews y repite hasta pasar (máx. 6 vueltas).
 `render.js` sólo renderiza si el QA aprueba (o con `--force`). `--reset` borra los fixes.
+
+## Locución (`audio/voice.py`)
+
+Voz neuronal que corre local, sin servicios externos ni claves: Kokoro v1.0 (`em_alex`, español
+latino) vía sherpa-onnx. Se eligió frente a otras voces locales (Piper con acento argentino,
+Kokoro `em_santa` / `ef_dora`) verificando cada frase con reconocimiento de voz (Whisper):
+`em_alex` fue la única que se transcribió casi sin errores.
+- Cadena de locutor: recorte de silencios, pasaaltos, presencia, de-esser suave, compresión y nivel.
+- `RESPELL` corrige pronunciaciones sólo para el audio (googlea → gúglea, QR → cu erre).
+- Caché por texto + voz + velocidad: sólo se resintetiza lo que cambió (`out/<nombre>/vo/`).
+- En la mezcla la voz va adelante: la música baja ~60 % y los efectos ~45 % mientras habla.
 
 ## Audio procedural (`audio/sfx.py`)
 

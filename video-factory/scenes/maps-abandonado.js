@@ -1,40 +1,34 @@
 /* Idea 2 · Google Maps abandonado */
-const BRAND = "PRESENCE";
-const TAGLINE = "Gestión de presencia online · Argentina";
+const BRAND = "Iván Bologna";
+const TAGLINE = "Gestor de presencia online · Argentina";
 const CTA = "Escribime por WhatsApp";
 const COLORS = "ocean";
-const DURATION = 25;
+const DURATION = [15, 20];
+const VOICE = { voice: "em_alex", speed: 1.15 };
 
-scene("gancho", 2.6, [
+scene("gancho", null, [
   TextReveal({ text: "Tu ficha de Google\nestá *abandonada*.", size: 112, weight: 800, y: -40, role: "hero", cue: "impact" }),
-], { camera: { from: { z: -140 }, to: { z: 60 } } });
+], { vo: "Tu ficha de Google está abandonada.", voAt: 0.2, hold: 0.25, camera: { from: { z: -140 }, to: { z: 60 } } });
 
-scene("ficha", 4.2, [
-  Eyebrow({ text: "Lo que ve tu cliente", y: -690 }),
-  TextReveal({ text: "Datos viejos.\nCero *señales de vida*.", size: 96, y: -530 }),
-  UICard({ kind: "maps", at: 0.9, width: 820, y: 170, rx: 8, float: 6, data: { rating: "3,6", count: 9, status: "Horario no disponible" } }),
-], { camera: { from: { z: -80 }, to: { z: 30 } }, bg: { tint: "warn" } });
+scene("ficha", null, [
+  TextReveal({ text: "Horario viejo.\nCero *señales de vida*.", size: 96, y: -540 }),
+  UICard({ kind: "maps", at: 0.4, width: 820, y: 170, rx: 8, float: 6, data: { rating: "3,6", count: 9, status: "Horario no disponible" } }),
+], { vo: "Horarios viejos, sin fotos, sin respuestas.", voAt: 0.05, hold: 0.35, camera: { from: { z: -80 }, to: { z: 30 } }, bg: { tint: "warn" } });
 
-scene("errores", 4.8, [
+scene("duda", null, [
   TextReveal({ text: "Y el cliente *duda*:", size: 110, accent: "warn", y: -560 }),
-  HexFeature({ icon: "clock", label: "¿Está abierto?", tone: "warn", at: 0.8, x: -240, y: -60, labelSize: 44 }),
-  HexFeature({ icon: "eye", label: "¿Sigue existiendo?", tone: "warn", at: 1.2, x: 240, y: -60, labelSize: 44, z: -40 }),
-  HexFeature({ icon: "phone", label: "¿Me van a atender?", tone: "warn", at: 1.6, x: 0, y: 330, labelSize: 44, z: 40 }),
-], { camera: { from: { z: -60, ry: -5 }, to: { z: 40, ry: 4 } }, bg: { tint: "warn" } });
+  HexFeature({ icon: "clock", label: "¿Está abierto?", tone: "warn", at: 0.6, x: -240, y: -60, labelSize: 44 }),
+  HexFeature({ icon: "phone", label: "¿Me atienden?", tone: "warn", at: 1.0, x: 240, y: -60, labelSize: 44, z: -40 }),
+  HexFeature({ icon: "eye", label: "¿Sigue existiendo?", tone: "warn", at: 1.4, x: 0, y: 330, labelSize: 44, z: 40 }),
+], { vo: "Y el cliente duda, y se va con otro.", voAt: 0.05, hold: 0.5, camera: { from: { z: -60, ry: -5 }, to: { z: 40, ry: 4 } }, bg: { tint: "warn" } });
 
-scene("vidriera", 3.2, [
-  TextReveal({ text: "Tu ficha es tu\n*vidriera* en Google.", size: 110, y: -60, marks: { vidriera: "underline" } }),
-], { transition: { type: "zoom" }, camera: { from: { z: -60 }, to: { z: 60 } } });
-
-scene("solucion", 5.0, [
-  Eyebrow({ text: "La dejo al día", y: -690 }),
-  TextReveal({ text: "Ficha completa,\n*todos los meses*:", size: 100, y: -530 }),
-  PillCascade({ at: 1.0, y: 170, items: [
+scene("solucion", null, [
+  TextReveal({ text: "La dejo *al día*:", size: 110, y: -560 }),
+  PillCascade({ at: 0.45, stagger: 0.3, y: 150, items: [
     { icon: "clock", text: "Horarios reales" },
     { icon: "eye", text: "Fotos actuales" },
-    { icon: "phone", text: "Datos que funcionan" },
     { icon: "spark", text: "Publicaciones al día", hl: true },
   ] }),
-], { transition: { type: "push" }, camera: { from: { z: -90, rx: 8 }, to: { z: 30 } } });
+], { vo: "Yo la dejo completa y al día, todos los meses.", voAt: 0.05, hold: 0.4, transition: { type: "push" }, camera: { from: { z: -90, rx: 8 }, to: { z: 30 } } });
 
-scene("cierre", null, [OutroBrand({ at: 0.15, y: -40 })]);
+scene("cierre", null, [OutroBrand({ at: 0.0, y: -40 })], { vo: "Soy Iván Bologna. Escribime por WhatsApp.", voAt: 0.2, hold: 0.9, transition: { type: "zoom" }, camera: { from: { z: -60 }, to: { z: 20 }, breathe: 0.5 } });

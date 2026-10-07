@@ -1,0 +1,27 @@
+{
+ "gancho": {
+  "key": "2b0141212ac3b46f",
+  "dur": 1.618,
+  "text": "¿Tu negocio tiene reseñas?"
+ },
+ "ficha": {
+  "key": "3426ffba4a47cdcf",
+  "dur": 2.743,
+  "text": "Una ficha sin reseñas parece un negocio cerrado."
+ },
+ "como": {
+  "key": "714abe53c0f29ec2",
+  "dur": 2.833,
+  "text": "Te armo un sistema para pedirlas sin incomodar a nadie."
+ },
+ "remate": {
+  "key": "e803b912e7735390",
+  "dur": 2.008,
+  "text": "Cada reseña real es confianza."
+ },
+ "cierre": {
+  "key": "19725102704bfe4b",
+  "dur": 2.949,
+  "text": "Soy Iván Bologna. Escribime por WhatsApp."
+ }
+}

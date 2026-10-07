@@ -1,6 +1,6 @@
 # QA · redes-vs-web
 
-Estado: **APROBADO** · iteraciones: 1 · duración 20.50 s · 5 escenas
+Estado: **APROBADO** · iteraciones: 1 · duración 15.30 s · 4 escenas
 
 ![Revisión](contact.jpg)
 
@@ -8,11 +8,10 @@ Con zona segura y cajas de layout: `contact-overlay.jpg` (capturas individuales 
 
 | # | Escena | Inicio | Dur. | Reposo | Errores | Advertencias |
 |---|---|---|---|---|---|---|
-| 1 | gancho | 0.00 | 2.60 | 0.90 | — | — |
-| 2 | redes | 2.60 | 4.60 | 5.00 | — | — |
-| 3 | web | 7.20 | 4.60 | 8.80 | — | — |
-| 4 | ambas | 11.80 | 4.40 | 14.24 | — | — |
-| 5 | cierre | 16.20 | 4.30 | 18.35 | — | — |
+| 1 | gancho | 0.00 | 2.42 | 0.90 | — | — |
+| 2 | redes | 2.42 | 4.24 | 4.22 | — | — |
+| 3 | web | 6.66 | 3.54 | 7.96 | — | — |
+| 4 | cierre | 10.20 | 5.10 | 12.20 | — | — |
 
 ## Correcciones automáticas aplicadas
 

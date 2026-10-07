@@ -1,122 +1,108 @@
 {
   "pass": true,
   "iterations": 1,
-  "duration": 38.4,
+  "duration": 19.464,
   "scenes": [
     {
-      "id": "atencion",
+      "id": "gancho",
       "start": 0,
-      "end": 1.8,
-      "dur": 1.8,
-      "settle": 0.82,
+      "end": 2.23,
+      "dur": 2.23,
+      "vo": "Si tenés un negocio, mirá esto.",
+      "voAt": 0.25,
+      "voDur": 1.88,
+      "settle": 1.4,
       "items": [
         {
-          "id": "atencion/0",
+          "id": "gancho/0",
           "kind": "TextReveal",
           "role": "hero",
-          "settle": 0.82,
+          "settle": 0.45,
           "x": 0,
-          "y": -40,
-          "size": 210,
+          "y": -330,
+          "size": 190,
           "scale": 1,
-          "fontSize": 193.536
-        }
-      ],
-      "errors": [],
-      "warns": [],
-      "hero": 0.9199999999999999
-    },
-    {
-      "id": "mira",
-      "start": 1.8,
-      "end": 4.6,
-      "dur": 2.8,
-      "settle": 1.2000000000000002,
-      "items": [
-        {
-          "id": "mira/0",
-          "kind": "TextReveal",
-          "role": "hero",
-          "settle": 1.2000000000000002,
-          "x": 0,
-          "y": -40,
-          "size": 124,
-          "scale": 1,
-          "fontSize": 124
-        }
-      ],
-      "errors": [],
-      "warns": [],
-      "hero": 3.1
-    },
-    {
-      "id": "googlea",
-      "start": 4.6,
-      "end": 8.399999999999999,
-      "dur": 3.8,
-      "settle": 3.1300000000000003,
-      "items": [
-        {
-          "id": "googlea/0",
-          "kind": "TextReveal",
-          "role": "eyebrow",
-          "settle": 0.62,
-          "x": 0,
-          "y": -690,
-          "size": 30,
-          "scale": 1,
-          "fontSize": 30
+          "fontSize": 190
         },
         {
-          "id": "googlea/1",
+          "id": "gancho/1",
           "kind": "TextReveal",
           "role": "headline",
-          "settle": 0.9249999999999999,
+          "settle": 1.4,
           "x": 0,
-          "y": -480,
-          "size": 124,
+          "y": 60,
+          "size": 104,
           "scale": 1,
-          "fontSize": 124
-        },
-        {
-          "id": "googlea/2",
-          "kind": "Typewriter",
-          "role": "body",
-          "settle": 2.8290701878452666,
-          "x": 0,
-          "y": -150,
-          "size": 46,
-          "scale": 0.95,
-          "fontSize": 46
-        },
-        {
-          "id": "googlea/3",
-          "kind": "UICard",
-          "role": "ui",
-          "settle": 3.1300000000000003,
-          "x": 0,
-          "y": 320,
-          "size": null,
-          "scale": 1,
-          "fontSize": 34
+          "fontSize": 104
         }
       ],
       "errors": [],
       "warns": [],
-      "hero": 7.83
+      "hero": 1.5
     },
     {
       "id": "cinco",
-      "start": 8.399999999999999,
-      "end": 13.399999999999999,
-      "dur": 5,
-      "settle": 4.500000000000001,
+      "start": 2.23,
+      "end": 5.553,
+      "dur": 3.323,
+      "vo": "Te googlean, y en cinco segundos deciden si confiar en vos.",
+      "voAt": 0.05,
+      "voDur": 3.123,
+      "settle": 2.9,
       "items": [
         {
           "id": "cinco/0",
           "kind": "TextReveal",
           "role": "headline",
-          "settle": 1.25,
+          "settle": 1.0499999999999998,
+          "x": 0,
+          "y": -590,
+          "size": 84,
+          "scale": 1,
+          "fontSize": 84
+        },
+        {
+          "id": "cinco/1",
+          "kind": "Typewriter",
+          "role": "body",
+          "settle": 1.043440000288085,
+          "x": 0,
+          "y": -330,
+          "size": 46,
+          "scale": 1,
+          "fontSize": 46
+        },
+        {
+          "id": "cinco/2",
+          "kind": "ProgressRing",
+          "role": "hero",
+          "settle": 2.9,
+          "x": 0,
+          "y": 170,
+          "size": null,
+          "scale": 1,
+          "fontSize": 210
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 5.2299999999999995
+    },
+    {
+      "id": "perdes",
+      "start": 5.553,
+      "end": 9.551,
+      "dur": 3.998,
+      "vo": "Si tu presencia está descuidada, perdés clientes, reputación y ventas.",
+      "voAt": 0.05,
+      "voDur": 3.748,
+      "settle": 3.0999999999999996,
+      "items": [
+        {
+          "id": "perdes/0",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 0.8999999999999999,
           "x": 0,
           "y": -560,
           "size": 92,
@@ -124,57 +110,23 @@
           "fontSize": 92
         },
         {
-          "id": "cinco/1",
-          "kind": "ProgressRing",
-          "role": "hero",
-          "settle": 4.500000000000001,
-          "x": 0,
-          "y": 150,
-          "size": null,
-          "scale": 1,
-          "fontSize": 240
-        }
-      ],
-      "errors": [],
-      "warns": [],
-      "hero": 12.999999999999998
-    },
-    {
-      "id": "perdes",
-      "start": 13.399999999999999,
-      "end": 18.4,
-      "dur": 5,
-      "settle": 3.2,
-      "items": [
-        {
-          "id": "perdes/0",
-          "kind": "TextReveal",
-          "role": "body",
-          "settle": 0.95,
-          "x": 0,
-          "y": -635,
-          "size": 76,
-          "scale": 1,
-          "fontSize": 76
-        },
-        {
           "id": "perdes/1",
-          "kind": "TextReveal",
-          "role": "headline",
-          "settle": 1.45,
-          "x": 0,
-          "y": -420,
-          "size": 180,
+          "kind": "HexFeature",
+          "role": "body",
+          "settle": 2.25,
+          "x": -250,
+          "y": 20,
+          "size": 250,
           "scale": 1,
-          "fontSize": 180
+          "fontSize": 50
         },
         {
           "id": "perdes/2",
           "kind": "HexFeature",
           "role": "body",
-          "settle": 2.4000000000000004,
-          "x": -250,
-          "y": 40,
+          "settle": 2.6500000000000004,
+          "x": 250,
+          "y": 20,
           "size": 250,
           "scale": 1,
           "fontSize": 50
@@ -183,20 +135,9 @@
           "id": "perdes/3",
           "kind": "HexFeature",
           "role": "body",
-          "settle": 2.8,
-          "x": 250,
-          "y": 40,
-          "size": 250,
-          "scale": 1,
-          "fontSize": 50
-        },
-        {
-          "id": "perdes/4",
-          "kind": "HexFeature",
-          "role": "body",
-          "settle": 3.2,
+          "settle": 3.0999999999999996,
           "x": 0,
-          "y": 376,
+          "y": 380,
           "size": 250,
           "scale": 1,
           "fontSize": 50
@@ -204,44 +145,36 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 16.7
+      "hero": 8.752999999999998
     },
     {
-      "id": "cascada",
-      "start": 18.4,
-      "end": 24,
-      "dur": 5.6,
-      "settle": 4.1,
+      "id": "ordeno",
+      "start": 9.551,
+      "end": 12.911,
+      "dur": 3.36,
+      "vo": "Yo te ordeno todo: web, Google Maps, reseñas y WhatsApp.",
+      "voAt": 0.05,
+      "voDur": 3.11,
+      "settle": 2.48,
       "items": [
         {
-          "id": "cascada/0",
-          "kind": "TextReveal",
-          "role": "eyebrow",
-          "settle": 0.58,
-          "x": 0,
-          "y": -700,
-          "size": 30,
-          "scale": 1,
-          "fontSize": 30
-        },
-        {
-          "id": "cascada/1",
+          "id": "ordeno/0",
           "kind": "TextReveal",
           "role": "headline",
-          "settle": 0.9249999999999999,
+          "settle": 0.75,
           "x": 0,
-          "y": -545,
-          "size": 104,
+          "y": -580,
+          "size": 112,
           "scale": 1,
-          "fontSize": 104
+          "fontSize": 112
         },
         {
-          "id": "cascada/2",
+          "id": "ordeno/1",
           "kind": "PillCascade",
           "role": "body",
-          "settle": 4.1,
+          "settle": 2.48,
           "x": 0,
-          "y": 140,
+          "y": 110,
           "size": 50,
           "scale": 1,
           "fontSize": 50
@@ -249,101 +182,25 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 22.6
-    },
-    {
-      "id": "unlugar",
-      "start": 24,
-      "end": 28,
-      "dur": 4,
-      "settle": 1.9799999999999998,
-      "items": [
-        {
-          "id": "unlugar/0",
-          "kind": "TextReveal",
-          "role": "headline",
-          "settle": 0.95,
-          "x": 0,
-          "y": -620,
-          "size": 100,
-          "scale": 1,
-          "fontSize": 100
-        },
-        {
-          "id": "unlugar/1",
-          "kind": "UICard",
-          "role": "deco",
-          "settle": 1.92,
-          "x": -330,
-          "y": -400,
-          "size": null,
-          "scale": 1,
-          "fontSize": 34
-        },
-        {
-          "id": "unlugar/2",
-          "kind": "UICard",
-          "role": "deco",
-          "settle": 1.9799999999999998,
-          "x": 320,
-          "y": 660,
-          "size": null,
-          "scale": 1,
-          "fontSize": 34
-        },
-        {
-          "id": "unlugar/3",
-          "kind": "UICard",
-          "role": "ui",
-          "settle": 1.35,
-          "x": 0,
-          "y": 90,
-          "size": null,
-          "scale": 1,
-          "fontSize": 34
-        }
-      ],
-      "errors": [],
-      "warns": [],
-      "hero": 26.080000000000002
-    },
-    {
-      "id": "gasto",
-      "start": 28,
-      "end": 30.8,
-      "dur": 2.8,
-      "settle": 2.25,
-      "items": [
-        {
-          "id": "gasto/0",
-          "kind": "TextReveal",
-          "role": "headline",
-          "settle": 2.25,
-          "x": 0,
-          "y": -60,
-          "size": 112,
-          "scale": 1,
-          "fontSize": 112
-        }
-      ],
-      "errors": [],
-      "warns": [],
-      "hero": 30.35
+      "hero": 12.131
     },
     {
       "id": "palanca",
-      "start": 30.8,
-      "end": 34.4,
-      "dur": 3.6,
-      "settle": 2.65,
+      "start": 12.911,
+      "end": 15.415,
+      "dur": 2.504,
+      "vo": "No es un gasto. Es palanca.",
+      "voAt": 0.05,
+      "voDur": 2.004,
+      "settle": 2.0999999999999996,
       "items": [
         {
           "id": "palanca/0",
           "kind": "TextReveal",
           "role": "body",
-          "settle": 0.6,
+          "settle": 1.3,
           "x": 0,
-          "y": -330,
+          "y": -400,
           "size": 96,
           "scale": 1,
           "fontSize": 96
@@ -352,9 +209,9 @@
           "id": "palanca/1",
           "kind": "KeywordCircle",
           "role": "hero",
-          "settle": 1.55,
+          "settle": 2,
           "x": 0,
-          "y": -110,
+          "y": -120,
           "size": 200,
           "scale": 1,
           "fontSize": 169.86931199999998
@@ -363,9 +220,9 @@
           "id": "palanca/2",
           "kind": "Lever",
           "role": "deco",
-          "settle": 2.65,
+          "settle": 2.0999999999999996,
           "x": 0,
-          "y": 270,
+          "y": 250,
           "size": null,
           "scale": 1,
           "fontSize": null
@@ -373,20 +230,23 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 33.550000000000004
+      "hero": 15.110999999999999
     },
     {
       "id": "cierre",
-      "start": 34.4,
-      "end": 38.4,
-      "dur": 4,
-      "settle": 2.15,
+      "start": 15.415,
+      "end": 19.464,
+      "dur": 4.049,
+      "vo": "Soy Iván Bologna. Escribime por WhatsApp.",
+      "voAt": 0.2,
+      "voDur": 2.949,
+      "settle": 2,
       "items": [
         {
           "id": "cierre/0",
           "kind": "OutroBrand",
           "role": "hero",
-          "settle": 2.15,
+          "settle": 2,
           "x": 0,
           "y": -40,
           "size": null,
@@ -396,33 +256,8 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 36.65
+      "hero": 17.515
     }
   ],
-  "fixes": {
-    "googlea/2": {
-      "opts": {
-        "scale": 0.95
-      },
-      "reason": [
-        "fuera-de-zona:left"
-      ]
-    },
-    "perdes/4": {
-      "opts": {
-        "y": 376
-      },
-      "reason": [
-        "fuera-de-zona:bottom"
-      ]
-    },
-    "perdes/0": {
-      "opts": {
-        "y": -635
-      },
-      "reason": [
-        "fuera-de-zona:top"
-      ]
-    }
-  }
+  "fixes": {}
 }

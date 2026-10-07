@@ -1,0 +1,22 @@
+{
+ "gancho": {
+  "key": "522f04ba66d0fdea",
+  "dur": 2.908,
+  "text": "Te escribieron a las nueve y cuarenta y siete de la noche."
+ },
+ "chat": {
+  "key": "8b55a03e69d16356",
+  "dur": 3.221,
+  "text": "Nadie contestó. Para la mañana, ya había elegido a otro."
+ },
+ "solucion": {
+  "key": "0ea393ce223b1759",
+  "dur": 3.023,
+  "text": "Ordenamos tu WhatsApp para que nadie se quede esperando."
+ },
+ "cierre": {
+  "key": "19725102704bfe4b",
+  "dur": 2.949,
+  "text": "Soy Iván Bologna. Escribime por WhatsApp."
+ }
+}

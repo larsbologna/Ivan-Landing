@@ -1,34 +1,28 @@
 /* Idea 8 · Errores comunes en Google Business */
-const BRAND = "PRESENCE";
-const TAGLINE = "Gestión de presencia online · Argentina";
+const BRAND = "Iván Bologna";
+const TAGLINE = "Gestor de presencia online · Argentina";
 const CTA = "Escribime por WhatsApp";
 const COLORS = "ocean";
-const DURATION = 21;
+const DURATION = [15, 20];
+const VOICE = { voice: "em_alex", speed: 1.15 };
 
-scene("gancho", 2.8, [
+scene("gancho", null, [
   Eyebrow({ text: "Google Business", y: -260 }),
-  TextReveal({ text: "5 errores que\n*te cuestan clientes*.", size: 110, weight: 800, y: -40, role: "hero", cue: "impact" }),
-], { camera: { from: { z: -140 }, to: { z: 60 } } });
+  TextReveal({ text: "Errores que\n*te cuestan clientes*.", size: 110, weight: 800, y: -40, role: "hero", cue: "impact" }),
+], { vo: "Tres errores en Google que te cuestan clientes.", voAt: 0.2, hold: 0.25, camera: { from: { z: -140 }, to: { z: 60 } } });
 
-scene("lista", 6.4, [
+scene("lista", null, [
   TextReveal({ text: "¿Cuántos *tenés*?", size: 110, y: -580 }),
-  PillCascade({ at: 0.8, stagger: 0.6, y: 120, check: false, size: 48, items: [
+  PillCascade({ at: 0.3, stagger: 0.8, y: 80, check: false, size: 50, items: [
     { icon: "clock", text: "Horarios desactualizados" },
-    { icon: "grid", text: "Categoría equivocada" },
     { icon: "eye", text: "Sin fotos reales" },
     { icon: "star", text: "Reseñas sin responder" },
-    { icon: "phone", text: "Teléfono que no atiende" },
   ] }),
-], { camera: { from: { z: -90, rx: 8 }, to: { z: 30 } }, bg: { tint: "warn" } });
+], { vo: "Horarios desactualizados, sin fotos reales, y reseñas sin responder.", voAt: 0.05, hold: 0.4, camera: { from: { z: -90, rx: 8 }, to: { z: 30 } }, bg: { tint: "warn" } });
 
-scene("remate", 3.4, [
+scene("remate", null, [
   TextReveal({ text: "Todos tienen", size: 80, color: "muted", y: -330, role: "body", cue: null }),
-  KeywordCircle({ text: "arreglo", at: 0.3, size: 200, y: -110 }),
-], { transition: { type: "zoom" }, camera: { from: { z: -140 }, to: { z: 70 } }, bg: { rings: 1, ringScale: 0.7 } });
+  KeywordCircle({ text: "arreglo", at: 0.4, size: 200, y: -110, circleAt: 0.75 }),
+], { vo: "Todos tienen arreglo, y rápido.", voAt: 0.05, hold: 0.6, transition: { type: "zoom" }, camera: { from: { z: -140 }, to: { z: 70 } }, bg: { rings: 1, ringScale: 0.7 } });
 
-scene("ficha", 4.0, [
-  TextReveal({ text: "Y tu ficha queda *así*:", size: 92, y: -600 }),
-  UICard({ kind: "maps", at: 0.6, width: 820, y: 120, z: 40, float: 6, glow: true }),
-], { transition: { type: "push" }, camera: { from: { z: -80 }, to: { z: 30 } } });
-
-scene("cierre", null, [OutroBrand({ at: 0.15, y: -40 })]);
+scene("cierre", null, [OutroBrand({ at: 0.0, y: -40 })], { vo: "Soy Iván Bologna. Escribime por WhatsApp.", voAt: 0.2, hold: 0.9, transition: { type: "zoom" }, camera: { from: { z: -60 }, to: { z: 20 }, breathe: 0.5 } });

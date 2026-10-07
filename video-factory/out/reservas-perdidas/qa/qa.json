@@ -1,13 +1,16 @@
 {
   "pass": true,
   "iterations": 1,
-  "duration": 21,
+  "duration": 15.299,
   "scenes": [
     {
       "id": "gancho",
       "start": 0,
-      "end": 2.8,
-      "dur": 2.8,
+      "end": 2.672,
+      "dur": 2.672,
+      "vo": "¿Cuántas reservas se te escapan?",
+      "voAt": 0.2,
+      "voDur": 1.753,
       "settle": 0.8999999999999999,
       "items": [
         {
@@ -28,16 +31,19 @@
     },
     {
       "id": "chat",
-      "start": 2.8,
-      "end": 7.2,
-      "dur": 4.4,
-      "settle": 3.1750000000000003,
+      "start": 2.672,
+      "end": 6.316000000000001,
+      "dur": 3.644,
+      "vo": "Cada mensaje sin responder es un turno vacío.",
+      "voAt": 0.05,
+      "voDur": 2.625,
+      "settle": 2.575,
       "items": [
         {
           "id": "chat/0",
           "kind": "UICard",
           "role": "ui",
-          "settle": 2.45,
+          "settle": 2.25,
           "x": 0,
           "y": -150,
           "size": null,
@@ -48,7 +54,7 @@
           "id": "chat/1",
           "kind": "TextReveal",
           "role": "headline",
-          "settle": 3.1750000000000003,
+          "settle": 2.575,
           "x": 0,
           "y": 430,
           "size": 84,
@@ -58,42 +64,34 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 6.074999999999999
+      "hero": 5.3469999999999995
     },
     {
       "id": "reserva",
-      "start": 7.2,
-      "end": 11.8,
-      "dur": 4.6,
-      "settle": 1.98,
+      "start": 6.316000000000001,
+      "end": 10.312000000000001,
+      "dur": 3.996,
+      "vo": "Con reservas online, te eligen a cualquier hora, sin llamar.",
+      "voAt": 0.05,
+      "voDur": 3.077,
+      "settle": 1.48,
       "items": [
         {
           "id": "reserva/0",
-          "kind": "TextReveal",
-          "role": "eyebrow",
-          "settle": 0.58,
-          "x": 0,
-          "y": -690,
-          "size": 30,
-          "scale": 1,
-          "fontSize": 30
-        },
-        {
-          "id": "reserva/1",
           "kind": "TextReveal",
           "role": "headline",
           "settle": 0.975,
           "x": 0,
           "y": -530,
-          "size": 92,
+          "size": 100,
           "scale": 1,
-          "fontSize": 92
+          "fontSize": 100
         },
         {
-          "id": "reserva/2",
+          "id": "reserva/1",
           "kind": "UICard",
           "role": "ui",
-          "settle": 1.98,
+          "settle": 1.48,
           "x": 0,
           "y": 170,
           "size": null,
@@ -103,54 +101,23 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 9.28
-    },
-    {
-      "id": "solucion",
-      "start": 11.8,
-      "end": 16.6,
-      "dur": 4.8,
-      "settle": 2.44,
-      "items": [
-        {
-          "id": "solucion/0",
-          "kind": "TextReveal",
-          "role": "headline",
-          "settle": 0.975,
-          "x": 0,
-          "y": -540,
-          "size": 100,
-          "scale": 1,
-          "fontSize": 100
-        },
-        {
-          "id": "solucion/1",
-          "kind": "PillCascade",
-          "role": "body",
-          "settle": 2.44,
-          "x": 0,
-          "y": 150,
-          "size": 48,
-          "scale": 1,
-          "fontSize": 48
-        }
-      ],
-      "errors": [],
-      "warns": [],
-      "hero": 14.34
+      "hero": 7.896000000000001
     },
     {
       "id": "cierre",
-      "start": 16.6,
-      "end": 21,
-      "dur": 4.399999999999999,
-      "settle": 2.15,
+      "start": 10.312000000000001,
+      "end": 15.299000000000001,
+      "dur": 4.987,
+      "vo": "Soy Iván Bologna. Escribime por WhatsApp.",
+      "voAt": 0.2,
+      "voDur": 2.949,
+      "settle": 2,
       "items": [
         {
           "id": "cierre/0",
           "kind": "OutroBrand",
           "role": "hero",
-          "settle": 2.15,
+          "settle": 2,
           "x": 0,
           "y": -40,
           "size": null,
@@ -160,7 +127,7 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 18.85
+      "hero": 12.412
     }
   ],
   "fixes": {}

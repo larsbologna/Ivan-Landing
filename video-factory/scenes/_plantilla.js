@@ -4,15 +4,17 @@
    Coordenadas: x/y en px desde el centro (1080×1920). Zona segura de texto: y entre -760 y +600.
    Temas: midnight · ivory · emerald · ocean · violet · gold · aurora  (o { theme, accent, ... }) */
 
-const BRAND = "PRESENCE";
-const TAGLINE = "Gestión de presencia online · Argentina";
+const BRAND = "Iván Bologna";
+const TAGLINE = "Gestor de presencia online · Argentina";
 const CTA = "Escribime por WhatsApp";
 const COLORS = "midnight";
-const DURATION = 16;
+const DURATION = [15, 20];   // rango: el video tiene que durar entre 15 y 20 s
+const VOICE = { voice: "em_alex", speed: 1.15 };   // locución neuronal local (null = sin voz)
 
-scene("gancho", 2.4, [
+// dur null + vo: la escena dura lo que tarda la voz en decir la frase (voAt + voz + hold)
+scene("gancho", null, [
   TextReveal({ text: "Una frase\n*que frene el scroll.*", size: 120, weight: 800, y: -40, role: "hero" }),
-]);
+], { vo: "Una frase que frene el scroll.", voAt: 0.2, hold: 0.25 });
 
 scene("idea", 4.0, [
   Eyebrow({ text: "Etiqueta", y: -690 }),
@@ -25,4 +27,4 @@ scene("remate", 3.4, [
   KeywordCircle({ text: "clave", at: 0.2, size: 200, y: -110 }),
 ]);
 
-scene("cierre", null, [OutroBrand({ at: 0.15, y: -40 })]);
+scene("cierre", null, [OutroBrand({ at: 0.0, y: -40 })], { vo: "Soy Iván Bologna. Escribime por WhatsApp.", voAt: 0.2, hold: 0.9 });

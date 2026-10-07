@@ -1,0 +1,22 @@
+{
+ "gancho": {
+  "key": "0c4cc35cfe04bb55",
+  "dur": 2.423,
+  "text": "Pedir reseñas no tiene que ser incómodo."
+ },
+ "qr": {
+  "key": "1eae2645713d95e2",
+  "dur": 2.703,
+  "text": "Un QR en el mostrador, o un toque con el celular."
+ },
+ "resena": {
+  "key": "048ebf4af7bff6e8",
+  "dur": 2.554,
+  "text": "Y la reseña queda publicada, sin pedir de más."
+ },
+ "cierre": {
+  "key": "19725102704bfe4b",
+  "dur": 2.949,
+  "text": "Soy Iván Bologna. Escribime por WhatsApp."
+ }
+}

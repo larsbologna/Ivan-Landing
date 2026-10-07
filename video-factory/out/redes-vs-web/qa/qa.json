@@ -1,13 +1,16 @@
 {
   "pass": true,
   "iterations": 1,
-  "duration": 20.5,
+  "duration": 15.301,
   "scenes": [
     {
       "id": "gancho",
       "start": 0,
-      "end": 2.6,
-      "dur": 2.6,
+      "end": 2.419,
+      "dur": 2.419,
+      "vo": "Instagram no es tu web.",
+      "voAt": 0.2,
+      "voDur": 1.441,
       "settle": 0.8999999999999999,
       "items": [
         {
@@ -28,107 +31,91 @@
     },
     {
       "id": "redes",
-      "start": 2.6,
-      "end": 7.199999999999999,
-      "dur": 4.6,
-      "settle": 2.4000000000000004,
+      "start": 2.419,
+      "end": 6.656000000000001,
+      "dur": 4.237,
+      "vo": "En redes estás alquilando: el algoritmo decide quién te ve.",
+      "voAt": 0.05,
+      "voDur": 3.309,
+      "settle": 1.8,
       "items": [
         {
           "id": "redes/0",
           "kind": "TextReveal",
-          "role": "eyebrow",
-          "settle": 0.58,
+          "role": "headline",
+          "settle": 0.825,
           "x": 0,
-          "y": -690,
-          "size": 30,
+          "y": -540,
+          "size": 110,
           "scale": 1,
-          "fontSize": 30
+          "fontSize": 110
         },
         {
           "id": "redes/1",
-          "kind": "TextReveal",
-          "role": "headline",
-          "settle": 0.6749999999999999,
-          "x": 0,
-          "y": -540,
-          "size": 116,
+          "kind": "HexFeature",
+          "role": "body",
+          "settle": 1.4,
+          "x": -240,
+          "y": -20,
+          "size": 250,
           "scale": 1,
-          "fontSize": 116
+          "fontSize": 50
         },
         {
           "id": "redes/2",
           "kind": "HexFeature",
           "role": "body",
-          "settle": 1.6,
-          "x": -240,
-          "y": -40,
-          "size": 250,
-          "scale": 1,
-          "fontSize": 50
-        },
-        {
-          "id": "redes/3",
-          "kind": "HexFeature",
-          "role": "body",
-          "settle": 2,
-          "x": 240,
-          "y": -40,
-          "size": 250,
-          "scale": 1,
-          "fontSize": 50
-        },
-        {
-          "id": "redes/4",
-          "kind": "HexFeature",
-          "role": "body",
-          "settle": 2.4000000000000004,
+          "settle": 1.8,
           "x": 0,
           "y": 340,
           "size": 250,
           "scale": 1,
           "fontSize": 46
+        },
+        {
+          "id": "redes/3",
+          "kind": "HexFeature",
+          "role": "body",
+          "settle": 1.6,
+          "x": 240,
+          "y": -20,
+          "size": 250,
+          "scale": 1,
+          "fontSize": 50
         }
       ],
       "errors": [],
       "warns": [],
-      "hero": 5.1
+      "hero": 4.319
     },
     {
       "id": "web",
-      "start": 7.199999999999999,
-      "end": 11.799999999999999,
-      "dur": 4.6,
-      "settle": 1.5999999999999999,
+      "start": 6.656000000000001,
+      "end": 10.197000000000001,
+      "dur": 3.541,
+      "vo": "Tu web es tuya, y te encuentran cuando te buscan.",
+      "voAt": 0.05,
+      "voDur": 2.563,
+      "settle": 1.3,
       "items": [
         {
           "id": "web/0",
           "kind": "TextReveal",
-          "role": "eyebrow",
-          "settle": 0.58,
+          "role": "headline",
+          "settle": 0.825,
           "x": 0,
-          "y": -690,
-          "size": 30,
+          "y": -520,
+          "size": 140,
           "scale": 1,
-          "fontSize": 30
+          "fontSize": 140
         },
         {
           "id": "web/1",
-          "kind": "TextReveal",
-          "role": "headline",
-          "settle": 0.6749999999999999,
-          "x": 0,
-          "y": -540,
-          "size": 150,
-          "scale": 1,
-          "fontSize": 150
-        },
-        {
-          "id": "web/2",
           "kind": "UICard",
           "role": "ui",
-          "settle": 1.5999999999999999,
+          "settle": 1.3,
           "x": 0,
-          "y": 140,
+          "y": 180,
           "size": null,
           "scale": 1,
           "fontSize": 34
@@ -136,54 +123,23 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 8.899999999999999
-    },
-    {
-      "id": "ambas",
-      "start": 11.799999999999999,
-      "end": 16.2,
-      "dur": 4.4,
-      "settle": 2.44,
-      "items": [
-        {
-          "id": "ambas/0",
-          "kind": "TextReveal",
-          "role": "headline",
-          "settle": 0.8999999999999999,
-          "x": 0,
-          "y": -540,
-          "size": 100,
-          "scale": 1,
-          "fontSize": 100
-        },
-        {
-          "id": "ambas/1",
-          "kind": "PillCascade",
-          "role": "body",
-          "settle": 2.44,
-          "x": 0,
-          "y": 140,
-          "size": 48,
-          "scale": 1,
-          "fontSize": 48
-        }
-      ],
-      "errors": [],
-      "warns": [],
-      "hero": 14.339999999999998
+      "hero": 8.056000000000001
     },
     {
       "id": "cierre",
-      "start": 16.2,
-      "end": 20.5,
-      "dur": 4.300000000000001,
-      "settle": 2.15,
+      "start": 10.197000000000001,
+      "end": 15.301000000000002,
+      "dur": 5.104,
+      "vo": "Soy Iván Bologna. Escribime por WhatsApp.",
+      "voAt": 0.2,
+      "voDur": 2.949,
+      "settle": 2,
       "items": [
         {
           "id": "cierre/0",
           "kind": "OutroBrand",
           "role": "hero",
-          "settle": 2.15,
+          "settle": 2,
           "x": 0,
           "y": -40,
           "size": null,
@@ -193,7 +149,7 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 18.45
+      "hero": 12.297
     }
   ],
   "fixes": {}

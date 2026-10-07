@@ -8,7 +8,16 @@
   "scene": "gancho"
  },
  {
-  "t": 2.8425,
+  "t": 0.2,
+  "type": "vo",
+  "id": "gancho",
+  "gain": 1,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "gancho"
+ },
+ {
+  "t": 2.6815,
   "type": "whoosh",
   "gain": 0.55,
   "pan": 0,
@@ -16,7 +25,7 @@
   "scene": "busqueda"
  },
  {
-  "t": 3,
+  "t": 2.839,
   "type": "pop",
   "gain": 0.5,
   "pan": 0,
@@ -24,7 +33,16 @@
   "scene": "busqueda"
  },
  {
-  "t": 3.6,
+  "t": 2.889,
+  "type": "vo",
+  "id": "busqueda",
+  "gain": 1,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "busqueda"
+ },
+ {
+  "t": 3.139,
   "type": "swipe",
   "gain": 0.4,
   "pan": 0,
@@ -32,7 +50,7 @@
   "scene": "busqueda"
  },
  {
-  "t": 3.95,
+  "t": 3.489,
   "type": "typewriter",
   "gain": 0.5867479746695607,
   "pan": 0.07608692930079997,
@@ -40,7 +58,7 @@
   "scene": "busqueda"
  },
  {
-  "t": 4.0008,
+  "t": 3.5313,
   "type": "typewriter",
   "gain": 0.5481670768931508,
   "pan": -0.14946948196738957,
@@ -48,7 +66,7 @@
   "scene": "busqueda"
  },
  {
-  "t": 4.2104,
+  "t": 3.706,
   "type": "typewriter",
   "gain": 0.5331139307469129,
   "pan": -0.024609928554855286,
@@ -56,7 +74,7 @@
   "scene": "busqueda"
  },
  {
-  "t": 4.2706,
+  "t": 3.7562,
   "type": "typewriter",
   "gain": 0.5362962277606129,
   "pan": 0.06964349972549826,
@@ -64,7 +82,7 @@
   "scene": "busqueda"
  },
  {
-  "t": 4.3601,
+  "t": 3.8308,
   "type": "typewriter",
   "gain": 0.4894278802443296,
   "pan": 0.05469055620487779,
@@ -72,7 +90,7 @@
   "scene": "busqueda"
  },
  {
-  "t": 4.4286,
+  "t": 3.8879,
   "type": "typewriter",
   "gain": 0.4561715930234641,
   "pan": 0.09065418841782957,
@@ -80,7 +98,7 @@
   "scene": "busqueda"
  },
  {
-  "t": 4.4729,
+  "t": 3.9248,
   "type": "typewriter",
   "gain": 0.4645527955610305,
   "pan": 0.12510176980867982,
@@ -88,23 +106,7 @@
   "scene": "busqueda"
  },
  {
-  "t": 4.5377,
-  "type": "typewriter",
-  "gain": 0.5905330738984048,
-  "pan": 0.11014217894989997,
-  "pitch": 0.917638331791386,
-  "scene": "busqueda"
- },
- {
-  "t": 4.6138,
-  "type": "typewriter",
-  "gain": 0.562270050495863,
-  "pan": -0.07515245899558066,
-  "pitch": 1.063085160870105,
-  "scene": "busqueda"
- },
- {
-  "t": 4.7,
+  "t": 3.939,
   "type": "swipe",
   "gain": 0.45,
   "pan": 0,
@@ -112,7 +114,23 @@
   "scene": "busqueda"
  },
  {
-  "t": 7.2425,
+  "t": 3.9787,
+  "type": "typewriter",
+  "gain": 0.5905330738984048,
+  "pan": 0.11014217894989997,
+  "pitch": 0.917638331791386,
+  "scene": "busqueda"
+ },
+ {
+  "t": 4.0421,
+  "type": "typewriter",
+  "gain": 0.562270050495863,
+  "pan": -0.07515245899558066,
+  "pitch": 1.063085160870105,
+  "scene": "busqueda"
+ },
+ {
+  "t": 6.3885,
   "type": "whoosh",
   "gain": 0.55,
   "pan": 0,
@@ -120,15 +138,7 @@
   "scene": "mensaje"
  },
  {
-  "t": 7.4,
-  "type": "tick",
-  "gain": 0.35,
-  "pan": 0,
-  "pitch": 1,
-  "scene": "mensaje"
- },
- {
-  "t": 7.4,
+  "t": 6.546,
   "type": "pop",
   "gain": 0.5,
   "pan": 0,
@@ -136,7 +146,16 @@
   "scene": "mensaje"
  },
  {
-  "t": 8.4,
+  "t": 6.596,
+  "type": "vo",
+  "id": "mensaje",
+  "gain": 1,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "mensaje"
+ },
+ {
+  "t": 7.046,
   "type": "pop",
   "gain": 0.55,
   "pan": -0.25,
@@ -144,7 +163,7 @@
   "scene": "mensaje"
  },
  {
-  "t": 8.82,
+  "t": 7.366,
   "type": "pop",
   "gain": 0.55,
   "pan": 0.25,
@@ -152,7 +171,7 @@
   "scene": "mensaje"
  },
  {
-  "t": 9.24,
+  "t": 7.686,
   "type": "pop",
   "gain": 0.55,
   "pan": -0.25,
@@ -160,39 +179,7 @@
   "scene": "mensaje"
  },
  {
-  "t": 11.8425,
-  "type": "whoosh",
-  "gain": 0.55,
-  "pan": 0,
-  "pitch": 1,
-  "scene": "remate"
- },
- {
-  "t": 12.3,
-  "type": "impact",
-  "gain": 0.9,
-  "pan": 0,
-  "pitch": 1,
-  "scene": "remate"
- },
- {
-  "t": 12.85,
-  "type": "swipe",
-  "gain": 0.6,
-  "pan": 0,
-  "pitch": 1,
-  "scene": "remate"
- },
- {
-  "t": 13.5,
-  "type": "chime",
-  "gain": 0.55,
-  "pan": 0,
-  "pitch": 1,
-  "scene": "remate"
- },
- {
-  "t": 15.2425,
+  "t": 9.9755,
   "type": "whoosh",
   "gain": 0.55,
   "pan": 0,
@@ -200,7 +187,7 @@
   "scene": "cierre"
  },
  {
-  "t": 15.55,
+  "t": 10.133,
   "type": "impact",
   "gain": 0.55,
   "pan": 0,
@@ -208,7 +195,16 @@
   "scene": "cierre"
  },
  {
-  "t": 15.9,
+  "t": 10.333,
+  "type": "vo",
+  "id": "cierre",
+  "gain": 1,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "cierre"
+ },
+ {
+  "t": 10.483,
   "type": "chime",
   "gain": 0.7,
   "pan": 0,
@@ -216,7 +212,7 @@
   "scene": "cierre"
  },
  {
-  "t": 16.9,
+  "t": 11.483,
   "type": "pop",
   "gain": 0.6,
   "pan": 0,

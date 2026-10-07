@@ -1,13 +1,16 @@
 {
   "pass": true,
   "iterations": 1,
-  "duration": 25,
+  "duration": 15.151,
   "scenes": [
     {
       "id": "gancho",
       "start": 0,
-      "end": 2.4,
-      "dur": 2.4,
+      "end": 2.068,
+      "dur": 2.068,
+      "vo": "¿Tu negocio tiene reseñas?",
+      "voAt": 0.2,
+      "voDur": 1.618,
       "settle": 0.825,
       "items": [
         {
@@ -28,27 +31,30 @@
     },
     {
       "id": "ficha",
-      "start": 2.4,
-      "end": 6.800000000000001,
-      "dur": 4.4,
-      "settle": 1.8199999999999998,
+      "start": 2.068,
+      "end": 5.211,
+      "dur": 3.143,
+      "vo": "Una ficha sin reseñas parece un negocio cerrado.",
+      "voAt": 0.05,
+      "voDur": 2.743,
+      "settle": 1.52,
       "items": [
         {
           "id": "ficha/0",
           "kind": "TextReveal",
           "role": "headline",
-          "settle": 0.975,
+          "settle": 0.825,
           "x": 0,
           "y": -560,
-          "size": 92,
+          "size": 100,
           "scale": 1,
-          "fontSize": 92
+          "fontSize": 100
         },
         {
           "id": "ficha/1",
           "kind": "UICard",
           "role": "ui",
-          "settle": 1.8199999999999998,
+          "settle": 1.52,
           "x": 0,
           "y": 160,
           "size": null,
@@ -58,76 +64,34 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 4.319999999999999
-    },
-    {
-      "id": "mira",
-      "start": 6.800000000000001,
-      "end": 10.8,
-      "dur": 4,
-      "settle": 1.68,
-      "items": [
-        {
-          "id": "mira/0",
-          "kind": "TextReveal",
-          "role": "headline",
-          "settle": 1.0499999999999998,
-          "x": 0,
-          "y": -560,
-          "size": 90,
-          "scale": 1,
-          "fontSize": 90
-        },
-        {
-          "id": "mira/1",
-          "kind": "UICard",
-          "role": "ui",
-          "settle": 1.68,
-          "x": 0,
-          "y": 120,
-          "size": null,
-          "scale": 1,
-          "fontSize": 34
-        }
-      ],
-      "errors": [],
-      "warns": [],
-      "hero": 8.58
+      "hero": 3.688
     },
     {
       "id": "como",
-      "start": 10.8,
-      "end": 16,
-      "dur": 5.2,
-      "settle": 2.96,
+      "start": 5.211,
+      "end": 8.444,
+      "dur": 3.233,
+      "vo": "Te armo un sistema para pedirlas sin incomodar a nadie.",
+      "voAt": 0.05,
+      "voDur": 2.833,
+      "settle": 1.84,
       "items": [
         {
           "id": "como/0",
           "kind": "TextReveal",
-          "role": "eyebrow",
-          "settle": 0.62,
+          "role": "headline",
+          "settle": 0.75,
           "x": 0,
-          "y": -690,
-          "size": 30,
+          "y": -540,
+          "size": 104,
           "scale": 1,
-          "fontSize": 30
+          "fontSize": 104
         },
         {
           "id": "como/1",
-          "kind": "TextReveal",
-          "role": "headline",
-          "settle": 0.825,
-          "x": 0,
-          "y": -530,
-          "size": 100,
-          "scale": 1,
-          "fontSize": 100
-        },
-        {
-          "id": "como/2",
           "kind": "PillCascade",
           "role": "body",
-          "settle": 2.96,
+          "settle": 1.84,
           "x": 0,
           "y": 160,
           "size": 48,
@@ -137,14 +101,17 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 13.860000000000001
+      "hero": 7.151
     },
     {
       "id": "remate",
-      "start": 16,
-      "end": 19.6,
-      "dur": 3.6,
-      "settle": 1.6500000000000001,
+      "start": 8.444,
+      "end": 11.102,
+      "dur": 2.658,
+      "vo": "Cada reseña real es confianza.",
+      "voAt": 0.05,
+      "voDur": 2.008,
+      "settle": 1.75,
       "items": [
         {
           "id": "remate/0",
@@ -161,7 +128,7 @@
           "id": "remate/1",
           "kind": "KeywordCircle",
           "role": "hero",
-          "settle": 1.6500000000000001,
+          "settle": 1.75,
           "x": 0,
           "y": -110,
           "size": 170,
@@ -171,20 +138,23 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 17.75
+      "hero": 10.294
     },
     {
       "id": "cierre",
-      "start": 19.6,
-      "end": 25,
-      "dur": 5.399999999999999,
-      "settle": 2.15,
+      "start": 11.102,
+      "end": 15.151,
+      "dur": 4.049,
+      "vo": "Soy Iván Bologna. Escribime por WhatsApp.",
+      "voAt": 0.2,
+      "voDur": 2.949,
+      "settle": 2,
       "items": [
         {
           "id": "cierre/0",
           "kind": "OutroBrand",
           "role": "hero",
-          "settle": 2.15,
+          "settle": 2,
           "x": 0,
           "y": -40,
           "size": null,
@@ -194,7 +164,7 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 21.85
+      "hero": 13.202
     }
   ],
   "fixes": {}

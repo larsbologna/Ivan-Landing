@@ -1,0 +1,27 @@
+{
+ "gancho": {
+  "key": "d4187a081a3dd947",
+  "dur": 2.067,
+  "text": "Tu ficha de Google está abandonada."
+ },
+ "ficha": {
+  "key": "15cd2fd8e717f358",
+  "dur": 2.377,
+  "text": "Horarios viejos, sin fotos, sin respuestas."
+ },
+ "duda": {
+  "key": "0c82e2ba2eac3e97",
+  "dur": 2.053,
+  "text": "Y el cliente duda, y se va con otro."
+ },
+ "solucion": {
+  "key": "f494fd030955c2c3",
+  "dur": 2.532,
+  "text": "Yo la dejo completa y al día, todos los meses."
+ },
+ "cierre": {
+  "key": "19725102704bfe4b",
+  "dur": 2.949,
+  "text": "Soy Iván Bologna. Escribime por WhatsApp."
+ }
+}

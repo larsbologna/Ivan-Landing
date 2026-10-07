@@ -1,6 +1,6 @@
 # QA · negocios-invisibles
 
-Estado: **APROBADO** · iteraciones: 1 · duración 20.50 s · 5 escenas
+Estado: **APROBADO** · iteraciones: 1 · duración 15.30 s · 4 escenas
 
 ![Revisión](contact.jpg)
 
@@ -8,11 +8,10 @@ Con zona segura y cajas de layout: `contact-overlay.jpg` (capturas individuales 
 
 | # | Escena | Inicio | Dur. | Reposo | Errores | Advertencias |
 |---|---|---|---|---|---|---|
-| 1 | gancho | 0.00 | 3.00 | 0.97 | — | — |
-| 2 | busqueda | 3.00 | 4.60 | 6.47 | — | — |
-| 3 | existir | 7.60 | 3.40 | 8.72 | — | — |
-| 4 | solucion | 11.00 | 5.00 | 13.96 | — | — |
-| 5 | cierre | 16.00 | 4.50 | 18.15 | — | — |
+| 1 | gancho | 0.00 | 3.30 | 0.97 | — | — |
+| 2 | busqueda | 3.30 | 3.88 | 5.87 | — | — |
+| 3 | solucion | 7.17 | 3.18 | 9.02 | — | — |
+| 4 | cierre | 10.36 | 4.94 | 12.36 | — | — |
 
 ## Correcciones automáticas aplicadas
 

@@ -1,13 +1,16 @@
 {
   "pass": true,
   "iterations": 1,
-  "duration": 25,
+  "duration": 15.301,
   "scenes": [
     {
       "id": "gancho",
       "start": 0,
-      "end": 2.6,
-      "dur": 2.6,
+      "end": 2.573,
+      "dur": 2.573,
+      "vo": "Tu ficha de Google está abandonada.",
+      "voAt": 0.2,
+      "voDur": 2.067,
       "settle": 0.975,
       "items": [
         {
@@ -28,38 +31,30 @@
     },
     {
       "id": "ficha",
-      "start": 2.6,
-      "end": 6.800000000000001,
-      "dur": 4.2,
-      "settle": 1.92,
+      "start": 2.573,
+      "end": 5.406000000000001,
+      "dur": 2.833,
+      "vo": "Horarios viejos, sin fotos, sin respuestas.",
+      "voAt": 0.05,
+      "voDur": 2.377,
+      "settle": 1.42,
       "items": [
         {
           "id": "ficha/0",
           "kind": "TextReveal",
-          "role": "eyebrow",
-          "settle": 0.7,
-          "x": 0,
-          "y": -708,
-          "size": 30,
-          "scale": 1,
-          "fontSize": 30
-        },
-        {
-          "id": "ficha/1",
-          "kind": "TextReveal",
           "role": "headline",
           "settle": 0.975,
           "x": 0,
-          "y": -512,
+          "y": -540,
           "size": 96,
           "scale": 1,
           "fontSize": 96
         },
         {
-          "id": "ficha/2",
+          "id": "ficha/1",
           "kind": "UICard",
           "role": "ui",
-          "settle": 1.92,
+          "settle": 1.42,
           "x": 0,
           "y": 170,
           "size": null,
@@ -69,17 +64,20 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 4.619999999999999
+      "hero": 4.093
     },
     {
-      "id": "errores",
-      "start": 6.800000000000001,
-      "end": 11.600000000000001,
-      "dur": 4.8,
-      "settle": 2.4000000000000004,
+      "id": "duda",
+      "start": 5.406000000000001,
+      "end": 8.065000000000001,
+      "dur": 2.659,
+      "vo": "Y el cliente duda, y se va con otro.",
+      "voAt": 0.05,
+      "voDur": 2.053,
+      "settle": 2.2,
       "items": [
         {
-          "id": "errores/0",
+          "id": "duda/0",
           "kind": "TextReveal",
           "role": "headline",
           "settle": 0.825,
@@ -90,10 +88,10 @@
           "fontSize": 110
         },
         {
-          "id": "errores/1",
+          "id": "duda/1",
           "kind": "HexFeature",
           "role": "body",
-          "settle": 1.6,
+          "settle": 1.4,
           "x": -240,
           "y": -60,
           "size": 250,
@@ -101,10 +99,10 @@
           "fontSize": 44
         },
         {
-          "id": "errores/2",
+          "id": "duda/2",
           "kind": "HexFeature",
           "role": "body",
-          "settle": 2,
+          "settle": 1.8,
           "x": 240,
           "y": -60,
           "size": 250,
@@ -112,10 +110,10 @@
           "fontSize": 44
         },
         {
-          "id": "errores/3",
+          "id": "duda/3",
           "kind": "HexFeature",
           "role": "body",
-          "settle": 2.4000000000000004,
+          "settle": 2.2,
           "x": 0,
           "y": 330,
           "size": 250,
@@ -125,88 +123,66 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 9.3
-    },
-    {
-      "id": "vidriera",
-      "start": 11.600000000000001,
-      "end": 14.8,
-      "dur": 3.2,
-      "settle": 1.9499999999999997,
-      "items": [
-        {
-          "id": "vidriera/0",
-          "kind": "TextReveal",
-          "role": "headline",
-          "settle": 1.9499999999999997,
-          "x": 0,
-          "y": -60,
-          "size": 110,
-          "scale": 1,
-          "fontSize": 110
-        }
-      ],
-      "errors": [],
-      "warns": [],
-      "hero": 13.65
+      "hero": 7.706
     },
     {
       "id": "solucion",
-      "start": 14.8,
-      "end": 19.8,
-      "dur": 5,
-      "settle": 2.96,
+      "start": 8.065000000000001,
+      "end": 11.103000000000002,
+      "dur": 3.038,
+      "vo": "Yo la dejo completa y al día, todos los meses.",
+      "voAt": 0.05,
+      "voDur": 2.532,
+      "settle": 1.75,
       "items": [
         {
           "id": "solucion/0",
           "kind": "TextReveal",
-          "role": "eyebrow",
-          "settle": 0.66,
+          "role": "headline",
+          "settle": 0.825,
           "x": 0,
-          "y": -690,
-          "size": 30,
+          "y": -560,
+          "size": 110,
           "scale": 1,
-          "fontSize": 30
+          "fontSize": 110
         },
         {
           "id": "solucion/1",
-          "kind": "TextReveal",
-          "role": "headline",
-          "settle": 0.8999999999999999,
-          "x": 0,
-          "y": -530,
-          "size": 100,
-          "scale": 1,
-          "fontSize": 100
-        },
-        {
-          "id": "solucion/2",
           "kind": "PillCascade",
           "role": "body",
-          "settle": 2.96,
+          "settle": 1.75,
           "x": 0,
-          "y": 170,
+          "y": 150,
           "size": 48,
           "scale": 1,
           "fontSize": 48
         }
       ],
       "errors": [],
-      "warns": [],
-      "hero": 17.860000000000003
+      "warns": [
+        {
+          "type": "zona-vacia",
+          "px": 454,
+          "t": 9.915
+        }
+      ],
+      "hero": 9.915000000000001
     },
     {
       "id": "cierre",
-      "start": 19.8,
-      "end": 25,
-      "dur": 5.199999999999999,
-      "settle": 2.15,
+      "start": 11.103000000000002,
+      "end": 15.301000000000002,
+      "dur": 4.198,
+      "vo": "Soy Iván Bologna. Escribime por WhatsApp.",
+      "voAt": 0.2,
+      "voDur": 2.949,
+      "settle": 2,
       "items": [
         {
           "id": "cierre/0",
           "kind": "OutroBrand",
           "role": "hero",
-          "settle": 2.15,
+          "settle": 2,
           "x": 0,
           "y": -40,
           "size": null,
@@ -216,25 +192,8 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 22.05
+      "hero": 13.203000000000001
     }
   ],
-  "fixes": {
-    "ficha/0": {
-      "opts": {
-        "y": -708
-      },
-      "reason": [
-        "superposicion"
-      ]
-    },
-    "ficha/1": {
-      "opts": {
-        "y": -512
-      },
-      "reason": [
-        "superposicion"
-      ]
-    }
-  }
+  "fixes": {}
 }

@@ -8,7 +8,7 @@
   "use strict";
 
   const THEMES = {
-    // Negro azulado + menta. Default de PRESENCE.
+    // Negro azulado + menta. Tema por defecto.
     midnight: { mode: "dark", bg0: "#04060B", bg1: "#0A1020", ink: "#F3F6FB", muted: "#8E97AB", accent: "#5CF2B0", accent2: "#7C8CFF", warn: "#FF6B6B" },
     // Blanco cálido + azul tinta. Para versiones claras.
     ivory: { mode: "light", bg0: "#F6F4EF", bg1: "#E9E6DE", ink: "#0E1015", muted: "#5D6270", accent: "#1F5BFF", accent2: "#0FAF7A", warn: "#E5484D" },

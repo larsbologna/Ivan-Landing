@@ -1,6 +1,6 @@
 # QA · errores-google-business
 
-Estado: **APROBADO** · iteraciones: 1 · duración 21.00 s · 5 escenas
+Estado: **APROBADO** · iteraciones: 1 · duración 15.30 s · 4 escenas
 
 ![Revisión](contact.jpg)
 
@@ -8,11 +8,10 @@ Con zona segura y cajas de layout: `contact-overlay.jpg` (capturas individuales 
 
 | # | Escena | Inicio | Dur. | Reposo | Errores | Advertencias |
 |---|---|---|---|---|---|---|
-| 1 | gancho | 0.00 | 2.80 | 0.97 | — | — |
-| 2 | lista | 2.80 | 6.40 | 6.70 | — | — |
-| 3 | remate | 9.20 | 3.40 | 10.85 | — | — |
-| 4 | ficha | 12.60 | 4.00 | 14.22 | — | — |
-| 5 | cierre | 16.60 | 4.40 | 18.75 | — | — |
+| 1 | gancho | 0.00 | 3.35 | 0.90 | — | — |
+| 2 | lista | 3.35 | 4.45 | 5.95 | — | — |
+| 3 | remate | 7.80 | 2.79 | 9.36 | — | — |
+| 4 | cierre | 10.60 | 4.70 | 12.60 | — | — |
 
 ## Correcciones automáticas aplicadas
 

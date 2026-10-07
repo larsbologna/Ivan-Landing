@@ -1,13 +1,16 @@
 {
   "pass": true,
   "iterations": 1,
-  "duration": 22,
+  "duration": 15.299,
   "scenes": [
     {
       "id": "gancho",
       "start": 0,
-      "end": 2.8,
-      "dur": 2.8,
+      "end": 3.297,
+      "dur": 3.297,
+      "vo": "Pedir reseñas no tiene que ser incómodo.",
+      "voAt": 0.2,
+      "voDur": 2.423,
       "settle": 1.0499999999999998,
       "items": [
         {
@@ -28,78 +31,61 @@
     },
     {
       "id": "qr",
-      "start": 2.8,
-      "end": 6.4,
-      "dur": 3.6,
-      "settle": 1.4,
+      "start": 3.297,
+      "end": 6.8740000000000006,
+      "dur": 3.577,
+      "vo": "Un QR en el mostrador, o un toque con el celular.",
+      "voAt": 0.05,
+      "voDur": 2.703,
+      "settle": 1.5499999999999998,
       "items": [
         {
           "id": "qr/0",
           "kind": "Glyph",
           "role": "deco",
-          "settle": 0.7,
-          "x": 0,
+          "settle": 0.6,
+          "x": -200,
           "y": -260,
-          "size": 340,
+          "size": 300,
           "scale": 1,
           "fontSize": null
         },
         {
           "id": "qr/1",
-          "kind": "TextReveal",
-          "role": "headline",
-          "settle": 1.4,
-          "x": 0,
-          "y": 160,
-          "size": 96,
-          "scale": 1,
-          "fontSize": 96
-        }
-      ],
-      "errors": [],
-      "warns": [],
-      "hero": 4.299999999999999
-    },
-    {
-      "id": "nfc",
-      "start": 6.4,
-      "end": 10,
-      "dur": 3.6,
-      "settle": 1.475,
-      "items": [
-        {
-          "id": "nfc/0",
           "kind": "Glyph",
           "role": "deco",
-          "settle": 0.7,
-          "x": 0,
+          "settle": 1.5,
+          "x": 200,
           "y": -260,
-          "size": 340,
+          "size": 300,
           "scale": 1,
           "fontSize": null
         },
         {
-          "id": "nfc/1",
+          "id": "qr/2",
           "kind": "TextReveal",
           "role": "headline",
-          "settle": 1.475,
+          "settle": 1.5499999999999998,
           "x": 0,
           "y": 160,
-          "size": 96,
+          "size": 84,
           "scale": 1,
-          "fontSize": 96
+          "fontSize": 84
         }
       ],
       "errors": [],
       "warns": [],
-      "hero": 7.975
+      "hero": 4.946999999999999
     },
     {
       "id": "resena",
-      "start": 10,
-      "end": 14,
-      "dur": 4,
-      "settle": 1.5799999999999998,
+      "start": 6.8740000000000006,
+      "end": 10.402000000000001,
+      "dur": 3.528,
+      "vo": "Y la reseña queda publicada, sin pedir de más.",
+      "voAt": 0.05,
+      "voDur": 2.554,
+      "settle": 1.18,
       "items": [
         {
           "id": "resena/0",
@@ -116,7 +102,7 @@
           "id": "resena/1",
           "kind": "UICard",
           "role": "ui",
-          "settle": 1.5799999999999998,
+          "settle": 1.18,
           "x": 0,
           "y": 120,
           "size": null,
@@ -126,43 +112,23 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 11.68
-    },
-    {
-      "id": "remate",
-      "start": 14,
-      "end": 17.4,
-      "dur": 3.4,
-      "settle": 1.0499999999999998,
-      "items": [
-        {
-          "id": "remate/0",
-          "kind": "TextReveal",
-          "role": "headline",
-          "settle": 1.0499999999999998,
-          "x": 0,
-          "y": -60,
-          "size": 100,
-          "scale": 1,
-          "fontSize": 100
-        }
-      ],
-      "errors": [],
-      "warns": [],
-      "hero": 15.15
+      "hero": 8.154
     },
     {
       "id": "cierre",
-      "start": 17.4,
-      "end": 22,
-      "dur": 4.600000000000001,
-      "settle": 2.15,
+      "start": 10.402000000000001,
+      "end": 15.299000000000001,
+      "dur": 4.897,
+      "vo": "Soy Iván Bologna. Escribime por WhatsApp.",
+      "voAt": 0.2,
+      "voDur": 2.949,
+      "settle": 2,
       "items": [
         {
           "id": "cierre/0",
           "kind": "OutroBrand",
           "role": "hero",
-          "settle": 2.15,
+          "settle": 2,
           "x": 0,
           "y": -40,
           "size": null,
@@ -172,7 +138,7 @@
       ],
       "errors": [],
       "warns": [],
-      "hero": 19.65
+      "hero": 12.502
     }
   ],
   "fixes": {}

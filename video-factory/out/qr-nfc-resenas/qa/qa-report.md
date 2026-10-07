@@ -1,6 +1,6 @@
 # QA · qr-nfc-resenas
 
-Estado: **APROBADO** · iteraciones: 1 · duración 22.00 s · 6 escenas
+Estado: **APROBADO** · iteraciones: 1 · duración 15.30 s · 4 escenas
 
 ![Revisión](contact.jpg)
 
@@ -8,12 +8,10 @@ Con zona segura y cajas de layout: `contact-overlay.jpg` (capturas individuales 
 
 | # | Escena | Inicio | Dur. | Reposo | Errores | Advertencias |
 |---|---|---|---|---|---|---|
-| 1 | gancho | 0.00 | 2.80 | 1.05 | — | — |
-| 2 | qr | 2.80 | 3.60 | 4.20 | — | — |
-| 3 | nfc | 6.40 | 3.60 | 7.88 | — | — |
-| 4 | resena | 10.00 | 4.00 | 11.58 | — | — |
-| 5 | remate | 14.00 | 3.40 | 15.05 | — | — |
-| 6 | cierre | 17.40 | 4.60 | 19.55 | — | — |
+| 1 | gancho | 0.00 | 3.30 | 1.05 | — | — |
+| 2 | qr | 3.30 | 3.58 | 4.85 | — | — |
+| 3 | resena | 6.87 | 3.53 | 8.05 | — | — |
+| 4 | cierre | 10.40 | 4.90 | 12.40 | — | — |
 
 ## Correcciones automáticas aplicadas
 

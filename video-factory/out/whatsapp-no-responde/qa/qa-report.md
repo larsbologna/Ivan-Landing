@@ -1,6 +1,6 @@
 # QA · whatsapp-no-responde
 
-Estado: **APROBADO** · iteraciones: 1 · duración 24.50 s · 6 escenas
+Estado: **APROBADO** · iteraciones: 1 · duración 15.30 s · 4 escenas
 
 ![Revisión](contact.jpg)
 
@@ -8,17 +8,14 @@ Con zona segura y cajas de layout: `contact-overlay.jpg` (capturas individuales 
 
 | # | Escena | Inicio | Dur. | Reposo | Errores | Advertencias |
 |---|---|---|---|---|---|---|
-| 1 | gancho | 0.00 | 2.60 | 0.90 | — | — |
-| 2 | chat | 2.60 | 4.40 | 5.48 | — | — |
-| 3 | horas | 7.00 | 4.60 | 11.20 | — | — |
-| 4 | otro | 11.60 | 3.20 | 12.65 | — | — |
-| 5 | solucion | 14.80 | 5.20 | 17.76 | — | — |
-| 6 | cierre | 20.00 | 4.50 | 22.15 | — | — |
+| 1 | gancho | 0.00 | 3.46 | 0.90 | — | — |
+| 2 | chat | 3.46 | 3.82 | 5.71 | — | — |
+| 3 | solucion | 7.28 | 3.67 | 9.12 | — | — |
+| 4 | cierre | 10.95 | 4.35 | 12.95 | — | — |
 
 ## Correcciones automáticas aplicadas
 
-- `solucion/0` → {"y":-711} (superposicion)
-- `solucion/1` → {"y":-509} (superposicion)
+Ninguna: el layout pasó a la primera.
 
 ## Reglas
 

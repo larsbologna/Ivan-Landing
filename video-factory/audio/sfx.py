@@ -7,10 +7,12 @@ Uso:
   python3 audio/sfx.py cues.json audio.wav --duration 38 [--music pad|pulse|none] [--seed 1]
 
 Efectos: whoosh, pop, tick, ding, impact, swipe, chime, typewriter.
+Locución: cues "vo" → <vo-dir>/<id>.wav (ver audio/voice.py), con ducking de música y efectos.
 Cadena final: paneo leve → reverb corto → cama musical → limitador tanh → normalización → fade final.
 """
 import argparse
 import json
+import os
 
 import numpy as np
 from scipy import signal
@@ -238,7 +240,7 @@ def loudness(x):
     return -0.691 + 10 * np.log10(np.mean(g) + 1e-12)
 
 
-def render(cues, duration, music="pad", seed=1, target_lufs=-14.0):
+def render(cues, duration, music="pad", seed=1, target_lufs=-14.0, vo_dir=None):
     rng = np.random.default_rng(seed)
     n = int((duration + 0.05) * SR)
     dry = np.zeros((n, 2))
@@ -278,14 +280,44 @@ def render(cues, duration, music="pad", seed=1, target_lufs=-14.0):
     # reverb corto (envío ~18 %)
     ir = reverb_ir(rng)
     wet = np.stack([signal.fftconvolve(dry[:, ch], ir[:, ch])[:n] for ch in range(2)], axis=1)
-    mix = dry + wet * 0.18
+    sfx = dry + wet * 0.18
+
+    # bus de locución: cada cue "vo" coloca <vo_dir>/<id>.wav (48 kHz mono) en el centro
+    vo = np.zeros(n)
+    for c in cues:
+        if c["type"] != "vo" or not vo_dir:
+            continue
+        f = os.path.join(vo_dir, f"{c['id']}.wav")
+        if not os.path.exists(f):
+            continue
+        sr, x = wavfile.read(f)
+        x = x.astype(np.float64) / 32768.0
+        if x.ndim > 1:
+            x = x.mean(axis=1)
+        if sr != SR:
+            x = signal.resample_poly(x, SR, sr)
+        i0 = int(c["t"] * SR)
+        i1 = min(n, i0 + len(x))
+        if i1 > i0:
+            vo[i0:i1] += x[: i1 - i0]
+    has_vo = np.any(vo)
+    # envolvente de la voz (para ducking): rápida al subir, lenta al bajar
+    vo_env = np.clip(lp(np.abs(vo), 6) / (np.max(lp(np.abs(vo), 6)) + 1e-9) * 2.5, 0, 1) if has_vo else np.zeros(n)
+    if has_vo:
+        vo_room = signal.fftconvolve(vo, ir[:, 0])[:n] * 0.05  # sala mínima: la voz queda adelante
+        vo_st = np.stack([vo + vo_room, vo + vo_room], axis=1) * 1.6
+        sfx = sfx * 0.6 * (1 - 0.45 * vo_env)[:, None]  # los efectos acompañan, no tapan
+        mix = sfx + vo_st
+    else:
+        mix = sfx
 
     if music != "none":
         bed = pad_bed(duration + 0.05, rng, style=music)[:n]
-        bed = bed / (np.max(np.abs(bed)) + 1e-9) * 0.16
-        # ducking suave: la cama baja cuando suenan efectos
+        bed = bed / (np.max(np.abs(bed)) + 1e-9) * (0.13 if has_vo else 0.16)
+        # ducking: la cama baja con los efectos y bastante más con la voz
         envf = lp(np.abs(dry).sum(axis=1), 8)
         duck = 1 - 0.45 * np.clip(envf / (np.max(envf) + 1e-9) * 3, 0, 1)
+        duck *= 1 - 0.6 * vo_env
         mix += bed * duck[:, None]
 
     # normalización de loudness (≈ -14 LUFS, estándar de redes) + limitador tanh
@@ -311,10 +343,11 @@ def main():
     ap.add_argument("--duration", type=float, required=True)
     ap.add_argument("--music", default="pad", choices=["pad", "pulse", "none"])
     ap.add_argument("--seed", type=int, default=1)
+    ap.add_argument("--vo-dir", default=None)
     a = ap.parse_args()
     with open(a.cues) as f:
         cues = json.load(f)
-    mix = render(cues, a.duration, a.music, a.seed)
+    mix = render(cues, a.duration, a.music, a.seed, vo_dir=a.vo_dir)
     wavfile.write(a.out, SR, (mix * 32767).astype(np.int16))
     print(f"audio: {a.out} · {a.duration:.2f} s · {len(cues)} cues · música={a.music}")
 

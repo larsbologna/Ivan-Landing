@@ -1,0 +1,22 @@
+{
+ "gancho": {
+  "key": "0624d13e9cdcac82",
+  "dur": 1.753,
+  "text": "¿Cuántas reservas se te escapan?"
+ },
+ "chat": {
+  "key": "ccb4a13fb9f14018",
+  "dur": 2.625,
+  "text": "Cada mensaje sin responder es un turno vacío."
+ },
+ "reserva": {
+  "key": "5bb34954245604b2",
+  "dur": 3.077,
+  "text": "Con reservas online, te eligen a cualquier hora, sin llamar."
+ },
+ "cierre": {
+  "key": "19725102704bfe4b",
+  "dur": 2.949,
+  "text": "Soy Iván Bologna. Escribime por WhatsApp."
+ }
+}

@@ -1,5 +1,5 @@
 /* =========================================================================
-   PRESENCE · Video Factory — engine.js
+   Iván Bologna · Video Factory — engine.js
    Motor determinista: todo el estado visual es función pura de t.
    - Sin requestAnimationFrame, sin timers, sin transiciones CSS.
    - window.__seek(t)   → dibuja el frame del segundo t
@@ -70,22 +70,46 @@
 
   function build() {
     const meta = {
-      brand: readGlobal("BRAND", "PRESENCE"),
+      brand: readGlobal("BRAND", "Iván Bologna"),
       tagline: readGlobal("TAGLINE", ""),
       cta: readGlobal("CTA", ""),
       colors: readGlobal("COLORS", "midnight"),
       duration: readGlobal("DURATION", null),
       fps: readGlobal("FPS", 30),
       music: readGlobal("MUSIC", "pad"),
+      voice: readGlobal("VOICE", null),
     };
     state.meta = meta;
     window.Themes.apply(meta.colors);
 
     // Duraciones: escenas sin dur reparten el resto de DURATION.
+    // Locución: window.__VO__ = { escena: segundos } (lo inyecta snap/render tras sintetizar la voz).
+    // Una escena con vo y dur null dura lo que su frase: voAt + voz + hold.
+    const VO = window.__VO__ || {};
+    scenes.forEach((s) => {
+      s.voAt = s.opts.voAt ?? 0.12;
+      s.voDur = s.opts.vo && VO[s.id] ? VO[s.id] : 0;
+      if (!s.dur && s.voDur) s.dur = +(s.voAt + s.voDur + (s.opts.hold ?? 0.25)).toFixed(3);
+    });
+    // DURATION: número exacto (las escenas sin dur reparten el resto) o rango [mín, máx].
+    const exact = typeof meta.duration === "number" ? meta.duration : null;
     const fixed = scenes.reduce((s, sc) => s + (sc.dur || 0), 0);
     const free = scenes.filter((s) => !s.dur).length;
-    const rest = meta.duration ? Math.max(0, meta.duration - fixed) : 0;
-    scenes.forEach((s) => { if (!s.dur) s.dur = free ? Math.max(1.5, rest / free) : 2; });
+    const rest = exact ? Math.max(0, exact - fixed) : 0;
+    scenes.forEach((s) => { if (!s.dur) s.dur = exact && free ? Math.max(1.5, rest / free) : 2.5; });
+    // Rango [mín, máx]: si el video queda corto, se estiran las pausas (40 % al cierre, el resto parejo).
+    if (Array.isArray(meta.duration) && scenes.length) {
+      const total = scenes.reduce((a, sc) => a + sc.dur, 0);
+      const target = meta.duration[0] + 0.3;
+      if (total < meta.duration[0]) {
+        const deficit = target - total;
+        const last = scenes[scenes.length - 1];
+        const others = scenes.length > 1 ? scenes.slice(0, -1) : [];
+        last.dur += others.length ? deficit * 0.4 : deficit;
+        others.forEach((sc) => (sc.dur += (deficit * 0.6) / others.length));
+        scenes.forEach((sc) => (sc.dur = +sc.dur.toFixed(3)));
+      }
+    }
 
     const stage = root();
     const bg = window.Background.create(stage, meta);
@@ -119,10 +143,11 @@
         entry.nodes.push(node);
       });
       if (i > 0) ctx.cue(-tr.dur * 0.35, tr.sound, { gain: 0.55, pan: 0 });
+      if (sc.voDur) state.cues.push({ t: +(t0 + sc.voAt).toFixed(4), type: "vo", id: sc.id, gain: 1, pan: 0, pitch: 1, scene: sc.id });
       state.timeline.push(entry);
       t0 += sc.dur;
     });
-    state.duration = meta.duration && Math.abs(meta.duration - t0) < 0.05 ? meta.duration : t0;
+    state.duration = exact && Math.abs(exact - t0) < 0.05 ? exact : +t0.toFixed(3);
     state.cues.sort((a, b) => a.t - b.t);
     state.built = true;
   }
@@ -225,7 +250,7 @@
     return {
       duration: state.duration, fps: state.meta.fps, meta: state.meta, safe: SAFE, width: W, height: H,
       scenes: state.timeline.map((e) => ({
-        id: e.id, start: e.start, end: e.end, dur: e.dur,
+        id: e.id, start: e.start, end: e.end, dur: e.dur, vo: e.opts.vo || null, voAt: e.voAt, voDur: e.voDur,
         settle: Math.max(0, ...e.nodes.map((n) => n.settle ?? 0)),
         items: e.nodes.map((n) => ({
           id: n.id, kind: n.kind, role: n.role, settle: n.settle, exit: n.exit,

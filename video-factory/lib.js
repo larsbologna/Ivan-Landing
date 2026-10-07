@@ -35,9 +35,9 @@ export function readFixes(name) {
 }
 
 /* Abre la escena en una página 1080×1920 con los fixes inyectados. */
-export async function openScene(browser, name, fixes = {}) {
+export async function openScene(browser, name, fixes = {}, vo = readVoice(name)) {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
-  await page.addInitScript((f) => { window.__FIXES__ = f; }, fixes);
+  await page.addInitScript(([f, v]) => { window.__FIXES__ = f; window.__VO__ = v; }, [fixes, vo]);
   const url = pathToFileURL(path.join(ROOT, "engine", "index.html")).href + "?scene=" + encodeURIComponent(name);
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
@@ -73,4 +73,31 @@ export function parseArgs(argv) {
     } else a._.push(s);
   }
   return a;
+}
+
+/* ---------- Locución ---------- */
+export function voiceDir(name) { return path.join(OUT, name, "vo"); }
+export function readVoice(name) {
+  try { return JSON.parse(fs.readFileSync(path.join(voiceDir(name), "voice.json"), "utf8")); } catch { return {}; }
+}
+
+/* Lee las frases (opts.vo) de la escena, sintetiza las que cambiaron y devuelve { escena: segundos }.
+   Si la escena no declara VOICE o no tiene frases, devuelve {}. */
+export async function prepareVoice(browser, name, log = console.log) {
+  const page = await openScene(browser, name, {}, {});
+  const info = await page.evaluate(() => __info());
+  await page.close();
+  const voice = info.meta.voice;
+  const lines = info.scenes.filter((s) => s.vo).map((s) => ({ id: s.id, text: s.vo }));
+  if (!voice || !lines.length) return {};
+  const dir = voiceDir(name);
+  fs.mkdirSync(dir, { recursive: true });
+  const lf = path.join(dir, "lines.json");
+  fs.writeFileSync(lf, JSON.stringify(lines, null, 1));
+  const v = typeof voice === "object" ? voice : { voice };
+  await run("python3", ["-I", path.join(ROOT, "audio", "voice.py"), lf, dir,
+    "--voice", String(v.voice || "em_alex"), "--speed", String(v.speed || 1.08), "--models", path.join(ROOT, "models")]);
+  const vo = readVoice(name);
+  log(`  locución: ${lines.length} frases · ${Object.values(vo).reduce((a, b) => a + b, 0).toFixed(2)} s de voz`);
+  return vo;
 }

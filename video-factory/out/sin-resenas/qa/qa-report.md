@@ -1,6 +1,6 @@
 # QA · sin-resenas
 
-Estado: **APROBADO** · iteraciones: 1 · duración 25.00 s · 6 escenas
+Estado: **APROBADO** · iteraciones: 1 · duración 15.15 s · 5 escenas
 
 ![Revisión](contact.jpg)
 
@@ -8,12 +8,11 @@ Con zona segura y cajas de layout: `contact-overlay.jpg` (capturas individuales 
 
 | # | Escena | Inicio | Dur. | Reposo | Errores | Advertencias |
 |---|---|---|---|---|---|---|
-| 1 | gancho | 0.00 | 2.40 | 0.82 | — | — |
-| 2 | ficha | 2.40 | 4.40 | 4.22 | — | — |
-| 3 | mira | 6.80 | 4.00 | 8.48 | — | — |
-| 4 | como | 10.80 | 5.20 | 13.76 | — | — |
-| 5 | remate | 16.00 | 3.60 | 17.65 | — | — |
-| 6 | cierre | 19.60 | 5.40 | 21.75 | — | — |
+| 1 | gancho | 0.00 | 2.07 | 0.82 | — | — |
+| 2 | ficha | 2.07 | 3.14 | 3.59 | — | — |
+| 3 | como | 5.21 | 3.23 | 7.05 | — | — |
+| 4 | remate | 8.44 | 2.66 | 10.19 | — | — |
+| 5 | cierre | 11.10 | 4.05 | 13.10 | — | — |
 
 ## Correcciones automáticas aplicadas
 

@@ -575,19 +575,27 @@
      OutroBrand — cierre de marca
      ======================================================================= */
   const OutroBrand = component("OutroBrand", {
-    at: 0, brand: null, tagline: null, cta: null, note: "", role: "hero", brandSize: 132,
+    at: 0, brand: null, tagline: null, cta: null, note: "", role: "hero", brandSize: 132, tracking: null, monogram: null, maxWidth: 900,
   }, function (ctx, o) {
     const brand = o.brand || ctx.meta.brand, tagline = o.tagline || ctx.meta.tagline, cta = o.cta || ctx.meta.cta;
+    const isUpper = brand === brand.toUpperCase();
+    // tracking final: amplio para marcas en mayúsculas, neutro para nombres propios
+    const trkEnd = o.tracking ?? (isUpper ? 0.16 : -0.01);
+    // monograma: iniciales si la marca tiene 2+ palabras (p. ej. "Iván Bologna" → IB)
+    const words = brand.trim().split(/\s+/);
+    const mono = o.monogram ?? (words.length > 1 ? words.slice(0, 2).map((w) => w[0]).join("").toUpperCase() : null);
     const el = layer(ctx, o, "outro-layer");
     el.innerHTML = `
       <div class="ob-mark">
         <svg viewBox="-100 -100 200 200" width="200" height="200">
           <defs><linearGradient id="obg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent2)"/></linearGradient></defs>
           <rect x="-86" y="-86" width="172" height="172" rx="46" class="ob-sq"/>
+          ${mono ? `<text class="ob-mono" text-anchor="middle" dominant-baseline="central" y="4" fill="url(#obg)">${mono}</text>
+          <path d="M -70 -104 A 124 124 0 0 1 70 -104" class="ob-arc a2" pathLength="1"/>` : `
           <circle r="16" fill="url(#obg)" class="ob-dot"/>
           <path d="M -34 -34 A 48 48 0 0 1 34 -34" class="ob-arc a1" pathLength="1"/>
           <path d="M -54 -54 A 76 76 0 0 1 54 -54" class="ob-arc a2" pathLength="1" transform="translate(0 8)"/>
-          <path d="M -34 34 A 48 48 0 0 0 34 34" class="ob-arc a3" pathLength="1"/>
+          <path d="M -34 34 A 48 48 0 0 0 34 34" class="ob-arc a3" pathLength="1"/>`}
         </svg>
       </div>
       <div class="ob-brand" data-qa-text style="font-size:${o.brandSize}px">${brand.split("").map((c) => `<span>${c === " " ? "&nbsp;" : c}</span>`).join("")}</div>
@@ -598,6 +606,11 @@
     const mark = el.querySelector(".ob-mark"), letters = [...el.querySelectorAll(".ob-brand span")], line = el.querySelector(".ob-line");
     const tag = el.querySelector(".ob-tag"), btn = el.querySelector(".ob-cta"), shine = el.querySelector(".ob-shine"), note = el.querySelector(".ob-note");
     const arcs = [...el.querySelectorAll(".ob-arc")];
+    // ajuste de ancho: la marca entra en maxWidth con su tracking final
+    const brandEl = el.querySelector(".ob-brand");
+    let bsize = o.brandSize;
+    brandEl.style.letterSpacing = trkEnd + "em";
+    for (let g = 0; g < 60 && brandEl.offsetWidth > o.maxWidth; g++) { bsize *= 0.96; brandEl.style.fontSize = bsize + "px"; }
     ctx.cue(o.at, "impact", { gain: 0.55 });
     ctx.cue(o.at + 0.35, "chime", { gain: 0.7 });
     ctx.cue(o.at + 1.35, "pop", { gain: 0.6, pitch: 1.1 });
@@ -612,7 +625,7 @@
     };
     const fTag = fadeIn(tag, o.at + 0.9), fNote = fadeIn(note, o.at + 1.7);
     return {
-      el, role: o.role, fontSize: o.brandSize, settle: o.at + 2.0, exit: o.out,
+      el, role: o.role, fontSize: bsize, settle: o.at + 2.0, exit: o.out,
       visibility: (lt) => clamp((lt - o.at - 1.3) / 0.5),
       update(lt) {
         place(el, o, lt);
@@ -626,8 +639,8 @@
           s.style.filter = p < 1 ? `blur(${((1 - p) * 14).toFixed(2)}px)` : "none";
           s.style.transform = `translateY(${((1 - p) * 40).toFixed(1)}px)`;
         });
-        const trk = lerp(0.42, 0.16, ease.outCubic(prog(lt, o.at + 0.3, 1.6)));
-        el.querySelector(".ob-brand").style.letterSpacing = trk.toFixed(4) + "em";
+        const trk = lerp(trkEnd + 0.26, trkEnd, ease.outCubic(prog(lt, o.at + 0.3, 1.6)));
+        brandEl.style.letterSpacing = trk.toFixed(4) + "em";
         line.style.transform = `scaleX(${ease.inOutCubic(prog(lt, o.at + 0.7, 0.7)).toFixed(4)})`;
         fTag(lt);
         const bs = spring(lt - o.at - 1.35, { freq: 1.9, damping: 0.55 });

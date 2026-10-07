@@ -1,0 +1,32 @@
+{
+ "gancho": {
+  "key": "c5d06270b8d46cc4",
+  "dur": 1.88,
+  "text": "Si tenés un negocio, mirá esto."
+ },
+ "cinco": {
+  "key": "f4e12bd9d1bfb58b",
+  "dur": 3.123,
+  "text": "Te googlean, y en cinco segundos deciden si confiar en vos."
+ },
+ "perdes": {
+  "key": "7b8f215a00e18cd2",
+  "dur": 3.748,
+  "text": "Si tu presencia está descuidada, perdés clientes, reputación y ventas."
+ },
+ "ordeno": {
+  "key": "0f8d22adc11aee10",
+  "dur": 3.11,
+  "text": "Yo te ordeno todo: web, Google Maps, reseñas y WhatsApp."
+ },
+ "palanca": {
+  "key": "2f6bba988f7eb3b4",
+  "dur": 2.004,
+  "text": "No es un gasto. Es palanca."
+ },
+ "cierre": {
+  "key": "19725102704bfe4b",
+  "dur": 2.949,
+  "text": "Soy Iván Bologna. Escribime por WhatsApp."
+ }
+}

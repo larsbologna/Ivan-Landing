@@ -1,4 +1,4 @@
-/* PRESENCE · Video Factory — estilos del escenario (1080×1920) */
+/* Iván Bologna · Video Factory — estilos del escenario (1080×1920) */
 @font-face { font-family: "InterDisplay"; src: url("fonts/InterDisplay-Medium.otf") format("opentype"); font-weight: 500; }
 @font-face { font-family: "InterDisplay"; src: url("fonts/InterDisplay-SemiBold.otf") format("opentype"); font-weight: 600; }
 @font-face { font-family: "InterDisplay"; src: url("fonts/InterDisplay-Bold.otf") format("opentype"); font-weight: 700; }
@@ -172,7 +172,8 @@ body { font-family: "InterDisplay", "InterUI", system-ui, sans-serif; color: var
 .ob-sq { fill: var(--card-strong); stroke: var(--card-border); stroke-width: 1.5; }
 .ob-arc { fill: none; stroke: var(--accent); stroke-width: 9; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
 .ob-arc.a2 { stroke: var(--accent2); opacity: .8; }
-.ob-brand { font-weight: 800; line-height: 1; white-space: nowrap; margin-right: -0.16em; }
+.ob-brand { font-weight: 800; line-height: 1; white-space: nowrap; }
+.ob-mono { font-family: "InterDisplay"; font-weight: 800; font-size: 84px; letter-spacing: -0.04em; }
 .ob-brand span { display: inline-block; }
 .ob-line { width: 420px; height: 2px; margin: 44px 0 34px; background: linear-gradient(90deg, transparent, var(--accent), transparent); transform-origin: 50% 50%; }
 .ob-tag { font-size: 40px; font-weight: 500; color: var(--muted); letter-spacing: -0.005em; white-space: nowrap; }

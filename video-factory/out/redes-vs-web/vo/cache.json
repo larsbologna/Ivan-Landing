@@ -1,0 +1,22 @@
+{
+ "gancho": {
+  "key": "25707c93b422b30d",
+  "dur": 1.441,
+  "text": "Instagram no es tu web."
+ },
+ "redes": {
+  "key": "78b04d2487be61fb",
+  "dur": 3.309,
+  "text": "En redes estás alquilando: el algoritmo decide quién te ve."
+ },
+ "web": {
+  "key": "5f7a55a01ec427e9",
+  "dur": 2.563,
+  "text": "Tu web es tuya, y te encuentran cuando te buscan."
+ },
+ "cierre": {
+  "key": "19725102704bfe4b",
+  "dur": 2.949,
+  "text": "Soy Iván Bologna. Escribime por WhatsApp."
+ }
+}

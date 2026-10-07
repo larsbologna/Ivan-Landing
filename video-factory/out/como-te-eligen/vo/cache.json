@@ -1,0 +1,32 @@
+{
+ "gancho": {
+  "key": "e17adba0d71a441a",
+  "dur": 1.558,
+  "text": "Así te elige un cliente."
+ },
+ "busca": {
+  "key": "880647854019f2cf",
+  "dur": 0.581,
+  "text": "Busca."
+ },
+ "compara": {
+  "key": "b3bf2ccccace71c1",
+  "dur": 0.689,
+  "text": "Compara."
+ },
+ "confia": {
+  "key": "e09579209b5ee427",
+  "dur": 0.66,
+  "text": "Confía."
+ },
+ "escribe": {
+  "key": "a71d0c83cf3a0818",
+  "dur": 3.51,
+  "text": "Y te escribe. En cada paso, podés ganarlo o perderlo."
+ },
+ "cierre": {
+  "key": "19725102704bfe4b",
+  "dur": 2.949,
+  "text": "Soy Iván Bologna. Escribime por WhatsApp."
+ }
+}

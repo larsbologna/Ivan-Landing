@@ -5,7 +5,7 @@
 // (fixes.json), vuelve a generar previews y termina con código 0 sólo si pasa.
 import fs from "node:fs";
 import path from "node:path";
-import { OUT, launch, openScene, readFixes, fixesPath, sceneExists, run, parseArgs } from "./lib.js";
+import { OUT, launch, openScene, readFixes, fixesPath, sceneExists, run, parseArgs, prepareVoice } from "./lib.js";
 
 const TEXT_ROLES = new Set(["hero", "headline", "body", "eyebrow", "ui"]);
 const MIN_FONT = { hero: 34, headline: 34, body: 34, eyebrow: 26, ui: 26 };
@@ -188,6 +188,7 @@ export async function snap(name, { maxIter = 6, log = console.log } = {}) {
   const browser = await launch();
   let info, results, pass = false, iter = 0, page;
   try {
+    await prepareVoice(browser, name, log);
     while (iter < maxIter) {
       iter++;
       if (page) await page.close();
@@ -197,7 +198,10 @@ export async function snap(name, { maxIter = 6, log = console.log } = {}) {
       for (let i = 0; i < info.scenes.length; i++) results.push(await analyzeScene(page, info, info.scenes[i], i));
       const errs = results.flatMap((r) => r.errors);
       const declared = info.meta.duration;
-      if (declared && Math.abs(declared - info.duration) > 0.05) errs.push({ type: "duracion", msg: `DURATION=${declared} pero las escenas suman ${info.duration}` });
+      if (typeof declared === "number" && Math.abs(declared - info.duration) > 0.05) errs.push({ type: "duracion", msg: `DURATION=${declared} pero las escenas suman ${info.duration}` });
+      if (Array.isArray(declared) && (info.duration < declared[0] - 0.01 || info.duration > declared[1] + 0.01)) errs.push({ type: "duracion", msg: `DURATION=[${declared}] pero el video dura ${info.duration.toFixed(2)} s` });
+      // la locución tiene que entrar en su escena (y no pisar la siguiente)
+      for (const sc of info.scenes) if (sc.voDur && sc.voAt + sc.voDur > sc.dur + 0.3) errs.push({ type: "voz-no-entra", id: sc.id, msg: `${sc.id}: voz ${sc.voDur.toFixed(2)} s en escena de ${sc.dur.toFixed(2)} s` });
       log(`  iteración ${iter}: ${errs.length} errores, ${results.flatMap((r) => r.warns).length} advertencias`);
       for (const e of errs) log("    ✗", e.type, e.id || (e.ids || []).join(" ↔ ") || "", e.side || "", e.px != null ? e.px + "px" : "", e.msg || "");
       if (!errs.length) { pass = true; break; }

@@ -76,7 +76,7 @@ console.log(`[3/5] cues.json`);
 // 4. Audio procedural
 console.log(`[4/5] audio.wav`);
 await run("python3", ["-I", path.join(ROOT, "audio", "sfx.py"), path.join(dir, "cues.json"), path.join(dir, "audio.wav"),
-  "--duration", String(duration), "--music", String(args.music || qa.info.meta.music || "pad")]);
+  "--duration", String(duration), "--music", String(args.music || qa.info.meta.music || "pad"), "--vo-dir", path.join(dir, "vo")]);
 
 // 5. MP4 (H.264 High + AAC, BT.709, faststart)
 console.log(`[5/5] ${name}.mp4`);

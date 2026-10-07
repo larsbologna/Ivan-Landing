@@ -1,6 +1,6 @@
 # QA · maps-abandonado
 
-Estado: **APROBADO** · iteraciones: 1 · duración 25.00 s · 6 escenas
+Estado: **APROBADO** · iteraciones: 1 · duración 15.30 s · 5 escenas
 
 ![Revisión](contact.jpg)
 
@@ -8,17 +8,15 @@ Con zona segura y cajas de layout: `contact-overlay.jpg` (capturas individuales 
 
 | # | Escena | Inicio | Dur. | Reposo | Errores | Advertencias |
 |---|---|---|---|---|---|---|
-| 1 | gancho | 0.00 | 2.60 | 0.97 | — | — |
-| 2 | ficha | 2.60 | 4.20 | 4.52 | — | — |
-| 3 | errores | 6.80 | 4.80 | 9.20 | — | — |
-| 4 | vidriera | 11.60 | 3.20 | 13.55 | — | — |
-| 5 | solucion | 14.80 | 5.00 | 17.76 | — | — |
-| 6 | cierre | 19.80 | 5.20 | 21.95 | — | — |
+| 1 | gancho | 0.00 | 2.57 | 0.97 | — | — |
+| 2 | ficha | 2.57 | 2.83 | 3.99 | — | — |
+| 3 | duda | 5.41 | 2.66 | 7.61 | — | — |
+| 4 | solucion | 8.07 | 3.04 | 9.82 | — | zona-vacia (454px) |
+| 5 | cierre | 11.10 | 4.20 | 13.10 | — | — |
 
 ## Correcciones automáticas aplicadas
 
-- `ficha/0` → {"y":-708} (superposicion)
-- `ficha/1` → {"y":-512} (superposicion)
+Ninguna: el layout pasó a la primera.
 
 ## Reglas
 

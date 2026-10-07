@@ -1,0 +1,18 @@
+[
+ {
+  "id": "gancho",
+  "text": "¿Cuántas reservas se te escapan?"
+ },
+ {
+  "id": "chat",
+  "text": "Cada mensaje sin responder es un turno vacío."
+ },
+ {
+  "id": "reserva",
+  "text": "Con reservas online, te eligen a cualquier hora, sin llamar."
+ },
+ {
+  "id": "cierre",
+  "text": "Soy Iván Bologna. Escribime por WhatsApp."
+ }
+]
