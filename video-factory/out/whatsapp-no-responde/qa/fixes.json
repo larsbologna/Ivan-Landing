@@ -1,0 +1,18 @@
+{
+  "solucion/0": {
+    "opts": {
+      "y": -711
+    },
+    "reason": [
+      "superposicion"
+    ]
+  },
+  "solucion/1": {
+    "opts": {
+      "y": -509
+    },
+    "reason": [
+      "superposicion"
+    ]
+  }
+}

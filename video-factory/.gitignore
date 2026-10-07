@@ -1,0 +1,7 @@
+out/*/frames/
+out/*/audio.wav
+node_modules/
+# capturas individuales de QA: se versionan sólo las del demo; del resto, la hoja de contactos
+out/*/qa/overlay/
+out/*/qa/[0-9][0-9]-*
+!out/presencia/qa/[0-9][0-9]-*

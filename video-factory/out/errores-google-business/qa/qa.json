@@ -1,0 +1,167 @@
+{
+  "pass": true,
+  "iterations": 1,
+  "duration": 21,
+  "scenes": [
+    {
+      "id": "gancho",
+      "start": 0,
+      "end": 2.8,
+      "dur": 2.8,
+      "settle": 0.975,
+      "items": [
+        {
+          "id": "gancho/0",
+          "kind": "TextReveal",
+          "role": "eyebrow",
+          "settle": 0.58,
+          "x": 0,
+          "y": -260,
+          "size": 30,
+          "scale": 1,
+          "fontSize": 30
+        },
+        {
+          "id": "gancho/1",
+          "kind": "TextReveal",
+          "role": "hero",
+          "settle": 0.975,
+          "x": 0,
+          "y": -40,
+          "size": 110,
+          "scale": 1,
+          "fontSize": 110
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 1.075
+    },
+    {
+      "id": "lista",
+      "start": 2.8,
+      "end": 9.2,
+      "dur": 6.4,
+      "settle": 3.9000000000000004,
+      "items": [
+        {
+          "id": "lista/0",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 0.6749999999999999,
+          "x": 0,
+          "y": -580,
+          "size": 110,
+          "scale": 1,
+          "fontSize": 110
+        },
+        {
+          "id": "lista/1",
+          "kind": "PillCascade",
+          "role": "body",
+          "settle": 3.9000000000000004,
+          "x": 0,
+          "y": 120,
+          "size": 48,
+          "scale": 1,
+          "fontSize": 48
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 6.8
+    },
+    {
+      "id": "remate",
+      "start": 9.2,
+      "end": 12.6,
+      "dur": 3.4,
+      "settle": 1.6500000000000001,
+      "items": [
+        {
+          "id": "remate/0",
+          "kind": "TextReveal",
+          "role": "body",
+          "settle": 0.6749999999999999,
+          "x": 0,
+          "y": -330,
+          "size": 80,
+          "scale": 1,
+          "fontSize": 80
+        },
+        {
+          "id": "remate/1",
+          "kind": "KeywordCircle",
+          "role": "hero",
+          "settle": 1.6500000000000001,
+          "x": 0,
+          "y": -110,
+          "size": 200,
+          "scale": 1,
+          "fontSize": 169.86931199999998
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 10.95
+    },
+    {
+      "id": "ficha",
+      "start": 12.6,
+      "end": 16.6,
+      "dur": 4,
+      "settle": 1.6199999999999999,
+      "items": [
+        {
+          "id": "ficha/0",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 0.8999999999999999,
+          "x": 0,
+          "y": -600,
+          "size": 92,
+          "scale": 1,
+          "fontSize": 92
+        },
+        {
+          "id": "ficha/1",
+          "kind": "UICard",
+          "role": "ui",
+          "settle": 1.6199999999999999,
+          "x": 0,
+          "y": 120,
+          "size": null,
+          "scale": 1,
+          "fontSize": 34
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 14.319999999999999
+    },
+    {
+      "id": "cierre",
+      "start": 16.6,
+      "end": 21,
+      "dur": 4.399999999999999,
+      "settle": 2.15,
+      "items": [
+        {
+          "id": "cierre/0",
+          "kind": "OutroBrand",
+          "role": "hero",
+          "settle": 2.15,
+          "x": 0,
+          "y": -40,
+          "size": null,
+          "scale": 1,
+          "fontSize": 132
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 18.85
+    }
+  ],
+  "fixes": {}
+}

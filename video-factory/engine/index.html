@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<title>PRESENCE · Video Factory</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="stage"></div>
+<script src="engine.js"></script>
+<script src="themes.js"></script>
+<script src="components.js"></script>
+<script>
+  // ?scene=nombre carga scenes/nombre.js · ?t=segundos muestra ese frame
+  // ?fixes=<json url-encoded> aplica correcciones de QA
+  (function () {
+    const q = new URLSearchParams(location.search);
+    const name = (q.get("scene") || "presencia").replace(/[^a-z0-9_-]/gi, "");
+    if (q.get("fixes")) { try { window.__FIXES__ = JSON.parse(q.get("fixes")); } catch (e) {} }
+    const s = document.createElement("script");
+    s.src = "../scenes/" + name + ".js";
+    s.onload = async () => { await window.__boot(); if (q.get("t")) window.__seek(parseFloat(q.get("t"))); };
+    s.onerror = () => { document.body.textContent = "No existe scenes/" + name + ".js"; };
+    document.body.appendChild(s);
+  })();
+</script>
+</body>
+</html>

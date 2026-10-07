@@ -1,0 +1,290 @@
+{
+  "pass": true,
+  "iterations": 1,
+  "duration": 26.5,
+  "scenes": [
+    {
+      "id": "gancho",
+      "start": 0,
+      "end": 2.6,
+      "dur": 2.6,
+      "settle": 0.8999999999999999,
+      "items": [
+        {
+          "id": "gancho/0",
+          "kind": "TextReveal",
+          "role": "hero",
+          "settle": 0.8999999999999999,
+          "x": 0,
+          "y": -40,
+          "size": 130,
+          "scale": 1,
+          "fontSize": 130
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 0.9999999999999999
+    },
+    {
+      "id": "paso1",
+      "start": 2.6,
+      "end": 6.2,
+      "dur": 3.6,
+      "settle": 2.385750901640393,
+      "items": [
+        {
+          "id": "paso1/0",
+          "kind": "TextReveal",
+          "role": "eyebrow",
+          "settle": 0.58,
+          "x": 0,
+          "y": -690,
+          "size": 30,
+          "scale": 1,
+          "fontSize": 30
+        },
+        {
+          "id": "paso1/1",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 0.6,
+          "x": 0,
+          "y": -520,
+          "size": 160,
+          "scale": 1,
+          "fontSize": 160
+        },
+        {
+          "id": "paso1/2",
+          "kind": "Glyph",
+          "role": "deco",
+          "settle": 0.8999999999999999,
+          "x": 0,
+          "y": -150,
+          "size": 260,
+          "scale": 1,
+          "fontSize": null
+        },
+        {
+          "id": "paso1/3",
+          "kind": "Typewriter",
+          "role": "body",
+          "settle": 2.385750901640393,
+          "x": 0,
+          "y": 200,
+          "size": 48,
+          "scale": 1,
+          "fontSize": 48
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 5.085750901640393
+    },
+    {
+      "id": "paso2",
+      "start": 6.2,
+      "end": 10,
+      "dur": 3.8,
+      "settle": 1.38,
+      "items": [
+        {
+          "id": "paso2/0",
+          "kind": "TextReveal",
+          "role": "eyebrow",
+          "settle": 0.58,
+          "x": 0,
+          "y": -690,
+          "size": 30,
+          "scale": 1,
+          "fontSize": 30
+        },
+        {
+          "id": "paso2/1",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 0.6,
+          "x": 0,
+          "y": -520,
+          "size": 160,
+          "scale": 1,
+          "fontSize": 160
+        },
+        {
+          "id": "paso2/2",
+          "kind": "UICard",
+          "role": "ui",
+          "settle": 1.38,
+          "x": 0,
+          "y": 170,
+          "size": null,
+          "scale": 1,
+          "fontSize": 34
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 7.68
+    },
+    {
+      "id": "paso3",
+      "start": 10,
+      "end": 13.8,
+      "dur": 3.8,
+      "settle": 1.38,
+      "items": [
+        {
+          "id": "paso3/0",
+          "kind": "TextReveal",
+          "role": "eyebrow",
+          "settle": 0.58,
+          "x": 0,
+          "y": -690,
+          "size": 30,
+          "scale": 1,
+          "fontSize": 30
+        },
+        {
+          "id": "paso3/1",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 0.6,
+          "x": 0,
+          "y": -520,
+          "size": 160,
+          "scale": 1,
+          "fontSize": 160
+        },
+        {
+          "id": "paso3/2",
+          "kind": "UICard",
+          "role": "ui",
+          "settle": 1.38,
+          "x": 0,
+          "y": 130,
+          "size": null,
+          "scale": 1,
+          "fontSize": 34
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 11.479999999999999
+    },
+    {
+      "id": "paso4",
+      "start": 13.8,
+      "end": 18.200000000000003,
+      "dur": 4.4,
+      "settle": 2.85,
+      "items": [
+        {
+          "id": "paso4/0",
+          "kind": "TextReveal",
+          "role": "eyebrow",
+          "settle": 0.58,
+          "x": 0,
+          "y": -690,
+          "size": 30,
+          "scale": 1,
+          "fontSize": 30
+        },
+        {
+          "id": "paso4/1",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 0.6,
+          "x": 0,
+          "y": -520,
+          "size": 160,
+          "scale": 1,
+          "fontSize": 160
+        },
+        {
+          "id": "paso4/2",
+          "kind": "UICard",
+          "role": "ui",
+          "settle": 2.85,
+          "x": 0,
+          "y": 150,
+          "size": null,
+          "scale": 1,
+          "fontSize": 34
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 16.750000000000004
+    },
+    {
+      "id": "remate",
+      "start": 18.200000000000003,
+      "end": 22.000000000000004,
+      "dur": 3.8,
+      "settle": 2.225,
+      "items": [
+        {
+          "id": "remate/0",
+          "kind": "TextReveal",
+          "role": "body",
+          "settle": 0.825,
+          "x": 0,
+          "y": -330,
+          "size": 80,
+          "scale": 1,
+          "fontSize": 80
+        },
+        {
+          "id": "remate/1",
+          "kind": "KeywordCircle",
+          "role": "hero",
+          "settle": 1.6500000000000001,
+          "x": 0,
+          "y": -110,
+          "size": 200,
+          "scale": 1,
+          "fontSize": 184.32
+        },
+        {
+          "id": "remate/2",
+          "kind": "TextReveal",
+          "role": "body",
+          "settle": 2.225,
+          "x": 0,
+          "y": 140,
+          "size": 70,
+          "scale": 1,
+          "fontSize": 70
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 20.525000000000006
+    },
+    {
+      "id": "cierre",
+      "start": 22.000000000000004,
+      "end": 26.5,
+      "dur": 4.4999999999999964,
+      "settle": 2.15,
+      "items": [
+        {
+          "id": "cierre/0",
+          "kind": "OutroBrand",
+          "role": "hero",
+          "settle": 2.15,
+          "x": 0,
+          "y": -40,
+          "size": null,
+          "scale": 1,
+          "fontSize": 132
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 24.250000000000004
+    }
+  ],
+  "fixes": {}
+}

@@ -1,0 +1,18 @@
+{
+  "ficha/0": {
+    "opts": {
+      "y": -708
+    },
+    "reason": [
+      "superposicion"
+    ]
+  },
+  "ficha/1": {
+    "opts": {
+      "y": -512
+    },
+    "reason": [
+      "superposicion"
+    ]
+  }
+}

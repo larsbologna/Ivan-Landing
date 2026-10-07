@@ -1,0 +1,226 @@
+[
+ {
+  "t": 0,
+  "type": "impact",
+  "gain": 0.5,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "gancho"
+ },
+ {
+  "t": 2.8425,
+  "type": "whoosh",
+  "gain": 0.55,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "busqueda"
+ },
+ {
+  "t": 3,
+  "type": "pop",
+  "gain": 0.5,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "busqueda"
+ },
+ {
+  "t": 3.6,
+  "type": "swipe",
+  "gain": 0.4,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "busqueda"
+ },
+ {
+  "t": 3.95,
+  "type": "typewriter",
+  "gain": 0.5867479746695607,
+  "pan": 0.07608692930079997,
+  "pitch": 0.9873146788217128,
+  "scene": "busqueda"
+ },
+ {
+  "t": 4.0008,
+  "type": "typewriter",
+  "gain": 0.5481670768931508,
+  "pan": -0.14946948196738957,
+  "pitch": 1.0897464067675173,
+  "scene": "busqueda"
+ },
+ {
+  "t": 4.2104,
+  "type": "typewriter",
+  "gain": 0.5331139307469129,
+  "pan": -0.024609928554855286,
+  "pitch": 1.0441000988706945,
+  "scene": "busqueda"
+ },
+ {
+  "t": 4.2706,
+  "type": "typewriter",
+  "gain": 0.5362962277606129,
+  "pan": 0.06964349972549826,
+  "pitch": 0.9314639885444195,
+  "scene": "busqueda"
+ },
+ {
+  "t": 4.3601,
+  "type": "typewriter",
+  "gain": 0.4894278802443296,
+  "pan": 0.05469055620487779,
+  "pitch": 0.924079181952402,
+  "scene": "busqueda"
+ },
+ {
+  "t": 4.4286,
+  "type": "typewriter",
+  "gain": 0.4561715930234641,
+  "pan": 0.09065418841782957,
+  "pitch": 1.0208991942927241,
+  "scene": "busqueda"
+ },
+ {
+  "t": 4.4729,
+  "type": "typewriter",
+  "gain": 0.4645527955610305,
+  "pan": 0.12510176980867982,
+  "pitch": 1.0791651288047432,
+  "scene": "busqueda"
+ },
+ {
+  "t": 4.5377,
+  "type": "typewriter",
+  "gain": 0.5905330738984048,
+  "pan": 0.11014217894989997,
+  "pitch": 0.917638331791386,
+  "scene": "busqueda"
+ },
+ {
+  "t": 4.6138,
+  "type": "typewriter",
+  "gain": 0.562270050495863,
+  "pan": -0.07515245899558066,
+  "pitch": 1.063085160870105,
+  "scene": "busqueda"
+ },
+ {
+  "t": 4.7,
+  "type": "swipe",
+  "gain": 0.45,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "busqueda"
+ },
+ {
+  "t": 7.2425,
+  "type": "whoosh",
+  "gain": 0.55,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "mensaje"
+ },
+ {
+  "t": 7.4,
+  "type": "tick",
+  "gain": 0.35,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "mensaje"
+ },
+ {
+  "t": 7.4,
+  "type": "pop",
+  "gain": 0.5,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "mensaje"
+ },
+ {
+  "t": 8.4,
+  "type": "pop",
+  "gain": 0.55,
+  "pan": -0.25,
+  "pitch": 1,
+  "scene": "mensaje"
+ },
+ {
+  "t": 8.82,
+  "type": "pop",
+  "gain": 0.55,
+  "pan": 0.25,
+  "pitch": 1.07,
+  "scene": "mensaje"
+ },
+ {
+  "t": 9.24,
+  "type": "pop",
+  "gain": 0.55,
+  "pan": -0.25,
+  "pitch": 1.1400000000000001,
+  "scene": "mensaje"
+ },
+ {
+  "t": 11.8425,
+  "type": "whoosh",
+  "gain": 0.55,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "remate"
+ },
+ {
+  "t": 12.3,
+  "type": "impact",
+  "gain": 0.9,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "remate"
+ },
+ {
+  "t": 12.85,
+  "type": "swipe",
+  "gain": 0.6,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "remate"
+ },
+ {
+  "t": 13.5,
+  "type": "chime",
+  "gain": 0.55,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "remate"
+ },
+ {
+  "t": 15.2425,
+  "type": "whoosh",
+  "gain": 0.55,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "cierre"
+ },
+ {
+  "t": 15.55,
+  "type": "impact",
+  "gain": 0.55,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "cierre"
+ },
+ {
+  "t": 15.9,
+  "type": "chime",
+  "gain": 0.7,
+  "pan": 0,
+  "pitch": 1,
+  "scene": "cierre"
+ },
+ {
+  "t": 16.9,
+  "type": "pop",
+  "gain": 0.6,
+  "pan": 0,
+  "pitch": 1.1,
+  "scene": "cierre"
+ }
+]

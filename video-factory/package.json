@@ -1,0 +1,12 @@
+{
+  "name": "presence-video-factory",
+  "private": true,
+  "type": "module",
+  "description": "Fábrica de videos verticales con tipografía cinética y motion graphics (render determinista).",
+  "scripts": {
+    "snap": "node snap.js",
+    "render": "node render.js",
+    "analyze": "bash analysis/analyze.sh"
+  },
+  "engines": { "node": ">=20" }
+}

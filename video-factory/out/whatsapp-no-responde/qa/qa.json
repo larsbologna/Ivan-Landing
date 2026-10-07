@@ -1,0 +1,207 @@
+{
+  "pass": true,
+  "iterations": 1,
+  "duration": 24.5,
+  "scenes": [
+    {
+      "id": "gancho",
+      "start": 0,
+      "end": 2.6,
+      "dur": 2.6,
+      "settle": 0.8999999999999999,
+      "items": [
+        {
+          "id": "gancho/0",
+          "kind": "TextReveal",
+          "role": "hero",
+          "settle": 0.8999999999999999,
+          "x": 0,
+          "y": -40,
+          "size": 124,
+          "scale": 1,
+          "fontSize": 124
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 0.9999999999999999
+    },
+    {
+      "id": "chat",
+      "start": 2.6,
+      "end": 7,
+      "dur": 4.4,
+      "settle": 2.8750000000000004,
+      "items": [
+        {
+          "id": "chat/0",
+          "kind": "UICard",
+          "role": "ui",
+          "settle": 2.45,
+          "x": 0,
+          "y": -120,
+          "size": null,
+          "scale": 1,
+          "fontSize": 34
+        },
+        {
+          "id": "chat/1",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 2.8750000000000004,
+          "x": 0,
+          "y": 430,
+          "size": 100,
+          "scale": 1,
+          "fontSize": 100
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 5.575
+    },
+    {
+      "id": "horas",
+      "start": 7,
+      "end": 11.6,
+      "dur": 4.6,
+      "settle": 4.2,
+      "items": [
+        {
+          "id": "horas/0",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 0.8999999999999999,
+          "x": 0,
+          "y": -560,
+          "size": 96,
+          "scale": 1,
+          "fontSize": 96
+        },
+        {
+          "id": "horas/1",
+          "kind": "ProgressRing",
+          "role": "hero",
+          "settle": 4.2,
+          "x": 0,
+          "y": 150,
+          "size": null,
+          "scale": 1,
+          "fontSize": 220
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 11.299999999999999
+    },
+    {
+      "id": "otro",
+      "start": 11.6,
+      "end": 14.8,
+      "dur": 3.2,
+      "settle": 1.0499999999999998,
+      "items": [
+        {
+          "id": "otro/0",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 1.0499999999999998,
+          "x": 0,
+          "y": -60,
+          "size": 108,
+          "scale": 1,
+          "fontSize": 108
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 12.749999999999998
+    },
+    {
+      "id": "solucion",
+      "start": 14.8,
+      "end": 20,
+      "dur": 5.2,
+      "settle": 2.96,
+      "items": [
+        {
+          "id": "solucion/0",
+          "kind": "TextReveal",
+          "role": "eyebrow",
+          "settle": 0.58,
+          "x": 0,
+          "y": -711,
+          "size": 30,
+          "scale": 1,
+          "fontSize": 30
+        },
+        {
+          "id": "solucion/1",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 0.8999999999999999,
+          "x": 0,
+          "y": -509,
+          "size": 100,
+          "scale": 1,
+          "fontSize": 100
+        },
+        {
+          "id": "solucion/2",
+          "kind": "PillCascade",
+          "role": "body",
+          "settle": 2.96,
+          "x": 0,
+          "y": 170,
+          "size": 48,
+          "scale": 1,
+          "fontSize": 48
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 17.860000000000003
+    },
+    {
+      "id": "cierre",
+      "start": 20,
+      "end": 24.5,
+      "dur": 4.5,
+      "settle": 2.15,
+      "items": [
+        {
+          "id": "cierre/0",
+          "kind": "OutroBrand",
+          "role": "hero",
+          "settle": 2.15,
+          "x": 0,
+          "y": -40,
+          "size": null,
+          "scale": 1,
+          "fontSize": 132
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 22.25
+    }
+  ],
+  "fixes": {
+    "solucion/0": {
+      "opts": {
+        "y": -711
+      },
+      "reason": [
+        "superposicion"
+      ]
+    },
+    "solucion/1": {
+      "opts": {
+        "y": -509
+      },
+      "reason": [
+        "superposicion"
+      ]
+    }
+  }
+}

@@ -1,0 +1,428 @@
+{
+  "pass": true,
+  "iterations": 1,
+  "duration": 38.4,
+  "scenes": [
+    {
+      "id": "atencion",
+      "start": 0,
+      "end": 1.8,
+      "dur": 1.8,
+      "settle": 0.82,
+      "items": [
+        {
+          "id": "atencion/0",
+          "kind": "TextReveal",
+          "role": "hero",
+          "settle": 0.82,
+          "x": 0,
+          "y": -40,
+          "size": 210,
+          "scale": 1,
+          "fontSize": 193.536
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 0.9199999999999999
+    },
+    {
+      "id": "mira",
+      "start": 1.8,
+      "end": 4.6,
+      "dur": 2.8,
+      "settle": 1.2000000000000002,
+      "items": [
+        {
+          "id": "mira/0",
+          "kind": "TextReveal",
+          "role": "hero",
+          "settle": 1.2000000000000002,
+          "x": 0,
+          "y": -40,
+          "size": 124,
+          "scale": 1,
+          "fontSize": 124
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 3.1
+    },
+    {
+      "id": "googlea",
+      "start": 4.6,
+      "end": 8.399999999999999,
+      "dur": 3.8,
+      "settle": 3.1300000000000003,
+      "items": [
+        {
+          "id": "googlea/0",
+          "kind": "TextReveal",
+          "role": "eyebrow",
+          "settle": 0.62,
+          "x": 0,
+          "y": -690,
+          "size": 30,
+          "scale": 1,
+          "fontSize": 30
+        },
+        {
+          "id": "googlea/1",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 0.9249999999999999,
+          "x": 0,
+          "y": -480,
+          "size": 124,
+          "scale": 1,
+          "fontSize": 124
+        },
+        {
+          "id": "googlea/2",
+          "kind": "Typewriter",
+          "role": "body",
+          "settle": 2.8290701878452666,
+          "x": 0,
+          "y": -150,
+          "size": 46,
+          "scale": 0.95,
+          "fontSize": 46
+        },
+        {
+          "id": "googlea/3",
+          "kind": "UICard",
+          "role": "ui",
+          "settle": 3.1300000000000003,
+          "x": 0,
+          "y": 320,
+          "size": null,
+          "scale": 1,
+          "fontSize": 34
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 7.83
+    },
+    {
+      "id": "cinco",
+      "start": 8.399999999999999,
+      "end": 13.399999999999999,
+      "dur": 5,
+      "settle": 4.500000000000001,
+      "items": [
+        {
+          "id": "cinco/0",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 1.25,
+          "x": 0,
+          "y": -560,
+          "size": 92,
+          "scale": 1,
+          "fontSize": 92
+        },
+        {
+          "id": "cinco/1",
+          "kind": "ProgressRing",
+          "role": "hero",
+          "settle": 4.500000000000001,
+          "x": 0,
+          "y": 150,
+          "size": null,
+          "scale": 1,
+          "fontSize": 240
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 12.999999999999998
+    },
+    {
+      "id": "perdes",
+      "start": 13.399999999999999,
+      "end": 18.4,
+      "dur": 5,
+      "settle": 3.2,
+      "items": [
+        {
+          "id": "perdes/0",
+          "kind": "TextReveal",
+          "role": "body",
+          "settle": 0.95,
+          "x": 0,
+          "y": -635,
+          "size": 76,
+          "scale": 1,
+          "fontSize": 76
+        },
+        {
+          "id": "perdes/1",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 1.45,
+          "x": 0,
+          "y": -420,
+          "size": 180,
+          "scale": 1,
+          "fontSize": 180
+        },
+        {
+          "id": "perdes/2",
+          "kind": "HexFeature",
+          "role": "body",
+          "settle": 2.4000000000000004,
+          "x": -250,
+          "y": 40,
+          "size": 250,
+          "scale": 1,
+          "fontSize": 50
+        },
+        {
+          "id": "perdes/3",
+          "kind": "HexFeature",
+          "role": "body",
+          "settle": 2.8,
+          "x": 250,
+          "y": 40,
+          "size": 250,
+          "scale": 1,
+          "fontSize": 50
+        },
+        {
+          "id": "perdes/4",
+          "kind": "HexFeature",
+          "role": "body",
+          "settle": 3.2,
+          "x": 0,
+          "y": 376,
+          "size": 250,
+          "scale": 1,
+          "fontSize": 50
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 16.7
+    },
+    {
+      "id": "cascada",
+      "start": 18.4,
+      "end": 24,
+      "dur": 5.6,
+      "settle": 4.1,
+      "items": [
+        {
+          "id": "cascada/0",
+          "kind": "TextReveal",
+          "role": "eyebrow",
+          "settle": 0.58,
+          "x": 0,
+          "y": -700,
+          "size": 30,
+          "scale": 1,
+          "fontSize": 30
+        },
+        {
+          "id": "cascada/1",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 0.9249999999999999,
+          "x": 0,
+          "y": -545,
+          "size": 104,
+          "scale": 1,
+          "fontSize": 104
+        },
+        {
+          "id": "cascada/2",
+          "kind": "PillCascade",
+          "role": "body",
+          "settle": 4.1,
+          "x": 0,
+          "y": 140,
+          "size": 50,
+          "scale": 1,
+          "fontSize": 50
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 22.6
+    },
+    {
+      "id": "unlugar",
+      "start": 24,
+      "end": 28,
+      "dur": 4,
+      "settle": 1.9799999999999998,
+      "items": [
+        {
+          "id": "unlugar/0",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 0.95,
+          "x": 0,
+          "y": -620,
+          "size": 100,
+          "scale": 1,
+          "fontSize": 100
+        },
+        {
+          "id": "unlugar/1",
+          "kind": "UICard",
+          "role": "deco",
+          "settle": 1.92,
+          "x": -330,
+          "y": -400,
+          "size": null,
+          "scale": 1,
+          "fontSize": 34
+        },
+        {
+          "id": "unlugar/2",
+          "kind": "UICard",
+          "role": "deco",
+          "settle": 1.9799999999999998,
+          "x": 320,
+          "y": 660,
+          "size": null,
+          "scale": 1,
+          "fontSize": 34
+        },
+        {
+          "id": "unlugar/3",
+          "kind": "UICard",
+          "role": "ui",
+          "settle": 1.35,
+          "x": 0,
+          "y": 90,
+          "size": null,
+          "scale": 1,
+          "fontSize": 34
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 26.080000000000002
+    },
+    {
+      "id": "gasto",
+      "start": 28,
+      "end": 30.8,
+      "dur": 2.8,
+      "settle": 2.25,
+      "items": [
+        {
+          "id": "gasto/0",
+          "kind": "TextReveal",
+          "role": "headline",
+          "settle": 2.25,
+          "x": 0,
+          "y": -60,
+          "size": 112,
+          "scale": 1,
+          "fontSize": 112
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 30.35
+    },
+    {
+      "id": "palanca",
+      "start": 30.8,
+      "end": 34.4,
+      "dur": 3.6,
+      "settle": 2.65,
+      "items": [
+        {
+          "id": "palanca/0",
+          "kind": "TextReveal",
+          "role": "body",
+          "settle": 0.6,
+          "x": 0,
+          "y": -330,
+          "size": 96,
+          "scale": 1,
+          "fontSize": 96
+        },
+        {
+          "id": "palanca/1",
+          "kind": "KeywordCircle",
+          "role": "hero",
+          "settle": 1.55,
+          "x": 0,
+          "y": -110,
+          "size": 200,
+          "scale": 1,
+          "fontSize": 169.86931199999998
+        },
+        {
+          "id": "palanca/2",
+          "kind": "Lever",
+          "role": "deco",
+          "settle": 2.65,
+          "x": 0,
+          "y": 270,
+          "size": null,
+          "scale": 1,
+          "fontSize": null
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 33.550000000000004
+    },
+    {
+      "id": "cierre",
+      "start": 34.4,
+      "end": 38.4,
+      "dur": 4,
+      "settle": 2.15,
+      "items": [
+        {
+          "id": "cierre/0",
+          "kind": "OutroBrand",
+          "role": "hero",
+          "settle": 2.15,
+          "x": 0,
+          "y": -40,
+          "size": null,
+          "scale": 1,
+          "fontSize": 132
+        }
+      ],
+      "errors": [],
+      "warns": [],
+      "hero": 36.65
+    }
+  ],
+  "fixes": {
+    "googlea/2": {
+      "opts": {
+        "scale": 0.95
+      },
+      "reason": [
+        "fuera-de-zona:left"
+      ]
+    },
+    "perdes/4": {
+      "opts": {
+        "y": 376
+      },
+      "reason": [
+        "fuera-de-zona:bottom"
+      ]
+    },
+    "perdes/0": {
+      "opts": {
+        "y": -635
+      },
+      "reason": [
+        "fuera-de-zona:top"
+      ]
+    }
+  }
+}
