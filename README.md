@@ -7,6 +7,7 @@ Landing page y catálogo de WhatsApp Business para ofrecer presencia online a ne
 | Ruta | Qué es |
 |------|--------|
 | `index.html` | Landing page. Archivo único con CSS y JS internos: se abre directo en el navegador, sin backend. |
+| `video-publicitario/` | Guion, storyboard y prompts del video vertical de 15 s para redes. |
 | `catalogo-whatsapp/` | Catálogo de 6 imágenes 1080×1080 (y @2x) para WhatsApp Business, más el HTML editable y el script que las genera. Ver su README. |
 
 ## Datos pendientes de la landing
