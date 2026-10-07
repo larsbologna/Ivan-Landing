@@ -1,0 +1,6 @@
+[
+{"name":"v2_gym","seed":101,"prompt":"interior of a modern neighborhood gym in the evening, open and ready, weight racks and machines, almost empty, a trainer in his thirties leaning on the reception desk looking at his smartphone, warm and cool practical lights, realistic"},
+{"name":"v2_shop","seed":111,"prompt":"interior of a small independent clothing and gift shop in Buenos Aires, open, tidy shelves and warm lights, no customers, a woman in her forties behind the counter looking at her smartphone, realistic, natural daylight from the street window"},
+{"name":"v2_salon","seed":121,"prompt":"interior of a modern women's hair salon, open and ready, styling chairs and round mirrors, empty, a hairdresser in her thirties sitting near the front desk checking her smartphone, soft warm light, realistic"},
+{"name":"v2_garage","seed":131,"prompt":"small auto repair workshop in Buenos Aires, open garage door, tools neatly organized, one car on a lift, a mechanic in his forties in a work shirt wiping his hands and glancing at his smartphone, late afternoon light, realistic"}
+]
