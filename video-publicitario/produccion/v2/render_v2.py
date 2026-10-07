@@ -166,6 +166,9 @@ for n in SUBS:
     for i in range(len(ct) - 1): ct[i] = (ct[i][0], ct[i + 1][0], ct[i][2])
     ct[-1] = (ct[-1][0], ct[-1][1] + 0.35, ct[-1][2])
     SUBT += ct
+SUBT.sort()
+for i in range(len(SUBT) - 1):
+    if SUBT[i][1] > SUBT[i + 1][0]: SUBT[i] = (SUBT[i][0], SUBT[i + 1][0], SUBT[i][2])
 SOL_CH = [c for c in SUBT if c[2] in SUBS["v5"]]
 ROW_T = [SOL_CH[1][0] + 0.0, SOL_CH[1][0] + 0.6, SOL_CH[1][0] + 1.25]
 print("subs", [(round(a, 2), round(b, 2), s) for a, b, s in SUBT], "rows", [round(r, 2) for r in ROW_T], flush=True)
@@ -294,13 +297,14 @@ def build_audio():
     voice = voice + 0.35 * sosfilt(butter(2, [2000, 5000], 'band', fs=SR, output='sos'), voice)
     voice = sosfilt(butter(2, 90, 'high', fs=SR, output='sos'), voice)
     env = uniform_filter1d(np.abs(voice), int(0.06 * SR))
-    duck = uniform_filter1d(1 - 0.9 * np.clip(env / 0.015, 0, 1), int(0.25 * SR))   # -20 dB bajo la voz
+    duck = uniform_filter1d(1 - 0.94 * np.clip(env / 0.012, 0, 1), int(0.3 * SR))   # -20 dB bajo la voz
     m, _ = sf.read(f"{AUD}/music_raw.wav")
     if m.ndim == 1: m = np.stack([m, m], 1)
     mm = np.zeros((n, 2)); mm[:min(n, len(m))] = m[:n]
     t = np.arange(n) / SR
     g = np.ones(n)
     g = np.where((t > 12.05) & (t < 12.2), np.clip((12.2 - t) / 0.15, 0, 1) * 0.3 + 0.7, g)   # pequeño respiro en el cambio
+    g = np.where((t > 22.1) & (t < 24.45), g * 0.35, g)   # CTA: la voz sola al frente
     g = np.where(t > DUR - 0.8, np.clip((DUR - t) / 0.8, 0, 1), g)
     from scipy.signal import butter as _b, sosfilt as _s
     mm = _s(_b(2, 120, 'high', fs=SR, output='sos'), mm, axis=0)   # sin graves que tapen la voz
@@ -314,7 +318,6 @@ def build_audio():
     add(sfx.whoosh(0.5), 11.95, 0.12); add(sfx.shimmer(1.0), 12.25, 0.04)
     for r in ROW_T: add(sfx.ui_click(), r, 0.04)
     add(sfx.chime((1046.5, 1568), 0.1, 1.0, bright=0.5), 18.55, 0.05)
-    add(sfx.warm_hit(), 21.95, 0.07)
     fx = fx * duck   # efectos también bajo la voz
     mix = np.stack([voice + mm[:, 0] + fx, voice + mm[:, 1] + fx], 1)[:int(DUR * SR)]
     mix = np.tanh(mix * 1.05) / np.tanh(1.05)
