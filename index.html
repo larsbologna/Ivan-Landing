@@ -1,1220 +1,1127 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-AR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Presencia Online para negocios de Buenos Aires</title>
-<meta name="description" content="Que tu negocio de Buenos Aires sea fácil de encontrar, contactar y elegir: Google Maps, web, WhatsApp y automatizaciones. Pedí un análisis gratuito.">
-<meta name="theme-color" content="#09090A">
+<!-- MARCA PROVISIONAL: "Punto Reseña". Para cambiarla, reemplazá el texto en este bloque <head> y en CONFIG.brand (al final del archivo). -->
+<title>Soporte QR para reseñas de Google | Punto Reseña</title>
+<meta name="description" content="Soporte con código QR para tu mostrador: tus clientes escanean y llegan a la página de reseñas de tu negocio en Google. Para cafeterías, restaurantes, barberías y comercios de Buenos Aires.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- Open Graph: si publicás en otro dominio, actualizá og:url y og:image (deben ser URLs absolutas). -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Punto Reseña">
+<meta property="og:title" content="¿Cuántas reseñas está perdiendo tu negocio?">
+<meta property="og:description" content="Un soporte QR en tu mostrador para que tus clientes lleguen fácil a las reseñas de tu negocio en Google.">
+<meta property="og:url" content="https://larsbologna.github.io/Ivan-Landing/">
+<meta property="og:image" content="https://larsbologna.github.io/Ivan-Landing/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* =========================================================
-   TOKENS — misma identidad que el catálogo de WhatsApp
+   TOKENS
    ========================================================= */
 :root{
-  --bg:#09090A; --card:#141416; --ink:#F5F2EA; --soft:#CFCABE; --mute:#9C978C; --dim:#5E5A53;
-  --gold:#D4AF5A; --gold-hi:#F3D995; --ok:#5BD38A; --bad:#C9867A;
-  --g:linear-gradient(135deg,#F6DE9E 0%,#D4AF5A 45%,#9A7530 100%);
-  --line:rgba(255,255,255,.08); --gline:rgba(212,175,90,.38);
-  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
-  --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --wrap:1180px; --gut:clamp(16px,4vw,40px);
+  --white:#FFFFFF; --paper:#F8F9FA; --ink:#202124; --soft:#3C4043; --mute:#5F6368; --line:#E3E5E8; --line-2:#D2D5DA;
+  --blue:#1A73E8; --blue-hi:#1765CC; --blue-bg:#E8F0FE;
+  --green:#188038; --green-bg:#E6F4EA;
+  --star:#FBBC04; --red:#D93025;
+  --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --wrap:1160px; --gut:clamp(16px,4vw,40px);
+  --r:16px;
+  --sh-1:0 1px 2px rgba(32,33,36,.06),0 2px 8px rgba(32,33,36,.06);
+  --sh-2:0 2px 6px rgba(32,33,36,.06),0 18px 40px rgba(32,33,36,.10);
+  --ease:cubic-bezier(.2,.7,.2,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:90px}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;font-variant-numeric:lining-nums;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:76px}
+body{background:var(--white);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img,svg{display:block}
-a{color:inherit;text-decoration:none}
+a{color:inherit}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-::selection{background:rgba(212,175,90,.35)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+::selection{background:var(--blue-bg)}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
-.serif{font-family:var(--serif);font-weight:700}
-.gold{color:var(--gold-hi)}
-
-
-/* atmosphere */
-.atmo{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(1100px 700px at 90% 10%,rgba(212,175,90,.10),transparent 60%),radial-gradient(900px 700px at 0% 100%,rgba(212,175,90,.07),transparent 60%)}
-.gridbg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 0%,transparent 70%);mask-image:radial-gradient(ellipse at 50% 40%,#000 0%,transparent 70%)}
-main,header,footer{position:relative;z-index:1}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--ink);color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600}
+.skip:focus{top:12px}
 
 /* =========================================================
-   COMMON UI
+   UI COMÚN
    ========================================================= */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:58px;padding:0 28px;border-radius:40px;font-weight:700;font-size:16px;letter-spacing:.01em;transition:transform .25s ease,box-shadow .25s ease,background .25s,border-color .25s;text-align:center;white-space:nowrap}
-.btn svg{width:22px;height:22px;flex:none}
-.btn-g{background:var(--g);color:#0B0B0B;box-shadow:0 12px 40px rgba(212,175,90,.25)}
-.btn-g:hover{transform:translateY(-2px);box-shadow:0 18px 50px rgba(212,175,90,.4)}
-.btn-o{border:1px solid var(--gline);color:var(--gold-hi);background:rgba(212,175,90,.04)}
-.btn-o:hover{background:rgba(212,175,90,.1);border-color:var(--gold)}
-.tlink{display:inline-flex;align-items:center;gap:8px;color:var(--gold-hi);font-weight:600;font-size:15px;border-bottom:1px solid rgba(212,175,90,.35);padding-bottom:2px}
-.tlink:hover{border-color:var(--gold)}
-.tlink svg{width:16px;height:16px}
-.eb{display:inline-flex;align-items:center;gap:14px;font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
-.eb::before{content:"";width:40px;height:1.5px;background:var(--g);flex:none}
-.h2{font-family:var(--serif);font-weight:700;font-size:clamp(32px,4.6vw,54px);line-height:1.06;letter-spacing:-.01em;margin-top:16px}
-.h1 em,.h2 em{font-style:italic;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em}
-.lead{font-size:clamp(17px,1.5vw,19px);color:var(--soft);margin-top:16px;max-width:620px}
-.sec{padding:clamp(72px,9vw,120px) 0;position:relative}
-.sep{height:1px;background:linear-gradient(90deg,transparent,var(--gline),transparent)}
-.card{background:linear-gradient(180deg,#18181B 0%,#0F0F11 100%);border:1px solid var(--line);border-radius:22px;box-shadow:0 30px 70px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.05)}
-.card.gb{border-color:var(--gline)}
-.lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:600}
-.stars{color:var(--gold);letter-spacing:2px}
-.pill{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:30px;font-size:12px;font-weight:700;white-space:nowrap}
-.pill.g{background:var(--g);color:#0b0b0b}
-.pill.o{border:1px solid var(--gline);color:var(--gold-hi)}
-.demo-tag{display:inline-flex;font-size:10px;font-weight:800;letter-spacing:.22em;color:#0b0b0b;background:var(--g);padding:5px 10px;border-radius:6px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok);flex:none}
-.framed{position:relative}
-.framed::before,.framed::after{content:"";position:absolute;width:24px;height:24px;border:0 solid var(--gold);pointer-events:none;z-index:2}
-.framed::before{top:-1px;left:-1px;border-top-width:2px;border-left-width:2px;border-top-left-radius:inherit}
-.framed::after{bottom:-1px;right:-1px;border-bottom-width:2px;border-right-width:2px;border-bottom-right-radius:inherit}
-.ba{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--soft);padding:7px 12px;border:1px solid var(--line);border-radius:30px;white-space:nowrap}
-.ba svg{width:14px;height:14px;color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;white-space:nowrap;transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s,border-color .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-p{background:var(--blue);color:#fff;box-shadow:0 1px 2px rgba(26,115,232,.3),0 8px 22px rgba(26,115,232,.25)}
+.btn-p:hover{background:var(--blue-hi);transform:translateY(-1px);box-shadow:0 2px 4px rgba(26,115,232,.3),0 14px 30px rgba(26,115,232,.3)}
+.btn-p:active{transform:translateY(0)}
+.btn-s{background:#fff;color:var(--blue);border:1px solid var(--line-2)}
+.btn-s:hover{border-color:var(--blue);background:var(--blue-bg)}
+.btn-sm{min-height:42px;padding:0 18px;font-size:14.5px}
+.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+.eb{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.h2{font-size:clamp(30px,4.4vw,48px);line-height:1.08;letter-spacing:-.025em;font-weight:800;margin-top:12px;text-wrap:balance}
+.lead{font-size:clamp(17px,1.6vw,19px);color:var(--soft);margin-top:14px;max-width:600px;text-wrap:pretty}
+.sec{padding:clamp(72px,10vw,128px) 0;position:relative}
+.sec.alt{background:var(--paper)}
+.note{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--mute)}
+.note svg{width:18px;height:18px;flex:none;color:var(--green)}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--mute);background:#fff;border:1px solid var(--line);padding:5px 10px;border-radius:999px}
+.tag i{width:7px;height:7px;border-radius:50%;background:var(--star);display:block}
+.stars{display:inline-flex;gap:1px;color:var(--star)}
+.stars svg{width:1em;height:1em}
+.stars .off{color:#DADCE0}
 
-/* scaled mockups */
+/* aparición al hacer scroll (solo con JS) */
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+
+/* contenedores escalables para mockups de tamaño fijo */
 .fit{position:relative;width:100%;max-width:var(--w);height:var(--h);margin:0 auto}
 .fit-in{position:absolute;top:0;left:0;width:var(--w);height:var(--h);transform-origin:0 0}
-.phone{position:absolute;border-radius:38px;background:#050506;border:9px solid #1C1C1F;box-shadow:0 40px 80px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.08);overflow:hidden}
-.phone .notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:72px;height:19px;border-radius:12px;background:#000;z-index:3}
-.scr{position:absolute;inset:0;padding:38px 13px 13px;display:flex;flex-direction:column;gap:9px}
-.wa-h{display:flex;align-items:center;gap:10px;padding-bottom:9px;border-bottom:1px solid var(--line)}
-.av{width:32px;height:32px;border-radius:50%;background:var(--g);display:grid;place-items:center;color:#111;font-weight:800;font-size:13px;flex:none}
-.msg{max-width:86%;padding:8px 11px;border-radius:13px;font-size:12px;line-height:1.38}
-.msg.in{background:#1E1E22;align-self:flex-start;border-top-left-radius:4px}
-.msg.out{background:linear-gradient(135deg,#3A2F17,#2A220F);border:1px solid rgba(212,175,90,.35);align-self:flex-end;border-top-right-radius:4px;color:#F7E7BC}
-.msg small{display:block;font-size:9.5px;color:var(--mute);margin-top:3px;text-align:right}
-.msg.out small{color:#C6A962}
-.ph-img{border-radius:12px;background:radial-gradient(circle at 70% 30%,rgba(243,217,149,.55),transparent 58%),linear-gradient(160deg,#2B2415,#0F0E0B);border:1px solid var(--gline)}
-.photos .ph-img:nth-child(2n){background:radial-gradient(circle at 30% 60%,rgba(243,217,149,.4),transparent 60%),linear-gradient(160deg,#241F14,#0F0E0B)}
-.photos .ph-img:nth-child(3n){background:radial-gradient(circle at 60% 75%,rgba(243,217,149,.35),transparent 60%),linear-gradient(160deg,#1F1B12,#0F0E0B)}
-.step-t{font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:var(--gold)}
-
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes pulse{0%{transform:scale(.6);opacity:.7}100%{transform:scale(1.8);opacity:0}}
-@keyframes marquee{to{transform:translateX(-50%)}}
-@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
-.fl1{animation:floaty 7s ease-in-out infinite}
-.fl2{animation:floaty 8s ease-in-out -3s infinite}
-.js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-.js .rv.in{opacity:1;transform:none}
-.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
 
 /* =========================================================
-   NAV
+   HEADER
    ========================================================= */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-.nav.sc{background:rgba(9,9,10,.84);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:84px;gap:20px}
-.brand{display:flex;align-items:center;gap:14px}
-.mono{width:46px;height:46px;border:1.5px solid var(--gold);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:25px;color:var(--gold-hi);position:relative;flex:none}
-.mono::after{content:"";position:absolute;inset:4px;border:1px solid rgba(212,175,90,.3)}
-.mono svg{color:var(--gold-hi)}
-.bn{font-weight:800;font-size:15px;letter-spacing:.24em;line-height:1}
-.bt{font-size:9.5px;font-weight:600;letter-spacing:.28em;color:var(--gold);margin-top:6px;line-height:1;white-space:nowrap}
-.nav-r{display:flex;align-items:center;gap:24px}
-.links{display:flex;gap:24px;font-size:14px;font-weight:500;color:var(--soft);white-space:nowrap}
-.links a{position:relative;padding:6px 0;transition:color .2s}
-.links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--gold);transition:right .3s}
-.links a:hover{color:var(--ink)}
-.links a:hover::after{right:0}
-.nav .btn{min-height:46px;padding:0 20px;font-size:14px}
-.burger{display:none;width:46px;height:46px;border:1px solid var(--gline);border-radius:12px;align-items:center;justify-content:center}
-.burger span,.burger span::before,.burger span::after{display:block;width:18px;height:1.5px;background:var(--gold-hi);position:relative;transition:transform .3s,background .3s}
-.burger span::before,.burger span::after{content:"";position:absolute;left:0}
-.burger span::before{top:-6px}.burger span::after{top:6px}
-.nav.open .burger span{background:transparent}
-.nav.open .burger span::before{transform:translateY(6px) rotate(45deg)}
-.nav.open .burger span::after{transform:translateY(-6px) rotate(-45deg)}
-.mmenu{display:none}
+.hd{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.88);-webkit-backdrop-filter:saturate(1.6) blur(12px);backdrop-filter:saturate(1.6) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
+.hd.sc{border-color:var(--line)}
+.hd .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.02em;text-decoration:none}
+.logo svg{width:32px;height:32px}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a.lk{font-size:15px;font-weight:500;color:var(--soft);text-decoration:none;padding:8px 12px;border-radius:8px}
+.nav a.lk:hover{background:var(--paper);color:var(--ink)}
+@media (max-width:760px){.nav a.lk{display:none}}
 
 /* =========================================================
    HERO
    ========================================================= */
-.hero{padding:146px 0 70px;position:relative;overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
-.h1{font-family:var(--serif);font-weight:700;font-size:clamp(38px,4.6vw,62px);line-height:1.05;letter-spacing:-.015em;margin-top:22px}
-.ctas{display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px;margin-top:32px}
-.hero-note{margin-top:22px;font-size:14.5px;color:var(--mute);display:flex;gap:10px;align-items:flex-start;max-width:500px}
-.hero-vis .fit{transform:perspective(1300px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-.hero-note svg{width:18px;height:18px;color:var(--gold);flex:none;margin-top:2px}
+.hero{padding:clamp(20px,4vw,56px) 0 clamp(48px,7vw,88px);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 500px at 85% 20%,#EEF3FD 0%,rgba(238,243,253,0) 70%);pointer-events:none}
+.hero-g{position:relative;display:grid;grid-template-columns:1fr;grid-template-areas:"copy" "vis" "cta";gap:18px;align-items:center}
+.hero-copy{grid-area:copy}
+.hero-vis{grid-area:vis;position:relative}
+.hero-cta{grid-area:cta}
+.h1{font-size:clamp(34px,5.6vw,64px);line-height:1.03;letter-spacing:-.035em;font-weight:800;margin-top:12px;text-wrap:balance}
+.h1 .u{position:relative;white-space:nowrap}
+.h1 .u::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.14em;background:var(--star);border-radius:4px;z-index:-1;opacity:.7;transform-origin:left;animation:uline .7s .7s var(--ease) both}
+@keyframes uline{from{transform:scaleX(0)}}
+.hero .lead{margin-top:14px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.hero-cta .note{margin-top:16px}
+@media (max-width:560px){.cta-row .btn{flex:1 1 100%}}
+@media (min-width:960px){
+  .hero-g{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);grid-template-areas:"copy vis" "cta vis";column-gap:56px;row-gap:28px;min-height:calc(100vh - 64px - 120px);align-content:center}
+  .hero-copy{align-self:end}.hero-cta{align-self:start}
+}
+/* entrada escalonada del hero */
+.ent{animation:ent .7s var(--ease) both}
+.ent.e2{animation-delay:.08s}.ent.e3{animation-delay:.16s}.ent.e4{animation-delay:.24s}
+@keyframes ent{from{opacity:0;transform:translateY(14px)}}
+.vis-cap{display:flex;justify-content:center;margin-top:10px}
 
-/* rubros: una sola línea para identificarse, no secciones */
-.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:18px 0;position:relative;z-index:1;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.ticker-in{display:flex;width:max-content;animation:marquee 40s linear infinite}
-.ticker span{font-family:var(--serif);font-size:20px;color:var(--mute);padding:0 22px;white-space:nowrap;display:flex;align-items:center;gap:44px}
-.ticker span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.7}
-
-/* =========================================================
-   PROBLEMA
-   ========================================================= */
-.pains{display:grid;grid-template-columns:repeat(4,1fr);margin-top:44px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#0D0D0F}
-.pain{padding:28px 24px}
-.pain + .pain{border-left:1px solid var(--line)}
-.pain i{display:block;font-style:normal;font-family:var(--serif);color:var(--gold);font-size:15px;margin-bottom:12px}
-.pain p{font-size:17px;line-height:1.45;font-weight:500}
-
-/* =========================================================
-   RESULTADOS — escenario 3D que cambia con el scroll
-   ========================================================= */
-.xr{position:relative;padding:clamp(80px,10vw,140px) 0 clamp(40px,6vw,80px);overflow:clip}
-.floor{position:absolute;left:-30%;right:-30%;bottom:-10%;height:70%;pointer-events:none;z-index:0;
-  background-image:linear-gradient(rgba(212,175,90,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,90,.22) 1px,transparent 1px);
-  background-size:70px 70px;transform:perspective(700px) rotateX(72deg);transform-origin:50% 100%;
-  -webkit-mask-image:linear-gradient(to top,#000 0%,transparent 75%);mask-image:linear-gradient(to top,#000 0%,transparent 75%);animation:floor 6s linear infinite;opacity:.55}
-@keyframes floor{to{background-position:0 70px}}
-.xr .wrap{position:relative;z-index:1}
-.xr-title{font-size:clamp(46px,7.4vw,104px);line-height:.98;letter-spacing:-.02em}
-.xr-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(30px,5vw,70px);margin-top:clamp(30px,5vw,60px)}
-.xr-stage{position:sticky;top:96px;height:calc(100vh - 120px);max-height:760px;align-self:start;display:flex;flex-direction:column;gap:18px}
-.xr-frame{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
-.xr-frame .fit{perspective:1500px}
-.dev{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(calc(6deg + var(--rx,0deg))) rotateY(calc(-10deg + var(--ry,0deg)));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-.dev::before{content:"";position:absolute;inset:0;border-radius:32px;background:#070708;border:1px solid rgba(212,175,90,.25);transform:translateZ(-36px);box-shadow:0 60px 120px rgba(0,0,0,.8),0 0 120px rgba(212,175,90,.12)}
-.dev-face{position:absolute;inset:0;border-radius:32px;border:1px solid var(--gline);background:radial-gradient(500px 300px at 80% 0%,rgba(212,175,90,.14),transparent 70%),linear-gradient(180deg,#16161A,#0B0B0D);transform-style:preserve-3d;overflow:visible}
-.dev-face::after{content:"";position:absolute;inset:0;border-radius:32px;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.07) 0%,transparent 35%)}
-.scene{position:absolute;inset:0;padding:26px;transform-style:preserve-3d;opacity:0;visibility:hidden;transform:translateZ(-80px) rotateY(22deg) scale(.92);transition:opacity .6s ease,transform .8s cubic-bezier(.2,.7,.2,1),visibility 0s .8s}
-.scene.prev{transform:translateZ(-80px) rotateY(-22deg) scale(.92)}
-.scene.on{opacity:1;visibility:visible;transform:none;transition:opacity .6s ease .1s,transform .8s cubic-bezier(.2,.7,.2,1),visibility 0s}
-.sc-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.sc-h,.srch,.rank,.mapz,.chatx,.rate,.photos,.flow,.kpis,.chartx{transform:translateZ(14px);transform-style:preserve-3d}
-.dev-face::after{transform:translateZ(1px)}
-.z1{transform:translateZ(40px)}.z2{transform:translateZ(80px)}
-.pop{position:absolute;padding:13px 16px;border-radius:16px;background:linear-gradient(180deg,#1C1C20,#121214);border:1px solid var(--gline);box-shadow:0 30px 60px rgba(0,0,0,.6);font-size:12.5px;display:flex;gap:10px;align-items:center}
-.pop svg{width:22px;height:22px;flex:none}
-@keyframes inUp{from{opacity:0;transform:translateY(16px) translateZ(var(--z,0px))}}
-@keyframes inPop{from{opacity:0;transform:translateZ(0) scale(.7)}}
-@keyframes inLeft{from{opacity:0;transform:translateX(30px) translateZ(var(--z,0px))}}
-@keyframes flipIn{from{opacity:0;transform:scale(.6)}}
-/* escena 1: ranking */
-.srch{height:42px;border-radius:22px;background:#1A1A1D;border:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 16px;font-size:13.5px;color:var(--soft)}
-.srch svg{width:16px;height:16px;color:var(--mute)}
-.rank{position:relative;height:200px;margin-top:16px;transform-style:preserve-3d}
-.rk{position:absolute;left:0;right:0;height:58px;top:calc(var(--p)*68px);border-radius:14px;background:#141416;border:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 16px;font-size:14px}
-.rk b{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#222226;font-size:12px;color:var(--mute)}
-.rk span{flex:1;color:var(--mute)}.rk i{font-style:normal;font-size:12px;color:var(--dim)}
-.rk.me{background:linear-gradient(135deg,rgba(212,175,90,.22),rgba(212,175,90,.06));border-color:var(--gold);transform:translateZ(46px);box-shadow:0 20px 50px rgba(212,175,90,.25)}
-.rk.me b{background:var(--g);color:#0b0b0b}.rk.me span{color:var(--ink);font-weight:700}.rk.me i{color:var(--gold-hi)}
-.scene.on .rk.me{animation:rkMe 1.4s cubic-bezier(.6,0,.2,1) .4s backwards}
-.scene.on .rk.a{animation:rkA 1.4s cubic-bezier(.6,0,.2,1) .4s backwards}
-.scene.on .rk.b{animation:rkB 1.4s cubic-bezier(.6,0,.2,1) .4s backwards}
-@keyframes rkMe{from{top:136px;transform:translateZ(0);box-shadow:none}}
-@keyframes rkA{from{top:0}}
-@keyframes rkB{from{top:68px}}
-.mapz{position:relative;height:150px;margin-top:14px;border-radius:18px;border:1px solid var(--line);overflow:hidden;background:#0E0E10}
-.mapz::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.05) 2px,transparent 2px);background-size:46px 46px;transform:rotate(-12deg) scale(1.3)}
-.mpin{position:absolute;width:12px;height:12px;border-radius:50%;background:#3A3A40}
-.mpin.me{width:34px;height:34px;background:none;left:52%;top:30%}
-.mpin.me svg{width:34px;height:34px}
-.mpin.me::before,.mpin.me::after{content:"";position:absolute;left:50%;top:80%;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;border:1.5px solid var(--gold);animation:pulse 2.4s ease-out infinite}
-.mpin.me::after{animation-delay:1.2s}
-/* escena 2: consultas */
-.chatx{display:flex;flex-direction:column;gap:10px;width:62%}
-.chatx .msg{font-size:13px;max-width:100%}
-.scene.on .chatx .msg{animation:inUp .5s ease backwards}
-.scene.on .chatx .msg:nth-child(1){animation-delay:.3s}.scene.on .chatx .msg:nth-child(2){animation-delay:.9s}.scene.on .chatx .msg:nth-child(3){animation-delay:1.5s}.scene.on .chatx .msg:nth-child(4){animation-delay:2.1s}
-.notes{position:absolute;right:-26px;top:96px;display:grid;gap:12px;width:210px;transform-style:preserve-3d}
-.notes .pop{position:relative;--z:70px;transform:translateZ(70px)}
-.scene.on .notes .pop{animation:inLeft .6s cubic-bezier(.2,.7,.2,1) backwards}
-.scene.on .notes .pop:nth-child(1){animation-delay:.6s}.scene.on .notes .pop:nth-child(2){animation-delay:1.2s}.scene.on .notes .pop:nth-child(3){animation-delay:1.8s}
-.pop b{display:block;font-size:12.5px}.pop small{font-size:11px;color:var(--mute)}
-/* escena 3: confianza */
-.rate{display:flex;align-items:center;gap:16px}
-.rate .serif{font-size:54px;line-height:1}
-.starbar{position:relative;font-size:26px;letter-spacing:4px;color:#2A2A2E}
-.starbar span{position:absolute;inset:0;overflow:hidden;color:var(--gold);white-space:nowrap}
-.scene.on .starbar span{animation:fillW 1.6s ease .3s backwards}
-@keyframes fillW{from{width:0}}
-.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
-.photos .ph-img{height:84px;border-radius:12px}
-.scene.on .photos .ph-img{animation:flipIn .6s ease backwards}
-.scene.on .photos .ph-img:nth-child(2){animation-delay:.15s}.scene.on .photos .ph-img:nth-child(3){animation-delay:.3s}.scene.on .photos .ph-img:nth-child(4){animation-delay:.45s}.scene.on .photos .ph-img:nth-child(5){animation-delay:.6s}.scene.on .photos .ph-img:nth-child(6){animation-delay:.75s}
-.revs{position:absolute;left:30px;right:-30px;bottom:34px;display:grid;gap:10px;transform-style:preserve-3d}
-.revs .pop{position:relative;--z:60px;transform:translateZ(60px)}
-.scene.on .revs .pop{animation:inUp .6s ease backwards}
-.scene.on .revs .pop:nth-child(1){animation-delay:1s}.scene.on .revs .pop:nth-child(2){animation-delay:1.5s}
-/* escena 4: tiempo */
-.flow{display:grid;gap:12px;position:relative;padding-left:22px}
-.flow::before{content:"";position:absolute;left:6px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--gold),rgba(212,175,90,.1))}
-.fl{position:relative;padding:13px 16px;border-radius:14px;background:#141416;border:1px solid var(--line);font-size:13px}
-.fl::before{content:"";position:absolute;left:-22px;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:var(--bg);border:2px solid var(--gold)}
-.fl.ok{border-color:rgba(212,175,90,.4)}
-.fl.ok::before{background:var(--gold)}
-.fl small{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:3px}
-.scene.on .fl{animation:inUp .5s ease backwards}
-.scene.on .fl:nth-child(2){animation-delay:.6s}.scene.on .fl:nth-child(3){animation-delay:1.2s}.scene.on .fl:nth-child(4){animation-delay:1.8s}
-.clockc{position:absolute;right:-28px;top:70px;width:150px;height:150px;border-radius:50%;border:1px solid var(--gline);background:radial-gradient(circle,#1A1A1E,#0E0E10);transform:translateZ(90px);box-shadow:0 30px 70px rgba(0,0,0,.6);display:grid;place-items:center}
-.clockc i{position:absolute;left:50%;top:50%;width:3px;height:48px;margin-left:-1.5px;background:var(--gold-hi);border-radius:3px;transform-origin:50% 0;transform:rotate(180deg)}
-.clockc i + i{height:34px;background:var(--gold);animation:spin 3s linear infinite}
-.clockc i:first-child{animation:spin 18s linear infinite}
-@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.clockc span{position:absolute;bottom:-34px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;color:var(--mute)}
-.okchip{position:absolute;left:26px;bottom:26px;transform:translateZ(60px)}
-/* escena 5: control */
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.kpi{padding:12px 13px;border-radius:13px;background:#141416;border:1px solid var(--line)}
-.kpi span{display:block;font-size:11px;color:var(--mute)}
-.kpi b{display:flex;align-items:center;gap:6px;margin-top:4px;font-size:15px;color:var(--gold-hi)}
-.chartx{position:relative;height:200px;margin-top:14px;border-radius:16px;background:#0E0E10;border:1px solid var(--line);padding:16px 16px 12px;display:flex;align-items:flex-end;gap:10px}
-.chartx i{flex:1;border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,#E9C87A,#7A5E25);height:var(--h);transform-origin:bottom}
-.scene.on .chartx i{animation:grow .9s cubic-bezier(.2,.7,.2,1) backwards}
-@keyframes grow{from{transform:scaleY(0)}}
-.chartx svg{position:absolute;inset:16px 16px 12px;width:calc(100% - 32px);height:calc(100% - 28px);overflow:visible}
-.chartx path{stroke-dasharray:600;stroke-dashoffset:0}
-.scene.on .chartx path{animation:dash 1.8s ease .6s backwards}
-@keyframes dash{from{stroke-dashoffset:600}}
-.insight{position:absolute;right:-30px;bottom:44px;width:230px;display:grid;gap:10px;transform-style:preserve-3d}
-.insight .pop{position:relative;--z:80px;transform:translateZ(80px)}
-.scene.on .insight .pop{animation:inLeft .6s ease backwards}
-.scene.on .insight .pop:nth-child(1){animation-delay:1.2s}.scene.on .insight .pop:nth-child(2){animation-delay:1.7s}
-/* riel de progreso */
-.xr-rail{display:flex;justify-content:center;gap:8px}
-.xr-rail button{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:30px;font-size:12px;font-weight:700;color:var(--dim);border:1px solid transparent;transition:all .3s}
-.xr-rail button::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
-.xr-rail button[aria-current="step"]{color:var(--gold-hi);border-color:var(--gline);background:rgba(212,175,90,.08)}
-.xr-rail button span{display:none}
-.xr-rail button[aria-current="step"] span{display:inline}
-/* pasos de texto */
-.xs{min-height:78vh;display:flex;flex-direction:column;justify-content:center;opacity:.22;transition:opacity .5s ease;padding:30px 0}
-.xs.on{opacity:1}
-.xs-n{font-family:var(--serif);font-size:clamp(70px,8vw,120px);line-height:.9;color:transparent;-webkit-text-stroke:1px var(--gold);opacity:.7}
-.xs-t{font-family:var(--serif);font-weight:700;font-size:clamp(40px,4.8vw,68px);line-height:1.02;letter-spacing:-.015em;margin-top:12px}
-.xs-p{font-size:clamp(17px,1.5vw,20px);color:var(--soft);margin-top:18px;max-width:480px}
-.xs .tools{margin-top:22px}
-.xs-r{display:flex;align-items:center;gap:14px;margin-top:28px;padding-top:22px;border-top:1px solid var(--gline);max-width:480px}
-.xs-r svg{width:26px;height:26px;color:var(--gold);flex:none}
-.xs-r b{font-family:var(--serif);font-style:italic;font-weight:700;font-size:clamp(22px,2.2vw,30px);line-height:1.2;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
-.xs-end{min-height:20vh}
-.tools{display:flex;flex-wrap:wrap;gap:8px}
-.tools span{font-size:13px;font-weight:600;padding:7px 13px;border-radius:30px;border:1px solid var(--line);color:var(--soft);white-space:nowrap}
+/* progreso del recorrido (hero) */
+.flow{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:12px}
+.flow span{font-size:12.5px;font-weight:600;color:var(--mute);padding:6px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);transition:all .3s}
+.flow span.on{color:#fff;background:var(--ink);border-color:var(--ink)}
 
 /* =========================================================
-   AUTODIAGNÓSTICO (interactivo, pensado para el pulgar)
+   ESCENA: mostrador + soporte + celular (tamaño de diseño 600×540)
    ========================================================= */
-.quiz{margin-top:40px;display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,5vw,60px);align-items:center}
-.qbox{position:relative;border-radius:28px;border:1px solid var(--gline);background:radial-gradient(500px 260px at 100% 0%,rgba(212,175,90,.14),transparent 70%),#0F0F11;padding:clamp(22px,4vw,36px);min-height:380px;display:flex;flex-direction:column;overflow:hidden}
-.qtop{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--mute);font-weight:600}
-.qbar{height:4px;border-radius:4px;background:rgba(255,255,255,.08);margin-top:12px;overflow:hidden}
-.qbar i{display:block;height:100%;width:0;background:var(--g);transition:width .4s ease}
-.qcards{position:relative;flex:1;margin-top:20px}
-.qcard{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;transform:translateX(40px);pointer-events:none;transition:opacity .35s ease,transform .45s cubic-bezier(.2,.7,.2,1)}
-.qcard.on{opacity:1;transform:none;pointer-events:auto}
-.qcard.out{transform:translateX(-40px)}
-.qcard h3{font-family:var(--serif);font-size:clamp(24px,3vw,32px);line-height:1.18}
-.qcard p{color:var(--mute);font-size:14.5px;margin-top:10px}
-.qbtns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:auto;padding-top:24px}
-.qbtns button{min-height:64px;border-radius:18px;font-size:18px;font-weight:800;border:1px solid var(--gline);color:var(--gold-hi);background:rgba(212,175,90,.05);transition:transform .15s,background .2s}
-.qbtns button:active{transform:scale(.96)}
-.qbtns button.yes{background:var(--g);color:#0b0b0b;border:0}
-.qres{display:none;flex-direction:column;gap:14px}
-.qbox.done .qcards,.qbox.done .qtop,.qbox.done .qbar,.qbox.done .qbtns{display:none}
-.qbox.done .qres{display:flex;animation:inUp .5s ease}
-.score{display:flex;align-items:center;gap:18px}
-.ring{width:86px;height:86px;flex:none;position:relative}
-.ring svg{width:86px;height:86px;transform:rotate(-90deg)}
-.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-size:26px}
-.score h3{font-family:var(--serif);font-size:24px;line-height:1.15}
-.score p{color:var(--mute);font-size:14px;margin-top:4px}
-.fixes{list-style:none;display:grid;gap:10px}
-.fixes li{display:flex;gap:12px;font-size:14.5px;color:var(--soft);padding:12px 14px;border-radius:14px;background:#141416;border:1px solid var(--line)}
-.fixes li svg{width:20px;height:20px;flex:none;color:var(--gold)}
-.fixes li b{color:var(--ink)}
-.qres .btn{width:100%}
-.qagain{font-size:13.5px;color:var(--mute);text-decoration:underline;text-underline-offset:3px;align-self:center}
+.scene{position:relative;width:600px;height:540px;border-radius:28px;overflow:hidden;background:#EFE7DD;box-shadow:var(--sh-2);isolation:isolate}
+.sc-wall{position:absolute;inset:0 0 34% 0;background:var(--wall,linear-gradient(180deg,#F3ECE3 0%,#E9DFD2 100%));transition:background .5s}
+.sc-wall::after{content:"";position:absolute;inset:0;background:radial-gradient(420px 260px at 40% 30%,rgba(255,255,255,.65),transparent 70%)}
+.sc-top{position:absolute;left:0;right:0;top:66%;bottom:0;background:var(--top,linear-gradient(180deg,#C9A47C 0%,#B58C62 60%,#A07650 100%));transition:background .5s}
+.sc-top::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(92deg,rgba(255,255,255,.05) 0 2px,transparent 2px 22px),radial-gradient(500px 120px at 40% 0%,rgba(255,255,255,.35),transparent 70%)}
+.sc-top::after{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:rgba(255,255,255,.4)}
+.sc-props{position:absolute;inset:0;pointer-events:none}
+.sc-props svg{position:absolute}
+.scene .stand{position:absolute;left:96px;top:96px;font-size:16px;z-index:2}
+.scene .ph{position:absolute;left:372px;top:124px;font-size:14px;z-index:3;transform:rotate(7deg);transition:transform .9s var(--ease),left .9s var(--ease),top .9s var(--ease)}
+.scene[data-state="scan"] .ph{left:330px;top:86px;transform:rotate(-3deg)}
+.scene[data-state="open"] .ph,.scene[data-state="review"] .ph{left:356px;top:70px;transform:rotate(0deg) scale(1.04)}
+/* haz de escaneo entre el QR y el celular */
+.beam{position:absolute;left:250px;top:250px;width:110px;height:6px;border-radius:6px;background:linear-gradient(90deg,rgba(26,115,232,0),rgba(26,115,232,.55));transform-origin:left center;opacity:0;z-index:2;transition:opacity .3s}
+.scene[data-state="scan"] .beam{opacity:1;animation:beam 1s ease-in-out infinite}
+@keyframes beam{0%,100%{transform:scaleX(.4)}50%{transform:scaleX(1)}}
 
 /* =========================================================
-   CALCULADORA
+   SOPORTE QR (unidades em: escala con font-size)
+   PROVISIONAL: mockup en CSS. Reemplazar por fotos reales del producto cuando estén.
    ========================================================= */
-.calc{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;border-radius:28px;overflow:hidden;border:1px solid var(--gline)}
-.calc-in{padding:clamp(22px,4vw,40px);background:#0F0F11;display:grid;gap:26px;min-width:0}
-.calc-in > *,.calc-out{min-width:0}
-.rng .lb2{display:block}
-.calc-out{padding:clamp(26px,4vw,44px);background:radial-gradient(500px 300px at 50% 0%,rgba(212,175,90,.18),transparent 70%),linear-gradient(180deg,#1A1710,#0E0E10);display:flex;flex-direction:column;justify-content:center;gap:10px;border-left:1px solid var(--gline)}
-.rng label{display:flex;justify-content:space-between;align-items:baseline;gap:4px 12px;flex-wrap:wrap;font-size:15px;font-weight:600}
-.rng label output{font-family:var(--serif);font-size:24px;color:var(--gold-hi);white-space:nowrap}
-.rng small{display:block;color:var(--mute);font-size:13px;margin-top:2px}
-.rng input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:36px;background:transparent;margin-top:6px;touch-action:pan-y}
-.rng input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--gold) var(--pct,50%),rgba(255,255,255,.1) var(--pct,50%))}
-.rng input[type=range]::-moz-range-track{height:6px;border-radius:6px;background:rgba(255,255,255,.1)}
-.rng input[type=range]::-moz-range-progress{height:6px;border-radius:6px;background:var(--gold)}
-.rng input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;margin-top:-12px;border-radius:50%;background:var(--g);border:3px solid #0b0b0b;box-shadow:0 0 0 1px var(--gold),0 6px 18px rgba(212,175,90,.45)}
-.rng input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:#E9C87A;border:3px solid #0b0b0b}
-.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
-.seg button{min-height:46px;border-radius:12px;border:1px solid var(--line);font-size:14px;font-weight:700;color:var(--soft)}
-.seg button[aria-pressed="true"]{background:var(--g);color:#0b0b0b;border-color:transparent}
-.calc-out .lbl{color:var(--gold)}
-.big{font-family:var(--serif);font-weight:700;font-size:clamp(46px,6.4vw,78px);line-height:1;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
-.calc-out .yr{font-size:17px;color:var(--soft)}
-.calc-out .yr b{color:var(--ink)}
-.calc-out .note{font-size:12.5px;color:var(--mute);margin-top:4px}
-.calc-out .btn{margin-top:16px}
-
-/* compartir */
-.share{display:inline-flex;align-items:center;gap:10px;margin-top:16px;font-size:14px;font-weight:600;color:var(--soft);padding:10px 16px;border-radius:30px;border:1px solid var(--line)}
-.share svg{width:18px;height:18px;color:var(--gold)}
-.toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);opacity:0;z-index:80;background:#1C1C20;border:1px solid var(--gline);color:var(--ink);font-size:14px;padding:10px 16px;border-radius:30px;transition:all .3s;pointer-events:none}
-.toast.on{opacity:1;transform:translate(-50%,0)}
-.swipe-hint{display:none}
+.stand{position:relative;width:15em;height:21.5em}
+.st-acr{position:absolute;left:.5em;top:0;width:14em;height:19.4em;border-radius:1em;background:linear-gradient(135deg,rgba(255,255,255,.75),rgba(255,255,255,.25) 40%,rgba(255,255,255,.55));box-shadow:0 0 0 1px rgba(255,255,255,.9) inset,0 0 0 1px rgba(0,0,0,.06),0 1.2em 2em -1em rgba(60,40,20,.35);padding:.55em;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.st-card{position:relative;height:100%;border-radius:.6em;background:#fff;display:flex;flex-direction:column;align-items:center;text-align:center;padding:1em .9em .8em;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.st-card::before{content:"";position:absolute;left:0;right:0;top:0;height:.35em;border-radius:.6em .6em 0 0;background:linear-gradient(90deg,var(--blue) 0 25%,var(--red) 25% 50%,var(--star) 50% 75%,var(--green) 75%)}
+.st-logo{width:2.2em;height:2.2em;border-radius:50%;background:var(--paper);border:1px dashed #BDC1C6;display:grid;place-items:center;font-size:.55em;font-weight:700;color:var(--mute);line-height:1.05;margin-top:.2em}
+.st-logo span{font-size:1em}
+.st-ask{font-weight:800;font-size:1em;line-height:1.15;margin-top:.45em;letter-spacing:-.01em;color:var(--ink)}
+.st-card .stars{font-size:1em;margin-top:.3em;gap:.08em}
+.st-qr{width:8.2em;height:8.2em;margin-top:.55em;padding:.45em;border-radius:.5em;background:#fff;border:1px solid var(--line)}
+.st-qr svg{width:100%;height:100%}
+.st-cta{font-size:.62em;line-height:1.3;font-weight:600;color:var(--soft);margin-top:.6em}
+.st-cta b{color:var(--ink)}
+.st-glare{position:absolute;inset:0;border-radius:1em;background:linear-gradient(115deg,rgba(255,255,255,.35) 0,transparent 14%,transparent 86%,rgba(255,255,255,.3) 100%);pointer-events:none}
+.st-base{position:absolute;left:0;bottom:.4em;width:15em;height:1.7em;border-radius:.45em;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(230,233,236,.85));box-shadow:0 0 0 1px rgba(0,0,0,.06),0 .3em .5em rgba(0,0,0,.12)}
+.st-shadow{position:absolute;left:.4em;right:-.6em;bottom:-.2em;height:1em;border-radius:50%;background:radial-gradient(closest-side,rgba(40,25,10,.35),transparent);z-index:-1;filter:blur(2px)}
 
 /* =========================================================
-   CÓMO EMPEZAR
+   CELULAR (unidades em)
    ========================================================= */
-.how{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}
-.how li{list-style:none;padding:30px 28px;border-radius:22px;border:1px solid var(--line);background:#0F0F11}
-.how li b{display:block;font-family:var(--serif);font-size:58px;line-height:1;color:transparent;-webkit-text-stroke:1px var(--gold);margin-bottom:18px}
-.how li h3{font-size:19px;font-weight:700}
-.how li p{color:var(--soft);font-size:15.5px;margin-top:6px}
-.how li.on{border-color:var(--gline);background:linear-gradient(180deg,rgba(212,175,90,.08),#0F0F11)}
-.how-cta{margin-top:34px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
-.how-cta span{color:var(--mute);font-size:15px}
+.ph{position:relative;width:14em;height:29em;border-radius:2.4em;background:#1F2023;padding:.55em;box-shadow:0 0 0 .12em #3A3B3F inset,0 2.2em 3.4em -1em rgba(20,20,30,.45),0 .6em 1.2em rgba(0,0,0,.15)}
+.ph-scr{position:absolute;inset:.55em;border-radius:1.9em;overflow:hidden;background:#fff}
+.ph-isl{position:absolute;top:.6em;left:50%;width:4.4em;height:1.15em;margin-left:-2.2em;border-radius:1em;background:#0B0B0C;z-index:5}
+.scr{position:absolute;inset:0;opacity:0;transition:opacity .45s var(--ease),transform .45s var(--ease);transform:scale(.985)}
+[data-state="idle"] .s-cam,[data-state="scan"] .s-cam,[data-state="open"] .s-load,[data-state="review"] .s-rev{opacity:1;transform:none}
+/* cámara */
+.s-cam{background:radial-gradient(120% 80% at 50% 40%,#8A7563 0%,#4E4036 60%,#2C241F 100%)}
+.cam-card{position:absolute;left:50%;top:44%;width:7.6em;height:10.4em;margin:-5.2em 0 0 -3.8em;border-radius:.5em;background:#fff;display:flex;flex-direction:column;align-items:center;padding:.7em .5em;transform:translate(1.4em,1.2em) rotate(8deg) scale(.78);filter:blur(1.2px);transition:transform .9s var(--ease),filter .9s}
+[data-state="scan"] .cam-card{transform:none;filter:none}
+.cam-card .l{width:70%;height:.45em;border-radius:.3em;background:#DADCE0;margin-bottom:.35em}
+.cam-card .l.s{width:45%;background:#FCE8B2}
+.cam-card svg{width:5.6em;height:5.6em;margin-top:.2em}
+.cam-brk{position:absolute;left:50%;top:44%;width:7.4em;height:7.4em;margin:-2.4em 0 0 -3.7em;opacity:0;transition:opacity .3s .5s}
+[data-state="scan"] .cam-brk{opacity:1}
+.cam-brk i{position:absolute;width:1.3em;height:1.3em;border:.22em solid var(--star)}
+.cam-brk i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0;border-radius:.4em 0 0 0}
+.cam-brk i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0;border-radius:0 .4em 0 0}
+.cam-brk i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0;border-radius:0 0 0 .4em}
+.cam-brk i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0;border-radius:0 0 .4em 0}
+.cam-line{position:absolute;left:8%;right:8%;height:.15em;background:var(--star);box-shadow:0 0 .8em var(--star);top:10%;border-radius:1em;animation:scanl 1.1s ease-in-out infinite alternate}
+@keyframes scanl{to{top:88%}}
+.cam-ui{position:absolute;left:0;right:0;bottom:0;height:5.4em;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center}
+.cam-ui i{width:3.2em;height:3.2em;border-radius:50%;border:.25em solid #fff;display:block}
+.cam-chip{position:absolute;left:50%;bottom:6.4em;transform:translate(-50%,.6em);opacity:0;display:flex;align-items:center;gap:.4em;background:#fff;color:var(--ink);font-size:.72em;font-weight:600;padding:.6em .9em;border-radius:2em;white-space:nowrap;box-shadow:0 .4em 1em rgba(0,0,0,.25);transition:all .4s .9s var(--ease)}
+.cam-chip svg{width:1.2em;height:1.2em;color:var(--blue)}
+[data-state="scan"] .cam-chip{opacity:1;transform:translate(-50%,0)}
+.cam-top{position:absolute;top:2.2em;left:0;right:0;text-align:center;color:rgba(255,255,255,.85);font-size:.62em;font-weight:600;letter-spacing:.12em}
+/* cargando */
+.s-load{background:#fff}
+.bar-url{margin:2.5em .9em 0;height:2.1em;border-radius:1.1em;background:var(--paper);display:flex;align-items:center;gap:.45em;padding:0 .8em;font-size:.68em;color:var(--soft);font-weight:500}
+.bar-url svg{width:1.1em;height:1.1em;color:var(--green);flex:none}
+.bar-prog{height:.2em;margin:.6em .9em 0;border-radius:1em;background:var(--blue-bg);overflow:hidden}
+.bar-prog i{display:block;height:100%;width:0;background:var(--blue);border-radius:1em}
+[data-state="open"] .bar-prog i{animation:prog 1.1s var(--ease) forwards}
+@keyframes prog{to{width:100%}}
+.skel{padding:1.2em .9em;display:grid;gap:.6em}
+.skel i{display:block;height:.7em;border-radius:.4em;background:linear-gradient(90deg,#F1F3F4 0%,#E8EAED 50%,#F1F3F4 100%);background-size:200% 100%;animation:shim 1.2s linear infinite}
+.skel i.b{height:5em;border-radius:.8em}
+.skel i:nth-child(3){width:70%}.skel i:nth-child(4){width:85%}.skel i:nth-child(5){width:50%}
+@keyframes shim{to{background-position:-200% 0}}
+/* reseñas */
+.s-rev{background:#fff;display:flex;flex-direction:column;padding:2.4em .95em 1em;font-size:1em}
+.rv-hd{display:flex;align-items:center;gap:.6em;padding-bottom:.8em;border-bottom:1px solid var(--line)}
+.rv-hd .av{width:2.3em;height:2.3em;border-radius:.6em;background:linear-gradient(135deg,#C9A47C,#8A6440);flex:none;display:grid;place-items:center;color:#fff;font-weight:800;font-size:.75em}
+.rv-hd b{display:block;font-size:.82em;line-height:1.2}
+.rv-hd small{display:block;font-size:.62em;color:var(--mute)}
+.rv-who{display:flex;align-items:center;gap:.5em;margin-top:.9em;font-size:.62em;color:var(--mute)}
+.rv-who i{width:2.2em;height:2.2em;border-radius:50%;background:var(--blue-bg);color:var(--blue);display:grid;place-items:center;font-style:normal;font-weight:700;font-size:1.1em;flex:none}
+.rv-q{font-weight:700;font-size:.8em;margin-top:1em;text-align:center}
+.rv-stars{display:flex;justify-content:center;gap:.25em;margin-top:.5em}
+.rv-stars .st{width:2em;height:2em;color:#DADCE0;transition:color .2s,transform .2s;display:grid;place-items:center;border-radius:.4em}
+.rv-stars .st svg{width:1.7em;height:1.7em}
+.rv-stars .st.on{color:var(--star)}
+button.st:hover{transform:scale(1.12)}
+.rv-txt{margin-top:.9em;flex:1;min-height:5em;border:1px solid var(--line-2);border-radius:.6em;padding:.6em .7em;font-size:.68em;color:var(--mute);position:relative;font-family:inherit;resize:none;width:100%;background:#fff;line-height:1.4}
+textarea.rv-txt{color:var(--ink);font-size:.72em}
+.rv-txt .ty{display:block;color:var(--ink);white-space:nowrap;overflow:hidden;width:0;border-right:.12em solid var(--blue)}
+.rv-row{display:flex;justify-content:flex-end;gap:.5em;margin-top:.7em}
+.rv-pub{font-size:.7em;font-weight:600;background:var(--blue);color:#fff;border-radius:2em;padding:.65em 1.3em}
+.rv-pub[disabled]{background:#C6D9F6;cursor:not-allowed}
+/* animación ilustrativa (hero y sección de producto) */
+.auto[data-state="review"] .rv-stars .st{animation:sfill .25s var(--ease) forwards}
+.auto[data-state="review"] .rv-stars .st:nth-child(1){animation-delay:.5s}
+.auto[data-state="review"] .rv-stars .st:nth-child(2){animation-delay:.62s}
+.auto[data-state="review"] .rv-stars .st:nth-child(3){animation-delay:.74s}
+.auto[data-state="review"] .rv-stars .st:nth-child(4){animation-delay:.86s}
+.auto[data-state="review"] .rv-stars .st:nth-child(5){animation-delay:.98s}
+@keyframes sfill{50%{transform:scale(1.25)}to{color:var(--star);transform:none}}
+.auto[data-state="review"] .rv-txt .ty{animation:type 1.4s 1.3s steps(24) forwards}
+@keyframes type{to{width:100%}}
 
 /* =========================================================
-   FAQ
+   PUENTE CON EL VIDEO
    ========================================================= */
-.faq-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:clamp(30px,6vw,80px);align-items:start}
-.faq-grid .head{position:sticky;top:120px}
+.bridge{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper)}
+.bridge .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px 32px;padding-top:22px;padding-bottom:22px;flex-wrap:wrap}
+.bridge p{font-size:15.5px;color:var(--soft);max-width:640px}
+.bridge p b{color:var(--ink)}
+.kw{display:inline-block;font-weight:800;letter-spacing:.06em;background:#fff;border:1px solid var(--line-2);border-radius:6px;padding:0 6px;color:var(--ink)}
+
+/* =========================================================
+   COMPARACIÓN
+   ========================================================= */
+.cmp-hd{display:grid;gap:8px;max-width:760px}
+.cmp{margin-top:40px;max-width:900px}
+.search{display:flex;align-items:center;gap:10px;height:52px;padding:0 18px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh-1);font-size:15.5px;color:var(--soft);max-width:420px}
+.search svg{width:20px;height:20px;color:var(--mute);flex:none}
+.search .cur{width:2px;height:20px;background:var(--blue);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.cmp-g{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,2.4vw,24px);margin-top:18px}
+.biz{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh-1);overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s}
+.biz:hover,.biz.open{transform:translateY(-3px);box-shadow:var(--sh-2)}
+.biz.b{border-color:#C7D7F5}
+.biz-ph{height:clamp(70px,13vw,120px);display:grid;gap:3px;background:#fff}
+.biz.a .biz-ph{grid-template-columns:1fr;background:#ECEDEF;place-items:center;color:#B0B4BA}
+.biz.a .biz-ph svg{width:34px;height:34px}
+.biz.b .biz-ph{grid-template-columns:1.4fr 1fr 1fr}
+.biz.b .biz-ph i{display:block}
+.biz.b .biz-ph i:nth-child(1){background:linear-gradient(140deg,#D9B48C,#8F6643)}
+.biz.b .biz-ph i:nth-child(2){background:linear-gradient(160deg,#EADBC6,#BFA27F)}
+.biz.b .biz-ph i:nth-child(3){background:linear-gradient(150deg,#A9B9A2,#6E8268)}
+.biz-bd{padding:clamp(12px,2vw,20px)}
+.biz-n{font-weight:700;font-size:clamp(15px,1.8vw,19px);letter-spacing:-.01em}
+.biz-r{display:flex;align-items:center;flex-wrap:wrap;gap:4px 6px;margin-top:4px;font-size:clamp(13px,1.5vw,15px);color:var(--soft)}
+.biz-r .stars{font-size:.95em}
+.biz-r .cnt{color:var(--mute)}
+.biz-r .cnt b{font-weight:600;color:var(--soft)}
+.biz-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.biz-chips span{font-size:12px;padding:4px 9px;border-radius:999px;border:1px solid var(--line);color:var(--soft)}
+.biz-chips span.g{color:var(--green);border-color:#CDE6D4;background:var(--green-bg)}
+.revs{margin-top:12px;display:grid;gap:10px}
+.rev{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+.rev .av{width:24px;height:24px;border-radius:50%}
+.rev .ln{display:grid;gap:5px;padding-top:2px}
+.rev .ln .stars{font-size:11px}
+.rev .ln i{display:block;height:7px;border-radius:4px;background:#ECEEF0}
+.rev .ln i.s{width:70%}
+.biz.a .empty{font-size:12.5px;color:var(--mute);margin-top:12px;padding:10px;border:1px dashed var(--line-2);border-radius:10px;text-align:center}
+.biz-hit{position:absolute;inset:0;z-index:2;border-radius:20px}
+.biz-msg{position:absolute;left:10px;right:10px;bottom:10px;z-index:3;background:var(--ink);color:#fff;border-radius:14px;padding:12px 14px;font-size:clamp(13px,1.5vw,15px);line-height:1.4;opacity:0;transform:translateY(10px);transition:opacity .3s var(--ease),transform .3s var(--ease);pointer-events:none}
+.biz-msg b{display:block;margin-bottom:2px}
+.biz.b .biz-msg{background:var(--blue)}
+.biz.open .biz-msg{opacity:1;transform:none}
+@media (hover:hover){.biz:hover .biz-msg{opacity:1;transform:none}}
+.cmp-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:16px}
+.hint{font-size:14px;color:var(--mute);display:flex;align-items:center;gap:6px}
+.hint svg{width:16px;height:16px}
+.cmp-line{margin-top:36px;font-size:clamp(20px,2.4vw,26px);font-weight:700;letter-spacing:-.02em;line-height:1.3;max-width:720px;text-wrap:balance}
+.cmp-line span{color:var(--mute);font-weight:600}
+@media (max-width:420px){.biz-chips{display:none}.revs{gap:8px}}
+
+/* =========================================================
+   PRODUCTO / CÓMO FUNCIONA
+   ========================================================= */
+.prod-g{display:grid;gap:40px;align-items:center;margin-top:44px}
+@media (min-width:960px){.prod-g{grid-template-columns:1.05fr 1fr;gap:64px}}
+.steps{list-style:none;display:grid;gap:10px;counter-reset:s}
+.step{display:block;width:100%;text-align:left;padding:18px 20px;border-radius:16px;border:1px solid transparent;transition:background .3s,border-color .3s,box-shadow .3s}
+.step .n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--paper);border:1px solid var(--line);font-size:14px;font-weight:700;color:var(--mute);margin-right:10px;vertical-align:middle;transition:all .3s}
+.step b{font-size:18px;letter-spacing:-.01em;vertical-align:middle}
+.step p{color:var(--soft);font-size:15.5px;margin:6px 0 0 40px}
+.step:hover{background:var(--paper)}
+.step.on{background:#fff;border-color:var(--line);box-shadow:var(--sh-1)}
+.step.on .n{background:var(--blue);border-color:var(--blue);color:#fff}
+.prod-cta{margin-top:24px;display:grid;gap:14px;justify-items:start}
+.prod-cta .note svg{color:var(--blue)}
+
+/* =========================================================
+   DEMO INTERACTIVA
+   ========================================================= */
+.demo{display:grid;gap:32px;align-items:center;margin-top:44px}
+@media (min-width:900px){.demo{grid-template-columns:1fr 1fr;gap:56px}}
+.demo-stage{position:relative;display:flex;justify-content:center;align-items:flex-end;gap:clamp(8px,3vw,32px);padding:clamp(20px,4vw,40px) 12px clamp(18px,3vw,28px);border-radius:28px;background:linear-gradient(180deg,#F1F3F6 0%,#E6E9EE 100%);border:1px solid var(--line);min-height:300px}
+.demo-stage .stand{font-size:clamp(9px,2.2vw,13px);margin-bottom:.5em;transition:transform .5s var(--ease)}
+.demo-stage .ph{font-size:clamp(12px,3.3vw,17px);transition:transform .7s var(--ease)}
+.demo-stage[data-state="scan"] .ph{transform:translateX(-6%) rotate(-4deg)}
+.demo-stage[data-state="scan"] .stand{transform:scale(1.03)}
+.demo-badge{position:absolute;top:14px;left:14px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:#fff;border:1px solid var(--line);padding:5px 10px;border-radius:999px;color:var(--mute)}
+.d-steps{list-style:none;display:grid;gap:8px;margin-top:22px}
+.d-steps li{display:flex;align-items:center;gap:12px;font-size:16px;color:var(--mute);padding:10px 0;transition:color .3s}
+.d-steps li i{width:28px;height:28px;border-radius:50%;border:2px solid var(--line-2);display:grid;place-items:center;font-style:normal;font-size:13px;font-weight:700;flex:none;transition:all .3s;background:#fff}
+.d-steps li.on{color:var(--ink);font-weight:600}
+.d-steps li.on i{border-color:var(--blue);color:var(--blue)}
+.d-steps li.ok{color:var(--ink)}
+.d-steps li.ok i{background:var(--green);border-color:var(--green);color:#fff}
+.d-prog{height:6px;border-radius:6px;background:var(--line);overflow:hidden;margin-top:18px}
+.d-prog i{display:block;height:100%;width:0;background:var(--blue);border-radius:6px;transition:width .5s var(--ease)}
+.d-ctl{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.d-msg{margin-top:14px;font-size:14px;color:var(--mute);min-height:1.5em}
+.d-msg.warn{color:var(--soft)}
+@media (max-width:560px){.d-ctl .btn{flex:1}}
+
+/* =========================================================
+   BENEFICIOS (bento)
+   ========================================================= */
+.bento{display:grid;gap:14px;margin-top:44px}
+@media (min-width:760px){.bento{grid-template-columns:repeat(4,1fr);grid-template-areas:"a a b c" "a a d e"}}
+.bx{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.bx:hover{transform:translateY(-3px);box-shadow:var(--sh-2)}
+.bx .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--paper);color:var(--ink)}
+.bx .ic svg{width:22px;height:22px}
+.bx h3{font-size:18px;line-height:1.25;letter-spacing:-.01em;margin-top:16px}
+.bx p{font-size:15px;color:var(--soft);margin-top:6px}
+.bx.a{display:flex;flex-direction:column;background:var(--ink);color:#fff;border-color:var(--ink);padding:clamp(24px,3vw,36px)}
+.bx.a h3{font-size:clamp(22px,2.4vw,30px);margin-top:0;max-width:340px}
+.bx.a p{color:#C4C7C5;font-size:16px;max-width:360px}
+.trip{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:28px;flex-wrap:wrap}
+.trip span{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:9px 14px;font-size:14px;font-weight:600}
+.trip span svg{width:18px;height:18px}
+.trip > svg{width:18px;height:18px;color:#8E918F}
+.bx.b .ic{background:var(--blue-bg);color:var(--blue)}
+.bx.e .ic{background:var(--green-bg);color:var(--green)}
+.bx.c .ic{background:#FEF7E0;color:#B06000}
+@media (min-width:760px){.bx.a{grid-area:a}.bx.b{grid-area:b}.bx.c{grid-area:c}.bx.d{grid-area:d}.bx.e{grid-area:e}}
+
+/* =========================================================
+   ESCENARIOS
+   ========================================================= */
+.tabs{display:flex;gap:6px;margin-top:32px;padding:5px;background:var(--paper);border:1px solid var(--line);border-radius:999px;width:max-content;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;font-size:15px;font-weight:600;color:var(--soft);white-space:nowrap;transition:background .25s,color .25s,box-shadow .25s}
+.tab svg{width:18px;height:18px}
+.tab[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+.tab:hover{color:var(--ink)}
+.biz-g{display:grid;gap:28px;align-items:center;margin-top:28px}
+@media (min-width:900px){.biz-g{grid-template-columns:1.3fr 1fr;gap:56px}}
+.bscene{width:600px;height:420px;border-radius:28px;overflow:hidden;position:relative;box-shadow:var(--sh-2)}
+.bscene .sc-wall{inset:0 0 30% 0}
+.bscene .sc-top{top:70%}
+.bscene .stand{position:absolute;left:220px;top:58px;font-size:15px;z-index:2}
+.bscene .prop{opacity:0;transform:translateY(10px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.bscene[data-biz="cafe"] .p-cafe,.bscene[data-biz="resto"] .p-resto,.bscene[data-biz="barber"] .p-barber,.bscene[data-biz="shop"] .p-shop{opacity:1;transform:none}
+.bscene[data-biz="cafe"]{--wall:linear-gradient(180deg,#F3ECE3,#E8DDCF);--top:linear-gradient(180deg,#C9A47C,#A97F56)}
+.bscene[data-biz="resto"]{--wall:linear-gradient(180deg,#EEE8E2,#E2D8CE);--top:linear-gradient(180deg,#F4F2EF,#DCD8D2)}
+.bscene[data-biz="barber"]{--wall:linear-gradient(180deg,#DDE5E3,#CBD6D3);--top:linear-gradient(180deg,#7A5640,#5C3F2E)}
+.bscene[data-biz="shop"]{--wall:linear-gradient(180deg,#F5F4F1,#E9E7E2);--top:linear-gradient(180deg,#FFFFFF,#E7E8EA)}
+.cap{min-height:150px}
+.cap h3{font-size:clamp(22px,2.4vw,28px);letter-spacing:-.02em;line-height:1.2}
+.cap p{color:var(--soft);margin-top:10px;font-size:17px;max-width:440px}
+.cap .fade{animation:capin .4s var(--ease)}
+@keyframes capin{from{opacity:0;transform:translateY(6px)}}
+.cap .note{margin-top:22px}
+.cap .note svg{color:var(--blue)}
+
+/* =========================================================
+   PREGUNTAS
+   ========================================================= */
+.faq-g{display:grid;gap:32px;margin-top:8px}
+@media (min-width:900px){.faq-g{grid-template-columns:1fr 1.4fr;gap:64px}}
 .faq{display:grid;gap:10px}
-.faq details{border:1px solid var(--line);border-radius:16px;background:#111113;transition:border-color .3s}
-.faq details[open]{border-color:var(--gline)}
-.faq summary{list-style:none;cursor:pointer;padding:19px 22px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-weight:600;font-size:16.5px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:16px;transition:box-shadow .25s,border-color .25s}
+.faq details[open]{box-shadow:var(--sh-1);border-color:var(--line-2)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;font-weight:600;font-size:17px;border-radius:16px}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary i{width:28px;height:28px;border-radius:50%;border:1px solid var(--gline);position:relative;flex:none}
-.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:1.5px;background:var(--gold-hi);transform:translate(-50%,-50%)}
-.faq summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s}
-.faq details[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
-.faq .ans{padding:0 22px 20px;color:var(--soft);font-size:15.5px}
+.faq summary::after{content:"";width:10px;height:10px;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);transform:rotate(45deg) translate(-2px,-2px);transition:transform .25s;flex:none}
+.faq details[open] summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
+.faq .ans{padding:0 20px 18px;color:var(--soft);font-size:15.5px;max-width:620px}
 
 /* =========================================================
    CTA FINAL
    ========================================================= */
-.final{padding:clamp(60px,8vw,110px) 0}
-.final-box{position:relative;overflow:hidden;border-radius:32px;border:1px solid var(--gline);background:radial-gradient(800px 400px at 80% 0%,rgba(212,175,90,.16),transparent 60%),radial-gradient(600px 400px at 0% 100%,rgba(212,175,90,.08),transparent 60%),#0D0D0F;padding:clamp(28px,6vw,68px);display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(30px,5vw,64px);align-items:start}
-.final-box .gridbg{-webkit-mask-image:radial-gradient(ellipse at 30% 50%,#000,transparent 70%);mask-image:radial-gradient(ellipse at 30% 50%,#000,transparent 70%)}
-.final-box > *:not(.gridbg){position:relative}
-.offer{list-style:none;margin-top:28px;display:grid;gap:12px}
-.offer li{display:flex;gap:12px;align-items:flex-start;font-size:16px;color:var(--soft)}
-.offer li svg{width:20px;height:20px;flex:none;margin-top:2px}
-.offer li b{color:var(--ink)}
-.form{padding:28px;display:grid;gap:15px}
-.form h3{font-family:var(--serif);font-size:25px}
-.field label{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:600;margin-bottom:8px}
-.field label span{text-transform:none;letter-spacing:0;color:var(--dim);font-weight:500}
-.field input{width:100%;height:52px;border-radius:14px;border:1px solid var(--line);background:#0B0B0C;color:var(--ink);font:inherit;font-size:16px;padding:0 16px;transition:border-color .2s,box-shadow .2s}
-.field input:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 4px rgba(212,175,90,.12)}
-.field input::placeholder{color:#5E5A53}
-.field.err input{border-color:var(--bad)}
-.form .btn{width:100%;margin-top:4px;min-height:62px;font-size:17px;padding:0 18px}
-.form small{font-size:12.5px;color:var(--mute);text-align:center}
-
-/* footer */
-.foot{border-top:1px solid var(--line);padding:40px 0 50px}
-.foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-.foot p{font-size:13.5px;color:var(--mute)}
-.foot nav{display:flex;gap:22px;font-size:13.5px;color:var(--soft);flex-wrap:wrap}
-.foot nav a:hover{color:var(--gold-hi)}
-
-/* WhatsApp flotante (desktop) y barra fija (mobile) */
-.wa-float{position:fixed;right:22px;bottom:22px;z-index:60;width:62px;height:62px;border-radius:50%;background:var(--g);display:grid;place-items:center;color:#0b0b0b;box-shadow:0 14px 40px rgba(212,175,90,.45);transition:transform .25s,opacity .3s;opacity:0;transform:translateY(20px);pointer-events:none}
-.wa-float.on{opacity:1;transform:none;pointer-events:auto}
-.wa-float:hover{transform:scale(1.07)}
-.wa-float svg{width:32px;height:32px}
-.wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--gold);animation:pulse 2.6s ease-out infinite}
-.mbar{display:none}
+.final{padding:clamp(72px,10vw,128px) 0;background:linear-gradient(180deg,#fff 0%,var(--paper) 100%);border-top:1px solid var(--line);overflow:hidden}
+.final-g{display:grid;gap:40px;align-items:center}
+@media (min-width:900px){.final-g{grid-template-columns:1.1fr 1fr;gap:64px}}
+.final h2{font-size:clamp(34px,5.2vw,60px);line-height:1.04;letter-spacing:-.035em;font-weight:800;text-wrap:balance}
+.final .lead{margin-top:16px}
+.final .cta-row{margin-top:28px}
+.final .note{margin-top:18px}
+.final-vis{position:relative;display:flex;flex-direction:column;align-items:center}
+.pedestal{position:relative;padding:40px 40px 0;display:flex;justify-content:center}
+.pedestal::before{content:"";position:absolute;left:50%;top:50%;width:min(420px,90vw);height:min(420px,90vw);transform:translate(-50%,-52%);border-radius:50%;background:radial-gradient(closest-side,#E8F0FE,rgba(232,240,254,0))}
+.final-vis .stand{font-size:clamp(14px,3.6vw,20px)}
+.final-vis .stand .st-shadow{background:radial-gradient(closest-side,rgba(32,33,36,.28),transparent)}
+.final-vis small{display:block;margin-top:14px;font-size:13px;color:var(--mute);text-align:center;position:relative}
 
 /* =========================================================
-   RESPONSIVE
+   FOOTER
    ========================================================= */
-@media (max-width:1060px){
-  .links,.nav .ba{display:none}
-  .burger{display:flex}
-  .nav .btn-nav{display:none}
-  .mmenu{display:block;position:fixed;top:84px;left:0;right:0;background:rgba(9,9,10,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:10px var(--gut) 26px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:all .3s}
-  .nav.open .mmenu{transform:none;opacity:1;pointer-events:auto}
-  .mmenu a{display:block;padding:15px 0;border-bottom:1px solid var(--line);font-size:17px;font-weight:600}
-  .mmenu .btn{width:100%;margin-top:20px;border-bottom:0}
-  .hero .wrap{grid-template-columns:1fr;gap:50px}
-  .hero-vis{max-width:540px;margin:0 auto;width:100%}
-  .pains{grid-template-columns:1fr 1fr}
-  .pain:nth-child(3){border-left:0}
-  .pain:nth-child(n+3){border-top:1px solid var(--line)}
-  .faq-grid{grid-template-columns:1fr}
-  .faq-grid .head{position:static}
-  .final-box{grid-template-columns:minmax(0,1fr)}
-  .final-box > *{min-width:0}
-}
-@media (max-width:1060px){.how{grid-template-columns:1fr 1fr}.quiz{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:900px){
-  .xr-grid{grid-template-columns:1fr;gap:0}
-  .xr-stage{top:72px;height:48vh;max-height:none;z-index:3;gap:8px;padding:8px 0 10px;background:linear-gradient(var(--bg) 88%,rgba(9,9,10,0))}
-  .xs{min-height:72vh;justify-content:flex-start;padding:4vh 0 8vh}
-  .xs-n{font-size:56px}
-  .xs-t{font-size:clamp(34px,9vw,46px)}
-  .xs-r{margin-top:20px;padding-top:16px}
-  .xr-rail button{padding:6px 9px;font-size:11px}
-  .floor{height:40%}
-  .xs-end{min-height:6vh}
-}
-@media (max-width:680px){.how{grid-template-columns:1fr}}
-@media (max-width:680px){
-  body{font-size:16px}
-  .nav .wrap{height:72px}
-  .mmenu{top:72px}
-  .mono{width:40px;height:40px;font-size:22px}
-  .bn{font-size:13px;letter-spacing:.18em}.bt{font-size:8px;letter-spacing:.16em}
-  .hero{padding:110px 0 56px}
-  .ctas{justify-content:center}
-  .ctas .btn{width:100%}
-  .ticker span{font-size:17px;gap:34px;padding:0 17px}
-  .eb{letter-spacing:.18em;font-size:12px}
-  .pains{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;border:0;background:none;border-radius:0;margin-left:calc(var(--gut)*-1);margin-right:calc(var(--gut)*-1);padding:0 var(--gut) 6px;scrollbar-width:none}
-  .pains::-webkit-scrollbar{display:none}
-  .pain{flex:0 0 78%;scroll-snap-align:center;border:1px solid var(--line)!important;border-radius:20px;background:#0D0D0F;padding:24px 22px;min-height:150px}
-  .pain p{font-size:18px}
-  .swipe-hint{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mute);margin-top:12px}
-  .swipe-hint svg{width:16px;height:16px;color:var(--gold);animation:nudge 1.6s ease-in-out infinite}
-  .quiz,.calc{grid-template-columns:minmax(0,1fr)}
-  .quiz-side{display:none}
-  .qbox{min-height:400px;border-radius:24px}
-  .calc-out{border-left:0;border-top:1px solid var(--gline)}
-  .calc{border-radius:24px}
-  .how li{padding:24px 22px}
-  .how li b{font-size:46px;margin-bottom:12px}
-  .how-cta .btn{width:100%}
-  .final-box{border-radius:24px}
-  .form{padding:22px}
-  .wa-float{display:none}
-  .mbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(9,9,10,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--gline);transform:translateY(110%);transition:transform .3s}
-  .mbar.on{transform:none}
-  .mbar .btn{width:100%;min-height:52px;font-size:15.5px}
-  .foot{padding-bottom:110px}
-}
+.ft{padding:36px 0 110px;border-top:1px solid var(--line);font-size:13.5px;color:var(--mute)}
+.ft .wrap{display:grid;gap:14px}
+.ft .logo{font-size:16px;color:var(--ink)}
+.ft .logo svg{width:26px;height:26px}
+.ft p{max-width:760px}
+
+/* =========================================================
+   WHATSAPP FLOTANTE
+   ========================================================= */
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:50;display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 16px;border-radius:999px;background:var(--green);color:#fff;text-decoration:none;font-weight:600;font-size:15px;box-shadow:0 4px 10px rgba(24,128,56,.3),0 14px 30px rgba(24,128,56,.25);transform:translateY(120%) scale(.9);opacity:0;transition:transform .45s var(--ease),opacity .3s,box-shadow .2s}
+.fab.on{transform:none;opacity:1}
+.fab:hover{box-shadow:0 6px 14px rgba(24,128,56,.35),0 18px 36px rgba(24,128,56,.3)}
+.fab svg{width:26px;height:26px;flex:none}
+.fab .t{white-space:nowrap}
+@media (max-width:760px){.fab{width:56px;padding:0;justify-content:center}.fab .t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+
+/* =========================================================
+   MOVIMIENTO REDUCIDO
+   ========================================================= */
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none !important;transition:none !important}
   html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.01ms!important;transition-delay:0s!important}
   .js .rv{opacity:1;transform:none}
+  .cam-line,.search .cur{display:none}
 }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Saltar al contenido</a>
 
-<!-- Íconos -->
+<!-- =========================================================
+     ICONOS (sprite SVG)
+     ========================================================= -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs><linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6DE9E"/><stop offset=".45" stop-color="#D4AF5A"/><stop offset="1" stop-color="#9A7530"/></linearGradient></defs>
-  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.6 7.3c.3-.5.8-.5 1-.1l.9 2c.1.3 0 .6-.2.8l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.2-.2.5-.3.8-.2l2 .9c.4.2.4.7-.1 1-.9.7-2 .9-3 .5-2.5-1-4.5-3-5.5-5.5-.4-1-.2-2.1.5-3z" fill="currentColor"/></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-checkc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="url(#gGold)"/><path d="M7 12.3l3.3 3.3L17 9" fill="none" stroke="#0b0b0b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7z" fill="url(#gGold)"/><circle cx="12" cy="9" r="2.6" fill="#0b0b0b"/></symbol>
-  <symbol id="i-pin-o" viewBox="0 0 24 24"><path d="M12 2.5a6.5 6.5 0 0 0-6.5 6.5c0 4.8 6.5 12.5 6.5 12.5s6.5-7.7 6.5-12.5A6.5 6.5 0 0 0 12 2.5z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
-  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-gift" viewBox="0 0 24 24"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-3-5 0M12 7c2-4 6-3 5 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
-  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="6" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="19" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.3 10.8l7.4-4.4M8.3 13.2l7.4 4.4" stroke="currentColor" stroke-width="1.8"/></symbol>
-  <symbol id="r-find" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M11 8a3 3 0 0 0-3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
-  <symbol id="r-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 9.5h8M8 12.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-  <symbol id="r-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 16.8l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
-  <symbol id="r-time" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-  <symbol id="r-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 16v-4M12 16V8M16 16v-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <defs>
+    <!-- QR de MUESTRA: abre el WhatsApp de consultas (https://wa.me/5491140347468). Si cambia el número, regeneralo (ver README). -->
+    <symbol id="qr" viewBox="0 0 25 25"><path fill="#fff" d="M0 0h25v25H0z"/><path stroke="#202124" shape-rendering="crispEdges" d="M0 0.5h7m1 0h1m3 0h1m2 0h2m1 0h7M0 1.5h1m5 0h1m5 0h1m1 0h1m1 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h4m2 0h2m2 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m2 0h2m1 0h1m5 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m2 0h2m1 0h3m1 0h1m1 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h2m3 0h1m4 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 7.5h1m1 0h1m3 0h2M0 8.5h1m1 0h1m3 0h2m1 0h2m1 0h1m1 0h2m3 0h1m2 0h1m1 0h1M2 9.5h4m3 0h2m2 0h1m1 0h1m2 0h2m1 0h1m1 0h2M0 10.5h1m1 0h1m2 0h4m2 0h1m2 0h5m2 0h2m1 0h1M0 11.5h1m2 0h1m1 0h1m2 0h7m2 0h1m1 0h1m1 0h1M1 12.5h1m1 0h4m1 0h4m2 0h2m1 0h2m5 0h1M5 13.5h1m4 0h1m2 0h1m4 0h2m3 0h2M0 14.5h2m1 0h4m1 0h4m2 0h2m5 0h2m1 0h1M4 15.5h2m1 0h1m7 0h2m1 0h4M0 16.5h4m2 0h1m1 0h1m2 0h4m1 0h5m2 0h1M8 17.5h1m3 0h1m3 0h1m3 0h1m3 0h1M0 18.5h7m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h1M0 19.5h1m5 0h1m4 0h2m3 0h1m3 0h1m3 0h1M0 20.5h1m1 0h3m1 0h1m2 0h1m3 0h8M0 21.5h1m1 0h3m1 0h1m3 0h1m2 0h1m1 0h1m1 0h1m2 0h1m1 0h1M0 22.5h1m1 0h3m1 0h1m1 0h1m1 0h2m4 0h2m1 0h3m1 0h2M0 23.5h1m5 0h1m6 0h1m2 0h5M0 24.5h7m1 0h1m1 0h4m2 0h1m1 0h1m2 0h1m2 0h1"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.8l2.75 5.86 6.43.74-4.77 4.38 1.29 6.34L12 16.9l-5.7 3.22 1.29-6.34L2.82 9.4l6.43-.74z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01Zm-7.01 15.24a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2M7 12h10"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z"/><path fill="currentColor" d="M14 14h3v3h-3zM17 17h3v3h-3zM14 19h2v1h-2zM19 14h1v2h-1z"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M6 11h12v9H6zM8.5 11V8a3.5 3.5 0 0 1 7 0v3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M10.5 17a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13zM20 20l-4.8-4.8"/></symbol>
+    <symbol id="i-store" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 9.5V20h16V9.5M3 9.5 5 4h14l2 5.5a2.6 2.6 0 0 1-4.5 1.6 2.6 2.6 0 0 1-4.5 0 2.6 2.6 0 0 1-4.5 0A2.6 2.6 0 0 1 3 9.5ZM10 20v-5h4v5"/></symbol>
+    <symbol id="i-tap" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 11V5.5a1.5 1.5 0 0 1 3 0V10m0 0V8.5a1.5 1.5 0 0 1 3 0V11m0 0a1.5 1.5 0 0 1 3 0v3.5a6.5 6.5 0 0 1-6.5 6.5h-.6a6 6 0 0 1-4.5-2L4.3 15.6a1.5 1.5 0 0 1 2.2-2L9 16V11"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 5h16v11H9l-5 4z"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8 9.5h8M8 12.5h5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 20.5s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.9c0 5.4-7.5 10-7.5 10z"/></symbol>
+    <symbol id="i-cup" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.8 1 .8 2 0 3M12 3.5c-.8 1 .8 2 0 3"/></symbol>
+    <symbol id="i-fork" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" d="M7 3v6a2 2 0 0 0 4 0V3M9 11v10M17 21V3c-2 1-3 3.5-3 7h3"/></symbol>
+    <symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6.5" cy="6.5" r="2.8" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="6.5" cy="17.5" r="2.8" fill="none" stroke="currentColor" stroke-width="1.9"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" d="M8.8 8.2 20 18M8.8 15.8 20 6"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" d="M5 8h14l-1 12.5H6zM9 10V6.5a3 3 0 0 1 6 0V10"/></symbol>
+  </defs>
 </svg>
 
-<div class="atmo" aria-hidden="true"></div>
+<!-- =========================================================
+     PLANTILLAS: soporte QR y celular (se clonan con JS)
+     PROVISIONAL: mockups en CSS hasta tener fotos reales del producto.
+     ========================================================= -->
+<template id="tpl-stand">
+  <div class="stand" aria-hidden="true">
+    <div class="st-acr">
+      <div class="st-card">
+        <div class="st-logo"><span>TU<br>LOGO</span></div>
+        <p class="st-ask">¿Cómo te atendimos?</p>
+        <span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+        <div class="st-qr"><svg viewBox="0 0 25 25"><use href="#qr"/></svg></div>
+        <p class="st-cta">Escaneá y dejanos <b>tu reseña en Google</b></p>
+      </div>
+      <span class="st-glare"></span>
+    </div>
+    <div class="st-base"></div>
+    <div class="st-shadow"></div>
+  </div>
+</template>
 
-<!-- NAV -->
-<header class="nav" id="nav">
-  <div class="wrap">
-    <a href="#inicio" class="brand" aria-label="Presencia Online — inicio">
-      <div class="mono"><svg width="22" height="22"><use href="#i-pin-o"/></svg></div>
-      <div><div class="bn">PRESENCIA ONLINE</div><div class="bt">NEGOCIOS LOCALES · BUENOS AIRES</div></div>
-    </a>
-    <div class="nav-r">
-      <nav class="links" aria-label="Principal">
-        <a href="#diagnostico">Autodiagnóstico</a>
-        <a href="#resultados">Resultados</a>
-        <a href="#empezar">Cómo empezar</a>
-        <a href="#preguntas">Preguntas</a>
-      </nav>
-      <a class="btn btn-g btn-nav" href="#contacto"><svg><use href="#i-wa"/></svg>Análisis gratuito</a>
-      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mmenu"><span></span></button>
+<template id="tpl-phone">
+  <div class="ph" aria-hidden="true">
+    <div class="ph-scr">
+      <div class="ph-isl"></div>
+      <div class="scr s-cam">
+        <div class="cam-top">CÁMARA</div>
+        <div class="cam-card"><i class="l"></i><i class="l s"></i><svg viewBox="0 0 25 25"><use href="#qr"/></svg></div>
+        <div class="cam-brk"><i></i><i></i><i></i><i></i><div class="cam-line"></div></div>
+        <div class="cam-chip"><svg><use href="#i-link"/></svg>Abrir enlace de reseñas</div>
+        <div class="cam-ui"><i></i></div>
+      </div>
+      <div class="scr s-load">
+        <div class="bar-url"><svg><use href="#i-lock"/></svg>Abriendo reseñas del negocio…</div>
+        <div class="bar-prog"><i></i></div>
+        <div class="skel"><i class="b"></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="scr s-rev">
+        <div class="rv-hd"><span class="av">CE</span><span><b>Café Ejemplo</b><small>Reseñas en Google</small></span></div>
+        <div class="rv-who"><i>V</i>Publicás con tu cuenta de Google</div>
+        <p class="rv-q">¿Cómo fue tu experiencia?</p>
+        <div class="rv-stars">
+          <span class="st"><svg><use href="#i-star"/></svg></span><span class="st"><svg><use href="#i-star"/></svg></span><span class="st"><svg><use href="#i-star"/></svg></span><span class="st"><svg><use href="#i-star"/></svg></span><span class="st"><svg><use href="#i-star"/></svg></span>
+        </div>
+        <div class="rv-txt"><span class="ty">Muy buena atención y…</span></div>
+        <div class="rv-row"><span class="rv-pub">Publicar</span></div>
+      </div>
     </div>
   </div>
-  <div class="mmenu" id="mmenu">
-    <a href="#diagnostico">Autodiagnóstico</a>
-    <a href="#calculadora">Calculadora</a>
-    <a href="#resultados">Resultados</a>
-    <a href="#empezar">Cómo empezar</a>
-    <a href="#preguntas">Preguntas</a>
-    <a class="btn btn-g" href="#contacto"><svg><use href="#i-wa"/></svg>Pedir análisis gratuito</a>
+</template>
+
+<header class="hd" id="hd">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="Inicio">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#202124"/><path d="M8 8h5v2.2H10.2V13H8zM24 8v5h-2.2v-2.8H19V8zM8 24v-5h2.2v2.8H13V24z" fill="#fff"/><path fill="#FBBC04" d="M20.5 15.6l1.4 3 3.3.4-2.4 2.2.6 3.2-2.9-1.6-2.9 1.6.6-3.2-2.4-2.2 3.3-.4z"/></svg>
+      <span data-brand>Punto Reseña</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a class="lk" href="#como-funciona" data-track="click_demo">Cómo funciona</a>
+      <a class="lk" href="#demo" data-track="click_demo">Demo</a>
+      <a class="lk" href="#preguntas">Preguntas</a>
+      <a class="btn btn-p btn-sm" data-wa href="#contacto"><svg><use href="#i-wa"/></svg>Consultar</a>
+    </nav>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-<!-- 1. HERO: qué resuelvo, qué resultado, cómo empezar -->
-<section class="hero" id="inicio">
-  <div class="gridbg" aria-hidden="true"></div>
-  <div class="wrap">
-    <div>
-      <div class="eb rv">Negocios locales · Buenos Aires</div>
-      <h1 class="h1 rv d1">Que tu negocio sea fácil de <em>encontrar, contactar y elegir.</em></h1>
-      <p class="lead rv d2">Google Maps, web y WhatsApp bien armados para que más personas de Buenos Aires te descubran y te escriban. Sirve para cualquier rubro.</p>
-      <div class="ctas rv d3">
-        <a class="btn btn-g" data-wa="Hola, quiero el análisis gratuito de mi negocio. Te paso el link de Google:" href="#contacto"><svg><use href="#i-wa"/></svg>Pedir análisis gratuito</a>
-        <a class="tlink" href="#resultados">Ver qué cambia <svg><use href="#i-down"/></svg></a>
-      </div>
-      <p class="hero-note rv d3"><svg><use href="#i-gift"/></svg><span>Mandá el link de tu negocio en Google y recibí 3 mejoras concretas. Gratis y sin compromiso.</span></p>
+<!-- =========================================================
+     1 · HERO
+     ========================================================= -->
+<section class="hero" id="inicio" aria-labelledby="h-hero">
+  <div class="wrap hero-g">
+    <div class="hero-copy">
+      <span class="eb ent">Soporte QR para reseñas de Google</span>
+      <h1 class="h1 ent e2" id="h-hero">¿Cuántas reseñas está perdiendo <span class="u">tu negocio?</span></h1>
+      <p class="lead ent e3">Con un soporte QR en tu mostrador, tus clientes pueden acceder fácilmente a las reseñas de tu negocio en Google.</p>
     </div>
-
-    <div class="hero-vis rv d2" role="img" aria-label="Demostración: una persona encuentra un negocio en Google Maps, le escribe por WhatsApp y deja una reseña">
-      <div class="fit" style="--w:540px;--h:520px">
+    <div class="hero-vis ent e3">
+      <div class="fit" style="--w:600px;--h:540px">
         <div class="fit-in">
-          <span class="demo-tag" style="position:absolute;right:0;top:0;z-index:6">DEMO</span>
-          <svg style="position:absolute;inset:0" width="540" height="520" viewBox="0 0 540 520" aria-hidden="true">
-            <path d="M150 210 C150 255 220 262 268 262" fill="none" stroke="#D4AF5A" stroke-opacity=".55" stroke-width="1.8" stroke-dasharray="4 6"/>
-            <path d="M300 480 C240 480 200 460 190 430" fill="none" stroke="#D4AF5A" stroke-opacity=".55" stroke-width="1.8" stroke-dasharray="4 6"/>
-          </svg>
-          <div class="card gb" style="position:absolute;left:0;top:28px;width:300px;padding:16px 18px;z-index:3">
-            <div class="step-t">01 · Te encuentran</div>
-            <div style="margin-top:10px;height:34px;border-radius:18px;background:#1A1A1D;border:1px solid var(--line);display:flex;align-items:center;gap:8px;padding:0 12px;font-size:12px;color:var(--soft)"><svg width="14" height="14" style="color:var(--mute)"><use href="#r-find"/></svg>cerca de mí · Buenos Aires</div>
-            <div style="display:flex;align-items:center;gap:12px;margin-top:12px">
-              <svg width="32" height="32"><use href="#i-pin"/></svg>
-              <div><div style="font-weight:700;font-size:15px">Tu negocio</div><div style="font-size:11.5px;color:var(--mute)"><span style="color:var(--ok)">Abierto</span> · Palermo, CABA</div></div>
+          <div class="scene auto" id="hero-scene" data-state="idle" role="img" aria-label="Soporte QR de acrílico sobre el mostrador de una cafetería. Un celular escanea el código y abre la página para dejar una reseña en Google.">
+            <div class="sc-wall"></div>
+            <div class="sc-top"></div>
+            <div class="sc-props">
+              <svg style="left:26px;top:338px" width="96" height="70" viewBox="0 0 96 70" aria-hidden="true"><ellipse cx="48" cy="60" rx="44" ry="9" fill="#F4F1EC"/><ellipse cx="48" cy="60" rx="44" ry="9" fill="none" stroke="#DCD6CD"/><path d="M20 14h52v20a26 26 0 0 1-52 0z" fill="#FFFFFF"/><path d="M72 20h6a9 9 0 0 1 0 18h-7" fill="none" stroke="#F1EEE9" stroke-width="5"/><ellipse cx="46" cy="14" rx="26" ry="5" fill="#6B4630"/><path d="M28 30a18 18 0 0 0 10 22" stroke="#EDE8E1" stroke-width="3" fill="none"/></svg>
             </div>
-            <div style="display:flex;gap:6px;margin-top:12px"><span class="pill o" style="font-size:10px;padding:5px 10px">Cómo llegar</span><span class="pill g" style="font-size:10px;padding:5px 10px"><svg width="12" height="12"><use href="#i-wa"/></svg>WhatsApp</span></div>
-          </div>
-          <div class="phone fl1" style="left:268px;top:56px;width:230px;height:440px;z-index:4">
-            <div class="notch"></div>
-            <div class="scr">
-              <div class="wa-h"><div class="av">TN</div><div><div style="font-size:12px;font-weight:700">Tu negocio</div><div style="font-size:9.5px;color:var(--ok)">en línea</div></div></div>
-              <span class="step-t" style="text-align:center;margin:2px 0">02 · Te contactan</span>
-              <div class="msg in">Hola! Los vi en Google. ¿Hoy están abiertos?<small>10:12</small></div>
-              <div class="msg out">¡Hola! Sí, hasta las 19. ¿En qué te puedo ayudar?<small>10:12 ✓✓</small></div>
-              <div class="msg in">Quería consultar precio y disponibilidad.<small>10:13</small></div>
-              <div class="msg out">Dale, te paso todo ahora.<small>10:13 ✓✓</small></div>
-            </div>
-          </div>
-          <div class="card fl2" style="position:absolute;left:16px;top:310px;width:256px;padding:16px 18px;z-index:5">
-            <span class="step-t">03 · Te eligen</span>
-            <div style="display:flex;gap:12px;align-items:center;margin-top:10px"><svg width="32" height="32"><use href="#i-checkc"/></svg><div><div class="stars" style="font-size:12px">★★★★★</div><div style="font-size:12px;color:var(--soft);margin-top:2px">“Respondieron rápido y súper claros.”</div></div></div>
+            <div class="beam"></div>
+            <div data-tpl="stand"></div>
+            <div data-tpl="phone"></div>
           </div>
         </div>
       </div>
+      <div class="flow" id="hero-flow" aria-hidden="true"><span data-s="idle">Ve el QR</span><span data-s="scan">Escanea</span><span data-s="open">Abre el enlace</span><span data-s="review">Opina</span></div>
+      <div class="vis-cap"><span class="tag"><i></i>Imagen ilustrativa del producto</span></div>
+    </div>
+    <div class="hero-cta ent e4">
+      <div class="cta-row">
+        <a class="btn btn-p" data-wa data-track="click_cta_hero" href="#contacto"><svg><use href="#i-wa"/></svg>Quiero mi QR para reseñas</a>
+        <a class="btn btn-s" href="#como-funciona" data-track="click_demo">Ver cómo funciona</a>
+      </div>
+      <p class="note"><svg><use href="#i-check"/></svg>Sin aplicaciones adicionales para tus clientes.</p>
     </div>
   </div>
 </section>
 
-<!-- Identificación por rubro, sin segmentar -->
-<div class="ticker" role="note" aria-label="Para cualquier negocio local: barberías, ferreterías, veterinarias, inmobiliarias, gimnasios, estudios jurídicos, restaurantes, consultorios y comercios">
-  <div class="ticker-in" aria-hidden="true">
-    <span>Barberías</span><span>Ferreterías</span><span>Veterinarias</span><span>Inmobiliarias</span><span>Gimnasios</span><span>Estudios jurídicos</span><span>Restaurantes</span><span>Consultorios</span><span>Comercios</span>
-    <span>Barberías</span><span>Ferreterías</span><span>Veterinarias</span><span>Inmobiliarias</span><span>Gimnasios</span><span>Estudios jurídicos</span><span>Restaurantes</span><span>Consultorios</span><span>Comercios</span>
-  </div>
-</div>
-
-<!-- 2. PROBLEMA -->
-<section class="sec" id="problema">
+<!-- Puente con la campaña de video ("Comentá MAPS" es la acción del video, no de la web) -->
+<aside class="bridge" aria-label="Si llegaste desde el video">
   <div class="wrap">
-    <div class="rv">
-      <div class="eb">El problema</div>
-      <h2 class="h2">¿Te <em>suena?</em></h2>
+    <p><b>¿Llegaste desde el video?</b> Ahí te dijimos: comentá <span class="kw">MAPS</span> y te mostramos cómo implementarlo en tu negocio. Acá podés ir directo: escribinos por WhatsApp.</p>
+    <a class="btn btn-s btn-sm" data-wa href="#contacto"><svg><use href="#i-wa"/></svg>Escribir por WhatsApp</a>
+  </div>
+</aside>
+
+<!-- =========================================================
+     2 · COMPARACIÓN
+     ========================================================= -->
+<section class="sec" id="comparacion" aria-labelledby="h-cmp">
+  <div class="wrap">
+    <div class="cmp-hd">
+      <span class="eb rv">Lo que ve tu próximo cliente</span>
+      <h2 class="h2 rv d1" id="h-cmp">Antes de elegir, tus clientes comparan.</h2>
     </div>
-    <div class="pains rv d1">
-      <div class="pain"><i>01</i><p>Te buscan en Google y aparece primero tu competencia.</p></div>
-      <div class="pain"><i>02</i><p>Te escriben, contestás tarde y la consulta se enfría.</p></div>
-      <div class="pain"><i>03</i><p>Horarios, precios y fotos desactualizados o dispersos.</p></div>
-      <div class="pain"><i>04</i><p>Hacés todo a mano y no sabés qué está funcionando.</p></div>
+    <div class="cmp">
+      <div class="search rv d1" aria-hidden="true"><svg><use href="#i-search"/></svg>cafetería cerca de mí<span class="cur"></span></div>
+      <div class="cmp-g">
+        <article class="biz a rv d2" id="biz-a">
+          <div class="biz-ph"><svg><use href="#i-store"/></svg></div>
+          <div class="biz-bd">
+            <h3 class="biz-n">Negocio A</h3>
+            <div class="biz-r"><span>4,6</span><span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg class="off"><use href="#i-star"/></svg></span><span class="cnt">(<b data-count="5">5</b>)</span></div>
+            <div class="biz-chips"><span>Cafetería</span></div>
+            <div class="revs"><div class="rev"><span class="av" style="background:#E3E5E8"></span><span class="ln"><i></i><i class="s"></i></span></div></div>
+            <p class="empty">Pocas opiniones para leer</p>
+          </div>
+          <button class="biz-hit" aria-expanded="false" aria-controls="msg-a"><span class="sr">Ver qué percibe un cliente en el Negocio A</span></button>
+          <div class="biz-msg" id="msg-a"><b>Pocas opiniones visibles.</b>Al cliente le cuesta imaginar cómo va a ser su experiencia.</div>
+        </article>
+        <article class="biz b rv d3" id="biz-b">
+          <div class="biz-ph"><i></i><i></i><i></i></div>
+          <div class="biz-bd">
+            <h3 class="biz-n">Negocio B</h3>
+            <div class="biz-r"><span>4,6</span><span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg class="off"><use href="#i-star"/></svg></span><span class="cnt">(<b data-count="214">214</b>)</span></div>
+            <div class="biz-chips"><span>Cafetería</span><span class="g">Abierto</span></div>
+            <div class="revs">
+              <div class="rev"><span class="av" style="background:#AECBFA"></span><span class="ln"><span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><i></i><i class="s"></i></span></div>
+              <div class="rev"><span class="av" style="background:#FDD663"></span><span class="ln"><span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg class="off"><use href="#i-star"/></svg></span><i></i><i class="s"></i></span></div>
+              <div class="rev"><span class="av" style="background:#A8DAB5"></span><span class="ln"><span class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><i></i><i class="s"></i></span></div>
+            </div>
+          </div>
+          <button class="biz-hit" aria-expanded="false" aria-controls="msg-b"><span class="sr">Ver qué percibe un cliente en el Negocio B</span></button>
+          <div class="biz-msg" id="msg-b"><b>Más opiniones visibles.</b>El cliente puede leer experiencias de otras personas antes de decidir.</div>
+        </article>
+      </div>
+      <div class="cmp-foot">
+        <p class="hint"><svg><use href="#i-tap"/></svg>Tocá cada ficha para ver qué percibe el cliente.</p>
+        <span class="tag"><i></i>Ejemplo ilustrativo: negocios y cifras ficticios</span>
+      </div>
     </div>
-    <p class="swipe-hint">Deslizá <svg><use href="#i-arrow"/></svg></p>
+    <p class="cmp-line rv">No siempre gana el negocio con el mejor producto. <span>La confianza que transmite también puede influir en la elección.</span></p>
   </div>
 </section>
 
-
-<div class="sep"></div>
-
-<!-- AUTODIAGNÓSTICO -->
-<section class="sec" id="diagnostico">
+<!-- =========================================================
+     3 · PRODUCTO / CÓMO FUNCIONA
+     ========================================================= -->
+<section class="sec alt" id="como-funciona" aria-labelledby="h-prod">
   <div class="wrap">
-    <div class="quiz">
+    <span class="eb rv">El producto</span>
+    <h2 class="h2 rv d1" id="h-prod" style="max-width:820px">Convertí cada atención en una oportunidad para recibir una reseña.</h2>
+    <div class="prod-g">
       <div class="rv">
-        <div class="eb">Autodiagnóstico</div>
-        <h2 class="h2">¿Cuántos clientes <em>se te escapan?</em></h2>
-        <p class="lead">Seis preguntas, treinta segundos. Respondé con sinceridad y mirá qué tan preparado está tu negocio para que te encuentren y te elijan.</p>
-        <p class="lead quiz-side" style="font-size:15px;color:var(--mute)">No se guarda nada. El resultado lo ves solo vos, salvo que decidas mandarlo.</p>
-      </div>
-      <div class="qbox rv d1" id="quiz" aria-live="polite">
-        <div class="qtop"><span id="q-step">Pregunta 1 de 6</span><span>30 segundos</span></div>
-        <div class="qbar"><i id="q-bar"></i></div>
-        <div class="qcards" id="q-cards"></div>
-        <div class="qbtns" id="q-btns"><button type="button" class="yes" data-a="1">Sí</button><button type="button" data-a="0">No</button></div>
-        <div class="qres" id="q-res">
-          <div class="score">
-            <div class="ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="3.2"/><circle id="q-arc" cx="18" cy="18" r="15.9" fill="none" stroke="url(#gGold)" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0 100" style="transition:stroke-dasharray 1.2s ease"/></svg><b id="q-score">0/6</b></div>
-            <div><h3 id="q-title"></h3><p id="q-sub"></p></div>
-          </div>
-          <ul class="fixes" id="q-fixes"></ul>
-          <a class="btn btn-g" id="q-send" href="#contacto"><svg><use href="#i-wa"/></svg>Quiero que lo revisen</a>
-          <button type="button" class="qagain" id="q-again">Volver a hacerlo</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="sep"></div>
-
-<!-- 3. RESULTADOS -->
-<section class="xr" id="resultados">
-  <div class="floor" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="rv">
-      <div class="eb">Lo que cambia</div>
-      <h2 class="h2 xr-title">No es tecnología.<br><em>Son clientes.</em></h2>
-      <p class="lead">Cinco cambios concretos en tu negocio. Bajá y miralos pasar.</p>
-    </div>
-
-    <div class="xr-grid">
-      <div class="xr-stage" id="xr-stage">
-        <div class="xr-frame">
-          <div class="fit" data-fit-h style="--w:460px;--h:540px" role="img" aria-label="Demostración animada de cada resultado">
-            <div class="fit-in">
-              <div class="dev" id="dev">
-                <div class="dev-face">
-
-                  <!-- 01 Te encuentran -->
-                  <div class="scene on" data-i="0">
-                    <div class="sc-h"><span class="step-t">01 · Te encuentran</span><span class="demo-tag">DEMO</span></div>
-                    <div class="srch"><svg><use href="#r-find"/></svg>cerca de mí · abierto ahora · Buenos Aires</div>
-                    <div class="rank">
-                      <div class="rk a" style="--p:1"><b>2</b><span>Otro negocio</span><i>Sin fotos</i></div>
-                      <div class="rk b" style="--p:2"><b>3</b><span>Otro negocio</span><i>Sin horarios</i></div>
-                      <div class="rk me" style="--p:0"><b>1</b><span>Tu negocio</span><i>Ficha completa</i></div>
-                    </div>
-                    <div class="mapz">
-                      <span class="mpin" style="left:18%;top:30%"></span><span class="mpin" style="left:80%;top:60%"></span><span class="mpin" style="left:30%;top:70%"></span>
-                      <span class="mpin me"><svg><use href="#i-pin"/></svg></span>
-                    </div>
-                    <div class="pop z2" style="left:-34px;top:478px"><svg><use href="#i-checkc"/></svg><div><b>Te encuentran primero</b><small>Fotos, horarios y botón de WhatsApp</small></div></div>
-                  </div>
-
-                  <!-- 02 Te contactan -->
-                  <div class="scene" data-i="1">
-                    <div class="sc-h"><span class="step-t">02 · Te contactan</span><span class="demo-tag">DEMO</span></div>
-                    <div class="chatx">
-                      <div class="msg in">Hola! ¿Tienen disponibilidad hoy?<small>10:12</small></div>
-                      <div class="msg out">¡Hola! Sí, ¿a qué hora te queda bien?<small>10:12 ✓✓</small></div>
-                      <div class="msg in">A las 18 estaría perfecto.<small>10:13</small></div>
-                      <div class="msg out">Listo, te esperamos.<small>10:13 ✓✓</small></div>
-                    </div>
-                    <div class="notes">
-                      <div class="pop"><svg style="color:var(--gold-hi)"><use href="#i-wa"/></svg><div><b>Nueva consulta</b><small>WhatsApp · desde Google</small></div></div>
-                      <div class="pop"><svg><use href="#i-checkc"/></svg><div><b>Nueva reserva</b><small>Web · mañana 10:00</small></div></div>
-                      <div class="pop"><svg style="color:var(--gold-hi)"><use href="#r-chat"/></svg><div><b>Pedido de presupuesto</b><small>Formulario</small></div></div>
-                    </div>
-                  </div>
-
-                  <!-- 03 Generás confianza -->
-                  <div class="scene" data-i="2">
-                    <div class="sc-h"><span class="step-t">03 · Generás confianza</span><span class="demo-tag">DEMO</span></div>
-                    <div class="rate"><span class="serif gold">4.9</span><div><div class="starbar">★★★★★<span>★★★★★</span></div><div style="font-size:12px;color:var(--mute);margin-top:4px">Opiniones recientes y respondidas</div></div></div>
-                    <div class="photos"><div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div></div>
-                    <div class="revs">
-                      <div class="pop"><div class="av" style="width:30px;height:30px;font-size:12px">M</div><div><span class="stars" style="font-size:11px">★★★★★</span><small style="display:block;color:var(--soft);font-size:12px">“Muy buena atención, lo recomiendo.”</small></div></div>
-                      <div class="pop"><div class="av" style="width:30px;height:30px;font-size:12px">L</div><div><span class="stars" style="font-size:11px">★★★★★</span><small style="display:block;color:var(--soft);font-size:12px">“Todo claro desde el primer mensaje.”</small></div></div>
-                    </div>
-                  </div>
-
-                  <!-- 04 Ahorrás tiempo -->
-                  <div class="scene" data-i="3">
-                    <div class="sc-h"><span class="step-t">04 · Ahorrás tiempo</span><span class="demo-tag">DEMO</span></div>
-                    <div class="flow" style="width:66%">
-                      <div class="fl"><small>Cliente</small>¿Hasta qué hora abren hoy?</div>
-                      <div class="fl ok"><small>Respuesta automática</small>Hoy hasta las 19. ¿Querés reservar?</div>
-                      <div class="fl ok"><small>Recordatorio</small>Enviado: mañana 10:00</div>
-                      <div class="fl ok"><small>Seguimiento</small>“¿Pudiste ver la propuesta?”</div>
-                    </div>
-                    <div class="clockc"><i></i><i></i><span>Tiempo que recuperás</span></div>
-                    <span class="pill o okchip"><svg width="14" height="14"><use href="#i-check"/></svg>Respuestas aprobadas por vos</span>
-                  </div>
-
-                  <!-- 05 Tenés más control -->
-                  <div class="scene" data-i="4">
-                    <div class="sc-h"><span class="step-t">05 · Tenés más control</span><span class="demo-tag">DEMO</span></div>
-                    <div class="kpis">
-                      <div class="kpi"><span>Consultas</span><b>▲ subiendo</b></div>
-                      <div class="kpi"><span>Clientes</span><b>▲ subiendo</b></div>
-                      <div class="kpi"><span>Ventas</span><b>▲ subiendo</b></div>
-                    </div>
-                    <div class="chartx">
-                      <i style="--h:30%"></i><i style="--h:42%;animation-delay:.1s"></i><i style="--h:38%;animation-delay:.2s"></i><i style="--h:55%;animation-delay:.3s"></i><i style="--h:62%;animation-delay:.4s"></i><i style="--h:74%;animation-delay:.5s"></i><i style="--h:90%;animation-delay:.6s"></i>
-                      <svg viewBox="0 0 300 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 130 C40 120 60 112 90 114 S150 84 180 80 S240 40 300 18" fill="none" stroke="#F3D995" stroke-width="3"/></svg>
-                    </div>
-                    <div class="insight">
-                      <div class="pop"><svg style="color:var(--gold-hi)"><use href="#r-chart"/></svg><div><b>Mejor día: sábado</b><small>Reforzá ese turno</small></div></div>
-                      <div class="pop"><svg style="color:var(--gold-hi)"><use href="#r-find"/></svg><div><b>Canal principal: Google</b><small>De ahí llegan más consultas</small></div></div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
+        <div class="fit" style="--w:600px;--h:540px">
+          <div class="fit-in">
+            <div class="scene auto" id="prod-scene" data-state="idle" role="img" aria-label="Secuencia: el soporte en el mostrador, el celular escanea el código y se abre la página de reseñas.">
+              <div class="sc-wall" style="--wall:linear-gradient(180deg,#F1F2F4,#E4E7EB)"></div>
+              <div class="sc-top" style="--top:linear-gradient(180deg,#FFFFFF,#E9EBEE)"></div>
+              <div class="beam"></div>
+              <div data-tpl="stand"></div>
+              <div data-tpl="phone"></div>
             </div>
           </div>
         </div>
-        <div class="xr-rail" role="group" aria-label="Resultados">
-          <button type="button" aria-current="step"><span>Te encuentran</span></button>
-          <button type="button"><span>Te contactan</span></button>
-          <button type="button"><span>Confianza</span></button>
-          <button type="button"><span>Tiempo</span></button>
-          <button type="button"><span>Control</span></button>
-        </div>
       </div>
-
-      <div class="xr-steps">
-        <article class="xs on" data-i="0">
-          <span class="xs-n" aria-hidden="true">01</span>
-          <h3 class="xs-t">Te encuentran.</h3>
-          <p class="xs-p">Alguien en Buenos Aires busca lo que vendés. Hoy aparece otro negocio. Con tu presencia bien armada, aparecés vos.</p>
-          <div class="tools"><span>Google Maps</span><span>Página web</span><span>Presencia online</span></div>
-          <p class="xs-r"><svg><use href="#i-arrow"/></svg><b>Más personas descubren tu negocio.</b></p>
-        </article>
-        <article class="xs" data-i="1">
-          <span class="xs-n" aria-hidden="true">02</span>
-          <h3 class="xs-t">Te contactan.</h3>
-          <p class="xs-p">Un botón, un mensaje, una consulta. Sin buscar tu número, sin vueltas y a cualquier hora.</p>
-          <div class="tools"><span>WhatsApp</span><span>Formularios</span><span>Reservas</span></div>
-          <p class="xs-r"><svg><use href="#i-arrow"/></svg><b>Más consultas y oportunidades.</b></p>
-        </article>
-        <article class="xs" data-i="2">
-          <span class="xs-n" aria-hidden="true">03</span>
-          <h3 class="xs-t">Generás confianza.</h3>
-          <p class="xs-p">Fotos reales, opiniones visibles e información clara. Lo que hace que te elijan antes de conocerte.</p>
-          <div class="tools"><span>Fotos</span><span>Opiniones</span><span>Información clara</span></div>
-          <p class="xs-r"><svg><use href="#i-arrow"/></svg><b>Más personas te eligen.</b></p>
-        </article>
-        <article class="xs" data-i="3">
-          <span class="xs-n" aria-hidden="true">04</span>
-          <h3 class="xs-t">Ahorrás tiempo.</h3>
-          <p class="xs-p">Las preguntas de siempre se responden solas, los recordatorios salen solos y nadie queda sin seguimiento. Vos aprobás cada respuesta.</p>
-          <div class="tools"><span>Automatizaciones</span><span>Recordatorios</span><span>Seguimiento</span></div>
-          <p class="xs-r"><svg><use href="#i-arrow"/></svg><b>Menos tareas repetitivas.</b></p>
-        </article>
-        <article class="xs" data-i="4">
-          <span class="xs-n" aria-hidden="true">05</span>
-          <h3 class="xs-t">Tenés más control.</h3>
-          <p class="xs-p">Consultas, clientes y ventas en una sola pantalla. Decidís con datos, no a ojo.</p>
-          <div class="tools"><span>Paneles</span><span>Reportes</span><span>Organización</span></div>
-          <p class="xs-r"><svg><use href="#i-arrow"/></svg><b>Tomás mejores decisiones.</b></p>
-        </article>
-        <div class="xs-end" aria-hidden="true"></div>
+      <div>
+        <ol class="steps" id="prod-steps">
+          <li><button class="step on" data-s="idle"><span class="n">1</span><b>Lo colocás</b><p>En el mostrador, la mesa o el lugar de atención.</p></button></li>
+          <li><button class="step" data-s="scan"><span class="n">2</span><b>Tu cliente escanea</b><p>Apunta la cámara de su celular al código.</p></button></li>
+          <li><button class="step" data-s="review"><span class="n">3</span><b>Llega a tus reseñas</b><p>Se abre la página de reseñas de tu negocio en Google. Si quiere, escribe y publica su opinión.</p></button></li>
+        </ol>
+        <div class="prod-cta">
+          <a class="btn btn-p" data-wa href="#contacto"><svg><use href="#i-wa"/></svg>Quiero implementarlo en mi negocio</a>
+          <p class="note"><svg><use href="#i-hand"/></svg>El QR abre el enlace. La reseña la escribe y la publica cada cliente.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="sep"></div>
-
-<!-- CALCULADORA -->
-<section class="sec" id="calculadora">
+<!-- =========================================================
+     4 · DEMO INTERACTIVA
+     ========================================================= -->
+<section class="sec" id="demo" aria-labelledby="h-demo">
   <div class="wrap">
-    <div class="rv">
-      <div class="eb">Hacé la cuenta</div>
-      <h2 class="h2">¿Cuánto te cuesta <em>no responder a tiempo?</em></h2>
-      <p class="lead">Poné tus números. La cuenta es tuya, no un promedio inventado.</p>
+    <span class="eb rv">Demostración interactiva</span>
+    <h2 class="h2 rv d1" id="h-demo">Probalo vos: así lo vive tu cliente.</h2>
+    <div class="demo">
+      <div class="demo-stage rv" id="demo-stage" data-state="idle">
+        <span class="demo-badge">Demo</span>
+        <div data-tpl="stand"></div>
+        <div data-tpl="phone"></div>
+      </div>
+      <div class="rv d1">
+        <ol class="d-steps" id="d-steps">
+          <li class="on"><i>1</i>Tu cliente ve el QR</li>
+          <li><i>2</i>Escanea con su celular</li>
+          <li><i>3</i>Se abre el enlace de reseñas</li>
+          <li><i>4</i>Puede escribir y publicar su opinión</li>
+        </ol>
+        <div class="d-prog" role="progressbar" aria-label="Progreso de la demostración" aria-valuemin="0" aria-valuemax="4" aria-valuenow="1" id="d-prog"><i></i></div>
+        <div class="d-ctl">
+          <button class="btn btn-p" id="d-run" data-track="demo_scan"><svg><use href="#i-play"/></svg>Simular escaneo</button>
+          <button class="btn btn-s" id="d-reset"><svg><use href="#i-reset"/></svg>Reiniciar</button>
+        </div>
+        <p class="d-msg" id="d-msg" role="status" aria-live="polite">Es una demostración: no se conecta con Google ni publica reseñas.</p>
+      </div>
     </div>
-    <div class="calc rv d1">
-      <div class="calc-in">
-        <div class="rng">
-          <label for="c-q">Consultas por semana que se quedan sin respuesta o se responden tarde <output id="c-q-o">5</output></label>
-          <input type="range" id="c-q" min="1" max="40" step="1" value="5">
+  </div>
+</section>
+
+<!-- =========================================================
+     5 · BENEFICIOS
+     ========================================================= -->
+<section class="sec alt" id="beneficios" aria-labelledby="h-ben">
+  <div class="wrap">
+    <span class="eb rv">Por qué sirve</span>
+    <h2 class="h2 rv d1" id="h-ben">Pequeño gesto. Más fácil pedir una opinión.</h2>
+    <div class="bento">
+      <div class="bx a rv">
+        <h3>Facilita el acceso al enlace de reseñas.</h3>
+        <p>Un escaneo y tu cliente llega a la página para opinar, sin buscar tu negocio a mano.</p>
+        <div class="trip" aria-hidden="true">
+          <span><svg><use href="#i-qr"/></svg>Escanea</span><svg><use href="#i-arrow"/></svg>
+          <span><svg><use href="#i-link"/></svg>Abre</span><svg><use href="#i-arrow"/></svg>
+          <span><svg style="color:var(--star)"><use href="#i-star"/></svg>Opina</span>
         </div>
-        <div class="rng">
-          <label for="c-t">Lo que deja un cliente, en promedio <output id="c-t-o">$ 15.000</output></label>
-          <input type="range" id="c-t" min="1000" max="300000" step="1000" value="15000">
-        </div>
-        <div class="rng">
-          <label class="lb2">De cada cuántas consultas, una termina comprando<small>Pensá en tus consultas de siempre.</small></label>
-          <div class="seg" id="c-r" role="group" aria-label="Una de cada">
-            <button type="button" data-v="2" aria-pressed="false">1 de 2</button>
-            <button type="button" data-v="3" aria-pressed="true">1 de 3</button>
-            <button type="button" data-v="4" aria-pressed="false">1 de 4</button>
-            <button type="button" data-v="5" aria-pressed="false">1 de 5</button>
+      </div>
+      <div class="bx b rv d1"><span class="ic"><svg><use href="#i-eye"/></svg></span><h3>Hace visible tu invitación a opinar</h3><p>Está a la vista justo cuando la experiencia está fresca.</p></div>
+      <div class="bx c rv d2"><span class="ic"><svg><use href="#i-chat"/></svg></span><h3>No tenés que explicar cómo encontrarte</h3><p>El soporte lo dice por vos.</p></div>
+      <div class="bx d rv d1"><span class="ic"><svg><use href="#i-clock"/></svg></span><h3>Se integra a la atención diaria</h3><p>Queda en su lugar. No cambia tu forma de trabajar.</p></div>
+      <div class="bx e rv d2"><span class="ic"><svg><use href="#i-hand"/></svg></span><h3>Cada cliente decide</h3><p>Invita sin presionar: opinar es siempre opcional.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     6 · ESCENARIOS
+     ========================================================= -->
+<section class="sec" id="escenarios" aria-labelledby="h-biz">
+  <div class="wrap">
+    <span class="eb rv">Para tu rubro</span>
+    <h2 class="h2 rv d1" id="h-biz">Un QR pensado para tu forma de atender.</h2>
+    <div class="tabs rv d1" role="tablist" aria-label="Tipo de negocio">
+      <button class="tab" role="tab" id="t-cafe" aria-controls="biz-panel" aria-selected="true" data-biz="cafe"><svg aria-hidden="true"><use href="#i-cup"/></svg>Cafetería</button>
+      <button class="tab" role="tab" id="t-resto" aria-controls="biz-panel" aria-selected="false" tabindex="-1" data-biz="resto"><svg aria-hidden="true"><use href="#i-fork"/></svg>Restaurante</button>
+      <button class="tab" role="tab" id="t-barber" aria-controls="biz-panel" aria-selected="false" tabindex="-1" data-biz="barber"><svg aria-hidden="true"><use href="#i-scissors"/></svg>Barbería</button>
+      <button class="tab" role="tab" id="t-shop" aria-controls="biz-panel" aria-selected="false" tabindex="-1" data-biz="shop"><svg aria-hidden="true"><use href="#i-bag"/></svg>Comercio</button>
+    </div>
+    <div class="biz-g" id="biz-panel" role="tabpanel" aria-labelledby="t-cafe">
+      <div class="rv">
+        <div class="fit" style="--w:600px;--h:420px">
+          <div class="fit-in">
+            <div class="bscene" id="bscene" data-biz="cafe" role="img" aria-label="Soporte QR en el mostrador de una cafetería, junto a la caja.">
+              <div class="sc-wall"></div>
+              <div class="sc-top"></div>
+              <!-- utilería de cada rubro (ilustrativa) -->
+              <svg class="prop p-cafe" style="position:absolute;left:60px;top:250px" width="110" height="80" viewBox="0 0 110 80" aria-hidden="true"><ellipse cx="55" cy="68" rx="50" ry="10" fill="#F4F1EC" stroke="#DCD6CD"/><path d="M24 18h58v22a29 29 0 0 1-58 0z" fill="#fff"/><path d="M82 24h7a10 10 0 0 1 0 20h-8" fill="none" stroke="#EEEAE4" stroke-width="5"/><ellipse cx="53" cy="18" rx="29" ry="5.5" fill="#6B4630"/><path d="M42 2c-4 4 4 6 0 10M56 0c-4 4 4 6 0 10" stroke="#fff" stroke-width="2.5" fill="none" opacity=".8"/></svg>
+              <svg class="prop p-cafe" style="position:absolute;left:440px;top:200px" width="110" height="120" viewBox="0 0 110 120" aria-hidden="true"><rect x="8" y="22" width="94" height="90" rx="10" fill="#3C4043"/><rect x="18" y="32" width="74" height="34" rx="5" fill="#9AA0A6"/><rect x="24" y="76" width="62" height="24" rx="4" fill="#5F6368"/><rect x="30" y="4" width="50" height="20" rx="4" fill="#5F6368"/><rect x="0" y="108" width="110" height="10" rx="3" fill="#202124" opacity=".18"/></svg>
+              <svg class="prop p-resto" style="position:absolute;left:50px;top:228px" width="120" height="100" viewBox="0 0 120 100" aria-hidden="true"><rect x="10" y="40" width="100" height="56" rx="6" fill="#3B2A22"/><rect x="18" y="46" width="84" height="44" rx="4" fill="#4B372D"/><rect x="34" y="18" width="52" height="34" rx="3" fill="#fff" stroke="#E3E5E8"/><path d="M42 28h36M42 35h28M42 42h32" stroke="#DADCE0" stroke-width="2.5"/></svg>
+              <svg class="prop p-resto" style="position:absolute;left:450px;top:200px" width="80" height="128" viewBox="0 0 80 128" aria-hidden="true"><rect x="10" y="8" width="60" height="112" rx="10" fill="#202124"/><rect x="18" y="16" width="44" height="30" rx="4" fill="#8AB4F8"/><g fill="#5F6368"><rect x="18" y="54" width="12" height="10" rx="2"/><rect x="34" y="54" width="12" height="10" rx="2"/><rect x="50" y="54" width="12" height="10" rx="2"/><rect x="18" y="68" width="12" height="10" rx="2"/><rect x="34" y="68" width="12" height="10" rx="2"/><rect x="50" y="68" width="12" height="10" rx="2"/><rect x="18" y="82" width="12" height="10" rx="2"/><rect x="34" y="82" width="12" height="10" rx="2"/></g><rect x="50" y="82" width="12" height="10" rx="2" fill="#188038"/><path d="M26 0h28v10H26z" fill="#fff"/></svg>
+              <svg class="prop p-barber" style="position:absolute;left:418px;top:26px" width="150" height="190" viewBox="0 0 150 190" aria-hidden="true"><ellipse cx="75" cy="95" rx="70" ry="90" fill="#B8C4C2"/><ellipse cx="75" cy="95" rx="60" ry="80" fill="#EEF3F2"/><path d="M40 50c20-20 50-20 70 10" stroke="#fff" stroke-width="8" fill="none" opacity=".8"/></svg>
+              <svg class="prop p-barber" style="position:absolute;left:60px;top:290px" width="150" height="40" viewBox="0 0 150 40" aria-hidden="true"><rect x="4" y="14" width="80" height="14" rx="4" fill="#202124"/><g stroke="#202124" stroke-width="3"><path d="M10 28v8M18 28v8M26 28v8M34 28v8M42 28v8M50 28v8M58 28v8M66 28v8M74 28v8"/></g><g fill="none" stroke="#9AA0A6" stroke-width="4"><circle cx="104" cy="12" r="7"/><circle cx="104" cy="30" r="7"/><path d="M110 16l34 14M110 26l34-14"/></g></svg>
+              <svg class="prop p-barber" style="position:absolute;left:24px;top:40px" width="28" height="170" viewBox="0 0 28 170" aria-hidden="true"><rect x="2" y="8" width="24" height="154" rx="12" fill="#fff" stroke="#DADCE0"/><clipPath id="pole"><rect x="2" y="8" width="24" height="154" rx="12"/></clipPath><g clip-path="url(#pole)" stroke-width="7"><path d="M-10 20l48 30M-10 50l48 30M-10 80l48 30M-10 110l48 30M-10 140l48 30" stroke="#D93025"/><path d="M-10 35l48 30M-10 65l48 30M-10 95l48 30M-10 125l48 30" stroke="#1A73E8"/></g><rect x="0" y="0" width="28" height="12" rx="6" fill="#9AA0A6"/><rect x="0" y="158" width="28" height="12" rx="6" fill="#9AA0A6"/></svg>
+              <svg class="prop p-shop" style="position:absolute;left:52px;top:196px" width="120" height="136" viewBox="0 0 120 136" aria-hidden="true"><path d="M14 40h92l-6 92H20z" fill="#1A73E8"/><path d="M14 40h92l-2 14H16z" fill="#1765CC"/><path d="M40 52V30a20 20 0 0 1 40 0v22" fill="none" stroke="#174EA6" stroke-width="5" stroke-linecap="round"/><rect x="44" y="76" width="32" height="20" rx="4" fill="#fff" opacity=".85"/></svg>
+              <svg class="prop p-shop" style="position:absolute;left:446px;top:236px" width="100" height="92" viewBox="0 0 100 92" aria-hidden="true"><rect x="4" y="30" width="92" height="56" rx="8" fill="#E8EAED" stroke="#DADCE0"/><rect x="14" y="40" width="44" height="26" rx="3" fill="#202124"/><rect x="18" y="44" width="36" height="8" rx="2" fill="#81C995"/><rect x="66" y="40" width="22" height="36" rx="3" fill="#BDC1C6"/><path d="M60 0h30v32H60z" fill="#fff" stroke="#DADCE0"/><path d="M66 8h18M66 15h14M66 22h16" stroke="#DADCE0" stroke-width="2.5"/></svg>
+              <div data-tpl="stand"></div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="calc-out" aria-live="polite">
-        <span class="lbl">Lo que podría estar entrando y no entra</span>
-        <div class="big" id="c-m">$ 0</div>
-        <div class="yr">por mes · <b id="c-y">$ 0</b> por año</div>
-        <p class="note" id="c-n">≈ 0 clientes por mes que eligen a otro.</p>
-        <a class="btn btn-g" id="c-send" href="#contacto"><svg><use href="#i-wa"/></svg>Quiero recuperar esas consultas</a>
+      <div class="cap" id="biz-cap" aria-live="polite">
+        <div class="fade">
+          <h3>Cafetería: en el mostrador, junto a la caja.</h3>
+          <p>Lo ven mientras esperan su café o al pagar.</p>
+        </div>
+        <p class="note"><svg><use href="#i-check"/></svg>Son sugerencias: lo ponés donde te resulte más natural invitar a opinar.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="sep"></div>
-
-<!-- 4. CÓMO EMPEZAR -->
-<section class="sec" id="empezar">
-  <div class="wrap">
-    <div class="rv">
-      <div class="eb">Cómo empezar</div>
-      <h2 class="h2">Cuatro pasos. <em>Empezar es gratis.</em></h2>
-    </div>
-    <ol class="how">
-      <li class="on rv"><b>1</b><h3>Mandás el link de tu negocio</h3><p>Me enviás por WhatsApp el link de tu negocio en Google Maps o en Instagram. Si no tenés ninguno, alcanza con el nombre y la zona.</p></li>
-      <li class="rv d1"><b>2</b><h3>Analizo tu negocio</h3><p>Lo miro como lo ve un cliente: cómo aparecés en Google, tus fotos y reseñas, tu web o Instagram y qué tan fácil es escribirte.</p></li>
-      <li class="rv d2"><b>3</b><h3>Te mando 3 mejoras</h3><p>Recibís por WhatsApp tres mejoras concretas, explicadas simple y ordenadas por impacto.</p></li>
-      <li class="rv d3"><b>4</b><h3>Decidís vos</h3><p>Si querés, las implemento yo. Si no, las aplicás por tu cuenta. El análisis no te compromete a nada.</p></li>
-    </ol>
-    <div class="how-cta rv">
-      <a class="btn btn-g" data-wa="Hola, quiero el análisis gratuito de mi negocio. Te paso el link:" href="#contacto"><svg><use href="#i-wa"/></svg>Mandar mi link</a>
-      <span>Para negocios de Buenos Aires.</span>
-    </div>
-  </div>
-</section>
-
-<div class="sep"></div>
-
-<!-- 5. PREGUNTAS -->
-<section class="sec" id="preguntas">
-  <div class="wrap faq-grid">
-    <div class="head rv">
-      <div class="eb">Preguntas</div>
-      <h2 class="h2">Antes de <em>empezar</em></h2>
+<!-- =========================================================
+     7 · PREGUNTAS
+     ========================================================= -->
+<section class="sec alt" id="preguntas" aria-labelledby="h-faq">
+  <div class="wrap faq-g">
+    <div>
+      <span class="eb rv">Preguntas frecuentes</span>
+      <h2 class="h2 rv d1" id="h-faq">Simple para vos. Fácil para tus clientes.</h2>
     </div>
     <div class="faq rv d1">
-      <details open><summary>¿Sirve para mi rubro?<i></i></summary><div class="ans">Sí, si atendés clientes en Buenos Aires: en un local, consultorio, oficina o a domicilio. Lo que cambia es qué conviene hacer primero, y eso sale del análisis.</div></details>
-      <details><summary>¿El análisis tiene costo?<i></i></summary><div class="ans">No. Es gratis y no te obliga a contratar nada. Las mejoras que recibís son tuyas aunque no sigamos.</div></details>
-      <details><summary>¿Qué necesito para empezar?<i></i></summary><div class="ans">Solo el link de tu negocio en Google Maps o en Instagram. Si todavía no tenés ficha en Google, con el nombre y la zona alcanza.</div></details>
-      <details><summary>¿Tengo que saber de tecnología?<i></i></summary><div class="ans">No. Todo se explica simple y queda listo para usar desde el celular.</div></details>
-      <details><summary>¿Cuánto tiempo me lleva a mí?<i></i></summary><div class="ans">Poco: una charla inicial, fotos e información de tu negocio, y una revisión antes de publicar.</div></details>
-      <details><summary>¿Puedo empezar por una sola cosa?<i></i></summary><div class="ans">Sí. Se arranca por lo que más impacto tiene en tu caso, muchas veces Google Maps, y después se suma lo demás si hace falta.</div></details>
-      <details><summary>¿Cuánto tarda en estar funcionando?<i></i></summary><div class="ans">Depende de lo que necesite tu negocio. El plazo se confirma por escrito antes de empezar.</div></details>
-      <details><summary>¿Cuándo se notan los resultados?<i></i></summary><div class="ans">Tu negocio se ve mejor apenas se completa todo. Subir posiciones en Google y juntar reseñas lleva semanas o meses de constancia, según tu zona y tu competencia. Nadie puede garantizar el primer lugar en una semana.</div></details>
-      <details><summary>¿Puedo seguir usando mi WhatsApp?<i></i></summary><div class="ans">Sí, con WhatsApp Business lo usás igual. Si se suman automatizaciones, antes se define si conviene tu número actual o uno aparte.</div></details>
-      <details><summary>¿Hay costos extra?<i></i></summary><div class="ans">Solo de terceros, si se usan (por ejemplo, el dominio de una web). Se detallan con el monto antes de decidir.</div></details>
-      <details><summary>¿Las cuentas quedan a mi nombre?<i></i></summary><div class="ans">Sí. Ficha de Google, dominio y WhatsApp son tuyos.</div></details>
+      <details>
+        <summary>¿Cómo funciona?</summary>
+        <p class="ans">Tu cliente apunta la cámara del celular al código, toca el enlace que aparece y se abre la página de reseñas de tu negocio en Google. Ahí puede calificar y escribir su opinión, si lo desea.</p>
+      </details>
+      <details>
+        <summary>¿Necesito una aplicación?</summary>
+        <p class="ans">No hace falta una aplicación especial para escanear un QR estándar: el cliente usa la cámara o el lector QR de su teléfono, siempre que su dispositivo sea compatible. Para publicar la reseña, Google le pide iniciar sesión con su cuenta.</p>
+      </details>
+      <details>
+        <summary>¿Se puede personalizar para mi negocio?</summary>
+        <p class="ans">Sí. El código se prepara con el enlace de reseñas de tu negocio y el soporte se personaliza según las opciones disponibles. Escribinos y te contamos cuáles son.</p>
+      </details>
+      <details>
+        <summary>¿Necesito tener una ficha de negocio en Google?</summary>
+        <p class="ans">Sí. Para recibir reseñas, tu negocio necesita una ficha en Google apta para recibirlas. Si todavía no la tenés, podés consultarnos por una solución adicional; no está incluida en el precio del soporte.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa si quiero cambiar el enlace?</summary>
+        <p class="ans">Depende de cómo se configure el QR. Si el código apunta directo al enlace de reseñas, no se puede modificar después y habría que hacer uno nuevo. Consultanos qué opción corresponde a tu caso.</p>
+      </details>
     </div>
   </div>
 </section>
 
-<!-- 7. CTA FINAL -->
-<section class="final" id="contacto">
-  <div class="wrap">
-    <div class="final-box rv">
-      <div class="gridbg" aria-hidden="true"></div>
-      <div>
-        <div class="eb">Análisis gratuito · Buenos Aires</div>
-        <h2 class="h2" style="font-size:clamp(38px,5.4vw,64px)">Analicemos <em>tu negocio</em></h2>
-        <p class="lead">Descubrí qué oportunidades estás dejando pasar.</p>
-        <ul class="offer">
-          <li><svg><use href="#i-checkc"/></svg><span><b>Mandás</b> el link de tu negocio en Google.</span></li>
-          <li><svg><use href="#i-checkc"/></svg><span><b>Recibís</b> 3 mejoras concretas por WhatsApp.</span></li>
-          <li><svg><use href="#i-checkc"/></svg><span><b>Sin costo</b> y sin obligación de contratar.</span></li>
-        </ul>
-        <button type="button" class="share" id="share"><svg><use href="#i-share"/></svg>Compartir con mi socio</button>
+<!-- =========================================================
+     8 · CTA FINAL
+     ========================================================= -->
+<section class="final" id="contacto" aria-labelledby="h-final">
+  <div class="wrap final-g">
+    <div>
+      <h2 class="rv" id="h-final">Hacé que dejar una reseña sea más fácil.</h2>
+      <p class="lead rv d1">Prepará tu negocio para aprovechar cada oportunidad de recibir una opinión de tus clientes.</p>
+      <div class="cta-row rv d2">
+        <a class="btn btn-p" data-wa data-track="click_cta_final" href="#contacto"><svg><use href="#i-wa"/></svg>Consultar por WhatsApp</a>
+        <a class="btn btn-s" href="#como-funciona" data-track="click_demo">Ver cómo funciona</a>
       </div>
-      <form class="card form" id="lead" novalidate>
-        <h3>Pedí tu análisis</h3>
-        <div class="field"><label for="f-name">Tu nombre</label><input id="f-name" name="nombre" autocomplete="name" placeholder="Ej.: Carla" required></div>
-        <div class="field"><label for="f-biz">Tu negocio</label><input id="f-biz" name="negocio" placeholder="Nombre y a qué se dedica" required></div>
-        <div class="field"><label for="f-link">Link de Google Maps <span>(opcional)</span></label><input id="f-link" name="link" inputmode="url" placeholder="Pegalo acá si lo tenés"></div>
-        <button class="btn btn-g" type="submit"><svg><use href="#i-wa"/></svg>Enviar por WhatsApp</button>
-        <small>Se abre WhatsApp con tu mensaje listo. Esta página no guarda datos.</small>
-      </form>
+      <p class="note rv d3"><svg><use href="#i-check"/></svg>Cada cliente decide libremente si desea dejar una reseña.</p>
+    </div>
+    <div class="final-vis rv d1">
+      <div class="pedestal"><div data-tpl="stand"></div></div>
+      <small>Imagen ilustrativa. El QR de esta muestra abre nuestro WhatsApp.</small>
     </div>
   </div>
 </section>
 
 </main>
 
-<footer class="foot">
+<footer class="ft">
   <div class="wrap">
-    <a href="#inicio" class="brand" aria-label="Presencia Online — inicio"><div class="mono" style="width:40px;height:40px"><svg width="20" height="20"><use href="#i-pin-o"/></svg></div><div><div class="bn" style="font-size:14px">PRESENCIA ONLINE</div><div class="bt">NEGOCIOS LOCALES · BUENOS AIRES</div></div></a>
-    <nav aria-label="Pie"><a href="#resultados">Resultados</a><a href="#empezar">Cómo empezar</a><a href="#preguntas">Preguntas</a></nav>
-    <p>© <span id="yr">2026</span> Presencia Online · Buenos Aires, Argentina</p>
+    <a class="logo" href="#inicio">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#202124"/><path d="M8 8h5v2.2H10.2V13H8zM24 8v5h-2.2v-2.8H19V8zM8 24v-5h2.2v2.8H13V24z" fill="#fff"/><path fill="#FBBC04" d="M20.5 15.6l1.4 3 3.3.4-2.4 2.2.6 3.2-2.9-1.6-2.9 1.6.6-3.2-2.4-2.2 3.3-.4z"/></svg>
+      <span data-brand>Punto Reseña</span>
+    </a>
+    <p>Soportes QR para que tus clientes lleguen a la página de reseñas de tu negocio. Buenos Aires, Argentina.</p>
+    <p>Producto independiente: no estamos afiliados a Google ni contamos con su respaldo. Google es una marca de Google LLC y se menciona solo para indicar que el código dirige a las reseñas de Google de cada negocio.</p>
   </div>
 </footer>
 
-<a class="wa-float" id="waf" data-wa="Hola, quiero el análisis gratuito de mi negocio." href="#contacto" aria-label="Escribir por WhatsApp"><svg><use href="#i-wa"/></svg></a>
-<div class="toast" id="toast" role="status"></div>
-<div class="mbar" id="mbar"><a class="btn btn-g" data-wa="Hola, quiero el análisis gratuito de mi negocio. Te paso el link de Google:" href="#contacto"><svg><use href="#i-wa"/></svg>Análisis gratuito por WhatsApp</a></div>
+<a class="fab" id="fab" data-wa href="#contacto" aria-label="Consultar por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg><span class="t">Consultar por WhatsApp</span></a>
 
 <script>
 /* =========================================================
-   CONFIGURACIÓN
+   CONFIGURACIÓN — editá solo este bloque
    ========================================================= */
 const CONFIG = {
-  whatsapp: "",  // Número al que llegan los mensajes (no se muestra en la página). Ej.: "5491122334455"
+  brand: "Punto Reseña",            // Nombre provisional (también figura en <title> y og:site_name).
+  whatsapp: "5491140347468",        // Formato internacional sin "+" ni espacios: 54 9 11 4034-7468.
+  whatsappMessage: "Hola, vi el QR para reseñas de Google y quiero saber cómo funciona para mi negocio.",
 };
 
 /* =========================================================
    LÓGICA
    ========================================================= */
 document.documentElement.classList.add("js");
-const val = (k) => String(CONFIG[k] || "").trim();
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// Links de WhatsApp
-const waLink = (text) => {
-  const n = val("whatsapp").replace(/\D/g, "");
-  const t = encodeURIComponent(text);
-  return n ? `https://wa.me/${n}?text=${t}` : `https://api.whatsapp.com/send?text=${t}`;
+// Analítica: eventos listos para una integración futura (sin datos personales ni terceros).
+// Si más adelante cargás Google Tag Manager con el consentimiento correspondiente, los eventos van a window.dataLayer.
+const track = (event, data = {}) => {
+  if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event, ...data });
+  document.dispatchEvent(new CustomEvent("landing:track", { detail: { event, ...data } }));
 };
+
+// Marca
+document.querySelectorAll("[data-brand]").forEach((el) => (el.textContent = CONFIG.brand));
+
+// Plantillas (soporte y celular)
+const tpl = (id) => document.getElementById(id).content.firstElementChild;
+document.querySelectorAll("[data-tpl]").forEach((slot) => {
+  slot.replaceWith(tpl("tpl-" + slot.dataset.tpl).cloneNode(true));
+});
+
+// WhatsApp
+const waNumber = CONFIG.whatsapp.replace(/\D/g, "");
+const waHref = `https://wa.me/${waNumber}?text=${encodeURIComponent(CONFIG.whatsappMessage)}`;
 document.querySelectorAll("[data-wa]").forEach((a) => {
-  a.href = waLink(a.dataset.wa);
+  a.href = waHref;
   a.target = "_blank";
   a.rel = "noopener";
+  a.addEventListener("click", () => track("click_whatsapp", { location: a.dataset.track || a.id || "cta" }));
+});
+document.querySelectorAll("[data-track]").forEach((el) => {
+  if (el.id === "d-run") return; // demo_scan se registra al ejecutar la secuencia
+  el.addEventListener("click", () => track(el.dataset.track));
 });
 
-// Vibración suave (solo donde el navegador lo permite)
-const buzz = (ms = 8) => { try { navigator.vibrate && navigator.vibrate(ms); } catch (e) {} };
-const toast = (t) => { const el = document.getElementById("toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast._t); toast._t = setTimeout(() => el.classList.remove("on"), 2200); };
+// Header con borde al hacer scroll
+const hd = document.getElementById("hd");
+addEventListener("scroll", () => hd.classList.toggle("sc", scrollY > 8), { passive: true });
 
-// Autodiagnóstico
-(() => {
-  const Q = [
-    ["¿Tu negocio aparece en Google Maps con fotos actuales?", "Del local, del equipo o de lo que hacés.", "Subí fotos actuales", "es lo primero que mira alguien antes de elegirte.", "fotos actuales"],
-    ["¿Tus horarios en Google están bien, incluso en feriados?", "Un horario mal cargado manda clientes a una persiana baja.", "Corregí tus horarios", "así nadie va y encuentra cerrado.", "horarios al día"],
-    ["¿Respondés los mensajes en menos de una hora?", "Contando noches, fines de semana y horas pico.", "Automatizá lo de siempre", "precios, horarios y dirección se pueden responder solos.", "respuesta rápida"],
-    ["¿Le pedís una reseña a tus clientes después de atenderlos?", "Con un mensaje, un QR o en persona.", "Pedí reseñas", "un mensaje simple después de cada venta hace la diferencia.", "reseñas"],
-    ["¿Te pueden escribir o reservar con un solo toque desde Google o Instagram?", "Sin copiar números ni buscar datos.", "Poné un botón directo", "menos pasos, más consultas.", "contacto en un toque"],
-    ["¿Sabés cuántas consultas recibiste el mes pasado y de dónde llegaron?", "Google, Instagram, recomendación, la vidriera…", "Medí lo que pasa", "un panel simple te muestra qué funciona y qué no.", "saber de dónde llegan los clientes"],
-  ];
-  const box = document.getElementById("quiz"), cards = document.getElementById("q-cards");
-  const stepEl = document.getElementById("q-step"), bar = document.getElementById("q-bar");
-  cards.innerHTML = Q.map((q, i) => `<div class="qcard" data-i="${i}"><h3>${q[0]}</h3><p>${q[1]}</p></div>`).join("");
-  const els = [...cards.children];
-  let i = 0, ans = [];
-  const show = () => {
-    els.forEach((c, k) => { c.classList.toggle("on", k === i); c.classList.toggle("out", k < i); });
-    stepEl.textContent = `Pregunta ${i + 1} de ${Q.length}`;
-    bar.style.width = (i / Q.length) * 100 + "%";
-  };
-  const finish = () => {
-    const yes = ans.filter(Boolean).length;
-    const [t, sub] = yes >= 5 ? ["Tu negocio está bien encaminado", "Quedan detalles que pueden sumar más clientes."]
-      : yes >= 3 ? ["Hay oportunidades claras", "Con pocos cambios se puede notar la diferencia."]
-      : ["Se te están escapando clientes", "La buena noticia: casi todo tiene arreglo rápido."];
-    document.getElementById("q-title").textContent = t;
-    document.getElementById("q-sub").textContent = sub;
-    document.getElementById("q-score").textContent = `${yes}/${Q.length}`;
-    const miss = Q.filter((_, k) => !ans[k]);
-    document.getElementById("q-fixes").innerHTML = (miss.length ? miss : [["", "", "Mantené todo al día", "revisá fotos, horarios y reseñas cada mes."]])
-      .map((q) => `<li><svg><use href="#i-check"/></svg><span><b>${q[2]}:</b> ${q[3]}</span></li>`).join("");
-    const msg = `Hola, hice el autodiagnóstico y me dio ${yes}/${Q.length}.` + (miss.length ? `\nMe falta: ${miss.map((q) => q[4]).join(", ")}.` : "") + `\nQuiero que revisen mi negocio.`;
-    const send = document.getElementById("q-send");
-    send.href = waLink(msg); send.target = "_blank"; send.rel = "noopener";
-    box.classList.add("done");
-    requestAnimationFrame(() => document.getElementById("q-arc").setAttribute("stroke-dasharray", `${(yes / Q.length) * 100} 100`));
-  };
-  document.getElementById("q-btns").addEventListener("click", (e) => {
-    const b = e.target.closest("button"); if (!b) return;
-    buzz();
-    ans[i] = b.dataset.a === "1";
-    if (++i < Q.length) show(); else finish();
-  });
-  document.getElementById("q-again").addEventListener("click", () => {
-    i = 0; ans = []; box.classList.remove("done");
-    document.getElementById("q-arc").setAttribute("stroke-dasharray", "0 100");
-    show();
-  });
-  show();
-})();
-
-// Calculadora
-(() => {
-  const q = document.getElementById("c-q"), t = document.getElementById("c-t"), seg = document.getElementById("c-r");
-  const money = (n) => "$ " + Math.round(n).toLocaleString("es-AR");
-  let ratio = 3, shown = 0, raf;
-  const fill = (el) => el.style.setProperty("--pct", ((el.value - el.min) / (el.max - el.min)) * 100 + "%");
-  const animate = (to) => {
-    cancelAnimationFrame(raf);
-    const from = shown, t0 = performance.now();
-    const step = (now) => {
-      const k = Math.min(1, (now - t0) / 450), v = from + (to - from) * (1 - Math.pow(1 - k, 3));
-      document.getElementById("c-m").textContent = money(v);
-      shown = v;
-      if (k < 1) raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-  };
-  const calc = () => {
-    const perMonth = (q.value * 4.33) / ratio, m = perMonth * t.value;
-    document.getElementById("c-q-o").textContent = q.value;
-    document.getElementById("c-t-o").textContent = money(t.value);
-    document.getElementById("c-y").textContent = money(m * 12);
-    document.getElementById("c-n").textContent = `≈ ${Math.max(1, Math.round(perMonth))} cliente${Math.round(perMonth) === 1 ? "" : "s"} por mes que eligen a otro. Es una estimación con tus propios números.`;
-    fill(q); fill(t);
-    animate(m);
-    const send = document.getElementById("c-send");
-    send.href = waLink(`Hola, hice la cuenta en la calculadora: estaría dejando de ganar cerca de ${money(m)} por mes por consultas sin responder a tiempo. Quiero ver cómo recuperarlas.`);
-    send.target = "_blank"; send.rel = "noopener";
-  };
-  [q, t].forEach((el) => el.addEventListener("input", () => { calc(); }));
-  [q, t].forEach((el) => el.addEventListener("change", () => buzz(6)));
-  seg.addEventListener("click", (e) => {
-    const b = e.target.closest("button"); if (!b) return;
-    buzz(); ratio = +b.dataset.v;
-    seg.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
-    calc();
-  });
-  calc();
-})();
-
-// Compartir con el socio (menú nativo del celular o copiar link)
-document.getElementById("share").addEventListener("click", async () => {
-  const data = { title: document.title, text: "Mirá esto para el negocio: te dicen gratis qué mejorar para que te encuentren y te escriban más.", url: location.href };
-  try {
-    if (navigator.share) { await navigator.share(data); return; }
-    await navigator.clipboard.writeText(location.href); toast("Link copiado");
-  } catch (e) { if (e && e.name !== "AbortError") toast("No se pudo compartir"); }
-});
-
-// Escalado de mockups
+// Escalado de mockups de tamaño fijo
 (() => {
   const fits = document.querySelectorAll(".fit");
   const apply = (el) => {
     const cs = getComputedStyle(el);
     const w = parseFloat(cs.getPropertyValue("--w")), h = parseFloat(cs.getPropertyValue("--h"));
-    let s = Math.min(1, el.clientWidth / w);
-    if (el.hasAttribute("data-fit-h")) s = Math.min(s, el.parentElement.clientHeight / h);
+    const s = Math.min(1, el.clientWidth / w);
     el.style.height = h * s + "px";
     el.firstElementChild.style.transform = `scale(${s})`;
   };
-  if ("ResizeObserver" in window) {
-    const ro = new ResizeObserver(() => fits.forEach(apply));
-    fits.forEach((f) => { ro.observe(f); if (f.hasAttribute("data-fit-h")) ro.observe(f.parentElement); });
-  } else {
-    const all = () => fits.forEach(apply);
-    addEventListener("resize", all); all();
-  }
+  const all = () => fits.forEach(apply);
+  if ("ResizeObserver" in window) { const ro = new ResizeObserver(all); fits.forEach((f) => ro.observe(f)); }
+  else addEventListener("resize", all);
+  all();
 })();
 
-// Aparición al hacer scroll
+// Visibilidad en pantalla (para pausar animaciones fuera de vista)
+const onView = (el, cb, threshold = 0.35) => {
+  if (!("IntersectionObserver" in window)) { cb(true); return; }
+  new IntersectionObserver((es) => es.forEach((e) => cb(e.isIntersecting)), { threshold }).observe(el);
+};
+
+// Secuencia del recorrido: estados y duración de cada uno (ms)
+const FLOW = [["idle", 1500], ["scan", 1900], ["open", 1300], ["review", 3400]];
+
+// Hero: recorrido en loop mientras está visible
+(() => {
+  const scene = document.getElementById("hero-scene");
+  const flow = document.querySelectorAll("#hero-flow span");
+  const set = (s) => { scene.dataset.state = s; flow.forEach((f) => f.classList.toggle("on", f.dataset.s === s)); };
+  if (reduced) { set("review"); return; }
+  let i = 0, t = null, visible = false;
+  const tick = () => { set(FLOW[i][0]); t = setTimeout(() => { i = (i + 1) % FLOW.length; tick(); }, FLOW[i][1]); };
+  const sync = () => {
+    const run = visible && !document.hidden;
+    if (run && !t) tick();
+    if (!run && t) { clearTimeout(t); t = null; }
+  };
+  set("idle");
+  onView(scene, (v) => { visible = v; sync(); }, 0.2);
+  document.addEventListener("visibilitychange", sync);
+})();
+
+// Cómo funciona: la escena acompaña a los tres pasos (se reproduce sola una vez y se puede elegir cada paso)
+(() => {
+  const scene = document.getElementById("prod-scene");
+  const steps = [...document.querySelectorAll("#prod-steps .step")];
+  const stepOf = { idle: 0, scan: 1, open: 2, review: 2 };
+  let timers = [];
+  const set = (s) => { scene.dataset.state = s; steps.forEach((b, k) => b.classList.toggle("on", k === stepOf[s])); };
+  const stop = () => { timers.forEach(clearTimeout); timers = []; };
+  steps.forEach((b) => b.addEventListener("click", () => { stop(); set(b.dataset.s); }));
+  if (reduced) { set("review"); return; }
+  let played = false;
+  onView(scene, (v) => {
+    if (!v || played) return;
+    played = true;
+    let at = 0;
+    FLOW.forEach(([s, ms]) => { timers.push(setTimeout(() => set(s), at)); at += ms; });
+  }, 0.5);
+})();
+
+// Demo interactiva
+(() => {
+  const stage = document.getElementById("demo-stage");
+  const items = [...document.querySelectorAll("#d-steps li")];
+  const prog = document.getElementById("d-prog");
+  const run = document.getElementById("d-run");
+  const msg = document.getElementById("d-msg");
+  const states = ["idle", "scan", "open", "review"];
+  const intro = "Es una demostración: no se conecta con Google ni publica reseñas.";
+  let timers = [];
+
+  // En la demo, la pantalla de reseña es interactiva: estrellas y texto. "Publicar" queda deshabilitado.
+  const rev = stage.querySelector(".s-rev");
+  const starsBox = rev.querySelector(".rv-stars");
+  starsBox.innerHTML = [1, 2, 3, 4, 5].map((n) => `<button class="st" type="button" aria-label="${n} estrella${n > 1 ? "s" : ""}" tabindex="-1"><svg aria-hidden="true"><use href="#i-star"/></svg></button>`).join("");
+  const stars = [...starsBox.children];
+  const txt = document.createElement("textarea");
+  txt.className = "rv-txt"; txt.placeholder = "Contá cómo fue tu experiencia"; txt.tabIndex = -1;
+  txt.setAttribute("aria-label", "Texto de la reseña (demostración)");
+  rev.querySelector(".rv-txt").replaceWith(txt);
+  const pub = document.createElement("button");
+  pub.className = "rv-pub"; pub.type = "button"; pub.textContent = "Publicar"; pub.tabIndex = -1;
+  pub.setAttribute("aria-label", "Publicar (no disponible en la demostración)");
+  rev.querySelector(".rv-pub").replaceWith(pub);
+  const ph = stage.querySelector(".ph");
+  ph.removeAttribute("aria-hidden");
+  const paint = (n) => stars.forEach((s, k) => { s.classList.toggle("on", k < n); s.setAttribute("aria-pressed", String(k < n)); });
+  stars.forEach((s, k) => s.addEventListener("click", () => { paint(k + 1); msg.textContent = `Elegiste ${k + 1} estrella${k ? "s" : ""}. Así de simple es para tu cliente.`; }));
+  pub.addEventListener("click", () => {
+    msg.className = "d-msg warn";
+    msg.textContent = "Acá tu cliente publicaría su reseña en Google. En esta demostración no se publica nada.";
+  });
+  const interactive = (on) => {
+    [...stars, txt, pub].forEach((el) => (el.tabIndex = on ? 0 : -1));
+    ph.toggleAttribute("inert", !on);
+  };
+
+  const set = (k) => {
+    stage.dataset.state = states[k];
+    items.forEach((li, j) => { li.classList.toggle("on", j === k); li.classList.toggle("ok", j < k); });
+    prog.firstElementChild.style.width = ((k + 1) / states.length) * 100 + "%";
+    prog.setAttribute("aria-valuenow", String(k + 1));
+    interactive(k === 3);
+  };
+  const reset = () => {
+    timers.forEach(clearTimeout); timers = [];
+    set(0); paint(0); txt.value = "";
+    run.disabled = false;
+    msg.className = "d-msg"; msg.textContent = intro;
+  };
+  run.addEventListener("click", () => {
+    track("demo_scan");
+    reset();
+    run.disabled = true;
+    const gaps = reduced ? [0, 0, 0] : [250, 1900, 1300];
+    let at = 0;
+    [1, 2, 3].forEach((k, j) => {
+      at += gaps[j];
+      timers.push(setTimeout(() => {
+        set(k);
+        msg.textContent = ["", "Escaneando el código…", "Abriendo el enlace de reseñas…", "Listo: probá tocar las estrellas y escribir."][k];
+        if (k === 3) run.disabled = false;
+      }, at));
+    });
+  });
+  document.getElementById("d-reset").addEventListener("click", reset);
+  reset();
+})();
+
+// Escenarios por rubro (tabs accesibles)
+(() => {
+  const CAP = {
+    cafe:   ["Cafetería: en el mostrador, junto a la caja.", "Lo ven mientras esperan su café o al pagar.", "Soporte QR en el mostrador de una cafetería, junto a la caja."],
+    resto:  ["Restaurante: cerca del área de pago.", "Para cuando la comida terminó y la experiencia está fresca.", "Soporte QR en un restaurante, junto a la cuenta y la terminal de pago."],
+    barber: ["Barbería: en el puesto de atención o recepción.", "A la vista al terminar el corte, mientras tu cliente se mira al espejo.", "Soporte QR en la recepción de una barbería."],
+    shop:   ["Comercio: al finalizar la compra.", "Junto a la caja, en el momento de pagar o entregar el pedido.", "Soporte QR junto a la caja de un comercio."],
+  };
+  const tabs = [...document.querySelectorAll(".tab")];
+  const scene = document.getElementById("bscene");
+  const panel = document.getElementById("biz-panel");
+  let cap = document.querySelector("#biz-cap .fade");
+  const select = (tab, focus) => {
+    tabs.forEach((t) => { const on = t === tab; t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1; });
+    const k = tab.dataset.biz;
+    scene.dataset.biz = k;
+    scene.setAttribute("aria-label", CAP[k][2]);
+    panel.setAttribute("aria-labelledby", tab.id);
+    const fresh = cap.cloneNode(false);
+    fresh.innerHTML = `<h3>${CAP[k][0]}</h3><p>${CAP[k][1]}</p>`;
+    cap.replaceWith(fresh); cap = fresh;
+    if (focus) tab.focus();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => select(t));
+    t.addEventListener("keydown", (e) => {
+      const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (d) { e.preventDefault(); select(tabs[(i + d + tabs.length) % tabs.length], true); }
+    });
+  });
+})();
+
+// Comparación: tocar/enfocar cada ficha revela el mensaje
+(() => {
+  document.querySelectorAll(".biz").forEach((card) => {
+    const b = card.querySelector(".biz-hit");
+    b.addEventListener("click", () => {
+      const open = !card.classList.contains("open");
+      document.querySelectorAll(".biz").forEach((c) => { c.classList.remove("open"); c.querySelector(".biz-hit").setAttribute("aria-expanded", "false"); });
+      card.classList.toggle("open", open);
+      b.setAttribute("aria-expanded", String(open));
+    });
+  });
+  // Contador ilustrativo de reseñas (no son métricas reales)
+  if (reduced) return;
+  const nums = document.querySelectorAll("[data-count]");
+  nums.forEach((n) => (n.textContent = "0"));
+  onView(document.querySelector(".cmp-g"), (v) => {
+    if (!v || nums[0].dataset.done) return;
+    nums.forEach((n) => {
+      n.dataset.done = "1";
+      const to = +n.dataset.count, t0 = performance.now();
+      const step = (now) => {
+        const k = Math.min(1, (now - t0) / 1100);
+        n.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }, 0.4);
+})();
+
+// Botón flotante: aparece al pasar los CTA del hero
+(() => {
+  const fab = document.getElementById("fab");
+  const heroCta = document.querySelector(".hero-cta");
+  if (!("IntersectionObserver" in window)) { fab.classList.add("on"); return; }
+  new IntersectionObserver(([e]) => fab.classList.toggle("on", !e.isIntersecting && e.boundingClientRect.top < 0)).observe(heroCta);
+})();
+
+// Aparición progresiva al hacer scroll
 (() => {
   const els = document.querySelectorAll(".rv");
-  if (!("IntersectionObserver" in window)) { els.forEach((e) => e.classList.add("in")); return; }
+  if (reduced || !("IntersectionObserver" in window)) { els.forEach((e) => e.classList.add("in")); return; }
   const io = new IntersectionObserver((es) => es.forEach((e) => {
     if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-  }), { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+  }), { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
   els.forEach((e) => io.observe(e));
 })();
-
-// Nav, menú móvil, botón flotante y barra inferior
-(() => {
-  const nav = document.getElementById("nav");
-  const waf = document.getElementById("waf");
-  const mbar = document.getElementById("mbar");
-  const burger = document.getElementById("burger");
-  let contactVisible = false;
-  const xr = document.querySelector(".xr-grid");
-  const busy = [document.getElementById("quiz"), document.querySelector(".calc")];
-  function onScroll() {
-    const past = scrollY > innerHeight * 0.75;
-    const r = xr.getBoundingClientRect();
-    const inResults = innerWidth <= 900 && (
-      (r.top < innerHeight * 0.6 && r.bottom > innerHeight * 0.5) ||
-      busy.some((el) => { const b = el.getBoundingClientRect(); return b.top < innerHeight - 60 && b.bottom > 80; }));
-    nav.classList.toggle("sc", scrollY > 20);
-    waf.classList.toggle("on", past && !contactVisible);
-    mbar.classList.toggle("on", past && !contactVisible && !inResults);
-  }
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(([e]) => { contactVisible = e.isIntersecting; onScroll(); }, { threshold: 0.05 }).observe(document.getElementById("contacto"));
-  }
-  addEventListener("scroll", onScroll, { passive: true }); onScroll();
-  const close = () => { nav.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); };
-  burger.addEventListener("click", () => burger.setAttribute("aria-expanded", String(nav.classList.toggle("open"))));
-  document.querySelectorAll("#mmenu a").forEach((a) => a.addEventListener("click", close));
-  addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
-})();
-
-// Resultados: escena 3D según el paso visible
-(() => {
-  const steps = [...document.querySelectorAll(".xs")];
-  const scenes = [...document.querySelectorAll(".scene")];
-  const dots = [...document.querySelectorAll(".xr-rail button")];
-  let cur = 0;
-  const set = (i) => {
-    if (i === cur) return;
-    cur = i;
-    scenes.forEach((s, k) => { s.classList.toggle("on", k === i); s.classList.toggle("prev", k < i); });
-    steps.forEach((s, k) => s.classList.toggle("on", k === i));
-    dots.forEach((d, k) => d.setAttribute("aria-current", k === i ? "step" : "false"));
-  };
-  if ("IntersectionObserver" in window) {
-    const mobile = matchMedia("(max-width:900px)").matches;
-    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) set(+e.target.dataset.i); }),
-      { rootMargin: mobile ? "-58% 0px -30% 0px" : "-45% 0px -45% 0px" });
-    steps.forEach((s) => io.observe(s));
-  }
-  dots.forEach((d, k) => d.addEventListener("click", () => steps[k].scrollIntoView({ behavior: "smooth", block: "center" })));
-})();
-
-// Inclinación 3D con el mouse (solo con mouse y si no se pidió reducir movimiento)
-(() => {
-  if (!matchMedia("(pointer:fine)").matches || matchMedia("(prefers-reduced-motion:reduce)").matches) return;
-  const tilt = (area, target, mx, my) => {
-    if (!area || !target) return;
-    area.addEventListener("pointermove", (e) => {
-      const r = area.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-      target.style.setProperty("--ry", (x * mx).toFixed(2) + "deg");
-      target.style.setProperty("--rx", (-y * my).toFixed(2) + "deg");
-    });
-    area.addEventListener("pointerleave", () => { target.style.removeProperty("--ry"); target.style.removeProperty("--rx"); });
-  };
-  tilt(document.getElementById("xr-stage"), document.getElementById("dev"), 18, 12);
-  tilt(document.querySelector(".hero-vis"), document.querySelector(".hero-vis"), 10, 8);
-})();
-
-// En el celular: el 3D se inclina al mover el teléfono (donde no hace falta pedir permiso)
-(() => {
-  if (matchMedia("(pointer:fine)").matches || matchMedia("(prefers-reduced-motion:reduce)").matches) return;
-  if (!("DeviceOrientationEvent" in window) || typeof DeviceOrientationEvent.requestPermission === "function") return;
-  const targets = [document.getElementById("dev"), document.querySelector(".hero-vis")];
-  let base = null, ticking = false;
-  addEventListener("deviceorientation", (e) => {
-    if (e.gamma == null || ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      if (!base) base = { b: e.beta, g: e.gamma };
-      const clamp = (v, m) => Math.max(-m, Math.min(m, v));
-      const ry = clamp((e.gamma - base.g) * 0.6, 14), rx = clamp(-(e.beta - base.b) * 0.4, 10);
-      targets.forEach((t) => { if (t) { t.style.setProperty("--ry", ry.toFixed(1) + "deg"); t.style.setProperty("--rx", rx.toFixed(1) + "deg"); } });
-      ticking = false;
-    });
-  });
-})();
-
-// FAQ: una respuesta abierta a la vez
-document.querySelectorAll(".faq details").forEach((d) => {
-  d.addEventListener("toggle", () => {
-    if (d.open) document.querySelectorAll(".faq details").forEach((o) => { if (o !== d) o.open = false; });
-  });
-});
-
-// Formulario → WhatsApp
-(() => {
-  const form = document.getElementById("lead");
-  form.addEventListener("submit", (ev) => {
-    ev.preventDefault();
-    let first = null;
-    [form.nombre, form.negocio].forEach((i) => {
-      const bad = !i.value.trim();
-      i.closest(".field").classList.toggle("err", bad);
-      if (bad && !first) first = i;
-    });
-    if (first) { first.focus(); return; }
-    let msg = `Hola, soy ${form.nombre.value.trim()}. Tengo ${form.negocio.value.trim()} y quiero el análisis gratuito.`;
-    const link = form.link.value.trim();
-    msg += link ? `\nMi negocio en Google: ${link}` : "\nTodavía no tengo el link de Google a mano.";
-    window.open(waLink(msg), "_blank", "noopener");
-  });
-  form.querySelectorAll("input").forEach((i) => i.addEventListener("input", () => i.closest(".field").classList.remove("err")));
-})();
-
-document.getElementById("yr").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
