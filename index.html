@@ -63,6 +63,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .btn-s:hover{border-color:var(--blue);background:var(--blue-bg)}
 .btn-sm{min-height:42px;padding:0 18px;font-size:14.5px}
 .btn[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+.problem .eb{color:var(--red)}
+.problem .h2{font-size:clamp(34px,5.4vw,60px)}
 .eb{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
 .h2{font-size:clamp(30px,4.4vw,48px);line-height:1.08;letter-spacing:-.025em;font-weight:800;margin-top:12px;text-wrap:balance}
 .lead{font-size:clamp(17px,1.6vw,19px);color:var(--soft);margin-top:14px;max-width:600px;text-wrap:pretty}
@@ -126,9 +128,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .vis-cap{display:flex;justify-content:center;margin-top:10px}
 
 /* progreso del recorrido (hero) */
-.flow{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:12px}
-.flow span{font-size:12.5px;font-weight:600;color:var(--mute);padding:6px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);transition:all .3s}
-.flow span.on{color:#fff;background:var(--ink);border-color:var(--ink)}
 
 /* =========================================================
    ESCENA: mostrador + soporte + celular (tamaño de diseño 600×540)
@@ -247,11 +246,6 @@ textarea.rv-txt{color:var(--ink);font-size:.72em}
 /* =========================================================
    PUENTE CON EL VIDEO
    ========================================================= */
-.bridge{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper)}
-.bridge .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px 32px;padding-top:22px;padding-bottom:22px;flex-wrap:wrap}
-.bridge p{font-size:15.5px;color:var(--soft);max-width:640px}
-.bridge p b{color:var(--ink)}
-.kw{display:inline-block;font-weight:800;letter-spacing:.06em;background:#fff;border:1px solid var(--line-2);border-radius:6px;padding:0 6px;color:var(--ink)}
 
 /* =========================================================
    COMPARACIÓN
@@ -305,20 +299,16 @@ textarea.rv-txt{color:var(--ink);font-size:.72em}
 @media (max-width:420px){.biz-chips{display:none}.revs{gap:8px}}
 
 /* =========================================================
-   PRODUCTO / CÓMO FUNCIONA
+   LA SOLUCIÓN: PASOS
    ========================================================= */
-.prod-g{display:grid;gap:40px;align-items:center;margin-top:44px}
-@media (min-width:960px){.prod-g{grid-template-columns:1.05fr 1fr;gap:64px}}
 .steps{list-style:none;display:grid;gap:10px;counter-reset:s}
 .step{display:block;width:100%;text-align:left;padding:18px 20px;border-radius:16px;border:1px solid transparent;transition:background .3s,border-color .3s,box-shadow .3s}
 .step .n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--paper);border:1px solid var(--line);font-size:14px;font-weight:700;color:var(--mute);margin-right:10px;vertical-align:middle;transition:all .3s}
 .step b{font-size:18px;letter-spacing:-.01em;vertical-align:middle}
 .step p{color:var(--soft);font-size:15.5px;margin:6px 0 0 40px}
-.step:hover{background:var(--paper)}
 .step.on{background:#fff;border-color:var(--line);box-shadow:var(--sh-1)}
 .step.on .n{background:var(--blue);border-color:var(--blue);color:#fff}
-.prod-cta{margin-top:24px;display:grid;gap:14px;justify-items:start}
-.prod-cta .note svg{color:var(--blue)}
+.step.ok .n{background:var(--green);border-color:var(--green);color:#fff}
 
 /* =========================================================
    DEMO INTERACTIVA
@@ -331,42 +321,11 @@ textarea.rv-txt{color:var(--ink);font-size:.72em}
 .demo-stage[data-state="scan"] .ph{transform:translateX(-6%) rotate(-4deg)}
 .demo-stage[data-state="scan"] .stand{transform:scale(1.03)}
 .demo-badge{position:absolute;top:14px;left:14px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:#fff;border:1px solid var(--line);padding:5px 10px;border-radius:999px;color:var(--mute)}
-.d-steps{list-style:none;display:grid;gap:8px;margin-top:22px}
-.d-steps li{display:flex;align-items:center;gap:12px;font-size:16px;color:var(--mute);padding:10px 0;transition:color .3s}
-.d-steps li i{width:28px;height:28px;border-radius:50%;border:2px solid var(--line-2);display:grid;place-items:center;font-style:normal;font-size:13px;font-weight:700;flex:none;transition:all .3s;background:#fff}
-.d-steps li.on{color:var(--ink);font-weight:600}
-.d-steps li.on i{border-color:var(--blue);color:var(--blue)}
-.d-steps li.ok{color:var(--ink)}
-.d-steps li.ok i{background:var(--green);border-color:var(--green);color:#fff}
-.d-prog{height:6px;border-radius:6px;background:var(--line);overflow:hidden;margin-top:18px}
-.d-prog i{display:block;height:100%;width:0;background:var(--blue);border-radius:6px;transition:width .5s var(--ease)}
-.d-ctl{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.d-ctl{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;padding-left:20px}
+.d-msg{padding-left:20px}
 .d-msg{margin-top:14px;font-size:14px;color:var(--mute);min-height:1.5em}
 .d-msg.warn{color:var(--soft)}
 @media (max-width:560px){.d-ctl .btn{flex:1}}
-
-/* =========================================================
-   BENEFICIOS (bento)
-   ========================================================= */
-.bento{display:grid;gap:14px;margin-top:44px}
-@media (min-width:760px){.bento{grid-template-columns:repeat(4,1fr);grid-template-areas:"a a b c" "a a d e"}}
-.bx{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
-.bx:hover{transform:translateY(-3px);box-shadow:var(--sh-2)}
-.bx .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--paper);color:var(--ink)}
-.bx .ic svg{width:22px;height:22px}
-.bx h3{font-size:18px;line-height:1.25;letter-spacing:-.01em;margin-top:16px}
-.bx p{font-size:15px;color:var(--soft);margin-top:6px}
-.bx.a{display:flex;flex-direction:column;background:var(--ink);color:#fff;border-color:var(--ink);padding:clamp(24px,3vw,36px)}
-.bx.a h3{font-size:clamp(22px,2.4vw,30px);margin-top:0;max-width:340px}
-.bx.a p{color:#C4C7C5;font-size:16px;max-width:360px}
-.trip{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:28px;flex-wrap:wrap}
-.trip span{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:9px 14px;font-size:14px;font-weight:600}
-.trip span svg{width:18px;height:18px}
-.trip > svg{width:18px;height:18px;color:#8E918F}
-.bx.b .ic{background:var(--blue-bg);color:var(--blue)}
-.bx.e .ic{background:var(--green-bg);color:var(--green)}
-.bx.c .ic{background:#FEF7E0;color:#B06000}
-@media (min-width:760px){.bx.a{grid-area:a}.bx.b{grid-area:b}.bx.c{grid-area:c}.bx.d{grid-area:d}.bx.e{grid-area:e}}
 
 /* =========================================================
    ESCENARIOS
@@ -550,7 +509,7 @@ textarea.rv-txt{color:var(--ink);font-size:.72em}
     </a>
     <nav class="nav" aria-label="Principal">
       <a class="lk" href="#como-funciona" data-track="click_demo">Cómo funciona</a>
-      <a class="lk" href="#demo" data-track="click_demo">Demo</a>
+      <a class="lk" href="#escenarios">Rubros</a>
       <a class="lk" href="#preguntas">Preguntas</a>
       <a class="btn btn-p btn-sm" data-wa href="#contacto"><svg><use href="#i-wa"/></svg>Consultar</a>
     </nav>
@@ -567,7 +526,7 @@ textarea.rv-txt{color:var(--ink);font-size:.72em}
     <div class="hero-copy">
       <span class="eb ent">Soporte QR para reseñas de Google</span>
       <h1 class="h1 ent e2" id="h-hero">¿Cuántas reseñas está perdiendo <span class="u">tu negocio?</span></h1>
-      <p class="lead ent e3">Con un soporte QR en tu mostrador, tus clientes pueden acceder fácilmente a las reseñas de tu negocio en Google.</p>
+      <p class="lead ent e3">Un soporte QR en tu mostrador: tus clientes escanean y llegan directo a tus reseñas de Google.</p>
     </div>
     <div class="hero-vis ent e3">
       <div class="fit" style="--w:600px;--h:540px">
@@ -584,7 +543,6 @@ textarea.rv-txt{color:var(--ink);font-size:.72em}
           </div>
         </div>
       </div>
-      <div class="flow" id="hero-flow" aria-hidden="true"><span data-s="idle">Ve el QR</span><span data-s="scan">Escanea</span><span data-s="open">Abre el enlace</span><span data-s="review">Opina</span></div>
       <div class="vis-cap"><span class="tag"><i></i>Imagen ilustrativa del producto</span></div>
     </div>
     <div class="hero-cta ent e4">
@@ -597,21 +555,13 @@ textarea.rv-txt{color:var(--ink);font-size:.72em}
   </div>
 </section>
 
-<!-- Puente con la campaña de video ("Comentá MAPS" es la acción del video, no de la web) -->
-<aside class="bridge" aria-label="Si llegaste desde el video">
-  <div class="wrap">
-    <p><b>¿Llegaste desde el video?</b> Ahí te dijimos: comentá <span class="kw">MAPS</span> y te mostramos cómo implementarlo en tu negocio. Acá podés ir directo: escribinos por WhatsApp.</p>
-    <a class="btn btn-s btn-sm" data-wa href="#contacto"><svg><use href="#i-wa"/></svg>Escribir por WhatsApp</a>
-  </div>
-</aside>
-
 <!-- =========================================================
      2 · COMPARACIÓN
      ========================================================= -->
-<section class="sec" id="comparacion" aria-labelledby="h-cmp">
+<section class="sec alt problem" id="comparacion" aria-labelledby="h-cmp">
   <div class="wrap">
     <div class="cmp-hd">
-      <span class="eb rv">Lo que ve tu próximo cliente</span>
+      <span class="eb rv">El problema</span>
       <h2 class="h2 rv d1" id="h-cmp">Antes de elegir, tus clientes comparan.</h2>
     </div>
     <div class="cmp">
@@ -650,98 +600,35 @@ textarea.rv-txt{color:var(--ink);font-size:.72em}
         <span class="tag"><i></i>Ejemplo ilustrativo: negocios y cifras ficticios</span>
       </div>
     </div>
-    <p class="cmp-line rv">No siempre gana el negocio con el mejor producto. <span>La confianza que transmite también puede influir en la elección.</span></p>
+    <p class="cmp-line rv">Mismas estrellas. <span>Pero en uno casi no hay opiniones para leer, y eso también influye al elegir.</span></p>
   </div>
 </section>
 
 <!-- =========================================================
-     3 · PRODUCTO / CÓMO FUNCIONA
+     3 · LA SOLUCIÓN (tres pasos + demo interactiva)
      ========================================================= -->
-<section class="sec alt" id="como-funciona" aria-labelledby="h-prod">
+<section class="sec" id="como-funciona" aria-labelledby="h-sol">
   <div class="wrap">
-    <span class="eb rv">El producto</span>
-    <h2 class="h2 rv d1" id="h-prod" style="max-width:820px">Convertí cada atención en una oportunidad para recibir una reseña.</h2>
-    <div class="prod-g">
-      <div class="rv">
-        <div class="fit" style="--w:600px;--h:540px">
-          <div class="fit-in">
-            <div class="scene auto" id="prod-scene" data-state="idle" role="img" aria-label="Secuencia: el soporte en el mostrador, el celular escanea el código y se abre la página de reseñas.">
-              <div class="sc-wall" style="--wall:linear-gradient(180deg,#F1F2F4,#E4E7EB)"></div>
-              <div class="sc-top" style="--top:linear-gradient(180deg,#FFFFFF,#E9EBEE)"></div>
-              <div class="beam"></div>
-              <div data-tpl="stand"></div>
-              <div data-tpl="phone"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <ol class="steps" id="prod-steps">
-          <li><button class="step on" data-s="idle"><span class="n">1</span><b>Lo colocás</b><p>En el mostrador, la mesa o el lugar de atención.</p></button></li>
-          <li><button class="step" data-s="scan"><span class="n">2</span><b>Tu cliente escanea</b><p>Apunta la cámara de su celular al código.</p></button></li>
-          <li><button class="step" data-s="review"><span class="n">3</span><b>Llega a tus reseñas</b><p>Se abre la página de reseñas de tu negocio en Google. Si quiere, escribe y publica su opinión.</p></button></li>
-        </ol>
-        <div class="prod-cta">
-          <a class="btn btn-p" data-wa href="#contacto"><svg><use href="#i-wa"/></svg>Quiero implementarlo en mi negocio</a>
-          <p class="note"><svg><use href="#i-hand"/></svg>El QR abre el enlace. La reseña la escribe y la publica cada cliente.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================
-     4 · DEMO INTERACTIVA
-     ========================================================= -->
-<section class="sec" id="demo" aria-labelledby="h-demo">
-  <div class="wrap">
-    <span class="eb rv">Demostración interactiva</span>
-    <h2 class="h2 rv d1" id="h-demo">Probalo vos: así lo vive tu cliente.</h2>
+    <span class="eb rv">La solución</span>
+    <h2 class="h2 rv d1" id="h-sol">Un QR en tu mostrador. Tres pasos.</h2>
     <div class="demo">
       <div class="demo-stage rv" id="demo-stage" data-state="idle">
-        <span class="demo-badge">Demo</span>
+        <span class="demo-badge">Demo interactiva</span>
         <div data-tpl="stand"></div>
         <div data-tpl="phone"></div>
       </div>
       <div class="rv d1">
-        <ol class="d-steps" id="d-steps">
-          <li class="on"><i>1</i>Tu cliente ve el QR</li>
-          <li><i>2</i>Escanea con su celular</li>
-          <li><i>3</i>Se abre el enlace de reseñas</li>
-          <li><i>4</i>Puede escribir y publicar su opinión</li>
+        <ol class="steps" id="d-steps">
+          <li class="step on"><span class="n">1</span><b>Lo ponés en el mostrador</b><p>Junto a la caja o en la mesa.</p></li>
+          <li class="step"><span class="n">2</span><b>Tu cliente escanea</b><p>Con la cámara del celular.</p></li>
+          <li class="step"><span class="n">3</span><b>Deja su reseña en Google</b><p>Si quiere, califica y escribe su opinión.</p></li>
         </ol>
-        <div class="d-prog" role="progressbar" aria-label="Progreso de la demostración" aria-valuemin="0" aria-valuemax="4" aria-valuenow="1" id="d-prog"><i></i></div>
         <div class="d-ctl">
           <button class="btn btn-p" id="d-run" data-track="demo_scan"><svg><use href="#i-play"/></svg>Simular escaneo</button>
           <button class="btn btn-s" id="d-reset"><svg><use href="#i-reset"/></svg>Reiniciar</button>
         </div>
-        <p class="d-msg" id="d-msg" role="status" aria-live="polite">Es una demostración: no se conecta con Google ni publica reseñas.</p>
+        <p class="d-msg" id="d-msg" role="status" aria-live="polite">Demo: no se conecta con Google ni publica nada.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================
-     5 · BENEFICIOS
-     ========================================================= -->
-<section class="sec alt" id="beneficios" aria-labelledby="h-ben">
-  <div class="wrap">
-    <span class="eb rv">Por qué sirve</span>
-    <h2 class="h2 rv d1" id="h-ben">Pequeño gesto. Más fácil pedir una opinión.</h2>
-    <div class="bento">
-      <div class="bx a rv">
-        <h3>Facilita el acceso al enlace de reseñas.</h3>
-        <p>Un escaneo y tu cliente llega a la página para opinar, sin buscar tu negocio a mano.</p>
-        <div class="trip" aria-hidden="true">
-          <span><svg><use href="#i-qr"/></svg>Escanea</span><svg><use href="#i-arrow"/></svg>
-          <span><svg><use href="#i-link"/></svg>Abre</span><svg><use href="#i-arrow"/></svg>
-          <span><svg style="color:var(--star)"><use href="#i-star"/></svg>Opina</span>
-        </div>
-      </div>
-      <div class="bx b rv d1"><span class="ic"><svg><use href="#i-eye"/></svg></span><h3>Hace visible tu invitación a opinar</h3><p>Está a la vista justo cuando la experiencia está fresca.</p></div>
-      <div class="bx c rv d2"><span class="ic"><svg><use href="#i-chat"/></svg></span><h3>No tenés que explicar cómo encontrarte</h3><p>El soporte lo dice por vos.</p></div>
-      <div class="bx d rv d1"><span class="ic"><svg><use href="#i-clock"/></svg></span><h3>Se integra a la atención diaria</h3><p>Queda en su lugar. No cambia tu forma de trabajar.</p></div>
-      <div class="bx e rv d2"><span class="ic"><svg><use href="#i-hand"/></svg></span><h3>Cada cliente decide</h3><p>Invita sin presionar: opinar es siempre opcional.</p></div>
     </div>
   </div>
 </section>
@@ -749,7 +636,7 @@ textarea.rv-txt{color:var(--ink);font-size:.72em}
 <!-- =========================================================
      6 · ESCENARIOS
      ========================================================= -->
-<section class="sec" id="escenarios" aria-labelledby="h-biz">
+<section class="sec alt" id="escenarios" aria-labelledby="h-biz">
   <div class="wrap">
     <span class="eb rv">Para tu rubro</span>
     <h2 class="h2 rv d1" id="h-biz">Un QR pensado para tu forma de atender.</h2>
@@ -795,32 +682,28 @@ textarea.rv-txt{color:var(--ink);font-size:.72em}
 <!-- =========================================================
      7 · PREGUNTAS
      ========================================================= -->
-<section class="sec alt" id="preguntas" aria-labelledby="h-faq">
+<section class="sec" id="preguntas" aria-labelledby="h-faq">
   <div class="wrap faq-g">
     <div>
-      <span class="eb rv">Preguntas frecuentes</span>
-      <h2 class="h2 rv d1" id="h-faq">Simple para vos. Fácil para tus clientes.</h2>
+      <span class="eb rv">Preguntas</span>
+      <h2 class="h2 rv d1" id="h-faq">Dudas rápidas</h2>
     </div>
     <div class="faq rv d1">
       <details>
-        <summary>¿Cómo funciona?</summary>
-        <p class="ans">Tu cliente apunta la cámara del celular al código, toca el enlace que aparece y se abre la página de reseñas de tu negocio en Google. Ahí puede calificar y escribir su opinión, si lo desea.</p>
+        <summary>¿Mis clientes necesitan una app?</summary>
+        <p class="ans">No. Usan la cámara del celular. Para publicar, Google les pide iniciar sesión.</p>
       </details>
       <details>
-        <summary>¿Necesito una aplicación?</summary>
-        <p class="ans">No hace falta una aplicación especial para escanear un QR estándar: el cliente usa la cámara o el lector QR de su teléfono, siempre que su dispositivo sea compatible. Para publicar la reseña, Google le pide iniciar sesión con su cuenta.</p>
+        <summary>¿Necesito una ficha en Google?</summary>
+        <p class="ans">Sí, una ficha de negocio que pueda recibir reseñas. Si no la tenés, consultanos (es aparte).</p>
       </details>
       <details>
-        <summary>¿Se puede personalizar para mi negocio?</summary>
-        <p class="ans">Sí. El código se prepara con el enlace de reseñas de tu negocio y el soporte se personaliza según las opciones disponibles. Escribinos y te contamos cuáles son.</p>
+        <summary>¿Se personaliza con mi negocio?</summary>
+        <p class="ans">Sí. El QR lleva el enlace de reseñas de tu negocio. Te contamos las opciones por WhatsApp.</p>
       </details>
       <details>
-        <summary>¿Necesito tener una ficha de negocio en Google?</summary>
-        <p class="ans">Sí. Para recibir reseñas, tu negocio necesita una ficha en Google apta para recibirlas. Si todavía no la tenés, podés consultarnos por una solución adicional; no está incluida en el precio del soporte.</p>
-      </details>
-      <details>
-        <summary>¿Qué pasa si quiero cambiar el enlace?</summary>
-        <p class="ans">Depende de cómo se configure el QR. Si el código apunta directo al enlace de reseñas, no se puede modificar después y habría que hacer uno nuevo. Consultanos qué opción corresponde a tu caso.</p>
+        <summary>¿Puedo cambiar el enlace después?</summary>
+        <p class="ans">Depende de cómo se configure el QR. Si apunta directo a tus reseñas, habría que hacer uno nuevo.</p>
       </details>
     </div>
   </div>
@@ -833,10 +716,9 @@ textarea.rv-txt{color:var(--ink);font-size:.72em}
   <div class="wrap final-g">
     <div>
       <h2 class="rv" id="h-final">Hacé que dejar una reseña sea más fácil.</h2>
-      <p class="lead rv d1">Prepará tu negocio para aprovechar cada oportunidad de recibir una opinión de tus clientes.</p>
+      <p class="lead rv d1">Escribinos y te contamos cómo implementarlo en tu negocio.</p>
       <div class="cta-row rv d2">
         <a class="btn btn-p" data-wa data-track="click_cta_final" href="#contacto"><svg><use href="#i-wa"/></svg>Consultar por WhatsApp</a>
-        <a class="btn btn-s" href="#como-funciona" data-track="click_demo">Ver cómo funciona</a>
       </div>
       <p class="note rv d3"><svg><use href="#i-check"/></svg>Cada cliente decide libremente si desea dejar una reseña.</p>
     </div>
@@ -940,8 +822,7 @@ const FLOW = [["idle", 1500], ["scan", 1900], ["open", 1300], ["review", 3400]];
 // Hero: recorrido en loop mientras está visible
 (() => {
   const scene = document.getElementById("hero-scene");
-  const flow = document.querySelectorAll("#hero-flow span");
-  const set = (s) => { scene.dataset.state = s; flow.forEach((f) => f.classList.toggle("on", f.dataset.s === s)); };
+  const set = (s) => { scene.dataset.state = s; };
   if (reduced) { set("review"); return; }
   let i = 0, t = null, visible = false;
   const tick = () => { set(FLOW[i][0]); t = setTimeout(() => { i = (i + 1) % FLOW.length; tick(); }, FLOW[i][1]); };
@@ -955,34 +836,15 @@ const FLOW = [["idle", 1500], ["scan", 1900], ["open", 1300], ["review", 3400]];
   document.addEventListener("visibilitychange", sync);
 })();
 
-// Cómo funciona: la escena acompaña a los tres pasos (se reproduce sola una vez y se puede elegir cada paso)
-(() => {
-  const scene = document.getElementById("prod-scene");
-  const steps = [...document.querySelectorAll("#prod-steps .step")];
-  const stepOf = { idle: 0, scan: 1, open: 2, review: 2 };
-  let timers = [];
-  const set = (s) => { scene.dataset.state = s; steps.forEach((b, k) => b.classList.toggle("on", k === stepOf[s])); };
-  const stop = () => { timers.forEach(clearTimeout); timers = []; };
-  steps.forEach((b) => b.addEventListener("click", () => { stop(); set(b.dataset.s); }));
-  if (reduced) { set("review"); return; }
-  let played = false;
-  onView(scene, (v) => {
-    if (!v || played) return;
-    played = true;
-    let at = 0;
-    FLOW.forEach(([s, ms]) => { timers.push(setTimeout(() => set(s), at)); at += ms; });
-  }, 0.5);
-})();
-
 // Demo interactiva
 (() => {
   const stage = document.getElementById("demo-stage");
   const items = [...document.querySelectorAll("#d-steps li")];
-  const prog = document.getElementById("d-prog");
+  const stepOf = [0, 1, 2, 2]; // estado de la demo → paso visible
   const run = document.getElementById("d-run");
   const msg = document.getElementById("d-msg");
   const states = ["idle", "scan", "open", "review"];
-  const intro = "Es una demostración: no se conecta con Google ni publica reseñas.";
+  const intro = "Demo: no se conecta con Google ni publica nada.";
   let timers = [];
 
   // En la demo, la pantalla de reseña es interactiva: estrellas y texto. "Publicar" queda deshabilitado.
@@ -1013,9 +875,7 @@ const FLOW = [["idle", 1500], ["scan", 1900], ["open", 1300], ["review", 3400]];
 
   const set = (k) => {
     stage.dataset.state = states[k];
-    items.forEach((li, j) => { li.classList.toggle("on", j === k); li.classList.toggle("ok", j < k); });
-    prog.firstElementChild.style.width = ((k + 1) / states.length) * 100 + "%";
-    prog.setAttribute("aria-valuenow", String(k + 1));
+    items.forEach((li, j) => { li.classList.toggle("on", j === stepOf[k]); li.classList.toggle("ok", j < stepOf[k]); });
     interactive(k === 3);
   };
   const reset = () => {
@@ -1034,7 +894,7 @@ const FLOW = [["idle", 1500], ["scan", 1900], ["open", 1300], ["review", 3400]];
       at += gaps[j];
       timers.push(setTimeout(() => {
         set(k);
-        msg.textContent = ["", "Escaneando el código…", "Abriendo el enlace de reseñas…", "Listo: probá tocar las estrellas y escribir."][k];
+        msg.textContent = ["", "Escaneando el código…", "Abriendo el enlace de reseñas…", "Listo: tocá las estrellas y escribí."][k];
         if (k === 3) run.disabled = false;
       }, at));
     });
